@@ -1,20 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://vkhub.com.br/</loc>
     <lastmod>2026-09-19</lastmod>
+    <image:image>
+      <image:loc>https://vkhub.com.br/images/banner-pagina-matadora-club.png</image:loc>
+      <image:caption>Banner do Página Matadora Club</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://vkhub.com.br/200-ganchos-virais/</loc>
     <lastmod>2026-09-19</lastmod>
+    <image:image>
+      <image:loc>https://vkhub.com.br/200-ganchos-virais/images/gancho-video.png</image:loc>
+      <image:caption>Pacote de 200 ganchos virais em MP4</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://vkhub.com.br/family-goods/</loc>
     <lastmod>2026-09-19</lastmod>
+    <image:image>
+      <image:loc>https://vkhub.com.br/family-goods/images/colorir.png</image:loc>
+      <image:caption>Desenho de família para colorir gerado com inteligência artificial</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://vkhub.com.br/sorteador-bingo-oficial/</loc>
     <lastmod>2026-09-19</lastmod>
+    <image:image>
+      <image:loc>https://vkhub.com.br/sorteador-bingo-oficial/images/imagem-mockup-bingo-sorteador-oficial.png</image:loc>
+      <image:caption>Sorteador Bingo Oficial em notebook e celulares</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vkhub.com.br/a-arvore-da-amizade/</loc>
+    <lastmod>2026-09-19</lastmod>
+    <image:image>
+      <image:loc>https://vkhub.com.br/a-arvore-da-amizade/images/capa-a-arvore-da-amizade.jpg</image:loc>
+      <image:caption>Capa do livro A Árvore da Amizade</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://vkhub.com.br/harley-davidson-as-garotas-do-rock/</loc>
@@ -23,6 +47,10 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://vkhub.com.br/harley-davidson-rock-babes/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://vkhub.com.br/harley-davidson-chicas-del-rock/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://vkhub.com.br/harley-davidson-as-garotas-do-rock/"/>
+    <image:image>
+      <image:loc>https://vkhub.com.br/harley-davidson-as-garotas-do-rock/images/Harley-Babes-Post.png</image:loc>
+      <image:caption>Pacote de rock clássico e imagens para Harley Davidson</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://vkhub.com.br/harley-davidson-rock-babes/</loc>
@@ -31,6 +59,10 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://vkhub.com.br/harley-davidson-rock-babes/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://vkhub.com.br/harley-davidson-chicas-del-rock/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://vkhub.com.br/harley-davidson-as-garotas-do-rock/"/>
+    <image:image>
+      <image:loc>https://vkhub.com.br/harley-davidson-rock-babes/images/Harley-Babes-Post.png</image:loc>
+      <image:caption>Classic rock MP3 pack and images for Harley-Davidson</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://vkhub.com.br/harley-davidson-chicas-del-rock/</loc>
@@ -39,22 +71,42 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://vkhub.com.br/harley-davidson-rock-babes/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://vkhub.com.br/harley-davidson-chicas-del-rock/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://vkhub.com.br/harley-davidson-as-garotas-do-rock/"/>
+    <image:image>
+      <image:loc>https://vkhub.com.br/harley-davidson-chicas-del-rock/images/Harley-Babes-Post.png</image:loc>
+      <image:caption>Paquete de rock clásico MP3 e imágenes para Harley-Davidson</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://vkhub.com.br/1000-layouts-de-paginas-e-sites-elementor/</loc>
     <lastmod>2026-09-19</lastmod>
+    <image:image>
+      <image:loc>https://vkhub.com.br/1000-layouts-de-paginas-e-sites-elementor/images/banner-club-pagina-vendda.png</image:loc>
+      <image:caption>Banner do pacote com mais de 1000 templates Elementor</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://vkhub.com.br/como-faturar-milhoes-vendendo-e-book-na-internet/</loc>
     <lastmod>2026-09-19</lastmod>
+    <image:image>
+      <image:loc>https://vkhub.com.br/como-faturar-milhoes-vendendo-e-book-na-internet/images/infoprodutor-ebook-internet.jpeg</image:loc>
+      <image:caption>E-book Como Faturar Milhões Vendendo E-Book Na Internet</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://vkhub.com.br/como-ganhar-dinheiro-na-internet-com-e-book/</loc>
     <lastmod>2026-09-19</lastmod>
+    <image:image>
+      <image:loc>https://vkhub.com.br/como-ganhar-dinheiro-na-internet-com-e-book/images/como-ganhar-dinheiro-na-internet-com-ebook.jpeg</image:loc>
+      <image:caption>Como Ganhar Dinheiro Na Internet Com Ebooks</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://vkhub.com.br/inscricoes-abertas-pagina-matadora-club/</loc>
     <lastmod>2026-09-19</lastmod>
+    <image:image>
+      <image:loc>https://vkhub.com.br/inscricoes-abertas-pagina-matadora-club/images/logo-pagina-de-venda-matadora-club.png</image:loc>
+      <image:caption>Página de Venda Matadora Club</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://vkhub.com.br/lei-lgpd-lei-de-protecao-de-dados/</loc>
@@ -63,13 +115,25 @@
   <url>
     <loc>https://vkhub.com.br/transformando-a-dor-em-crescimento-um-guia-para-superar-relacionamentos-toxicos-e-construir-relacoes-saudaveis-como-terminar-um-relacionamento/</loc>
     <lastmod>2026-09-19</lastmod>
+    <image:image>
+      <image:loc>https://vkhub.com.br/transformando-a-dor-em-crescimento-um-guia-para-superar-relacionamentos-toxicos-e-construir-relacoes-saudaveis-como-terminar-um-relacionamento/images/relacionamento-toxico-hora-do-fim.jpeg</image:loc>
+      <image:caption>Capa do e-book Hora do Fim</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://vkhub.com.br/youtube-shorts-dinheiro-com-shorts-um-guia-estrutural-para-viralizar-a-sua-empresa-ou-seu-negocio/</loc>
     <lastmod>2026-09-19</lastmod>
+    <image:image>
+      <image:loc>https://vkhub.com.br/youtube-shorts-dinheiro-com-shorts-um-guia-estrutural-para-viralizar-a-sua-empresa-ou-seu-negocio/images/logo.webp</image:loc>
+      <image:caption>YouTube Shorts</image:caption>
+    </image:image>
   </url>
   <url>
-    <loc>https://vkhub.com.br/a-arvore-da-amizade/</loc>
+    <loc>https://vkhub.com.br/nao-te-esqueci/</loc>
     <lastmod>2026-09-19</lastmod>
+    <image:image>
+      <image:loc>https://vkhub.com.br/nao-te-esqueci/img/2-removebg-preview.png</image:loc>
+      <image:caption>Capa do e-book Não Te Esqueci</image:caption>
+    </image:image>
   </url>
 </urlset>

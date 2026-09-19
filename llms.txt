@@ -1,0 +1,35 @@
+# VK Hub
+
+> Biblioteca virtual de produtos digitais de Josias Viskoo: e-books, templates Elementor, textos de LGPD, ganchos virais para vídeos, livro de colorir da família com IA, sorteador de bingo online e um livro infantil. Site em português (Brasil), com uma página de vendas em inglês e espanhol para o pacote Harley Davidson.
+
+Cada página abaixo é uma página de vendas independente. A compra é feita no checkout indicado em cada página (Kiwify, Hotmart, Stripe ou Amazon).
+
+## Produtos
+
+- [200 Ganchos Virais - Pacote de MP4](https://vkhub.com.br/200-ganchos-virais/): Baixe +200 ganchos virais em MP4 para prender a atenção nos primeiros segundos de Reels, TikTok e Shorts, com bônus de prompts de copy e headlines.
+- [Family Goods - Livro de Colorir da Família](https://vkhub.com.br/family-goods/): Transforme fotos em desenhos para colorir e monte um livro de colorir personalizado da sua família com inteligência artificial e ferramentas gratuitas.
+- [Sorteador Bingo Oficial](https://vkhub.com.br/sorteador-bingo-oficial/): Sorteador de bingo online com locução por voz, QR Code para os jogadores e painel para telão e projetores. Ideal para festas, quermesses e eventos corporativos.
+- [A Árvore da Amizade - Coleção Estrelinha Iniciante](https://vkhub.com.br/a-arvore-da-amizade/): Livro infantil para crianças de 5 a 10 anos: a raposinha Rafa e o coelhinho Caco descobrem o poder da amizade e da generosidade. eBook Kindle na Amazon.
+- [Harley Davidson - As Garotas do Rock](https://vkhub.com.br/harley-davidson-as-garotas-do-rock/): Pacote de músicas MP3 de rock clássico e imagens de belas garotas para o display da sua Harley Davidson Ultra Glide 2014 acima. Baixe e use no pendrive.
+- [Harley Davidson - Rock Babes](https://vkhub.com.br/harley-davidson-rock-babes/): Classic rock MP3 pack and pin-up style images for the infotainment display of your Harley-Davidson Ultra Glide 2014 and up. Download it to a USB drive.
+- [Harley Davidson - Chicas del Rock](https://vkhub.com.br/harley-davidson-chicas-del-rock/): Paquete de rock clásico en MP3 con imágenes estilo pin-up para la pantalla de tu Harley-Davidson Ultra Glide 2014 y superior. Descárgalo y colócalo en un USB.
+- [+1000 Templates de Sites e Páginas Elementor](https://vkhub.com.br/1000-layouts-de-paginas-e-sites-elementor/): Baixe +1000 templates Elementor prontos e otimizados para conversão: sites, páginas de vendas e captura fáceis de editar. Economize tempo e fature mais.
+- [Como Faturar Milhões Vendendo E-Book Na Internet - Versão 2](https://vkhub.com.br/como-faturar-milhoes-vendendo-e-book-na-internet/): E-book para transformar suas ideias em renda: aprenda a criar e vender eBooks que vendem de forma consistente na internet. Versão 2.
+- [Como Ganhar Dinheiro Na Internet Com Ebooks](https://vkhub.com.br/como-ganhar-dinheiro-na-internet-com-e-book/): Transforme seu conhecimento em renda passiva: guia passo a passo para criar eBooks lucrativos, do zero à publicação, e alcançar a liberdade financeira.
+- [Página Matadora Club](https://vkhub.com.br/inscricoes-abertas-pagina-matadora-club/): Inscrições abertas no Página Matadora Club: torne-se um web designer estrategista e conquiste uma carreira sólida e lucrativa, com +10 mil templates.
+- [15 Modelos de Texto LGPD em DOCX](https://vkhub.com.br/lei-lgpd-lei-de-protecao-de-dados/): Baixe um texto de LGPD pronto para usar no seu site ou no site dos seus clientes. Modelo profissional feito por advogado, pronto para copiar e colar.
+- [Relacionamento Tóxico: Transforme Sua Vida - E-book Hora do Fim](https://vkhub.com.br/transformando-a-dor-em-crescimento-um-guia-para-superar-relacionamentos-toxicos-e-construir-relacoes-saudaveis-como-terminar-um-relacionamento/): E-book em PDF com dicas práticas para identificar e sair de relacionamentos tóxicos, recuperar a autoconfiança e o amor-próprio e construir relações saudáveis.
+- [YouTube Shorts: Guia Completo para Ganhar Dinheiro com Shorts](https://vkhub.com.br/youtube-shorts-dinheiro-com-shorts-um-guia-estrutural-para-viralizar-a-sua-empresa-ou-seu-negocio/): Guia gratuito em DOCX com roteiro e storyboard para criar YouTube Shorts que viralizam e geram renda para a sua empresa ou negócio.
+- [Não Te Esqueci - E-book para Reconquistar seu Amor](https://vkhub.com.br/nao-te-esqueci/): Descubra as atitudes para reatar com seu amor e ter o relacionamento de volta mais forte que nunca. E-book Não Te Esqueci, com o método espere e aja.
+
+## Sobre
+
+- Autor e responsável: Josias Viskoo
+- Página inicial: https://vkhub.com.br/
+- Sitemap: https://vkhub.com.br/sitemap.xml
+
+## Idiomas
+
+- Português (pt-BR): todas as páginas, exceto as duas abaixo
+- English: https://vkhub.com.br/harley-davidson-rock-babes/
+- Español: https://vkhub.com.br/harley-davidson-chicas-del-rock/
