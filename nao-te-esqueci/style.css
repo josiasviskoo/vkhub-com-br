@@ -1,0 +1,154 @@
+:root{
+  --red:#ff0000;
+  --red-btn:#ff0808;
+  --green:#45cd33;
+  --black:#000;
+  --dark:#222;
+  --text:#494949;
+  --font:'Roboto',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--font);color:var(--dark);background:#fff;line-height:1.4;-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+h1,h2,h3,p,ul,ol,figure{margin:0;padding:0}
+ul,ol{list-style:none}
+
+.container{width:100%;max-width:1140px;margin:0 auto;padding:0 15px}
+.row{display:flex;align-items:center}
+.col{flex:1 1 50%;width:50%}
+.red{color:var(--red)}
+
+/* Botões */
+.btn{display:inline-block;font-family:var(--font);font-weight:500;text-decoration:none;text-align:center;transition:background .25s,color .25s}
+.btn-red{background:var(--red-btn);color:#fff;font-size:14px;padding:14px 18px;border-radius:8px}
+.btn-red:hover{background:var(--green)}
+.btn-white{background:#fff;color:var(--red)}
+
+/* Títulos de seção */
+.section-title{text-align:center;font-weight:300;font-size:32px;line-height:1.2;padding:0 15px}
+.section-title.dark{font-weight:600;font-size:26px;color:var(--dark)}
+
+/* 1. Hero */
+.hero{background:var(--black);padding:150px 0}
+.hero-img img{margin:0 auto;width:266px}
+.hero-text{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.hero-text h1{color:#fff;font-size:26px;font-weight:600;padding:0 80px;margin-bottom:20px}
+
+/* 2. Introdução */
+.intro{padding:60px 0}
+.intro .row{align-items:center}
+.intro-img img{width:94%}
+.intro-text{padding-left:15px}
+.intro-lead{font-size:26px;font-weight:400;line-height:1.2}
+.intro-red{color:#f80000;font-size:24px;margin:0 0 20px;line-height:1.2}
+.intro-body{color:var(--text);font-size:18px;line-height:1.3}
+.intro-body p{margin-bottom:16px}
+
+/* 3. Barra de download */
+.download-bar{background:var(--red);padding:30px 0}
+.btn-download{display:block;font-size:24px;padding:12px 20px;max-width:540px;margin:0 auto;border-radius:0}
+
+/* 4. Conteúdo */
+.contents{padding:60px 15px 30px}
+.chapters{max-width:650px;margin:30px auto 0}
+.chapters li{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.chapters .num{flex:none;min-width:2.2em;aspect-ratio:1;display:grid;place-items:center;background:var(--red);color:#fff;border-radius:50%;font-size:30px;font-weight:600;line-height:1;padding:7px}
+.chapters li:nth-child(n+10) .num{font-size:26px;padding:10px}
+.chapters li span:last-child{font-size:25px;font-weight:600;color:var(--dark)}
+
+/* 5. Depoimentos */
+.testimonials{padding:30px 0 40px}
+.testimonials .section-title{font-size:34px;font-weight:400;text-transform:capitalize;line-height:1.3;margin-bottom:25px}
+.testi-row{align-items:flex-start;gap:20px}
+.testi-row figure{text-align:center}
+.testi-row img{margin:0 auto}
+.testi-row figcaption{font-size:18px;font-weight:600;color:var(--dark);margin-top:10px}
+
+/* 6. Público */
+.audience{background:var(--black);padding:55px 0}
+.audience h2{color:#fff;text-align:center;font-size:22px;font-weight:300;margin-bottom:33px}
+.audience-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.check-list li{position:relative;padding-left:26px;margin-bottom:30px;color:#fff;font-size:16px;font-weight:600}
+.check-list li::before{content:"\f14a";font-family:"Font Awesome 6 Free";font-weight:900;position:absolute;left:0;top:2px;color:var(--red);font-size:16px}
+
+/* 7. Contadores */
+.counters{background:#ff0101;padding:20px 0 18px}
+.counters-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;text-align:center;color:#fff}
+.counter-num{font-size:50px;font-weight:600;line-height:1.2}
+.counter-title{font-size:16px;font-weight:400}
+
+/* 8. Benefícios */
+.benefits{padding:50px 0 120px;position:relative;overflow:hidden}
+.benefits::after{content:"";position:absolute;left:0;right:0;bottom:0;height:118px;background:var(--red);clip-path:polygon(0 100%,100% 100%,100% 0,0 80%);opacity:.9}
+.benefits .section-title{margin-bottom:40px}
+.benefits-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px 20px;position:relative;z-index:1}
+.benefit{text-align:center}
+.benefit i{font-size:90px;color:var(--red);display:block;margin-bottom:6px}
+.benefit-svg{width:90px;height:90px;margin:0 auto 6px}
+.benefit h3{font-size:20px;font-weight:600;color:#0a0a0a;line-height:1.3}
+
+/* 9. Oferta */
+.offer{background:var(--red);padding:20px 0 100px;text-align:center;color:#fff;position:relative}
+.offer-lead{font-size:32px;font-weight:300;color:#000;line-height:1.3;margin-bottom:10px}
+.offer-lead span{color:#fff;font-weight:600}
+.secure{font-size:16px;margin-bottom:10px}
+.price{font-size:20px;margin-bottom:24px}
+.price span{color:#0f0;font-weight:600}
+.btn-xl{font-size:22px;padding:40px 90px;border-radius:4px}
+.btn-xl:hover{background:#000;color:#fff}
+
+/* 10. Pagamentos */
+.payments{background:var(--black);display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:20px;padding:20px 15px}
+.payments img{height:40px;width:auto}
+
+/* Tablet */
+@media (max-width:1024px){
+  .hero-text h1{padding:0 20px}
+  .btn-download{max-width:none;margin:0 200px}
+  .section-title{font-size:27px}
+  .chapters li span:last-child{font-size:22px}
+  .benefit h3{font-size:16px}
+  .counter-num{line-height:1.2}
+}
+
+/* Mobile */
+@media (max-width:767px){
+  .row{flex-direction:column}
+  .col{width:100%;flex:none}
+  .hero{padding:55px 0 35px}
+  .hero-img img{width:199px;margin-bottom:34px}
+  .hero-text h1{font-size:22px;padding:0;margin-bottom:12px}
+  .btn-red{line-height:1.5}
+  .intro{padding:30px 0}
+  .intro-img{margin-bottom:20px}
+  .intro-text{padding:0;text-align:center}
+  .intro-lead{font-size:24px}
+  .intro-red{font-size:24px}
+  .intro-body{font-size:16px}
+  .download-bar{padding:30px 0}
+  .btn-download{margin:0 30px;font-size:16px;padding:12px 0}
+  .section-title{font-size:24px}
+  .section-title.dark{font-size:20px}
+  .chapters li span:last-child{font-size:18px}
+  .chapters .num{font-size:25px;padding:7px 13px}
+  .chapters li:nth-child(n+10) .num{font-size:22px;padding:9px}
+  .testimonials .section-title{font-size:18px}
+  .testi-row{padding-bottom:25px}
+  .testi-row img{width:90%}
+  .audience{padding:55px 15px 35px}
+  .audience-grid{grid-template-columns:1fr;padding:0 10px}
+  .check-list li{font-size:14px;padding-left:22px;margin-bottom:20px}
+  .check-list li::before{font-size:13px;top:0}
+  .counters{padding:60px 0}
+  .counters-grid{grid-template-columns:1fr;gap:15px}
+  .counter-num{font-size:35px}
+  .benefits{padding:50px 20px 118px}
+  .benefits-grid{grid-template-columns:1fr;gap:25px}
+  .benefit h3{font-size:16px}
+  .offer{padding:20px 0 35px}
+  .offer-lead{font-size:24px}
+  .btn-xl{padding:20px 10px;font-size:18px;display:block;margin:0 15px}
+  .payments{padding:30px 20px;gap:15px}
+  .payments img{height:auto;max-width:65px}
+}

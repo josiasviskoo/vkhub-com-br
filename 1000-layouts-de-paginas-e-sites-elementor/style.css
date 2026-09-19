@@ -1,0 +1,158 @@
+@font-face{font-family:'Poppins';font-weight:400;font-style:normal;font-display:swap;src:url(fonts/poppins-400.woff2) format('woff2')}
+@font-face{font-family:'Poppins';font-weight:500;font-style:normal;font-display:swap;src:url(fonts/poppins-500.woff2) format('woff2')}
+@font-face{font-family:'Poppins';font-weight:600;font-style:normal;font-display:swap;src:url(fonts/poppins-600.woff2) format('woff2')}
+@font-face{font-family:'Poppins';font-weight:700;font-style:normal;font-display:swap;src:url(fonts/poppins-700.woff2) format('woff2')}
+@font-face{font-family:'Montserrat';font-weight:100 900;font-style:normal;font-display:swap;src:url(fonts/montserrat.woff2) format('woff2')}
+@font-face{font-family:'Roboto';font-weight:100 900;font-style:normal;font-display:swap;src:url(fonts/roboto.woff2) format('woff2')}
+
+:root{
+  --verde:#60d27d;
+  --amarelo:#ffcc00;
+  --amarelo-ativo:#f7d700;
+  --preto:#000;
+  --preto-2:#0e0e0e;
+  --cinza:#303030;
+  --texto:#4e4e4e;
+  --branco:#fff;
+  --poppins:'Poppins',sans-serif;
+  --montserrat:'Montserrat',sans-serif;
+  --roboto:'Roboto',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--branco);color:#333;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans',sans-serif;font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+h1,h2,p,ul,figure{margin:0;padding:0}
+ul{list-style:none}
+img{max-width:100%;height:auto;display:block}
+video{display:block;max-width:100%}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+
+/* Estrutura */
+.topo{height:20px;background:var(--preto)}
+.con{display:flex;flex-direction:column;gap:20px;padding:10px;position:relative;width:100%}
+.con-inner{display:flex;flex-direction:column;gap:20px;width:100%;max-width:var(--cw,1140px);margin:0 auto}
+.con-inner.linha,.con.linha{flex-direction:row;gap:0}
+
+/* Textos */
+.titulo{font-family:var(--poppins);font-size:32px;font-weight:600;line-height:32px;color:var(--branco);text-align:center}
+.titulo.verde{color:var(--verde)}
+.titulo.preto{font-size:38px;line-height:38px;color:var(--preto)}
+.texto-grande{margin:50px 0 calc(50px + 14.4px);font-family:var(--poppins);font-size:39px;font-weight:700;line-height:47px;color:var(--branco);text-align:center}
+.texto-grande .preto-txt{color:#000}
+.texto-grande .amarelo{color:var(--amarelo)}
+.texto-grande .branco{color:var(--branco)}
+p{margin-bottom:14.4px}
+.poppins{font-family:var(--poppins);color:var(--preto);text-align:center}
+
+/* Botões */
+.w-centro{text-align:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:5px;padding:20px 30px;border-radius:100px;background:var(--verde);color:var(--branco);fill:var(--branco);font-family:var(--poppins);font-weight:500;line-height:1;text-align:center;text-decoration:none}
+.btn .ico{width:1em;height:1em;fill:currentColor}
+.btn-hero{font-size:23px}
+.btn-sm{font-size:18px}
+.btn-wa{gap:15px}
+
+/* 1. Hero */
+.hero{background:var(--preto);padding:50px 0}
+.hero .con{justify-content:center}
+
+/* 2. Chamada */
+.chamada{background:var(--preto);padding:50px}
+
+/* 3. Carrossel */
+.carrossel-sec{background:var(--preto)}
+.carrossel{position:relative}
+.janela{overflow:hidden}
+.trilho{display:flex;transition:transform .2s ease}
+.slide{flex:0 0 33.3333%;text-align:center}
+.slide img{display:inline-block;width:100%;height:auto}
+.seta-car{position:absolute;top:50%;transform:translateY(-50%);z-index:1;display:inline-flex;font-size:25px;line-height:1}
+.seta-car svg{width:1em;height:1em;fill:hsl(0 0% 93% / .9)}
+.seta-car.prev{left:10px}
+.seta-car.next{right:10px}
+
+/* 4. Conteúdo do pacote */
+.verde-sec{background:var(--verde);padding:0 0 20px}
+.seta-img img{width:21%;margin:0 auto}
+.acordeao{text-align:start}
+.acordeao .item{border:1px solid transparent}
+.acordeao .item+.item{border-top:0}
+.tab{display:block;width:100%;padding:25px;background:var(--preto);color:var(--branco);font-family:var(--poppins);font-size:16px;font-weight:600;line-height:1;text-align:start}
+.tab .ac-ico{float:right;display:inline-block;width:1.5em;text-align:right}
+.tab .ac-ico svg{display:block;width:1em;height:1em;fill:currentColor}
+.tab .ac-ico .aberto,.item.ativo .ac-ico .fechado{display:none}
+.item.ativo .ac-ico .aberto{display:block}
+.item.ativo .tab{color:var(--amarelo-ativo)}
+.painel{display:none;padding:15px 20px;border-top:1px solid transparent;color:var(--preto);font-family:var(--roboto);font-size:16px;font-weight:400}
+.item.ativo .painel{display:block}
+
+/* 5. Fácil de editar */
+.facil{background:var(--preto)}
+.facil-txt{flex:0 0 50%;padding:50px;justify-content:center}
+.facil-video{flex:0 0 50%;padding:10px;border:3px solid var(--verde)}
+.facil-video video{width:100%;aspect-ratio:16/9;background:var(--preto)}
+
+/* Listas com ícone */
+.lista li{display:flex;align-items:center}
+.lista.centro li{justify-content:center}
+.lista .ico-l{flex:0 0 auto;width:27px;height:27px;margin-right:6.75px;fill:var(--verde)}
+.lista li span{padding-left:5px;font-family:var(--poppins);font-weight:400;color:var(--branco)}
+
+/* 6. Faturando */
+.fatur{background:var(--preto-2);padding:0}
+
+/* 7. Benefícios */
+.beneficios{background:transparent;margin-top:-50px;position:relative;z-index:1}
+.beneficios .card{flex:0 0 33%;justify-content:center;background:var(--preto);padding:0}
+.beneficios .card-a{padding:50px 20px;border-radius:50px 0 0 50px}
+.beneficios .card-c{border-radius:0 50px 50px 0}
+.beneficios .card-b,.beneficios .card-c{padding:10px}
+
+/* 8. Recap */
+.recap .poppins{margin-bottom:14.4px}
+
+/* 9. Preço */
+.lateral{flex:0 0 25%}
+.caixa-preco{flex:0 0 50%;padding:50px;border:3px solid var(--verde);border-radius:20px;background:var(--branco);z-index:1}
+.inclusos{margin-bottom:50px}
+.inclusos li:not(:last-child){padding-bottom:4.5px}
+.inclusos li:not(:first-child){margin-top:4.5px}
+.inclusos .ico-l{fill:var(--verde)}
+.inclusos li span{padding-left:5px;font-family:var(--roboto);font-size:15px;font-weight:700;color:var(--texto)}
+.preco{margin:8px 0 16px;font-family:var(--poppins);font-size:40px;font-weight:500;line-height:48px;color:var(--preto);text-align:center}
+.preco .xx{font-size:xx-large}
+.preco .verde{color:var(--verde)}
+
+/* 10. Imperdível */
+.imperdivel{background:var(--verde);margin-top:-50px;padding:50px}
+.imperdivel p{font-size:28px;line-height:42px;color:var(--branco)}
+
+/* 11. Criador */
+.criador{background:var(--preto);padding:50px}
+.criador .montserrat{font-family:var(--montserrat);font-size:28px;font-weight:400;line-height:42px;color:var(--branco);text-align:center}
+.banner img{width:70%;margin:0 auto}
+
+/* 12. Dúvidas */
+.duvidas{background:var(--cinza);padding:90px}
+.duvidas .titulo{font-size:38px;line-height:38px}
+.duvidas .titulo.sub{font-size:22px;font-weight:400;line-height:22px}
+
+/* Mobile */
+@media (max-width:767px){
+  .janela{margin:0 40px}
+  .con-inner.linha,.con.linha{flex-wrap:wrap}
+  .linha>.con{flex:0 0 100%}
+  .beneficios .card,.facil-txt,.facil-video,.lateral,.caixa-preco{flex:0 0 100%}
+  .verde-sec{padding:0}
+  .verde-sec .texto-grande{font-size:44px;line-height:1em}
+  .tab .ac-ico{width:1.2em}
+  .painel{padding:7px 15px}
+  .facil-txt{padding:30px}
+  .beneficios .card-a,.beneficios .card-b,.beneficios .card-c{padding:20px;border-radius:0}
+  .caixa-preco{padding:20px}
+  .criador{padding:20px}
+  .criador .montserrat{line-height:1em}
+  .duvidas{padding:30px}
+  .duvidas .titulo{line-height:1.3em}
+  .duvidas .titulo.sub{line-height:1.1em}
+}

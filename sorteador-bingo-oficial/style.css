@@ -1,0 +1,119 @@
+/* Sorteador Bingo Oficial */
+@font-face{font-family:"Poppins";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/poppins-400.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Poppins";font-style:normal;font-weight:500;font-display:swap;src:url(fonts/poppins-500.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Poppins";font-style:normal;font-weight:600;font-display:swap;src:url(fonts/poppins-600.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Roboto";font-style:normal;font-stretch:100%;font-weight:100 900;font-display:swap;src:url(fonts/roboto.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Montserrat";font-style:normal;font-weight:100 900;font-display:swap;src:url(fonts/montserrat.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+
+:root{
+  --preto:#000;
+  --branco:#fff;
+  --fundo-escuro:#090C16;
+  --amarelo:#E3B914;
+  --verde:#60D27D;
+  --destaque-cartao:#60D27D;
+  --destaque-texto:#E3B914;
+  --card:#FFFFFF14;
+  --fonte:"Montserrat",sans-serif;
+  --largura:1140px;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--fundo,#fff);color:#333;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;font-size:1rem;font-weight:400;line-height:1.5;-webkit-font-smoothing:antialiased}
+h1,h2,h3,p,ul{margin:0;padding:0}
+h2{font-family:var(--fonte);font-size:2rem;font-weight:600;line-height:1}
+a{text-decoration:none}
+img{display:block;max-width:100%;height:auto}
+svg.icone{fill:currentColor;flex:none}
+section{display:block;padding:10px}
+.miolo{display:flex;flex-direction:column;gap:20px;width:100%;max-width:var(--largura);margin:0 auto}
+.texto{margin-bottom:.9rem;font-family:var(--fonte);font-weight:400;color:var(--preto);text-align:center}
+.sem-margem{margin-bottom:0}
+.preto{color:var(--preto)}
+.amarelo{color:var(--destaque-texto)}
+.botao{display:inline-flex;align-items:center;justify-content:center;gap:5px;min-height:40px;padding:20px 30px;border-radius:100px;color:var(--branco);font-family:var(--fonte);font-weight:500;line-height:1;text-align:center;transition:all .3s}
+.botao:hover,.botao:focus{color:var(--branco)}
+.botao .icone{width:1em;height:1em}
+
+section{background:var(--fundo-escuro)}
+.texto,.botao{font-family:"Poppins",sans-serif}
+.amarelo{color:var(--amarelo)}
+.botao-verde{align-self:center;background:var(--verde);font-size:18px}
+.botao-amarelo{align-self:flex-start;background:var(--amarelo);color:var(--preto);font-size:18px}
+.botao-amarelo:hover,.botao-amarelo:focus{color:var(--preto)}
+
+/* Hero */
+.sec-hero{padding:50px 0}
+.sec-hero .miolo{flex-direction:row;gap:0}
+.hero-texto,.hero-img{display:flex;flex-direction:column;justify-content:center;width:50%;padding:10px}
+.hero-texto{gap:20px}
+.hero-h1{font-family:"Poppins",sans-serif;font-size:54px;color:var(--branco)}
+.hero-h2{font-family:"Poppins",sans-serif;font-size:20px;font-weight:400;color:var(--branco)}
+.hero-img img{width:100%;border-radius:20px}
+
+/* Títulos de seção */
+.sec-titulo{padding:50px 20px 20px}
+.titulo{font-size:34px;color:var(--branco);text-align:center}
+.subtitulo{font-size:20px;font-weight:400;color:var(--branco);text-align:center}
+
+/* Cards */
+.sec-cards .miolo,.sec-passos .miolo,.sec-fotos .miolo,.sec-numeros-bingo .miolo,.sec-video .miolo{flex-direction:row;gap:0}
+.col4{width:25%;padding:10px}
+.col3{width:33%;padding:10px}
+.col2{width:50%;padding:10px}
+.col1{width:100%;padding:10px}
+.card{display:flex;flex-direction:column;gap:20px;padding:20px;border-radius:20px;background:var(--card)}
+.card-icone{display:block;width:fit-content;padding:.5em;border:3px solid var(--amarelo);border-radius:50%;color:var(--amarelo);font-size:20px;line-height:1}
+.card-icone .icone{display:block;width:20px;height:20px;fill:var(--amarelo)}
+.card-titulo{font-size:28px;font-weight:700;color:var(--branco)}
+.card-texto{font-size:16px;font-weight:400;color:var(--branco)}
+.passo-n{font-family:"Roboto",sans-serif;font-weight:600;color:var(--amarelo)}
+
+/* Ao vivo */
+.sec-aovivo .miolo{max-width:672px}
+.botao-aovivo{align-self:center;gap:5px;background:#61CE7063;border:2px solid #0F4702;border-radius:50px;padding:12px 24px;font-family:"Roboto",sans-serif;font-size:15px}
+.sec-fotos img{width:100%;border-radius:20px}
+
+/* Números */
+.sec-numeros-bingo{padding:50px}
+.num{width:33.3333%;padding:10px;display:flex;flex-direction:column;gap:20px}
+.num-valor{font-size:34px;color:var(--amarelo);text-align:center}
+.num-rotulo{font-size:20px;font-weight:400;color:var(--branco);text-align:center}
+
+/* Vídeo */
+.sec-video .miolo{max-width:778px}
+.video-wrap{position:relative;aspect-ratio:16/9}
+.video-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+
+.sec-oferta .miolo{flex-direction:row;gap:0}
+.cartao{position:relative;z-index:1;display:flex;flex-direction:column;gap:20px;width:50%;padding:50px;border:3px solid var(--destaque-cartao);border-radius:20px;background:var(--branco)}
+.lista-itens{margin:0 0 50px;padding:0;list-style:none;font-family:"Roboto",sans-serif;font-size:15px;font-weight:700;color:#4E4E4E}
+.lista-itens li{display:flex}
+.lista-itens li:not(:last-child){padding-bottom:4.5px}
+.lista-itens li:not(:first-child){margin-top:4.5px}
+.lista-itens .icone{width:27px;height:27px;margin-right:6.75px;fill:var(--destaque-cartao)}
+.preco{margin:8px 0 1rem;line-height:1.2}
+.sec-oferta .botao{align-self:center;margin:0;font-size:18px}
+
+/* Plano */
+.sec-oferta{padding:50px}
+.lateral{width:25%;padding:10px}
+.cartao{border-width:2px;border-color:#32B901}
+.lista-itens{font-size:19px}
+.preco{font-size:40px;font-weight:400}
+.preco b,.preco strong{font-weight:700}
+.preco .g{font-size:32px}
+.preco .verde{color:var(--verde)}
+
+@media (max-width:1024px){
+  :root{--largura:1024px}
+}
+@media (max-width:767px){
+  .sec-hero .miolo,.sec-cards .miolo,.sec-passos .miolo,.sec-fotos .miolo,.sec-numeros-bingo .miolo,.sec-oferta .miolo{flex-wrap:wrap}
+  .hero-texto,.hero-img,.col4,.col3,.col2,.num,.lateral,.cartao{flex:0 0 auto;width:100%;max-width:100%}
+  .botao-amarelo{align-self:center}
+  .sec-hero .hero-texto{padding-top:30px}
+  .sec-oferta{padding:10px}
+  .cartao{padding:20px}
+}

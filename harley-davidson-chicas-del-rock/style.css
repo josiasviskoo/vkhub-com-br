@@ -1,0 +1,161 @@
+@font-face{font-family:"Poppins";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/poppins-400.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Poppins";font-style:normal;font-weight:500;font-display:swap;src:url(fonts/poppins-500.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Poppins";font-style:normal;font-weight:600;font-display:swap;src:url(fonts/poppins-600.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Poppins";font-style:normal;font-weight:700;font-display:swap;src:url(fonts/poppins-700.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Roboto";font-style:normal;font-weight:100 900;font-stretch:100%;font-display:swap;src:url(fonts/roboto.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+
+:root{
+  --laranja:#F98B07;
+  --verde:#60D27D;
+  --preto:#000;
+  --branco:#fff;
+  --amarelo:#F7D700;
+  --destaque:#ffcc00;
+  --fundo-escuro:#0E0E0E;
+  --cinza:#303030;
+  --texto-item:#4E4E4E;
+  --fonte:"Poppins",sans-serif;
+  --largura:1140px;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--branco);color:#333;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;font-size:1rem;font-weight:400;line-height:1.5;-webkit-font-smoothing:antialiased}
+h2,h3,p,ul{margin:0;padding:0}
+h2{font-family:var(--fonte);font-size:2rem;font-weight:600;line-height:1}
+a{text-decoration:none}
+img{display:block;max-width:100%;height:auto}
+svg.icone{fill:currentColor;flex:none}
+
+/* Estrutura */
+main,header{display:block}
+section{display:block;padding:10px}
+.miolo{display:flex;flex-direction:column;gap:20px;width:100%;max-width:var(--largura);margin:0 auto}
+.topo-texto,.topo-bandeiras,.hero-img,.hero-texto,.beneficio,.lateral{padding:10px}
+.texto{margin-bottom:.9rem;font-family:var(--fonte);font-weight:400;color:var(--preto);text-align:center}
+.preto{color:var(--preto)}
+.amarelo{color:var(--destaque)}
+
+/* Botões */
+.botao{display:inline-flex;align-items:center;justify-content:center;gap:5px;min-height:40px;padding:20px 30px;border-radius:100px;color:var(--branco);font-family:var(--fonte);font-weight:500;line-height:1;text-align:center;transition:all .3s}
+.botao:hover,.botao:focus{color:var(--branco)}
+.botao .icone{width:1em;height:1em}
+.botao-laranja{background:var(--laranja);font-size:14px}
+.botao-verde{background:var(--verde);font-size:18px;align-self:center}
+
+/* Topo */
+.sec-topo{background:var(--laranja);padding:0}
+.sec-topo .miolo{flex-direction:row;gap:0}
+.topo-texto{display:flex;flex-direction:column;justify-content:center;flex:0 0 74.69%;max-width:74.69%;text-align:center}
+.topo-titulo{font-size:19px;color:var(--preto)}
+.topo-bandeiras{display:flex;gap:20px;flex:0 1 66.6666%;min-width:0}
+.topo-bandeiras a{flex:0 1 97px;min-width:0}
+.topo-bandeiras img{width:74%;margin:0 auto}
+
+/* Hero */
+.sec-hero{background:var(--preto);padding:50px 0}
+.sec-hero .miolo{flex-direction:row;gap:0}
+.hero-img{width:50%}
+.hero-img img{width:100%;border-radius:20px}
+.hero-texto{display:flex;flex-direction:column;justify-content:center;gap:20px;width:50%}
+.hero-h1{color:var(--laranja)}
+.hero-h2,.hero-h4,.hero-h5{font-size:20px;color:var(--branco)}
+.hero-h3{color:var(--branco)}
+.hero-texto .botao{align-self:flex-start}
+
+/* Conteúdo */
+.sec-conteudo{background:var(--laranja);padding:0 0 20px}
+.sec-conteudo .miolo{max-width:500px}
+.seta{width:21%;margin:0 auto}
+.conteudo-titulo{margin:50px 0 calc(50px + .9rem);font-family:var(--fonte);font-size:39px;font-weight:700;line-height:47px;color:var(--branco);text-align:center}
+.conteudo-next{font-size:20px;color:var(--branco);text-align:center}
+.acordeao-item{border:1px solid transparent}
+.acordeao-item+.acordeao-item{border-top:0}
+.acordeao-titulo{font-size:inherit;line-height:1}
+.acordeao-titulo button{display:flex;align-items:center;justify-content:space-between;width:100%;margin:0;padding:25px;border:0;border-radius:0;background:var(--preto);color:var(--branco);font-family:var(--fonte);font-size:16px;font-weight:600;line-height:1;text-align:left;cursor:pointer}
+.acordeao-icone{display:block;flex:none;width:1.5em;text-align:right}
+.acordeao-icone .icone{width:1em;height:1em;margin-left:auto}
+.acordeao-icone .aberto,.ativo .acordeao-icone .fechado{display:none}
+.ativo .acordeao-icone .aberto{display:block}
+.ativo .acordeao-titulo button{color:var(--amarelo)}
+.acordeao-conteudo{padding:15px 20px;border-top:1px solid transparent;color:var(--preto)}
+.acordeao-conteudo p{margin-bottom:.9rem}
+.acordeao-conteudo[hidden]{display:none}
+
+/* Galeria */
+.sec-galeria-titulo{background:var(--preto);padding:50px}
+.galeria-h1{font-size:32px;color:var(--branco);text-align:center}
+.galeria-h2{font-size:25px;color:var(--branco);text-align:center}
+.sec-galeria{background:var(--preto)}
+.galeria{display:flex;flex-wrap:wrap}
+.galeria-item{display:block;width:16.666%;cursor:pointer}
+.galeria-item img{width:100%}
+
+/* Números */
+.sec-numeros{background:var(--fundo-escuro);padding:0}
+.sec-numeros .miolo{max-width:846px}
+.numeros-texto{margin:50px 0 calc(50px + .9rem);font-family:var(--fonte);font-size:39px;font-weight:700;line-height:47px;color:var(--branco);text-align:center}
+
+/* Benefícios */
+.sec-beneficios{margin-top:-50px}
+.sec-beneficios .miolo{flex-direction:row;gap:0}
+.beneficio{display:flex;align-items:center;justify-content:center;width:33%;background:var(--preto);color:var(--branco);font-family:var(--fonte)}
+.beneficio>span{display:flex}
+.beneficio .icone{width:27px;height:27px;margin-right:6.75px;fill:var(--verde)}
+.beneficio>span>span,.lista-itens span{align-self:center;padding-left:5px}
+.beneficio-esq{padding:50px 20px;border-radius:50px 0 0 50px}
+.beneficio-dir{border-radius:0 50px 50px 0}
+
+/* Recapitulando */
+.recap-titulo{font-size:38px;color:var(--preto);text-align:center}
+.sec-recap .miolo{max-width:1004px}
+
+/* Oferta */
+.sec-oferta .miolo{flex-direction:row;gap:0}
+.lateral{width:25%}
+.cartao{position:relative;z-index:1;display:flex;flex-direction:column;gap:20px;width:50%;padding:50px;border:3px solid var(--verde);border-radius:20px;background:var(--branco)}
+.lista-itens{margin:0 0 50px;padding:0;list-style:none;font-family:"Roboto",sans-serif;font-size:15px;font-weight:700;color:var(--texto-item)}
+.lista-itens li{display:flex}
+.lista-itens li:not(:last-child){padding-bottom:4.5px}
+.lista-itens li:not(:first-child){margin-top:4.5px}
+.lista-itens .icone{width:27px;height:27px;margin-right:6.75px;fill:var(--verde)}
+.preco{margin:8px 0 1rem;font-size:40px;line-height:1.2;color:var(--verde)}
+.sec-oferta .botao{margin:0}
+
+/* Não perca */
+.sec-perca{margin-top:-50px;padding:50px;background:var(--verde)}
+.perca-texto{margin-bottom:.9rem;font-family:var(--fonte);font-size:28px;font-weight:400;color:var(--branco);text-align:center}
+
+
+.sem-margem{margin-bottom:0}
+
+/* Lightbox */
+.lightbox{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.9)}
+.lightbox[hidden]{display:none}
+.lb-img{max-width:90vw;max-height:90vh;width:auto;height:auto}
+.lightbox button{position:absolute;border:0;background:none;color:var(--branco);font-size:48px;line-height:1;cursor:pointer;padding:10px 20px}
+.lb-fechar{top:10px;right:10px}
+.lb-prev{left:10px;top:50%;transform:translateY(-50%)}
+.lb-next{right:10px;top:50%;transform:translateY(-50%)}
+
+/* Tablet */
+@media (max-width:1024px){
+  :root{--largura:1024px}
+}
+
+/* Mobile */
+@media (max-width:767px){
+  .sec-topo .miolo,.sec-hero .miolo,.sec-beneficios .miolo,.sec-oferta .miolo{flex-wrap:wrap}
+  .topo-texto,.topo-bandeiras,.hero-img,.hero-texto,.beneficio,.lateral,.cartao{flex:0 0 auto;width:100%;max-width:100%}
+  .hero-texto .botao{align-self:center}
+  .sec-galeria{padding:20px}
+  .galeria-item{width:100%}
+  .galeria-item img{width:300px;margin:0 auto}
+  .acordeao-conteudo{padding:7px 15px}
+  .acordeao-icone{width:1.2em}
+  .beneficio-esq{border-radius:0;padding:20px}
+  .beneficio{padding:20px}
+  .beneficio-dir{border-radius:0}
+  .cartao{padding:20px}
+  .duvida-titulo{line-height:1.3em}
+  .duvida-sub{line-height:1.1em}
+}
