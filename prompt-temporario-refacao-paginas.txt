@@ -1,0 +1,60 @@
+Você é um desenvolvedor front-end sênior. Vou te passar o link de uma página de vendas do meu site (WordPress/Elementor). Sua tarefa é clonar essa página em HTML, CSS e JS puros e fiéis ao design original, seguindo exatamente o processo abaixo. A página pode tratar de qualquer produto ou assunto: o processo é sempre o mesmo.
+
+LINK DA PÁGINA: https://vkhub.com.br/1000-layouts-de-paginas-e-sites-elementor/
+
+## 1. Pasta de saída
+- Crie, na raiz do repositório atual, uma pasta com o slug da URL (a última parte do caminho, ex.: `https://site.com/meu-produto/` vira `meu-produto/`).
+- Dentro dela: `index.html`, `style.css`, `script.js`, `images/` (e `fonts/` se baixar as fontes).
+- Não altere nada fora dessa pasta.
+
+## 2. Coleta (faça antes de escrever qualquer código)
+1. Baixe o HTML da página com `curl -L -A "Mozilla/5.0"`. Salve em um diretório temporário, nunca dentro do projeto.
+2. Liste todas as imagens (jpg, jpeg, png, webp, gif, svg) usadas na página, inclusive as de `background-image` no CSS e as versões diferentes para desktop/mobile. Baixe SOMENTE a versão original de cada uma (a maior, sem sufixos como `-150x150`, `-300x300` ou `-768x768`) para `images/`. Ignore as miniaturas geradas pelo WordPress.
+3. Baixe o CSS do site (o `<link rel="stylesheet">` otimizado, ex.: litespeed) e extraia as regras específicas da página, procurando por `.elementor-<ID-DA-PÁGINA> .elementor-element-<ID>`. Delas tire: cores, fontes, tamanhos de fonte, pesos, line-height, paddings, margens (inclusive negativas), border-radius, larguras (%) e content-width de cada container. Ao interpretar, considere que valores que só aparecem dentro de media queries de tablet/mobile não são do desktop.
+4. Extraia o texto e a estrutura na ordem real do HTML (seções, títulos, parágrafos, acordeões, listas de ícones, botões, imagens). Preserve o texto originaições, spans coloridos e negritos.
+
+## 3. Links: respeite APENAS estes
+- Mantenha os links de checkout/compra (Kize, Stripe, PayPal etc.) e o de WhatsApp desuporte, exatamente como estão, incluindo
+- NÃO recrie os demais links do site (menu, feed, wp-json, xmlrpc, comments, oembed, canonical, links internos).   - Se houver dúvida se um link é de checkou## 4. Regras do código- HTML/CSS/JS escritos à mão, sem WordPresrks, bibliotecas, CDN de scripts nem códigocopiado do original.
+- Imagens 100% locais em `images/`, nada c
+- Ícones em SVG inline (use um `<symbol>` reutilizável quando o mesmo ícone se repetir). Copie o desenho exato de
+cada ícone do original (FontAwesome ou SVGua por outro parecido.
+- Fontes: use as mesmas fontes do originalts/` com `@font-face` (com `font-display:
+swap`) para a página ficar sem dependência, use o Google Fonts e me avise.
+- Use variáveis CSS para as cores.
+- Interações do original devem funcionar eabre um item por vez, com o estado inicialigual ao original; botão fixo; contadores; etc.).
+- Responsivo: desktop, tablet (~1024px) e hamentos e raios de borda que o original tem em cada breakpoint.
+- Acessibilidade mínima: `lang="pt-BR"`, `eta viewport, `alt` nas imagens,
+`aria-expanded` nos acordeões, `rel="noopeblank"`.
+- Escreva o código no mesmo estilo do restrios desnecessários.
+
+## 5. Fidelidade visual
+- Replique a ORDEM das seções, as cores exontes, pesos, tamanhos, espaçamentos, cantos arredondados, sobreposições com margem negativa, formatos de botão (pílula, ícone, tamanho) e cores de destaque do
+original.
+- Preste atenção especial a: ícones dos botões, ícones das listas e caixas de benefícios, posição de imagens
+decorativas que sobrepõem seções, fundos dde acordeões e tamanho de tipografia de cada título.
+- Não invente seções, textos, depoimentos, existam no original.
+
+## 6. Casos especiais (verifique antes de ou)
+- Vídeos (YouTube/Vimeo/VSL/arquivo): mantRL, sem baixar o vídeo. Se for arquivohospedado no site, me pergunte.
+- Imagens de fundo definidas no CSS (`backrentes para desktop/mobile: procure no CSSdo Elementor, baixe todas e use `<picture>` ou media queries.
+- Componentes interativos (carrossel, abaslário): reimplemente em JS puro com ocomportamento do original. Se o formulárioexterno (ActiveCampaign, Mailchimp etc.),mantenha o endpoint e me avise.                                                                               - Rastreamento (Pixel, GA, GTM, TikTok): le pergunte se quero incluí-los. Não osadicione por conta própria.
+- Vários botões de compra ou planos: listecie ao botão correto do original.
+- Depoimentos, provas sociais e números: copie exatamente o texto, sem inventar nem alterar.
+## 7. Validação obrigatória (não pule)1. Gere capturas de tela da página origina300px de largura, com `google-chrome--headless --no-sandbox --disable-gpu --hi300,4200 --virtual-time-budget=8000--screenshot=<arquivo>.png <url-ou-file:// ao tamanho real da página. Salve ascapturas fora do projeto.
+2. Leia as duas imagens, compare seção por seção (tamanhos de texto, espaçamentos, altura das seções, ícones,
+cores, estado do acordeão) e corrija as dimuito próximas.
+3. Repita a comparação em largura mobile (layout.
+4. Rode `grep` nos arquivos para listar tome que só existem os links de checkout, o
+WhatsApp, embeds de vídeo (se houver) e (s
+
+## 8. Entrega
+Ao terminar, me responda de forma curta e
+- Estrutura de arquivos criada.
+- Quais links foram mantidos (liste-os).
+- Quais imagens foram baixadas.
+- O que ficou idêntico e o que pode ter peo, principalmente sobre mobile).
+- Se ainda existe alguma dependência exter
+- Sugestões opcionais (otimizar imagem parraph), sem aplicá-las sem eu pedir.
+
+Não faça commit nem push. Se algo for ambíink é de checkout), pergunte antes dedecidir.

@@ -1,0 +1,45 @@
+Clone a página abaixo (WordPress/Elementor) em HTML, CSS e JS puros, fiel ao design original.
+
+LINK: https://vkhub.com.br/1000-layouts-de-paginas-e-sites-elementor/
+
+## Saída
+- Crie na raiz do repo a pasta com o slug da URL, contendo: index.html, style.css, script.js, images/ (e fonts/ se baixar fontes). Não altere nada fora dela.
+
+## Coleta (antes de codar)
+1. `curl -L -A "Mozilla/5.0"` no HTML e no CSS do site, salvos fora do projeto (diretório temporário).
+2. Baixe só a versão original (maior, sem sufixo -300x300 etc.) de cada imagem, incluindo backgrounds do CSS e variantes desktop/mobile.
+3. No CSS, extraia as regras `.elementor-<ID-PÁGINA> .elementor-element-<ID>`: cores, fontes, tamanhos, pesos, line-height, paddings, margens (inclusive negativas), radius, larguras. Valores só dentro de media queries tablet/mobile não são do desktop.
+4. Extraia texto e estrutura na ordem real, preservando spans coloridos e negritos.
+
+## Links
+- Mantenha exatamente só os de checkout/compra e o WhatsApp de suporte. Não recrie os demais (menu, feed, wp-json, canonical etc.). Em dúvida, pergunte.
+
+## Código
+- Escrito à mão, sem WordPress/Elementor, libs, CDN de scripts ou código copiado.
+- Imagens locais. Ícones em SVG inline (`<symbol>` se repetirem), copiando o desenho original.
+- Mesmas fontes do original via `@font-face` local com `font-display: swap`; se não der, Google Fonts e me avise.
+- Cores em variáveis CSS.
+- Reproduza as interações (acordeão, botão fixo, contadores etc.) com o estado inicial original.
+- Responsivo: desktop, tablet (~1024px) e mobile, com os espaçamentos/radius de cada breakpoint.
+- Acessibilidade mínima: lang="pt-BR", meta viewport, alt, aria-expanded, rel="noopener noreferrer" com target=_blank.
+- Mesmo estilo do resto do repo, sem arquivos desnecessários.
+
+## Fidelidade
+- Mesma ordem de seções, cores, fontes, espaçamentos, sobreposições, botões, ícones e imagens decorativas. Não invente seções, textos ou depoimentos.
+
+## Casos especiais
+- Vídeos externos: mantenha a URL, não baixe. Vídeo hospedado no site: pergunte.
+- Carrossel/abas/formulário: reimplemente em JS puro; formulário externo mantém o endpoint e me avise.
+- Pixel/GA/GTM: não adicione, pergunte.
+- Vários botões/planos: cada um com o link correto.
+- Depoimentos e números: copie exatamente.
+
+## Validação
+1. Screenshot da original e do clone com `google-chrome --headless --no-sandbox --disable-gpu --window-size=1300,<altura> --virtual-time-budget=8000 --screenshot=<arq>.png`, salvos fora do projeto.
+2. Compare seção por seção em desktop e mobile e corrija diferenças.
+3. `grep` nos arquivos para confirmar que só existem links de checkout, WhatsApp e embeds.
+
+## Entrega (resposta curta)
+Estrutura criada, links mantidos, imagens baixadas, o que pode diferir, dependências externas, sugestões opcionais (não aplique).
+
+Não faça commit nem push.
