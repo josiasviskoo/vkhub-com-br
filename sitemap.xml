@@ -136,4 +136,20 @@
       <image:caption>Capa do e-book Não Te Esqueci</image:caption>
     </image:image>
   </url>
+  <url>
+    <loc>https://vkhub.com.br/pudim-100-receitas-irresistiveis-ebook/</loc>
+    <lastmod>2026-09-19</lastmod>
+    <image:image>
+      <image:loc>https://vkhub.com.br/pudim-100-receitas-irresistiveis-ebook/imagens/pudim.jpg</image:loc>
+      <image:caption>Pudim com calda de caramelo brilhante</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vkhub.com.br/apocalipse-sem-censura/</loc>
+    <lastmod>2026-09-19</lastmod>
+    <image:image>
+      <image:loc>https://vkhub.com.br/apocalipse-sem-censura/img/capa.jpg</image:loc>
+      <image:caption>Capa do livro Apocalipse Sem Censura</image:caption>
+    </image:image>
+  </url>
 </urlset>
