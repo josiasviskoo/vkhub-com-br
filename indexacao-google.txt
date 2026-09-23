@@ -1,0 +1,58 @@
+CONTROLE DE INDEXAÇÃO NO GOOGLE - vkhub.com.br
+============================================================
+
+Como solicitar (Google Search Console > Inspeção de URL):
+  1. Cole a URL na barra de busca no topo do Search Console.
+  2. Clique em "Solicitar indexação" e espere a confirmação.
+  3. Troque [ ] por [x] e preencha a data.
+  4. Dias depois, inspecione de novo. Se aparecer "A URL está no Google", troque por [i].
+  O Google limita os pedidos por dia (cerca de 10). Se aparecer "Cota excedida", continue no dia seguinte.
+
+Sitemap enviado em Configurações > Sitemaps: [ ]  data: ____/____/______
+
+Legenda: [ ] a solicitar   [x] solicitado   [i] indexada
+
+
+LINKS PARA SOLICITAR
+------------------------------------------------------------
+01 [ ] https://vkhub.com.br/inscricoes-abertas-pagina-matadora-club/
+       alterada em: 2026-09-19
+       solicitado em: ____/____/______   indexada em: ____/____/______
+
+02 [ ] https://vkhub.com.br/sorteador-bingo-oficial/
+       alterada em: 2026-09-19
+       solicitado em: ____/____/______   indexada em: ____/____/______
+
+03 [ ] https://vkhub.com.br/family-goods/
+       alterada em: 2026-09-19
+       solicitado em: ____/____/______   indexada em: ____/____/______
+
+04 [ ] https://vkhub.com.br/nao-te-esqueci/
+       alterada em: 2026-09-19
+       solicitado em: ____/____/______   indexada em: ____/____/______
+
+05 [ ] https://vkhub.com.br/apocalipse-sem-censura/
+       alterada em: 2026-09-19
+       solicitado em: ____/____/______   indexada em: ____/____/______
+
+06 [ ] https://vkhub.com.br/youtube-shorts-dinheiro-com-shorts-um-guia-estrutural-para-viralizar-a-sua-empresa-ou-seu-negocio/
+       alterada em: 2026-09-19
+       solicitado em: ____/____/______   indexada em: ____/____/______
+
+
+TAMBÉM RECOMENDADO (páginas alteradas em 22/09)
+------------------------------------------------------------
+01 [ ] https://vkhub.com.br/
+       alterada em: 2026-09-22  |  cards reorganizados
+       solicitado em: ____/____/______   indexada em: ____/____/______
+
+02 [ ] https://vkhub.com.br/transformando-a-dor-em-crescimento-um-guia-para-superar-relacionamentos-toxicos-e-construir-relacoes-saudaveis-como-terminar-um-relacionamento/
+       alterada em: 2026-09-22  |  SEO completo (guia, teste, FAQ)
+       solicitado em: ____/____/______   indexada em: ____/____/______
+
+03 [ ] https://vkhub.com.br/lei-lgpd-lei-de-protecao-de-dados/
+       alterada em: 2026-09-22  |  SEO completo (textos para copiar, guia, FAQ). Publicar antes de solicitar
+       solicitado em: ____/____/______   indexada em: ____/____/______
+
+
+Ao alterar uma página de novo: volte o status para [ ], atualize "alterada em" e solicite outra vez.
