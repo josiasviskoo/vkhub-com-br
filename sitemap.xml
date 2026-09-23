@@ -3,7 +3,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://vkhub.com.br/</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-09-23</lastmod>
     <image:image>
       <image:loc>https://vkhub.com.br/images/banner-pagina-matadora-club.png</image:loc>
       <image:caption>Banner do Página Matadora Club</image:caption>
@@ -151,6 +151,14 @@
     <image:image>
       <image:loc>https://vkhub.com.br/apocalipse-sem-censura/img/capa.jpg</image:loc>
       <image:caption>Capa do livro Apocalipse Sem Censura</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vkhub.com.br/diabinho-da-sorte/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <image:image>
+      <image:loc>https://vkhub.com.br/images/capa-diabinho-da-sorte.jpg</image:loc>
+      <image:caption>Diabinho da Sorte - Jogo de roleta grátis online</image:caption>
     </image:image>
   </url>
 </urlset>

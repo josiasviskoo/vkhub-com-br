@@ -1,8 +1,8 @@
 # VK Hub
 
-> Biblioteca virtual de produtos digitais de Josias Viskoo: e-books, templates Elementor, textos de LGPD, ganchos virais para vídeos, e-book de receitas de pudim, livro sobre o Apocalipse, livro de colorir da família com IA, sorteador de bingo online e um livro infantil. Site em português (Brasil), com uma página de vendas em inglês e espanhol para o pacote Harley Davidson.
+> Biblioteca virtual de produtos digitais de Josias Viskoo: e-books, templates Elementor, textos de LGPD, ganchos virais para vídeos, e-book de receitas de pudim, livro sobre o Apocalipse, livro de colorir da família com IA, sorteador de bingo online, um jogo de roleta grátis (sem dinheiro real) e um livro infantil. Site em português (Brasil), com uma página de vendas em inglês e espanhol para o pacote Harley Davidson.
 
-Cada página abaixo é uma página de vendas independente. A compra é feita no checkout indicado em cada página (Kiwify, Hotmart, Stripe ou Amazon).
+Cada página abaixo é uma página de vendas independente. A compra é feita no checkout indicado em cada página (Kiwify, Hotmart, Stripe ou Amazon). O jogo Diabinho da Sorte é gratuito e não envolve apostas reais.
 
 ## Produtos
 
@@ -23,6 +23,7 @@ Cada página abaixo é uma página de vendas independente. A compra é feita no 
 - [Não Te Esqueci - E-book para Reconquistar seu Amor](https://vkhub.com.br/nao-te-esqueci/): Descubra as atitudes para reatar com seu amor e ter o relacionamento de volta mais forte que nunca. E-book Não Te Esqueci, com o método espere e aja.
 - [Pudim: 100 Receitas Irresistíveis](https://vkhub.com.br/pudim-100-receitas-irresistiveis-ebook/): E-book com 100 receitas de pudim testadas, do clássico de leite condensado ao gourmet. Sem furinhos, sem empelotar. Acesso imediato em PDF por R$ 37.
 - [Apocalipse Sem Censura](https://vkhub.com.br/apocalipse-sem-censura/): Apocalipse Sem Censura: 34 capítulos ilustrados que explicam o livro mais temido da Bíblia do início ao fim, com os versículos originais. Digital, por R$ 37.
+- [Diabinho da Sorte - Jogo de Roleta Grátis](https://vkhub.com.br/diabinho-da-sorte/): Jogo de roleta estilo tigrinho grátis no navegador: gire, acumule DiaboCoins e use o curinga em linha, coluna e diagonal. Sem apostas e sem dinheiro real.
 
 ## Sobre
 
