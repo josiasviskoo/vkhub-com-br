@@ -137,3 +137,38 @@ svg{display:block}
   .faq-contact h2{line-height:1.3em}
   .faq-contact h2.sub{line-height:1.1em}
 }
+
+/* 7. Guia gratuito (conteúdo educativo para busca orgânica) */
+.guia{background:#fff;padding:70px 20px 60px;color:#333;font-size:17px;line-height:1.7}
+.guia .container{display:flex;flex-direction:column;gap:18px}
+.guia h2{font-family:var(--poppins);font-size:28px;font-weight:700;line-height:1.25;color:#000;margin-top:28px;scroll-margin-top:20px}
+.guia h3{font-family:var(--poppins);font-size:18px;font-weight:600;line-height:1.35;color:#000}
+.guia a{color:var(--pink)}
+.guia .btn{color:#fff}
+.guia-kicker{font-family:var(--poppins);font-weight:600;color:var(--pink);text-transform:uppercase;letter-spacing:.08em;font-size:14px}
+.guia h2.guia-titulo{font-size:38px;margin-top:0}
+.guia-indice{background:#f6f6f6;border-left:4px solid var(--pink);border-radius:8px;padding:20px 24px}
+.guia-indice ol{padding-left:22px;margin-top:8px}
+.guia-indice li+li{margin-top:4px}
+.guia-lista{padding-left:24px;display:flex;flex-direction:column;gap:10px}
+ol.guia-lista{list-style:decimal}
+.guia-lista-pontos{list-style:disc}
+.guia-lista li::marker{color:var(--pink);font-weight:700}
+.teste{display:flex;flex-direction:column;gap:10px;background:var(--black);color:#fff;border-radius:16px;padding:28px}
+.teste label{display:flex;gap:12px;align-items:flex-start;cursor:pointer;line-height:1.5}
+.teste input{width:20px;height:20px;margin:2px 0 0;flex:0 0 auto;accent-color:var(--pink)}
+.teste-resultado{margin-top:10px;padding-top:16px;border-top:1px solid #333;font-family:var(--poppins);font-weight:500;color:var(--yellow)}
+.guia-alerta{background:#fff2f4;border:2px solid var(--pink);border-radius:16px;padding:22px 26px}
+.guia-alerta-titulo{font-family:var(--poppins);font-weight:700;font-size:20px;color:var(--pink);margin-bottom:8px}
+.guia-alerta ul{display:flex;flex-direction:column;gap:6px}
+.guia-cta{background:var(--pink);color:#fff;border-radius:16px;padding:32px;text-align:center;display:flex;flex-direction:column;gap:20px;margin-top:20px}
+.faq h3{margin-top:22px}
+.faq h3:first-child{margin-top:0}
+.faq p{margin-top:6px}
+
+@media (max-width:767px){
+  .guia{padding:50px 16px 40px;font-size:16px}
+  .guia h2{font-size:24px}
+  .guia h2.guia-titulo{font-size:30px}
+  .teste,.guia-cta{padding:20px}
+}
