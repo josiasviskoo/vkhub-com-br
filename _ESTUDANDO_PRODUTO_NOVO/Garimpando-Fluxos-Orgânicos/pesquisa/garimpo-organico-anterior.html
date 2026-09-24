@@ -1,0 +1,1295 @@
+<title>Garimpo Orgânico</title>
+<meta name="description" content="Pesquisa de fluxo de busca orgânica: estima cliques por posição e ranqueia oportunidades por palavra-chave.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --bg: #EEF2EF;
+    --surface: #FBFBF8;
+    --surface-2: #F3F6F3;
+    --ink: #14262B;
+    --ink-2: #3C5055;
+    --muted: #5E6F72;
+    --line: #D6DEDA;
+    --line-soft: #E5EBE8;
+    --teal: #0087A6;
+    --gold: #B27A0C;
+    --gold-soft: #F5E9CE;
+    --good: #2A7A4B;
+    --good-soft: #DDEFE3;
+    --warn-soft: #F7ECD6;
+    --warn-ink: #7E5507;
+    --quiet-soft: #E6ECEA;
+    --danger: #B3362B;
+    --focus: #0087A6;
+    --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+    --body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --bg: #0F1B20;
+      --surface: #15232A;
+      --surface-2: #1A2B32;
+      --ink: #E4ECEA;
+      --ink-2: #BFCDCB;
+      --muted: #93A5A8;
+      --line: #2A3E45;
+      --line-soft: #213339;
+      --teal: #1FA3B0;
+      --gold: #B8820E;
+      --gold-soft: #3A2F16;
+      --good: #6BC08E;
+      --good-soft: #193A28;
+      --warn-soft: #3A2F16;
+      --warn-ink: #E6BD62;
+      --quiet-soft: #22343A;
+      --danger: #F08276;
+      --focus: #4CC3CF;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #0F1B20;
+    --surface: #15232A;
+    --surface-2: #1A2B32;
+    --ink: #E4ECEA;
+    --ink-2: #BFCDCB;
+    --muted: #93A5A8;
+    --line: #2A3E45;
+    --line-soft: #213339;
+    --teal: #1FA3B0;
+    --gold: #B8820E;
+    --gold-soft: #3A2F16;
+    --good: #6BC08E;
+    --good-soft: #193A28;
+    --warn-soft: #3A2F16;
+    --warn-ink: #E6BD62;
+    --quiet-soft: #22343A;
+    --danger: #F08276;
+    --focus: #4CC3CF;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 14px;
+    line-height: 1.5;
+    padding: 0 16px;
+    padding-block: 28px 56px;
+  }
+  .wrap { max-width: 1180px; margin: 0 auto; display: grid; gap: 22px; }
+
+  h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; }
+  h1 { font-size: clamp(28px, 4.2vw, 40px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.05; }
+  h2 { font-size: 18px; font-weight: 700; letter-spacing: -0.01em; }
+  .eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+  .lede { color: var(--ink-2); max-width: 64ch; margin: 8px 0 0; font-size: 15px; }
+  .num { font-variant-numeric: tabular-nums; font-family: var(--mono); }
+
+  header.top { display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; align-items: flex-end; }
+  .top-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+
+  .sample-note {
+    display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+    background: var(--warn-soft); color: var(--warn-ink);
+    border-radius: 8px; padding: 9px 14px; font-size: 13px;
+  }
+  .sample-note strong { font-weight: 600; }
+
+  button, .btn {
+    font: 500 13px/1 var(--body);
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--ink);
+    padding: 9px 13px;
+    border-radius: 7px;
+    cursor: pointer;
+  }
+  button:hover { border-color: var(--muted); }
+  button.primary { background: var(--ink); color: var(--surface); border-color: var(--ink); }
+  button.primary:hover { opacity: 0.9; }
+  button.link { border: none; background: none; padding: 4px 6px; color: var(--muted); }
+  button.link:hover { color: var(--danger); }
+  :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+  input, select, textarea {
+    font: 400 13px/1.3 var(--body);
+    color: var(--ink);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 8px 10px;
+    width: 100%;
+    min-width: 0;
+  }
+  textarea { font-family: var(--mono); font-size: 12px; resize: vertical; min-height: 110px; }
+  label { display: grid; gap: 4px; font-size: 12px; color: var(--muted); }
+
+  /* KPI strip */
+  .kpis {
+    display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+    background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+  }
+  .kpi { padding: 16px 18px; display: grid; gap: 4px; align-content: start; }
+  .kpi + .kpi { border-left: 1px solid var(--line-soft); }
+  .kpi .v { font-family: var(--display); font-size: 30px; font-weight: 700; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; line-height: 1.1; }
+  .kpi .v.gold { color: var(--gold); }
+  .kpi .s { font-size: 12px; color: var(--muted); }
+  @media (max-width: 820px) {
+    .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .kpi:nth-child(3) { border-left: none; }
+    .kpi:nth-child(n+3) { border-top: 1px solid var(--line-soft); }
+  }
+
+  .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 18px; display: grid; gap: 14px; align-content: start; min-width: 0; }
+  .panel-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 16px; align-items: baseline; }
+  .panel-head p { margin: 2px 0 0; color: var(--muted); font-size: 12.5px; max-width: 60ch; }
+
+  .grid-2 { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 22px; align-items: start; }
+  @media (max-width: 900px) { .grid-2 { grid-template-columns: 1fr; } }
+
+  /* chart */
+  .legend { display: flex; gap: 14px; font-size: 12px; color: var(--ink-2); flex-wrap: wrap; }
+  .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
+  .chart-box { position: relative; }
+  #chart { width: 100%; display: block; }
+  #chart text { font-family: var(--body); }
+  .tip {
+    position: absolute; pointer-events: none; z-index: 5;
+    background: var(--ink); color: var(--surface);
+    padding: 8px 10px; border-radius: 6px; font-size: 12px; line-height: 1.45;
+    max-width: 260px; box-shadow: 0 4px 14px rgba(0,0,0,.18);
+  }
+  .tip b { font-weight: 600; }
+  .tip .row { display: flex; justify-content: space-between; gap: 14px; font-variant-numeric: tabular-nums; }
+
+  /* CTR curve */
+  .ctr-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+  .ctr-grid label { font-family: var(--mono); font-size: 11px; }
+  .ctr-grid input { padding: 6px 7px; font-family: var(--mono); font-variant-numeric: tabular-nums; }
+  .ctr-extra { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+  .note { font-size: 12px; color: var(--muted); margin: 0; }
+
+  .bands { display: grid; gap: 8px; }
+  .band-row { display: grid; grid-template-columns: 130px 1fr auto; gap: 10px; align-items: center; font-size: 13px; }
+  .band-bar { height: 8px; background: var(--line-soft); border-radius: 4px; overflow: hidden; }
+  .band-bar span { display: block; height: 100%; background: var(--teal); border-radius: 0 4px 4px 0; }
+  .band-row.attack .band-bar span { background: var(--gold); }
+
+  /* toolbar + table */
+  .toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip { border-radius: 999px; padding: 6px 11px; font-size: 12.5px; }
+  .chip[aria-pressed="true"] { background: var(--ink); color: var(--surface); border-color: var(--ink); }
+  .chip .c { font-family: var(--mono); opacity: .7; margin-left: 4px; }
+  .filters { display: flex; gap: 8px; flex-wrap: wrap; }
+  .filters input { width: 200px; }
+  .filters select { width: auto; }
+
+  .table-wrap { overflow-x: auto; border: 1px solid var(--line-soft); border-radius: 8px; }
+  table { border-collapse: collapse; width: 100%; min-width: 900px; font-size: 13px; }
+  th, td { padding: 9px 10px; text-align: left; border-bottom: 1px solid var(--line-soft); white-space: nowrap; }
+  tbody tr:last-child td { border-bottom: none; }
+  th { font-size: 11px; font-family: var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-weight: 500; background: var(--surface-2); position: sticky; top: 0; }
+  th.sortable { cursor: pointer; user-select: none; }
+  th.sortable:hover { color: var(--ink); }
+  th .arr { opacity: .8; }
+  td.r, th.r { text-align: right; font-variant-numeric: tabular-nums; }
+  td.term { font-weight: 500; white-space: normal; min-width: 200px; }
+  td.term small { display: block; font-family: var(--mono); font-size: 11px; color: var(--muted); font-weight: 400; word-break: break-all; }
+  tbody tr:hover { background: var(--surface-2); }
+  .pill { display: inline-flex; align-items: center; gap: 5px; border-radius: 999px; padding: 3px 9px; font-size: 11.5px; font-weight: 500; }
+  .pill::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+  .pill.top3 { background: var(--good-soft); color: var(--good); }
+  .pill.attack { background: var(--gold-soft); color: var(--warn-ink); }
+  .pill.far { background: var(--quiet-soft); color: var(--ink-2); }
+  .pill.none { background: transparent; color: var(--muted); border: 1px dashed var(--line); }
+  .pill.none::before { background: transparent; border: 1px solid currentColor; }
+  .intent { font-size: 12px; color: var(--ink-2); }
+  .kd { display: inline-flex; align-items: center; gap: 6px; }
+  .kd-bar { width: 38px; height: 5px; background: var(--line-soft); border-radius: 3px; overflow: hidden; }
+  .kd-bar span { display: block; height: 100%; background: var(--ink-2); }
+  .score { font-weight: 600; }
+  .gain { color: var(--gold); font-weight: 600; }
+  .empty { padding: 26px; text-align: center; color: var(--muted); }
+
+  /* add form */
+  details.add > summary { cursor: pointer; font-weight: 600; font-size: 13px; list-style: none; display: inline-flex; gap: 6px; align-items: center; }
+  details.add > summary::-webkit-details-marker { display: none; }
+  details.add > summary::before { content: "+"; font-family: var(--mono); color: var(--teal); font-size: 15px; }
+  details.add[open] > summary::before { content: "−"; }
+  .add-form { display: grid; grid-template-columns: 2fr 1fr 1fr 1.2fr 1fr 1fr 1.6fr auto; gap: 8px; align-items: end; margin-top: 12px; }
+  @media (max-width: 980px) { .add-form { grid-template-columns: repeat(2, minmax(0, 1fr)); } .add-form .wide { grid-column: 1 / -1; } }
+
+  .io { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 22px; }
+  @media (max-width: 820px) { .io { grid-template-columns: 1fr; } }
+  .io-actions { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .status { font-size: 12.5px; color: var(--good); min-height: 1em; }
+  .status.err { color: var(--danger); }
+  code { font-family: var(--mono); font-size: 12px; background: var(--surface-2); padding: 1px 5px; border-radius: 4px; }
+
+  .method { color: var(--ink-2); font-size: 13px; display: grid; gap: 6px; }
+  .method p { margin: 0; max-width: 80ch; }
+
+  @media (max-width: 520px) {
+    .filters input { width: 100%; }
+    .filters { width: 100%; }
+    .band-row { grid-template-columns: 110px 1fr auto; }
+    .ctr-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 5px; }
+  }
+  /* mapa de demandas */
+  .map { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: 22px; align-items: start; }
+  @media (max-width: 960px) { .map { grid-template-columns: 1fr; } }
+  .map-tools { display: flex; gap: 8px; flex-wrap: wrap; }
+  .map-tools select { width: auto; }
+  .clist { display: grid; border: 1px solid var(--line-soft); border-radius: 8px; overflow: hidden; }
+  .crow {
+    display: grid; grid-template-columns: minmax(0, 1fr) 92px; gap: 4px 12px; align-items: center;
+    text-align: left; border: none; border-radius: 0; border-bottom: 1px solid var(--line-soft);
+    background: var(--surface); padding: 11px 14px; font: inherit; color: inherit; width: 100%;
+  }
+  .crow:last-child { border-bottom: none; }
+  .crow:hover { background: var(--surface-2); }
+  .crow[aria-current="true"] { background: var(--surface-2); box-shadow: inset 3px 0 0 var(--teal); }
+  .crow .nm { font-weight: 600; font-size: 13.5px; }
+  .crow .meta { grid-column: 1; display: flex; flex-wrap: wrap; gap: 4px 10px; font-size: 12px; color: var(--muted); align-items: center; }
+  .crow svg { grid-row: 1 / span 2; grid-column: 2; width: 92px; height: 30px; }
+  .flag { font-size: 11px; font-weight: 600; border-radius: 999px; padding: 2px 8px; }
+  .flag.now { background: var(--gold-soft); color: var(--warn-ink); }
+  .flag.soon { background: var(--quiet-soft); color: var(--ink-2); }
+  .flag.up { background: var(--good-soft); color: var(--good); }
+
+  .detail { display: grid; gap: 16px; position: sticky; top: calc(env(safe-area-inset-top, 0px) + 12px); }
+  @media (max-width: 960px) { .detail { position: static; } }
+  .detail .pain { font-size: 15px; color: var(--ink); margin: 0; max-width: 62ch; }
+  .facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--line-soft); border: 1px solid var(--line-soft); border-radius: 8px; overflow: hidden; }
+  .facts div { background: var(--surface); padding: 10px 12px; display: grid; gap: 2px; }
+  .facts b { font-family: var(--display); font-size: 19px; font-variant-numeric: tabular-nums; }
+  .facts span { font-size: 11.5px; color: var(--muted); }
+  @media (max-width: 520px) { .facts { grid-template-columns: 1fr 1fr; } }
+  #flow { width: 100%; display: block; }
+  #flow text { font-family: var(--mono); }
+  .kv { display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: 8px 16px; font-size: 13px; margin: 0; }
+  .kv dt { color: var(--muted); font-size: 12px; padding-top: 1px; }
+  .kv dd { margin: 0; color: var(--ink-2); }
+  @media (max-width: 520px) { .kv { grid-template-columns: 1fr; gap: 2px; } .kv dd { margin-bottom: 8px; } }
+  .qtable { width: 100%; min-width: 0; font-size: 12.5px; }
+  .qtable td, .qtable th { padding: 7px 8px; white-space: normal; }
+  .bucket { font-family: var(--mono); font-size: 11.5px; white-space: nowrap; }
+  .disclaimer { font-size: 12px; color: var(--muted); margin: 0; }
+  .flag.mi { background: var(--ink); color: var(--surface); }
+  .offers { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  @media (max-width: 620px) { .offers { grid-template-columns: 1fr; } }
+  .offer { border: 1px solid var(--line-soft); border-radius: 8px; padding: 11px 12px; display: grid; gap: 4px; align-content: start; }
+  .offer .t { font-family: var(--mono); font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .offer .o { font-weight: 600; font-size: 13.5px; }
+  .offer .p { font-family: var(--mono); font-size: 12px; color: var(--gold); font-weight: 500; }
+  .offer .c { font-size: 12px; color: var(--ink-2); }
+  .soc { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; }
+  @media (max-width: 520px) { .soc { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .soc div { background: var(--surface-2); border-radius: 6px; padding: 7px 8px; display: grid; gap: 4px; font-size: 11.5px; color: var(--ink-2); }
+  .dots { display: flex; gap: 3px; }
+  .dots i { width: 9px; height: 9px; border-radius: 50%; background: var(--line); }
+  .dots i.on { background: var(--teal); }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tags span { font-family: var(--mono); font-size: 11.5px; background: var(--surface-2); border: 1px solid var(--line-soft); border-radius: 5px; padding: 2px 7px; }
+  .timeline { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  @media (max-width: 620px) { .timeline { grid-template-columns: 1fr; } }
+  .timeline h4 { margin: 0 0 4px; font-family: var(--mono); font-size: 11px; letter-spacing: .1em; color: var(--muted); font-weight: 500; }
+  .timeline ul { margin: 0; padding-left: 16px; display: grid; gap: 4px; font-size: 12.5px; color: var(--ink-2); }
+  .risk { font-size: 12.5px; background: var(--warn-soft); color: var(--warn-ink); border-radius: 7px; padding: 9px 12px; margin: 0; }
+  .detail h3 { font-size: 13px; font-family: var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+  .detail section { display: grid; gap: 8px; }
+  .stage { font-size: 11px; border-radius: 4px; padding: 1px 6px; white-space: nowrap; }
+  .stage.d { background: var(--quiet-soft); color: var(--ink-2); }
+  .stage.c { background: var(--warn-soft); color: var(--warn-ink); }
+  .stage.b { background: var(--good-soft); color: var(--good); }
+  .stage.n { background: transparent; border: 1px solid var(--line); color: var(--muted); }
+  .bucket.big { color: var(--ink); font-weight: 600; }
+  .channels { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+  @media (max-width: 900px) { .channels { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 560px) { .channels { grid-template-columns: 1fr; } }
+  .ch { border: 1px solid var(--line-soft); border-radius: 8px; padding: 13px 14px; display: grid; gap: 4px; align-content: start; }
+  .ch h3 { font-size: 15px; }
+  .ch b { font-family: var(--display); font-size: 24px; color: var(--teal); }
+  .ch span { font-size: 12.5px; color: var(--ink-2); }
+  .ch em { font-style: normal; font-size: 12px; color: var(--muted); border-top: 1px solid var(--line-soft); padding-top: 6px; margin-top: 4px; }
+  .sources { font-size: 12px; color: var(--muted); columns: 2; column-gap: 28px; padding-left: 16px; margin: 0; }
+  @media (max-width: 720px) { .sources { columns: 1; } }
+  .sources li { margin-bottom: 4px; break-inside: avoid; }
+  .sources a { color: var(--teal); }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .band-bar span { transition: width .3s ease; }
+  }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div>
+      <div class="eyebrow">Pesquisa de fluxo orgânico</div>
+      <h1>Garimpo Orgânico</h1>
+      <p class="lede">Os problemas que movem milhões de buscas por mês no Brasil em 2025 e 2026, com o fluxo mês a mês, o funil de consultas do problema à compra e as ofertas que dá para vender em cada um.</p>
+    </div>
+  </header>
+
+  <section class="kpis" aria-label="Resumo do mapa">
+    <div class="kpi"><span class="eyebrow">Demanda mapeada</span><span class="v" id="mTotal">–</span><span class="s">buscas/mês, estimativa</span></div>
+    <div class="kpi"><span class="eyebrow">Problemas mapeados</span><span class="v" id="mCount">–</span><span class="s" id="mCountS">clusters de consultas</span></div>
+    <div class="kpi"><span class="eyebrow" id="mNowL">Em alta agora</span><span class="v gold" id="mNow">–</span><span class="s" id="mNowS">–</span></div>
+    <div class="kpi"><span class="eyebrow">Próxima janela</span><span class="v" id="mNext" style="font-size:22px">–</span><span class="s" id="mNextS">–</span></div>
+  </section>
+
+  <section class="panel">
+    <div class="panel-head">
+      <div>
+        <h2>Mapa de demandas e ofertas</h2>
+        <p>Cada linha agrupa as consultas de quem tem o mesmo problema. A curva mostra o interesse relativo mês a mês (100 = mês de pico). O índice de oferta combina demanda, intenção de compra, crescimento de 2025 para 2026 e risco regulatório.</p>
+      </div>
+      <div class="map-tools">
+        <select id="mCat" aria-label="Filtrar por área"><option value="">Todas as áreas</option></select>
+        <select id="mSort" aria-label="Ordenar">
+          <option value="index">Maior índice de oferta</option>
+          <option value="demand">Maior demanda</option>
+          <option value="peak">Pico mais próximo</option>
+          <option value="growth">Mais crescimento 2025→2026</option>
+        </select>
+      </div>
+    </div>
+    <div class="map">
+      <div class="clist" id="clist" role="list"></div>
+      <div class="detail" id="detail" aria-live="polite"></div>
+    </div>
+    <p class="disclaimer"><b>Sobre os números:</b> o selo <b>1 mi+</b> marca problemas cuja demanda somada no Google passa de 1 milhão de buscas por mês. A presença em TikTok, Instagram, YouTube, Pinterest e Kwai é uma avaliação qualitativa (0 a 3) baseada nos estudos da seção "Onde o fluxo acontece", porque essas redes não publicam volume de busca por termo.</p>
+    <p class="disclaimer"><b>Base das estimativas:</b> as demandas são estimativas de ordem de grandeza para o Brasil, montadas a partir das Buscas do Ano do Google, de picos no Google Trends e dos calendários oficiais (Receita, Caixa, TSE, INEP). Cada consulta aparece na mesma faixa que o Planejador de palavras-chave do Google Ads mostra. Antes de investir num tema, confirme o volume exato no Planejador, no Semrush ou no Search Console.</p>
+  </section>
+
+  <section class="panel">
+    <div class="panel-head"><div><h2>Onde o fluxo acontece além do Google</h2><p>Dados publicados em 2025 e 2026. Use para escolher em que canal cada oferta vai captar e converter.</p></div></div>
+    <div class="channels">
+      <div class="ch"><h3>Google</h3><b class="num">89,85%</b><span>das buscas no Brasil (Statcounter, mar/2026). O Bing subiu para 8,56% com o Copilot.</span><em>Papel: resolver e comparar. Maior volume em dúvidas, cálculos e serviços.</em></div>
+      <div class="ch"><h3>Instagram</h3><b class="num">72%</b><span>usam o Instagram para pesquisar produtos antes de comprar, e 80% o citam como principal rede de recomendações.</span><em>Papel: pesquisa e desejo. Carrossel, Reels, prova social.</em></div>
+      <div class="ch"><h3>TikTok</h3><b class="num">34% → 51%</b><span>como canal de descoberta e influência de compra, de 2025 para 2026. Buscas diárias +40% em um ano e 86% da geração Z pesquisa ali toda semana.</span><em>Papel: descobrir e comprar. TikTok Shop com GMV diário 102 vezes maior (mai/2026).</em></div>
+      <div class="ch"><h3>YouTube</h3><b class="num">Tutoriais</b><span>Passo a passo longo (IR, CNH, Enem, IA) e ondas como Bobbie Goods em 2025 (Relatório de Cultura e Tendências).</span><em>Papel: ensinar e gerar confiança antes de ofertas de ticket médio.</em></div>
+      <div class="ch"><h3>Kwai</h3><b class="num">60 mi+</b><span>usuários ativos por mês, forte nas classes C e D e fora dos grandes centros. Interesse: humor 56%, música 41%, saúde/fitness 36%.</span><em>Papel: alcance popular. Kwai Shop é a aposta de 2026.</em></div>
+      <div class="ch"><h3>Pinterest</h3><b class="num">+130%</b><span>"jelly blush" no Pinterest Predicts 2026. "Broche aesthetic" +110%, "jelly candy" +100%, banheiro de mármore vermelho +80%.</span><em>Papel: planejamento visual em beleza, moda, casa e receitas.</em></div>
+    </div>
+    <p class="note">Em todas as redes: 77% dos brasileiros pesquisam marcas nas redes antes de comprar e 49% já compraram por indicação de um criador (Ipsos).</p>
+  </section>
+
+  <header class="top" style="margin-top:10px">
+    <div>
+      <div class="eyebrow">Análise de oportunidade</div>
+      <h2 style="font-size:26px">Seu garimpo</h2>
+      <p class="lede">Informe volume, posição atual e dificuldade de cada palavra. A página estima os cliques de hoje, os cliques na posição-alvo e onde o ganho é mais fácil.</p>
+    </div>
+    <div class="top-actions">
+      <label for="target" style="grid-auto-flow:column;align-items:center;gap:8px;font-size:13px;color:var(--ink-2)">Posição-alvo
+        <select id="target" style="width:auto">
+          <option value="1">1º</option><option value="2">2º</option><option value="3" selected>3º</option><option value="5">5º</option><option value="10">10º</option>
+        </select>
+      </label>
+    </div>
+  </header>
+
+  <div class="sample-note" id="sampleNote">
+    <span><strong>Dados de exemplo:</strong> uma loja fictícia de cafés especiais. Importe sua planilha abaixo ou apague as linhas para começar.</span>
+    <button id="clearAll" type="button">Começar vazio</button>
+  </div>
+
+  <section class="kpis" aria-label="Resumo">
+    <div class="kpi"><span class="eyebrow">Volume pesquisado</span><span class="v" id="kVol">–</span><span class="s" id="kVolS">buscas/mês</span></div>
+    <div class="kpi"><span class="eyebrow">Cliques hoje</span><span class="v" id="kNow">–</span><span class="s" id="kNowS">estimados/mês</span></div>
+    <div class="kpi"><span class="eyebrow">Cliques no alvo</span><span class="v" id="kPot">–</span><span class="s" id="kPotS">se todos chegarem ao alvo</span></div>
+    <div class="kpi"><span class="eyebrow">Ganho na zona de ataque</span><span class="v gold" id="kAtk">–</span><span class="s" id="kAtkS">posições 4 a 20</span></div>
+  </section>
+
+  <div class="grid-2">
+    <section class="panel">
+      <div class="panel-head">
+        <div>
+          <h2>Melhores oportunidades</h2>
+          <p>As 8 palavras com maior pontuação. A pontuação é o ganho de cliques ponderado pela facilidade (100 − KD).</p>
+        </div>
+        <div class="legend"><span><i style="background:var(--teal)"></i>Cliques hoje</span><span><i style="background:var(--gold)"></i>Ganho no alvo</span></div>
+      </div>
+      <div class="chart-box" id="chartBox">
+        <svg id="chart" role="img" aria-label="Barras horizontais com cliques atuais e ganho potencial por palavra-chave"></svg>
+        <div class="tip" id="tip" hidden></div>
+      </div>
+    </section>
+
+    <div style="display:grid;gap:22px;align-content:start;min-width:0">
+      <section class="panel">
+        <div class="panel-head"><div><h2>Distribuição por faixa</h2><p>Quantas palavras e quanto volume em cada faixa de posição.</p></div></div>
+        <div class="bands" id="bands"></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head"><div><h2>Curva de CTR</h2><p>Percentual de cliques por posição orgânica. Ajuste com dados do seu Search Console.</p></div>
+          <button class="link" id="ctrReset" type="button" style="color:var(--teal)">Restaurar padrão</button></div>
+        <div class="ctr-grid" id="ctrGrid"></div>
+        <div class="ctr-extra">
+          <label for="ctr11">Pos. 11–20 (%)<input id="ctr11" type="number" step="0.1" min="0" max="100"></label>
+          <label for="ctr21">Pos. 21–50 (%)<input id="ctr21" type="number" step="0.1" min="0" max="100"></label>
+          <label for="ctr51">Pos. 51–100 (%)<input id="ctr51" type="number" step="0.1" min="0" max="100"></label>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <section class="panel">
+    <div class="panel-head">
+      <div><h2>Palavras-chave</h2><p>Clique no cabeçalho para ordenar. Posição 0 significa fora do top 100.</p></div>
+    </div>
+    <div class="toolbar">
+      <div class="chips" id="chips" role="group" aria-label="Filtrar por faixa"></div>
+      <div class="filters">
+        <input id="q" type="search" placeholder="Buscar termo ou URL" aria-label="Buscar termo ou URL">
+        <select id="fIntent" aria-label="Filtrar por intenção">
+          <option value="">Todas as intenções</option>
+          <option>Informacional</option><option>Comercial</option><option>Transacional</option><option>Navegacional</option>
+        </select>
+      </div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr id="thead"></tr></thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+
+    <details class="add" id="addBox">
+      <summary>Adicionar palavra-chave</summary>
+      <form class="add-form" id="addForm">
+        <label for="aTerm" class="wide">Termo<input id="aTerm" required placeholder="ex.: café coado passo a passo"></label>
+        <label for="aVol">Volume/mês<input id="aVol" type="number" min="0" required placeholder="2400"></label>
+        <label for="aPos">Posição<input id="aPos" type="number" min="0" max="100" value="0"></label>
+        <label for="aInt">Intenção<select id="aInt"><option>Informacional</option><option>Comercial</option><option>Transacional</option><option>Navegacional</option></select></label>
+        <label for="aKd">KD (0–100)<input id="aKd" type="number" min="0" max="100" value="30"></label>
+        <label for="aCpc">CPC (R$)<input id="aCpc" type="number" min="0" step="0.01" value="0"></label>
+        <label for="aUrl" class="wide">URL<input id="aUrl" placeholder="/blog/cafe-coado"></label>
+        <button class="primary" type="submit">Adicionar</button>
+      </form>
+    </details>
+  </section>
+
+  <section class="io">
+    <div class="panel">
+      <div class="panel-head"><div><h2>Importar</h2><p>Cole linhas de uma planilha, CSV ou export do Search Console/Semrush. Colunas na ordem: <code>termo; volume; posição; intenção; kd; cpc; url</code>. Separador vírgula, ponto e vírgula ou tab.</p></div></div>
+      <label for="importText" style="color:var(--muted)">Linhas para importar
+        <textarea id="importText" placeholder="café coado;27100;9;Informacional;35;0,80;/blog/cafe-coado&#10;moedor de café;8100;5;Comercial;38;1,95;/moedores"></textarea>
+      </label>
+      <div class="io-actions">
+        <button class="primary" id="importAdd" type="button">Adicionar à lista</button>
+        <button id="importReplace" type="button">Substituir lista</button>
+        <span class="status" id="importStatus" role="status"></span>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="panel-head"><div><h2>Exportar</h2><p>CSV com as métricas calculadas, pronto para colar numa planilha.</p></div></div>
+      <label for="exportText" style="color:var(--muted)">CSV gerado
+        <textarea id="exportText" readonly></textarea>
+      </label>
+      <div class="io-actions">
+        <button class="primary" id="copyCsv" type="button">Copiar CSV</button>
+        <span class="status" id="copyStatus" role="status"></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel method">
+    <h2>Como os números são calculados</h2>
+    <p><b>Cliques hoje</b> = volume × CTR da posição atual. <b>Cliques no alvo</b> = volume × CTR da posição-alvo. <b>Ganho</b> = diferença entre os dois (zero se a palavra já está acima do alvo).</p>
+    <p><b>Pontuação</b> = ganho × (100 − KD) ÷ 100 × peso da intenção (Transacional 1,2 · Comercial 1,1 · Informacional 1,0 · Navegacional 0,6). <b>Valor</b> = ganho × CPC, uma referência de quanto custaria comprar esse tráfego em mídia paga.</p>
+    <p><b>Zona de ataque</b> são as posições 4 a 20: a página já foi indexada e tem relevância, e uma melhoria de conteúdo ou links costuma render mais rápido que criar do zero. A curva de CTR padrão é uma média de mercado; resultados com anúncios, snippets ou vídeos reduzem o CTR real.</p>
+    <p><b>Índice de oferta (mapa)</b> = 35% demanda (escala logarítmica até 20 mi) + 30% participação das consultas de comparação e compra no volume + 20% crescimento de 2025 para 2026 + 15% risco regulatório invertido. <b>Janela de publicação</b> = dois meses antes do pico, tempo para o conteúdo indexar e ganhar posição.</p>
+  </section>
+
+  <section class="panel">
+    <h2>Fontes da pesquisa</h2>
+    <ol class="sources">
+      <li><a href="https://blog.google/intl/pt-br/produtos/as-buscas-do-ano-o-que-os-brasileiros-mais-pesquisaram-no-google-em-2025/" target="_blank" rel="noopener">Google: As Buscas do Ano 2025 (Brasil)</a></li>
+      <li><a href="https://www.cnnbrasil.com.br/tecnologia/google-divulga-as-principais-pesquisas-de-2025-confira-a-lista/" target="_blank" rel="noopener">CNN Brasil: principais pesquisas de 2025</a></li>
+      <li><a href="https://www.itatiaia.com.br/ciencia-e-tecnologia/o-que-e-por-que-quem-e-quanto-custa-veja-as-principais-perguntas-feitas-ao-google-em-2025" target="_blank" rel="noopener">Itatiaia: perguntas mais feitas ao Google em 2025</a></li>
+      <li><a href="https://www.em.com.br/trends/2026/07/7453556-os-assuntos-mais-buscados-no-google-no-primeiro-semestre-de-2026.html" target="_blank" rel="noopener">Estado de Minas: mais buscados no 1º semestre de 2026</a></li>
+      <li><a href="https://www12.senado.leg.br/noticias/materias/2025/11/27/sancionada-isencao-do-imposto-de-renda-para-quem-ganha-ate-r-5-mil-por-mes" target="_blank" rel="noopener">Senado: isenção do IR até R$ 5 mil (Lei 15.270/2025)</a></li>
+      <li><a href="https://agenciabrasil.ebc.com.br/economia/noticia/2026-04/isencao-para-quem-ganha-r-5-mil-vale-para-declaracao-do-ir-2026" target="_blank" rel="noopener">Agência Brasil: isenção e a declaração de 2026</a></li>
+      <li><a href="https://www.correiobraziliense.com.br/brasil/2025/12/7309846-patente-do-ozempic-cai-entenda-o-que-muda-a-partir-de-2026.html" target="_blank" rel="noopener">Correio Braziliense: patente do Ozempic cai em 2026</a></li>
+      <li><a href="https://www.voysaude.com.br/blog/ozempic-generico-preco-brasil-2026" target="_blank" rel="noopener">Voy Saúde: semaglutida nacional e preços em 2026</a></li>
+      <li><a href="http://www.em.com.br/nacional/2026/07/7458019-cnh-sem-autoescola-como-funciona-a-nova-regra-em-vigor-desde-janeiro-de-2026.html" target="_blank" rel="noopener">Estado de Minas: CNH sem autoescola desde jan/2026</a></li>
+      <li><a href="https://www.em.com.br/emfoco/2026/04/07/inss-amplia-prazo-para-contestar-descontos-indevidos-e-aposentados-tem-ate-junho-de-2026-para-pedir-devolucao-do-dinheiro/" target="_blank" rel="noopener">Estado de Minas: prazo dos descontos indevidos do INSS</a></li>
+      <li><a href="https://alertagov.com.br/2026/05/descontos-indevidos-milhoes-de-aposentados-ja-receberam-valores-de-volta-e-prazo-ainda-esta-aberto/" target="_blank" rel="noopener">Alerta Gov: ressarcimentos do INSS em 2026</a></li>
+      <li><a href="https://www.gov.br/receitafederal/pt-br/acesso-a-informacao/acoes-e-programas/programas-e-atividades/reforma-tributaria-do-consumo/orientacoes-2026" target="_blank" rel="noopener">Receita Federal: reforma tributária, orientações 2026</a></li>
+      <li><a href="https://o-tributo.com/mei-2026-reforma-tributaria-ibs-cbs-das" target="_blank" rel="noopener">O Tributo: MEI e a reforma tributária</a></li>
+      <li><a href="https://www.experian.com/blogs/news/2022/12/12/2022-feirao-serasa-limpa-nome/" target="_blank" rel="noopener">Experian: Feirão Serasa Limpa Nome e inadimplência</a></li>
+      <li><a href="https://www.cnnbrasil.com.br/saude/buscas-por-dengue-crescem-na-internet-com-a-chegada-do-calor-veja/" target="_blank" rel="noopener">CNN Brasil: buscas por dengue e sazonalidade</a></li>
+      <li><a href="https://gs.statcounter.com/search-engine-market-share/all/brazil" target="_blank" rel="noopener">Statcounter: buscadores no Brasil</a></li>
+      <li><a href="https://timesbrasil.com.br/brasil/era-da-influencia-e-o-impacto-no-consumo-77-dos-brasileiros-pesquisam-marcas-no-tiktok-antes-de-comprar-aponta-ranking-da-ipsos/" target="_blank" rel="noopener">Times Brasil/Ipsos: 77% pesquisam marcas nas redes</a></li>
+      <li><a href="https://www.meioemensagem.com.br/midia/instagram-lidera-a-influencia-na-decisao-de-compra" target="_blank" rel="noopener">Meio &amp; Mensagem: Instagram lidera a influência de compra</a></li>
+      <li><a href="https://newsroom.tiktok.com/tiktok-shop-cresce-102-vezes-em-seu-primeiro-ano-no-brasil?lang=pt-BR" target="_blank" rel="noopener">TikTok Newsroom: TikTok Shop cresce 102 vezes no Brasil</a></li>
+      <li><a href="https://centraldovarejo.com.br/tiktok-shop-registra-alta-de-154-em-moda-e-151-em-beleza/" target="_blank" rel="noopener">Central do Varejo: TikTok Shop, moda +154%, beleza +151%</a></li>
+      <li><a href="https://www.tubefilter.com/2025/09/10/tiktok-search-engine-ads-new-research/" target="_blank" rel="noopener">Tubefilter: busca no TikTok entre a geração Z</a></li>
+      <li><a href="https://blog.opinionbox.com/kwai-no-brasil/" target="_blank" rel="noopener">Opinion Box: Kwai no Brasil</a></li>
+      <li><a href="https://www.meioemensagem.com.br/midia/pinterest-divulga-21-tendencias-para-2026" target="_blank" rel="noopener">Meio &amp; Mensagem: Pinterest Predicts 2026</a></li>
+      <li><a href="https://blog.youtube/intl/pt-br/culture-and-trends/listas-fim-de-ano-2025/" target="_blank" rel="noopener">YouTube: listas de fim de ano 2025</a></li>
+      <li><a href="https://ahrefs.com/blog/top-google-questions/" target="_blank" rel="noopener">Ahrefs: perguntas mais buscadas (referência de escala, EUA)</a></li>
+    </ol>
+  </section>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var STORE = "garimpo-organico-v1";
+  var DEFAULT_CTR = { top: [27.6, 15.8, 11.0, 8.4, 6.3, 4.9, 3.9, 3.3, 2.7, 2.4], p11: 1.0, p21: 0.3, p51: 0.05 };
+  var INTENTS = ["Informacional", "Comercial", "Transacional", "Navegacional"];
+  var WEIGHT = { Transacional: 1.2, Comercial: 1.1, Informacional: 1.0, Navegacional: 0.6 };
+  var SAMPLE = [
+    ["café especial", 18100, 14, "Comercial", 52, 1.40, "/cafes-especiais"],
+    ["comprar café especial", 5400, 7, "Transacional", 41, 2.10, "/loja"],
+    ["café em grãos", 22200, 23, "Comercial", 60, 1.25, "/cafe-em-graos"],
+    ["moedor de café manual", 8100, 5, "Comercial", 38, 1.95, "/moedores"],
+    ["como fazer café coado", 27100, 9, "Informacional", 35, 0.30, "/blog/cafe-coado"],
+    ["melhor café do brasil", 6600, 18, "Comercial", 47, 0.95, "/blog/melhores-cafes"],
+    ["café arábica", 12100, 31, "Informacional", 44, 0.70, "/blog/cafe-arabica"],
+    ["assinatura de café", 2900, 3, "Transacional", 29, 2.80, "/assinatura"],
+    ["café gelado receita", 9900, 0, "Informacional", 22, 0.20, ""],
+    ["prensa francesa como usar", 4400, 12, "Informacional", 18, 0.35, "/blog/prensa-francesa"],
+    ["café torra média", 1900, 2, "Comercial", 15, 0.85, "/torra-media"],
+    ["diferença entre arábica e robusta", 3600, 42, "Informacional", 26, 0.25, "/blog/arabica-robusta"],
+    ["grãos de café", 3200, 0, "Comercial", 55, 0.90, ""],
+    ["cafeteira italiana", 14800, 16, "Comercial", 49, 1.60, "/cafeteiras"]
+  ];
+
+  var uid = 0;
+  function mk(a) { return { id: ++uid, term: a[0], vol: +a[1] || 0, pos: +a[2] || 0, intent: a[3], kd: +a[4] || 0, cpc: +a[5] || 0, url: a[6] || "" }; }
+
+  var state = { rows: SAMPLE.map(mk), ctr: clone(DEFAULT_CTR), target: 3, sample: true, band: "all", q: "", intent: "", sort: "score", dir: -1 };
+
+  function clone(o) { return JSON.parse(JSON.stringify(o)); }
+  function load() {
+    try {
+      var raw = localStorage.getItem(STORE);
+      if (!raw) return;
+      var s = JSON.parse(raw);
+      if (s && Array.isArray(s.rows)) {
+        state.rows = s.rows.map(function (r) { return mk([r.term, r.vol, r.pos, r.intent, r.kd, r.cpc, r.url]); });
+        if (s.ctr && Array.isArray(s.ctr.top) && s.ctr.top.length === 10) state.ctr = s.ctr;
+        if (s.target) state.target = +s.target;
+        state.sample = !!s.sample;
+      }
+    } catch (e) { /* armazenamento indisponível: segue com o exemplo */ }
+  }
+  function save() {
+    try {
+      localStorage.setItem(STORE, JSON.stringify({ rows: state.rows, ctr: state.ctr, target: state.target, sample: state.sample }));
+    } catch (e) { /* ignora */ }
+  }
+
+  // ---------- métricas ----------
+  function ctrAt(p) {
+    p = Math.round(+p || 0);
+    if (p <= 0 || p > 100) return 0;
+    if (p <= 10) return state.ctr.top[p - 1] / 100;
+    if (p <= 20) return state.ctr.p11 / 100;
+    if (p <= 50) return state.ctr.p21 / 100;
+    return state.ctr.p51 / 100;
+  }
+  function band(p) {
+    if (!p || p <= 0) return "none";
+    if (p <= 3) return "top3";
+    if (p <= 20) return "attack";
+    return "far";
+  }
+  var BAND_LABEL = { top3: "Top 3", attack: "Zona de ataque", far: "Distante", none: "Sem ranking" };
+
+  function calc(r) {
+    var now = r.vol * ctrAt(r.pos);
+    var targetPos = (r.pos > 0 && r.pos < state.target) ? r.pos : state.target;
+    var pot = r.vol * ctrAt(targetPos);
+    var gain = Math.max(0, pot - now);
+    var score = gain * (100 - Math.min(100, Math.max(0, r.kd))) / 100 * (WEIGHT[r.intent] || 1);
+    return { now: now, pot: pot, gain: gain, score: score, value: gain * r.cpc, band: band(r.pos) };
+  }
+
+  // ---------- formatação ----------
+  var nf0 = new Intl.NumberFormat("pt-BR", { maximumFractionDigits: 0 });
+  var brl = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 });
+  function fmt(n) { return nf0.format(Math.round(n)); }
+  function compact(n) {
+    n = Math.round(n);
+    if (n >= 1e6) return (n / 1e6).toLocaleString("pt-BR", { maximumFractionDigits: 1 }) + " mi";
+    if (n >= 1e4) return (n / 1e3).toLocaleString("pt-BR", { maximumFractionDigits: 1 }) + " mil";
+    return nf0.format(n);
+  }
+  function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
+
+  // ---------- render ----------
+  var $ = function (id) { return document.getElementById(id); };
+
+  function renderAll() {
+    var data = state.rows.map(function (r) { return { r: r, m: calc(r) }; });
+    renderKpis(data);
+    renderChart(data);
+    renderBands(data);
+    renderChips(data);
+    renderTable(data);
+    renderExport(data);
+    $("sampleNote").hidden = !state.sample;
+    save();
+  }
+
+  function renderKpis(data) {
+    var vol = 0, now = 0, pot = 0, atk = 0, atkN = 0;
+    data.forEach(function (d) {
+      vol += d.r.vol; now += d.m.now; pot += d.m.now + d.m.gain;
+      if (d.m.band === "attack") { atk += d.m.gain; atkN++; }
+    });
+    $("kVol").textContent = compact(vol);
+    $("kVolS").textContent = "buscas/mês em " + data.length + " palavra" + (data.length === 1 ? "" : "s");
+    $("kNow").textContent = compact(now);
+    $("kNowS").textContent = vol ? "estimados/mês · " + (now / vol * 100).toLocaleString("pt-BR", { maximumFractionDigits: 1 }) + "% do volume" : "estimados/mês";
+    $("kPot").textContent = compact(pot);
+    $("kPotS").textContent = "se todas chegarem ao " + state.target + "º lugar";
+    $("kAtk").textContent = "+" + compact(atk);
+    $("kAtkS").textContent = atkN + " palavra" + (atkN === 1 ? "" : "s") + " entre as posições 4 e 20";
+  }
+
+  function renderChart(data) {
+    var svg = $("chart");
+    var top = data.filter(function (d) { return d.m.gain > 0 || d.m.now > 0; })
+      .sort(function (a, b) { return b.m.score - a.m.score; }).slice(0, 8);
+    var W = Math.max(300, $("chartBox").clientWidth || 640);
+    var narrow = W < 520;
+    var labelW = narrow ? 0 : Math.min(210, W * 0.32);
+    var rowH = narrow ? 50 : 34, barH = 14, padR = 64, padT = 6;
+    var H = padT + top.length * rowH + 26;
+    svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+    svg.setAttribute("height", H);
+    if (!top.length) {
+      svg.setAttribute("height", 80); svg.setAttribute("viewBox", "0 0 " + W + " 80");
+      svg.innerHTML = '<text x="' + W / 2 + '" y="44" text-anchor="middle" fill="var(--muted)" font-size="13">Adicione palavras-chave para ver as oportunidades.</text>';
+      return;
+    }
+    var max = Math.max.apply(null, top.map(function (d) { return d.m.now + d.m.gain; })) || 1;
+    var x0 = labelW, x1 = W - padR, span = x1 - x0;
+    // escala com passos redondos
+    var step = niceStep(max / 4), ticks = [];
+    for (var t = 0; t <= max + step * 0.01; t += step) ticks.push(t);
+    var domain = ticks[ticks.length - 1] < max ? ticks[ticks.length - 1] + step : ticks[ticks.length - 1];
+    if (ticks[ticks.length - 1] < domain) ticks.push(domain);
+    function sx(v) { return x0 + v / domain * span; }
+
+    var out = [];
+    ticks.forEach(function (t) {
+      var x = sx(t);
+      out.push('<line x1="' + x + '" x2="' + x + '" y1="' + padT + '" y2="' + (H - 22) + '" stroke="var(--line-soft)" stroke-width="1"/>');
+      out.push('<text x="' + x + '" y="' + (H - 6) + '" text-anchor="middle" font-size="10.5" fill="var(--muted)" style="font-family:var(--mono)">' + compact(t) + '</text>');
+    });
+    top.forEach(function (d, i) {
+      var yRow = padT + i * rowH;
+      var yBar = narrow ? yRow + 22 : yRow + (rowH - barH) / 2;
+      var name = d.r.term.length > 30 ? d.r.term.slice(0, 29) + "…" : d.r.term;
+      if (narrow) out.push('<text x="' + x0 + '" y="' + (yRow + 15) + '" font-size="12" fill="var(--ink)">' + esc(name) + '</text>');
+      else out.push('<text x="' + (x0 - 10) + '" y="' + (yBar + barH / 2 + 4) + '" text-anchor="end" font-size="12.5" fill="var(--ink)">' + esc(name) + '</text>');
+      var wNow = Math.max(0, sx(d.m.now) - x0), wGain = Math.max(0, sx(d.m.now + d.m.gain) - x0 - wNow);
+      var gap = wNow > 0 && wGain > 0 ? 2 : 0;
+      if (wNow > 0) out.push(barPath(x0, yBar, wNow, barH, wGain > 0 ? "left" : "both", "var(--teal)"));
+      if (wGain > 0) out.push(barPath(x0 + wNow + gap, yBar, Math.max(1, wGain - gap), barH, wNow > 0 ? "right" : "both", "var(--gold)"));
+      out.push('<text x="' + (x0 + wNow + wGain + 6) + '" y="' + (yBar + barH / 2 + 4) + '" font-size="11.5" fill="var(--ink-2)" style="font-family:var(--mono)">+' + compact(d.m.gain) + '</text>');
+      out.push('<rect class="hit" data-i="' + i + '" x="0" y="' + yRow + '" width="' + W + '" height="' + rowH + '" fill="transparent"/>');
+    });
+    svg.innerHTML = out.join("");
+    svg._top = top;
+  }
+  function niceStep(raw) {
+    if (raw <= 0) return 1;
+    var p = Math.pow(10, Math.floor(Math.log10(raw))), f = raw / p;
+    return (f <= 1 ? 1 : f <= 2 ? 2 : f <= 2.5 ? 2.5 : f <= 5 ? 5 : 10) * p;
+  }
+  // barra com cantos de 4px apenas na ponta livre
+  function barPath(x, y, w, h, round, fill) {
+    var r = Math.min(4, w / 2, h / 2);
+    var l = round === "both" ? r : 0, rr = round === "left" ? 0 : r;
+    if (round === "left") { l = r; rr = 0; }
+    if (round === "right") { l = 0; rr = r; }
+    var d = "M" + (x + l) + "," + y +
+      " H" + (x + w - rr) + (rr ? " Q" + (x + w) + "," + y + " " + (x + w) + "," + (y + rr) : "") +
+      " V" + (y + h - rr) + (rr ? " Q" + (x + w) + "," + (y + h) + " " + (x + w - rr) + "," + (y + h) : "") +
+      " H" + (x + l) + (l ? " Q" + x + "," + (y + h) + " " + x + "," + (y + h - l) : "") +
+      " V" + (y + l) + (l ? " Q" + x + "," + y + " " + (x + l) + "," + y : "") + " Z";
+    return '<path d="' + d + '" fill="' + fill + '"/>';
+  }
+
+  function renderBands(data) {
+    var keys = ["top3", "attack", "far", "none"], agg = {}, maxVol = 1;
+    keys.forEach(function (k) { agg[k] = { n: 0, vol: 0 }; });
+    data.forEach(function (d) { agg[d.m.band].n++; agg[d.m.band].vol += d.r.vol; });
+    keys.forEach(function (k) { maxVol = Math.max(maxVol, agg[k].vol); });
+    $("bands").innerHTML = keys.map(function (k) {
+      return '<div class="band-row ' + k + '"><span class="pill ' + k + '">' + BAND_LABEL[k] + '</span>' +
+        '<div class="band-bar" title="' + fmt(agg[k].vol) + ' buscas/mês"><span style="width:' + (agg[k].vol / maxVol * 100) + '%"></span></div>' +
+        '<span class="num" style="font-size:12px;color:var(--ink-2)">' + agg[k].n + ' · ' + compact(agg[k].vol) + '</span></div>';
+    }).join("");
+  }
+
+  function renderChips(data) {
+    var counts = { all: data.length, top3: 0, attack: 0, far: 0, none: 0 };
+    data.forEach(function (d) { counts[d.m.band]++; });
+    var opts = [["all", "Todas"], ["attack", "Zona de ataque"], ["top3", "Top 3"], ["far", "Distante"], ["none", "Sem ranking"]];
+    $("chips").innerHTML = opts.map(function (o) {
+      return '<button type="button" class="chip" data-band="' + o[0] + '" aria-pressed="' + (state.band === o[0]) + '">' + o[1] + '<span class="c">' + counts[o[0]] + '</span></button>';
+    }).join("");
+  }
+
+  var COLS = [
+    ["term", "Termo", ""], ["vol", "Volume", "r"], ["pos", "Posição", "r"], ["band", "Faixa", ""],
+    ["intent", "Intenção", ""], ["kd", "KD", ""], ["now", "Cliques hoje", "r"], ["gain", "Ganho", "r"],
+    ["value", "Valor/mês", "r"], ["score", "Pontuação", "r"], ["x", "", ""]
+  ];
+  function renderTable(data) {
+    $("thead").innerHTML = COLS.map(function (c) {
+      if (c[0] === "x") return '<th aria-label="Ações"></th>';
+      var arr = state.sort === c[0] ? '<span class="arr">' + (state.dir < 0 ? " ↓" : " ↑") + '</span>' : "";
+      return '<th class="sortable ' + c[2] + '" data-sort="' + c[0] + '" tabindex="0" aria-sort="' + (state.sort === c[0] ? (state.dir < 0 ? "descending" : "ascending") : "none") + '">' + c[1] + arr + '</th>';
+    }).join("");
+
+    var q = state.q.trim().toLowerCase();
+    var rows = data.filter(function (d) {
+      if (state.band !== "all" && d.m.band !== state.band) return false;
+      if (state.intent && d.r.intent !== state.intent) return false;
+      if (q && (d.r.term + " " + d.r.url).toLowerCase().indexOf(q) < 0) return false;
+      return true;
+    });
+    var key = state.sort, dir = state.dir;
+    var bandOrder = { top3: 0, attack: 1, far: 2, none: 3 };
+    rows.sort(function (a, b) {
+      var va, vb;
+      if (key in a.m && key !== "band") { va = a.m[key]; vb = b.m[key]; }
+      else if (key === "band") { va = bandOrder[a.m.band]; vb = bandOrder[b.m.band]; }
+      else if (key === "pos") { va = a.r.pos || 999; vb = b.r.pos || 999; }
+      else { va = a.r[key]; vb = b.r[key]; }
+      if (typeof va === "string") return dir * va.localeCompare(vb, "pt-BR");
+      return dir * (va - vb);
+    });
+
+    if (!rows.length) {
+      $("tbody").innerHTML = '<tr><td colspan="' + COLS.length + '" class="empty">' +
+        (state.rows.length ? "Nenhuma palavra nesse filtro." : "Lista vazia. Adicione uma palavra-chave ou importe uma planilha.") + '</td></tr>';
+      return;
+    }
+    $("tbody").innerHTML = rows.map(function (d) {
+      var r = d.r, m = d.m;
+      return '<tr>' +
+        '<td class="term">' + esc(r.term) + (r.url ? '<small>' + esc(r.url) + '</small>' : "") + '</td>' +
+        '<td class="r">' + fmt(r.vol) + '</td>' +
+        '<td class="r">' + (r.pos > 0 ? r.pos + "º" : "–") + '</td>' +
+        '<td><span class="pill ' + m.band + '">' + BAND_LABEL[m.band] + '</span></td>' +
+        '<td class="intent">' + esc(r.intent) + '</td>' +
+        '<td><span class="kd"><span class="kd-bar"><span style="width:' + r.kd + '%"></span></span><span class="num" style="font-size:12px">' + r.kd + '</span></span></td>' +
+        '<td class="r">' + fmt(m.now) + '</td>' +
+        '<td class="r gain">' + (m.gain > 0 ? "+" + fmt(m.gain) : "–") + '</td>' +
+        '<td class="r">' + (m.value > 0 ? brl.format(m.value) : "–") + '</td>' +
+        '<td class="r score">' + fmt(m.score) + '</td>' +
+        '<td><button class="link" type="button" data-del="' + r.id + '" aria-label="Remover ' + esc(r.term) + '">Remover</button></td>' +
+        '</tr>';
+    }).join("");
+  }
+
+  function renderExport(data) {
+    var lines = ["termo;volume;posicao;faixa;intencao;kd;cpc;url;cliques_hoje;cliques_alvo;ganho;valor_mes;pontuacao"];
+    data.slice().sort(function (a, b) { return b.m.score - a.m.score; }).forEach(function (d) {
+      var r = d.r, m = d.m;
+      lines.push([r.term, r.vol, r.pos, BAND_LABEL[m.band], r.intent, r.kd, String(r.cpc).replace(".", ","), r.url,
+        Math.round(m.now), Math.round(m.now + m.gain), Math.round(m.gain), Math.round(m.value), Math.round(m.score)].join(";"));
+    });
+    $("exportText").value = lines.join("\n");
+  }
+
+  function renderCtr() {
+    $("ctrGrid").innerHTML = state.ctr.top.map(function (v, i) {
+      return '<label for="ctr' + (i + 1) + 'p">' + (i + 1) + 'º<input id="ctr' + (i + 1) + 'p" data-ctr="' + i + '" type="number" step="0.1" min="0" max="100" value="' + v + '"></label>';
+    }).join("");
+    $("ctr11").value = state.ctr.p11; $("ctr21").value = state.ctr.p21; $("ctr51").value = state.ctr.p51;
+    $("target").value = String(state.target);
+  }
+
+  // ---------- importação ----------
+  function parseNum(s) {
+    s = String(s || "").trim().replace(/[^\d.,-]/g, "");
+    if (!s) return 0;
+    if (s.indexOf(",") >= 0 && s.indexOf(".") >= 0) s = s.lastIndexOf(",") > s.lastIndexOf(".") ? s.replace(/\./g, "").replace(",", ".") : s.replace(/,/g, "");
+    else if (s.indexOf(",") >= 0) s = s.replace(",", ".");
+    else if (/^\d{1,3}(\.\d{3})+$/.test(s)) s = s.replace(/\./g, "");
+    var n = parseFloat(s);
+    return isNaN(n) ? 0 : n;
+  }
+  function normIntent(s) {
+    s = String(s || "").toLowerCase();
+    if (/trans|compr/.test(s)) return "Transacional";
+    if (/comer/.test(s)) return "Comercial";
+    if (/nav/.test(s)) return "Navegacional";
+    return "Informacional";
+  }
+  function parseImport(text) {
+    var out = [], skipped = 0;
+    text.split(/\r?\n/).forEach(function (line) {
+      if (!line.trim()) return;
+      var sep = line.indexOf("\t") >= 0 ? "\t" : line.indexOf(";") >= 0 ? ";" : ",";
+      var c = line.split(sep).map(function (x) { return x.trim().replace(/^"|"$/g, ""); });
+      if (!c[0]) { skipped++; return; }
+      var vol = parseNum(c[1]);
+      if (!vol && !/^\d/.test(c[1] || "")) { skipped++; return; }
+      out.push(mk([c[0], vol, Math.round(parseNum(c[2])), normIntent(c[3]), Math.min(100, Math.round(parseNum(c[4]))), parseNum(c[5]), c[6] || ""]));
+    });
+    return { rows: out, skipped: skipped };
+  }
+  function doImport(replace) {
+    var res = parseImport($("importText").value);
+    var st = $("importStatus");
+    if (!res.rows.length) {
+      st.className = "status err";
+      st.textContent = "Nenhuma linha válida. Confira se a 2ª coluna é o volume mensal.";
+      return;
+    }
+    if (replace || state.sample) state.rows = [];
+    state.rows = state.rows.concat(res.rows);
+    state.sample = false;
+    st.className = "status";
+    st.textContent = res.rows.length + " palavra" + (res.rows.length === 1 ? " importada" : "s importadas") + (res.skipped ? " · " + res.skipped + " linha(s) ignorada(s)" : "") + ".";
+    $("importText").value = "";
+    renderAll();
+  }
+
+  // ---------- eventos ----------
+  $("target").addEventListener("change", function () { state.target = +this.value; renderAll(); });
+  $("q").addEventListener("input", function () { state.q = this.value; renderAll(); });
+  $("fIntent").addEventListener("change", function () { state.intent = this.value; renderAll(); });
+  $("chips").addEventListener("click", function (e) {
+    var b = e.target.closest("[data-band]"); if (!b) return;
+    state.band = b.getAttribute("data-band"); renderAll();
+  });
+  function sortBy(el) {
+    var k = el.getAttribute("data-sort");
+    if (state.sort === k) state.dir *= -1; else { state.sort = k; state.dir = (k === "term" || k === "pos" || k === "kd" || k === "intent" || k === "band") ? 1 : -1; }
+    renderAll();
+  }
+  $("thead").addEventListener("click", function (e) { var th = e.target.closest("[data-sort]"); if (th) sortBy(th); });
+  $("thead").addEventListener("keydown", function (e) {
+    if (e.key !== "Enter" && e.key !== " ") return;
+    var th = e.target.closest("[data-sort]"); if (!th) return;
+    e.preventDefault(); var k = th.getAttribute("data-sort"); sortBy(th);
+    var again = document.querySelector('[data-sort="' + k + '"]'); if (again) again.focus();
+  });
+  $("tbody").addEventListener("click", function (e) {
+    var b = e.target.closest("[data-del]"); if (!b) return;
+    var id = +b.getAttribute("data-del");
+    state.rows = state.rows.filter(function (r) { return r.id !== id; });
+    state.sample = false; renderAll();
+  });
+  $("addForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var term = $("aTerm").value.trim(); if (!term) return;
+    if (state.sample) { state.rows = []; state.sample = false; }
+    state.rows.push(mk([term, $("aVol").value, $("aPos").value, $("aInt").value, Math.min(100, +$("aKd").value || 0), $("aCpc").value, $("aUrl").value.trim()]));
+    $("aTerm").value = ""; $("aVol").value = ""; $("aUrl").value = ""; $("aPos").value = "0";
+    $("aTerm").focus();
+    renderAll();
+  });
+  $("clearAll").addEventListener("click", function () {
+    state.rows = []; state.sample = false; state.band = "all";
+    $("addBox").open = true; renderAll(); $("aTerm").focus();
+  });
+  $("ctrGrid").addEventListener("input", function (e) {
+    var i = e.target.getAttribute("data-ctr"); if (i === null) return;
+    state.ctr.top[+i] = Math.max(0, parseNum(e.target.value)); renderAll();
+  });
+  [["ctr11", "p11"], ["ctr21", "p21"], ["ctr51", "p51"]].forEach(function (p) {
+    $(p[0]).addEventListener("input", function () { state.ctr[p[1]] = Math.max(0, parseNum(this.value)); renderAll(); });
+  });
+  $("ctrReset").addEventListener("click", function () { state.ctr = clone(DEFAULT_CTR); renderCtr(); renderAll(); });
+  $("importAdd").addEventListener("click", function () { doImport(false); });
+  $("importReplace").addEventListener("click", function () { doImport(true); });
+  $("copyCsv").addEventListener("click", function () {
+    var ta = $("exportText"), st = $("copyStatus");
+    function fallback() { ta.focus(); ta.select(); st.className = "status"; st.textContent = "Texto selecionado. Use Ctrl+C para copiar."; }
+    try {
+      navigator.clipboard.writeText(ta.value).then(function () { st.className = "status"; st.textContent = "CSV copiado."; }, fallback);
+    } catch (err) { fallback(); }
+  });
+
+  // tooltip do gráfico
+  var tip = $("tip"), box = $("chartBox");
+  $("chart").addEventListener("mousemove", function (e) {
+    var h = e.target.closest ? e.target.closest(".hit") : null;
+    var top = this._top;
+    if (!h || !top) { tip.hidden = true; return; }
+    var d = top[+h.getAttribute("data-i")];
+    tip.innerHTML = '<b>' + esc(d.r.term) + '</b>' +
+      '<div class="row"><span>Posição</span><span>' + (d.r.pos > 0 ? d.r.pos + "º" : "fora do top 100") + '</span></div>' +
+      '<div class="row"><span>Volume</span><span>' + fmt(d.r.vol) + '</span></div>' +
+      '<div class="row"><span>Cliques hoje</span><span>' + fmt(d.m.now) + '</span></div>' +
+      '<div class="row"><span>Ganho no alvo</span><span>+' + fmt(d.m.gain) + '</span></div>' +
+      '<div class="row"><span>KD</span><span>' + d.r.kd + '</span></div>';
+    tip.hidden = false;
+    var bb = box.getBoundingClientRect();
+    var x = e.clientX - bb.left + 14, y = e.clientY - bb.top + 14;
+    if (x + tip.offsetWidth > bb.width) x = e.clientX - bb.left - tip.offsetWidth - 14;
+    tip.style.left = Math.max(0, x) + "px"; tip.style.top = y + "px";
+  });
+  $("chart").addEventListener("mouseleave", function () { tip.hidden = true; });
+
+  var rt;
+  window.addEventListener("resize", function () { clearTimeout(rt); rt = setTimeout(renderAll, 120); });
+
+  load();
+  renderCtr();
+  renderAll();
+
+  // usado pelo mapa de demandas para enviar consultas à análise
+  window.garimpoAdd = function (list) {
+    if (state.sample) { state.rows = []; state.sample = false; }
+    var have = {};
+    state.rows.forEach(function (r) { have[r.term.toLowerCase()] = true; });
+    var added = 0;
+    list.forEach(function (a) { if (!have[a[0].toLowerCase()]) { state.rows.push(mk(a)); added++; } });
+    state.band = "all"; state.sort = "score"; state.dir = -1;
+    renderAll();
+    return added;
+  };
+})();
+</script>
+
+<script>
+(function () {
+  "use strict";
+  // Volumes: estimativas de buscas/mês no Google Brasil (ordem de grandeza). s = interesse relativo jan..dez (100 = pico).
+  // st: d = dúvida, c = comparação, b = compra, n = navegação. soc: presença 0–3 em g, yt, tt, ig, pin, kw.
+  var C = [
+    { id: "cnh", n: "Tirar a CNH sem autoescola", a: "Veículos", lo: 1.5, hi: 3, tr: 2, risk: "b",
+      pain: "Quero tirar a carteira gastando menos e não sei como funciona a regra nova.",
+      s: [100,85,75,70,65,62,62,60,58,58,60,65],
+      m25: ["Dez/2025: Contran aprova o fim da obrigatoriedade da autoescola para as categorias A e B."],
+      m26: ["Jan/2026: regra em vigor, com instrutor independente credenciado no Detran.", "Custo estimado cai até 80% e traz de volta quem tinha desistido pelo preço."],
+      q: [["cnh sem autoescola",450000,"d"],["simulado detran",300000,"c"],["como tirar cnh sem autoescola",200000,"d"],["prova teórica detran",150000,"d"],["quanto custa tirar cnh 2026",90000,"c"],["instrutor autônomo de direção",60000,"b"],["aulas de direção particular",40000,"b"],["curso de legislação de trânsito online",30000,"b"]],
+      of: [["Produto digital","Simulado + curso de legislação para a prova teórica","R$ 29–97","Artigos 'como tirar CNH sem autoescola no [estado]' levando a um simulado grátis."],["Plataforma","Vitrine para instrutores independentes captarem alunos por cidade","R$ 49–149/mês por instrutor","Páginas 'instrutor de direção em [cidade]': busca local com pouca concorrência."],["Intermediação","Aulas práticas avulsas com instrutor credenciado","comissão de 10–20% sobre R$ 60–120/aula","Vídeos de baliza, rotatória e ladeira no TikTok e no Kwai."],["Produto digital","Curso 'perdi o medo de dirigir' para quem tem CNH e não dirige","R$ 97–197","Público que cresce junto com as habilitações novas."]],
+      soc: [3,3,3,2,0,3], socTxt: "YouTube e TikTok concentram aulas de baliza e simulados em vídeo. No Kwai o apelo é o preço. No Google a busca é por regra, custo e agendamento no Detran.",
+      tags: ["cnh sem autoescola","baliza","prova do detran","medo de dirigir","instrutor autônomo"],
+      riskTxt: "" },
+    { id: "glp1", n: "Emagrecer com canetas (Mounjaro, semaglutida) e sem elas", a: "Saúde", lo: 3, hi: 6, tr: 2, risk: "a",
+      pain: "Quero emagrecer. As canetas ficaram mais baratas e tenho dúvidas sobre preço, efeitos e o que comer.",
+      s: [100,88,85,78,72,68,70,72,80,85,85,70],
+      m25: ["Mai/2025: Mounjaro (tirzepatida) chega às farmácias.", "'Mounjaro' entra na lista 'Quanto custa' das Buscas do Ano do Google 2025."],
+      m26: ["20/03/2026: expira a patente da semaglutida (Ozempic/Wegovy) no Brasil.", "Set/2026: 10 versões nacionais registradas na Anvisa. Ozivy (a partir de R$ 452) e Semavy (a partir de R$ 333) já estão nas farmácias."],
+      q: [["whey protein",550000,"b"],["mounjaro preço",450000,"c"],["ozempic genérico",300000,"c"],["semaglutida",250000,"d"],["como emagrecer",250000,"d"],["dieta para emagrecer",200000,"d"],["jejum intermitente",150000,"d"],["efeito rebote ozempic",30000,"d"],["cardápio para quem usa mounjaro",20000,"b"]],
+      of: [["Serviço","Acompanhamento nutricional online para quem usa caneta (com nutricionista)","R$ 147–497/mês","Conteúdo 'o que comer usando Mounjaro' e 'perda de massa muscular'."],["Produto digital","Cardápios e receitas ricas em proteína para usuários de GLP-1","R$ 27–67","Pinterest e Instagram com receitas; TikTok 'o que eu como num dia'."],["Afiliado","Whey, creatina, balança de bioimpedância","comissão de 5–12%","Comparativos 'melhor whey custo-benefício'."],["App","Diário de doses, sintomas e peso","R$ 9–19/mês","SEO em 'como aplicar', 'esqueci a dose', 'efeitos colaterais'."]],
+      soc: [3,3,3,3,2,3], socTxt: "Nas redes o tema vive de antes/depois e 'o que eu como num dia' (TikTok, Instagram e Kwai, onde saúde/fitness interessa a 36% do público). No Google a busca é por preço, genérico e efeitos.",
+      tags: ["mounjaro","ozempic","emagrecimento","o que eu como num dia","receita proteica"],
+      riskTxt: "Tema de saúde (YMYL). Não venda nem indique o medicamento. A oferta deve ser nutrição e treino com profissional habilitado, porque Anvisa, CFN e CFM fiscalizam a propaganda." },
+    { id: "ir", n: "Imposto de Renda e a nova isenção de R$ 5 mil", a: "Finanças", lo: 3, hi: 8, tr: 1, risk: "b",
+      pain: "Não sei se preciso declarar, quanto vou restituir e o que muda com a isenção até R$ 5 mil.",
+      s: [12,25,95,100,85,45,40,35,32,18,12,10],
+      m25: ["Nov/2025: Lei 15.270/2025 sancionada. Isenção até R$ 5 mil e desconto parcial até R$ 7.350."],
+      m26: ["Jan/2026: nova tabela na fonte para mais de 15 milhões de contribuintes.", "Mar–mai/2026: a declaração ainda não tem a isenção (ano-base 2025), o que gerou dúvida em massa.", "Mar–mai/2027: primeira declaração com a isenção. É o próximo grande pico."],
+      q: [["imposto de renda 2026",1000000,"n"],["restituição imposto de renda",800000,"n"],["isenção imposto de renda 5 mil",450000,"d"],["como declarar imposto de renda",250000,"d"],["quem precisa declarar imposto de renda",150000,"d"],["malha fina",150000,"d"],["calculadora imposto de renda 2026",60000,"c"],["contador para declarar imposto de renda",20000,"b"]],
+      of: [["Serviço","Declaração feita por contador parceiro","R$ 150–400 por declaração","Calculadora da nova tabela como isca e agendamento."],["Serviço","Saída da malha fina e retificação","R$ 300–800","'Caí na malha fina, e agora?', com fluxo de mai a set junto com os lotes."],["Produto digital","Guia 'declare sozinho' para 2027","R$ 37–97","Lista de espera a partir de dez/2026."],["Afiliado","Contabilidade online e programas de declaração","CPA R$ 30–150","Comparativos de serviços."]],
+      soc: [3,3,2,2,0,1], socTxt: "Google e YouTube dominam, com tutoriais passo a passo do programa da Receita. TikTok e Instagram rendem cortes curtos de 'quem precisa declarar' perto do prazo.",
+      tags: ["imposto de renda","restituição","isenção 5 mil","malha fina"], riskTxt: "" },
+    { id: "div", n: "Dívidas, score e nome limpo", a: "Finanças", lo: 2.5, hi: 5, tr: 0, risk: "m",
+      pain: "Estou com o nome sujo, não consigo crédito e quero sair das dívidas.",
+      s: [75,65,100,75,60,55,60,55,55,60,95,70],
+      m25: ["Mais de 68 milhões de brasileiros inadimplentes, segundo a Serasa.", "Serasa Limpa Nome passa de 32 milhões de acordos em um ano."],
+      m26: ["Feirão Serasa Limpa Nome 2026 com descontos de até 99%. Cada edição gera um pico.", "Desenrola segue como porta de entrada para renegociar."],
+      q: [["consultar cpf serasa",800000,"n"],["feirão serasa",300000,"n"],["como aumentar score",200000,"d"],["empréstimo para negativado",200000,"b"],["limpar nome",150000,"d"],["cartão de crédito para negativado",150000,"b"],["desenrola",150000,"d"],["planilha de gastos",90000,"b"],["como sair das dívidas",40000,"d"]],
+      of: [["Produto digital","Método de 90 dias para sair das dívidas + planilha","R$ 47–197","'Como aumentar score' e 'como negociar dívida do cartão'."],["Afiliado","Contas digitais e cartões para negativado","CPA R$ 20–100","Comparativos 'cartão para negativado que aprova'."],["Serviço","Consultoria financeira em grupo","R$ 97–297/mês","Lives e vídeos 'como organizei minhas dívidas'."],["Produto digital","Planilha de orçamento familiar","R$ 17–37","Google e Pinterest: 'planilha de gastos'."]],
+      soc: [3,2,3,3,1,2], socTxt: "TikTok e Instagram têm muito conteúdo de finanças pessoais com histórias reais. No Google a busca é consulta ao CPF e crédito.",
+      tags: ["score","nome sujo","finanças pessoais","saí das dívidas"],
+      riskTxt: "Não prometa 'limpar o nome' nem aumentar o score. O tema atrai golpes e é fiscalizado por Procon e Senacon. Venda organização e negociação." },
+    { id: "inss", n: "INSS: aposentadoria, BPC e descontos indevidos", a: "Previdência", lo: 3, hi: 6, tr: -1, risk: "m",
+      pain: "Sou aposentado ou quero me aposentar e não entendo o Meu INSS, os descontos e meus direitos.",
+      s: [80,78,80,85,90,95,80,78,75,75,78,80],
+      m25: ["Abr/2025: escândalo dos descontos associativos indevidos em aposentadorias.", "Mai/2025: pedido de ressarcimento abre no Meu INSS e no 135."],
+      m26: ["20/06/2026: fim do prazo para contestar descontos de mar/2020 a mar/2025.", "R$ 3,2 bi devolvidos a mais de 4,7 milhões de beneficiários.", "Teto do INSS em R$ 8.475."],
+      q: [["meu inss",1500000,"n"],["descontos indevidos inss",200000,"d"],["bpc loas quem tem direito",100000,"d"],["calcular aposentadoria",90000,"c"],["como dar entrada na aposentadoria",80000,"d"],["auxílio-doença como pedir",80000,"d"],["advogado previdenciário",40000,"b"],["revisão da aposentadoria",40000,"c"]],
+      of: [["Leads","Captação de clientes para advogados previdenciários","R$ 30–150 por lead","Calculadora de aposentadoria e guias de BPC/LOAS."],["Serviço","Planejamento previdenciário","R$ 300–1.500","'Quanto vou receber de aposentadoria'."],["Produto digital","Guia BPC/LOAS passo a passo","R$ 27–47","Kwai, Facebook e WhatsApp: público mais velho e familiares."]],
+      soc: [3,3,1,2,0,2], socTxt: "YouTube e Facebook alcançam o público mais velho, e os filhos pesquisam no Google pelos pais. Pouca força no TikTok.",
+      tags: ["inss","aposentadoria","bpc loas","descontos indevidos"],
+      riskTxt: "A publicidade de advogados segue o Provimento 205/2021 da OAB. Deixe claro que os pedidos no INSS são gratuitos." },
+    { id: "clt", n: "Direitos trabalhistas e cálculos", a: "Trabalho", lo: 2, hi: 4, tr: 0, risk: "b",
+      pain: "Fui demitido ou vou tirar férias e quero saber quanto tenho a receber.",
+      s: [75,70,70,68,68,70,70,70,70,72,100,95],
+      m25: ["Mar/2025: lançamento do Crédito do Trabalhador (consignado para CLT).", "Saque-aniversário do FGTS no centro do debate sobre crédito."],
+      m26: ["Jan/2026: a nova tabela do IR muda o salário líquido, e todo cálculo precisa ser refeito.", "Nov–dez: pico anual do 13º salário."],
+      q: [["fgts saque aniversário",500000,"d"],["13º salário calcular",450000,"c"],["calcular rescisão",400000,"c"],["calculadora salário líquido",350000,"c"],["seguro-desemprego como dar entrada",200000,"d"],["calcular férias",150000,"c"],["modelo de carta de demissão",60000,"b"],["advogado trabalhista",60000,"b"]],
+      of: [["Ferramenta","Calculadoras de rescisão, férias, 13º e líquido com a tabela 2026","anúncios + captação","Ferramenta grátis ranqueia bem e gera leads."],["Produto digital","Pacote de modelos (carta de demissão, acordo, recibos)","R$ 19–39","'Modelo de...' tem intenção de compra alta."],["Leads","Encaminhamento a advogados trabalhistas","R$ 30–120 por lead","'Fui demitido, quais são meus direitos?'."]],
+      soc: [3,2,2,2,0,2], socTxt: "O Google domina por causa das calculadoras. TikTok e Instagram funcionam com 'direitos que você não sabia'.",
+      tags: ["direitos trabalhistas","rescisão","clt","fgts"],
+      riskTxt: "Crédito é regulado pelo Banco Central. Mostre o custo efetivo total (CET) e não empurre empréstimo." },
+    { id: "mei", n: "MEI, reforma tributária e pequeno negócio", a: "Negócios", lo: 2.5, hi: 5, tr: 2, risk: "b",
+      pain: "Tenho ou quero abrir um MEI e não entendo o que muda com a reforma tributária.",
+      s: [100,85,78,75,92,65,65,70,82,72,72,95],
+      m25: ["Reforma tributária regulamentada. O MEI mantém o SIMEI e a guia DAS."],
+      m26: ["Jan/2026: notas fiscais passam a destacar CBS (0,9%) e IBS (0,1%) no ano-teste.", "Set/2026: prazo para Simples e MEI escolherem o regime de 2027.", "04/01/2027: MEI passa a informar IBS/CBS nas notas. Pico previsto de dez/2026 a jan/2027.", "Maio: declaração anual do MEI (DASN-SIMEI)."],
+      q: [["das mei",1000000,"n"],["declaração anual mei",400000,"d"],["como abrir mei",200000,"d"],["reforma tributária o que muda",150000,"d"],["nota fiscal mei como emitir",90000,"d"],["planilha de fluxo de caixa",60000,"b"],["reforma tributária mei",40000,"d"],["contabilidade para mei",30000,"b"]],
+      of: [["Afiliado","Contabilidade online e emissores de nota","CPA R$ 50–200 ou recorrente","Guias 'como emitir nota MEI 2027 com IBS/CBS'."],["Produto digital","Curso 'reforma tributária para pequeno negócio'","R$ 97–297","Webinars em dez/2026, antes da obrigação."],["Serviço","Consultoria de regime tributário para 2027","R$ 300–1.200","'Simples ou regime novo: qual compensa?'."],["Produto digital","Planilha de faturamento e limite do MEI","R$ 27–47","Google e Pinterest: 'planilha MEI'."]],
+      soc: [3,3,2,3,1,1], socTxt: "Google e YouTube para o passo a passo. No Instagram, carrosséis de contadores. Público profissional, disposto a pagar para evitar erro fiscal.",
+      tags: ["mei","reforma tributária","empreendedorismo","nota fiscal"], riskTxt: "" },
+    { id: "renda", n: "Renda extra, emprego e currículo", a: "Trabalho", lo: 4, hi: 8, tr: 0, risk: "m",
+      pain: "Preciso de dinheiro agora: quero um emprego ou uma renda extra.",
+      s: [100,95,85,80,82,72,74,74,72,70,68,62],
+      m25: ["'Renda extra' e 'ganhar dinheiro online' entre os destaques de finanças de 2025."],
+      m26: ["TikTok Shop: GMV diário em mai/2026 102 vezes maior que um ano antes. Afiliado de vídeo vira fonte de renda.", "Kwai Shop consolida o marketplace em 2026."],
+      q: [["vagas de emprego",1500000,"n"],["como fazer currículo",250000,"d"],["como ganhar dinheiro na internet",200000,"d"],["renda extra",150000,"d"],["trabalho home office",150000,"d"],["currículo pronto para preencher",90000,"b"],["como ser afiliado tiktok shop",60000,"d"],["curso de edição de vídeo",40000,"b"]],
+      of: [["Produto digital","Treinamento de afiliado e creator para TikTok Shop","R$ 97–497","Bastidores com resultados reais, sem promessa de ganho."],["Serviço","Currículo profissional + LinkedIn","R$ 49–149","'Currículo pronto' e 'modelo de currículo 2026'."],["Produto digital","Curso de habilidade vendável (edição, UGC, social media)","R$ 97–397","Vídeos longos no YouTube e cortes no TikTok."],["Produto digital","Kit de receitas para vender em casa (doces, marmitas)","R$ 27–67","Confeitaria e marmitas têm fluxo alto no TikTok e no Kwai."]],
+      soc: [3,3,3,3,1,3], socTxt: "Presente em todas as redes. No Kwai e no TikTok, o formato 'quanto eu ganhei vendendo X' puxa volume.",
+      tags: ["renda extra","afiliado tiktok shop","home office","currículo"],
+      riskTxt: "Promessa de renda fácil é o que mais gera denúncia e bloqueio de anúncio. Mostre o esforço real e não prometa valores." },
+    { id: "ia", n: "Inteligência artificial no dia a dia", a: "Tecnologia", lo: 5, hi: 10, tr: 2, risk: "b",
+      pain: "Quero usar IA para estudar, trabalhar e ganhar tempo, mas não sei por onde começar.",
+      s: [70,85,95,95,95,85,80,95,95,95,90,70],
+      m25: ["Gemini e Veo 3 entre os produtos de IA mais buscados no Brasil em 2025.", "IA domina as tendências de busca de tecnologia no ano."],
+      m26: ["'Enem 2026' lidera as buscas do cotidiano no 1º semestre, com dúvidas sobre IA nos estudos.", "Bing chega a 8,56% das buscas no Brasil, puxado pelo Copilot."],
+      q: [["chatgpt",5000000,"n"],["gemini",1000000,"n"],["como usar chatgpt",150000,"d"],["ia gratis",150000,"c"],["ia para criar imagens",90000,"c"],["prompt para",60000,"d"],["curso de inteligência artificial",50000,"b"],["ia para estudar",30000,"d"]],
+      of: [["Produto digital","Pacotes de prompts por profissão (corretor, advogado, professor, nutricionista)","R$ 27–67","SEO em 'prompt para [profissão]', uma cauda longa enorme."],["Produto digital","Curso de IA aplicada a uma profissão","R$ 97–497","Tutoriais no YouTube e 'antes/depois com IA' no TikTok."],["Serviço","Automação com IA para pequenos negócios (atendimento, WhatsApp)","R$ 500–3.000 de implantação + mensalidade","Estudos de caso locais."],["Serviço","Workshops para empresas e escolas","R$ 1.500–8.000","LinkedIn e Instagram."]],
+      soc: [3,3,3,3,1,1], socTxt: "Forte no YouTube (tutoriais) e no TikTok e Instagram (demonstrações rápidas). O maior volume no Google é navegacional (nome da ferramenta).",
+      tags: ["inteligência artificial","chatgpt","prompt","ia para estudar"], riskTxt: "" },
+    { id: "golpe", n: "Golpes, contas invadidas e segurança digital", a: "Segurança", lo: 1, hi: 2.5, tr: 1, risk: "m",
+      pain: "Caí num golpe, clonaram meu WhatsApp ou invadiram meu Instagram. O que eu faço?",
+      s: [70,65,65,65,68,70,72,75,80,85,100,95],
+      m25: ["'Careca do INSS' e as fraudes em aposentadorias entre os 'Quem é' mais buscados de 2025.", "Golpes com sites e boletos falsos se multiplicam na Black Friday."],
+      m26: ["Celular Seguro segue como referência para bloquear aparelho roubado.", "Nov: Black Friday, pico anual de golpes e de buscas sobre eles."],
+      q: [["golpe",300000,"d"],["como recuperar conta instagram",200000,"d"],["celular seguro",150000,"n"],["whatsapp clonado o que fazer",60000,"d"],["antivírus para celular",50000,"b"],["golpe do pix o que fazer",40000,"d"],["como saber se um site é confiável",40000,"d"],["gerenciador de senhas",20000,"b"]],
+      of: [["Produto digital","Curso de segurança digital para famílias e idosos","R$ 47–97","Kwai e Facebook. Muitas vezes os filhos compram para os pais."],["Afiliado","Antivírus, VPN, gerenciador de senhas","comissão recorrente de 20–40%","Comparativos 'melhor antivírus para celular 2026'."],["Serviço","Treinamento antigolpe para empresas","R$ 1.500–5.000","LinkedIn e RH."],["Isca","Checklist 'fui vítima de golpe: passo a passo'","grátis ou R$ 9–19","Busca urgente no Google."]],
+      soc: [3,2,2,2,0,2], socTxt: "A urgência leva ao Google. Nas redes, vídeos 'caí nesse golpe' viralizam e servem de alerta.",
+      tags: ["golpe","whatsapp clonado","conta hackeada","segurança digital"],
+      riskTxt: "O nicho de 'recuperar conta' está cheio de golpistas. Não cobre para recuperar conta alheia; ensine o caminho oficial." },
+    { id: "enem", n: "Enem, vestibular e estudos", a: "Educação", lo: 3, hi: 7, tr: 1, risk: "b",
+      pain: "Vou fazer o Enem e preciso de um plano de estudos e de ajuda com a redação.",
+      s: [95,55,55,60,65,55,55,60,72,88,100,50],
+      m25: ["Nota de corte do Sisu (jan) e gabarito do Enem (nov) seguem como picos anuais."],
+      m26: ["'Enem 2026' lidera as buscas do cotidiano no 1º semestre (inscrições, cronogramas, IA para estudar).", "Provas em novembro: pico de 'redação', 'simulado' e 'gabarito'."],
+      q: [["enem 2026",1000000,"n"],["gabarito enem",800000,"n"],["nota de corte sisu",400000,"c"],["redação enem",250000,"d"],["simulado enem",200000,"c"],["como estudar para o enem",60000,"d"],["cronograma de estudos enem",40000,"b"],["correção de redação enem",30000,"b"]],
+      of: [["Serviço","Correção de redação por assinatura (IA + corretor)","R$ 29–79/mês","'Tema provável da redação 2026' e 'redação nota 1000'."],["Produto digital","Cronograma + simulados comentados","R$ 47–197","Rotina de estudo no TikTok ('studytok')."],["Serviço","Mentoria em grupo na reta final","R$ 97–297","Pico de set a nov."],["Afiliado","Cursinhos online","CPA ou recorrente","Comparativos de cursinhos."]],
+      soc: [3,3,3,3,1,1], socTxt: "O 'studytok' no TikTok e o Instagram de professores concentram o público. YouTube para aulas longas. Google nos picos de gabarito e nota de corte.",
+      tags: ["enem 2026","studytok","redação nota 1000","sisu"], riskTxt: "" },
+    { id: "saude", n: "Sintomas e saúde do dia a dia", a: "Saúde", lo: 8, hi: 15, tr: 0, risk: "a",
+      pain: "Estou com um sintoma e quero saber se é grave e o que fazer.",
+      s: [85,95,100,90,75,70,72,65,62,65,70,75],
+      m25: ["'Metanol' lidera os 'O que é' mais buscados de 2025, após as intoxicações.", "Referência de pico: recorde de 6,5 milhões de casos prováveis de dengue em 2024."],
+      m26: ["Dengue segue sazonal (jan–abr). As buscas sobem cerca de duas semanas antes dos casos oficiais (estudo do Einstein)."],
+      q: [["sintomas da dengue",500000,"d"],["dor de cabeça",300000,"d"],["gripe sintomas",250000,"d"],["infecção urinária sintomas",200000,"d"],["repelente",200000,"b"],["ansiedade sintomas",150000,"d"],["dor nas costas",150000,"d"],["consulta online",90000,"b"]],
+      of: [["Afiliado","Telemedicina e farmácias online","CPA R$ 20–60","'Quando procurar o médico', com revisão de profissional."],["E-commerce sazonal","Kits antimosquito (repelente, tela, raquete)","margem de 30–50%","Jan–abr, acompanhando a alta da dengue."],["Produto digital","Programa para dor lombar e postura com fisioterapeuta","R$ 47–147","Exercícios no YouTube e no TikTok."]],
+      soc: [3,3,2,2,1,3], socTxt: "O Google responde ao sintoma. YouTube e Kwai (saúde/fitness interessa a 36% do público) alcançam com exercícios e dicas.",
+      tags: ["dengue","dor nas costas","ansiedade","saúde"],
+      riskTxt: "Saúde é YMYL: o Google exige autoria de profissional. Não faça diagnóstico nem prometa cura." },
+    { id: "gov", n: "Documentos, CPF, título e serviços do gov.br", a: "Governo", lo: 5, hi: 9, tr: 1, risk: "m",
+      pain: "Preciso de um documento ou resolver uma pendência e o site do governo me confunde.",
+      s: [60,58,62,60,62,60,65,75,90,100,55,50],
+      m25: ["Termos de governo entre os 'O que é' mais buscados de 2025 (anistia, PEC da Blindagem, GLO)."],
+      m26: ["04/10/2026: 1º turno das eleições, com pico de 'local de votação' e 'título de eleitor'.", "25/10/2026: 2º turno."],
+      q: [["consultar cpf",1000000,"n"],["local de votação",800000,"n"],["cnh digital",500000,"n"],["título de eleitor",450000,"d"],["situação cadastral cpf",300000,"d"],["recuperar senha gov.br",150000,"d"],["segunda via rg",100000,"d"],["despachante online",20000,"b"]],
+      of: [["Serviço","Despachante digital (2ª via, transferência, regularização)","R$ 49–199 + taxas","Guias 'como resolver [pendência] passo a passo'."],["Anúncios","Site de guias monetizado com display","RPM R$ 10–40","Volume alto de quem quer resolver rápido."]],
+      soc: [3,2,1,1,0,2], socTxt: "Fluxo quase todo no Google, com tutoriais no YouTube. Pouco potencial de venda nas redes.",
+      tags: ["gov.br","título de eleitor","cpf"],
+      riskTxt: "Deixe claro que o serviço oficial é gratuito e que você não é o governo. Sites que imitam o gov.br são derrubados e processados." },
+    { id: "bf", n: "Bolsa Família, CadÚnico e Pé-de-Meia", a: "Governo", lo: 5, hi: 10, tr: 0, risk: "m",
+      pain: "Quero saber quando e quanto vou receber e se ainda tenho direito.",
+      s: [85,80,80,78,80,78,80,82,80,80,78,100],
+      m25: ["O calendário mensal pelo final do NIS gera picos todo mês."],
+      m26: ["Pé-de-Meia: parcelas para estudantes do ensino médio mantêm o fluxo entre jovens."],
+      q: [["bolsa família calendário",1200000,"n"],["consultar bolsa família",800000,"n"],["pé-de-meia",400000,"n"],["cadúnico atualizar",200000,"d"],["bolsa família valor",200000,"d"],["quem tem direito ao bolsa família",90000,"d"]],
+      of: [["Anúncios","Portal de calendários e guias com display","RPM R$ 8–30","Tráfego que volta todo mês."],["Produto digital","Educação financeira para baixa renda (orçamento, sair do aperto)","R$ 9–29","Kwai e Facebook, com preço baixo."]],
+      soc: [3,2,1,1,0,3], socTxt: "Google e Kwai. O público de classes C e D do Kwai coincide com o público do benefício.",
+      tags: ["bolsa família","cadúnico","pé de meia"],
+      riskTxt: "Público vulnerável: ofertas de crédito ou 'antecipação de benefício' atraem fiscalização. Priorize informação e produtos baratos." },
+    { id: "auto", n: "Multas, IPVA e documentação do carro", a: "Veículos", lo: 3, hi: 6, tr: 0, risk: "b",
+      pain: "Preciso pagar o IPVA, consultar multas ou licenciar o carro.",
+      s: [100,80,60,50,50,50,50,55,60,60,55,65],
+      m25: ["O IPVA concentra o pico em janeiro de cada ano."],
+      m26: ["Licenciamento com CRLV digital, em calendários por final de placa em cada estado."],
+      q: [["ipva",1000000,"n"],["consulta placa",800000,"n"],["consultar multas",600000,"n"],["licenciamento 2026",400000,"n"],["seguro auto barato",60000,"b"],["como recorrer de multa",40000,"d"],["cnh vencida pode dirigir",30000,"d"]],
+      of: [["Afiliado","Seguro auto e proteção veicular (comparador)","CPA R$ 30–150","'Seguro auto barato [modelo]'."],["Serviço","Recurso de multa","R$ 90–300 por recurso","'Como recorrer de multa [infração]'."],["Anúncios","Consulta de placa e tabela FIPE com display","RPM R$ 10–40","Tráfego navegacional alto."]],
+      soc: [3,2,1,1,0,1], socTxt: "Fluxo quase todo no Google. Recurso de multa tem espaço em vídeos curtos de 'multa injusta'.",
+      tags: ["ipva","multa","consulta placa"], riskTxt: "" },
+    { id: "viral", n: "Produtos virais e 'quanto custa'", a: "Consumo", lo: 1.5, hi: 5, tr: -1, risk: "b",
+      pain: "Vi algo viral e quero saber quanto custa, onde comprar ou como fazer para vender.",
+      s: [55,50,50,55,70,75,100,80,65,60,75,90],
+      m25: ["'Quanto custa' 2025: bebê reborn, Labubu, morango do amor, Bobbie Goods.", "Bobbie Goods viraliza no YouTube com desafios de pintura (Cultura e Tendências 2025)."],
+      m26: ["TikTok Shop: moda +154% e beleza +151% frente ao 2º semestre de 2025. Skincare é o segmento que mais cresce.", "Pinterest Predicts 2026: 'jelly blush' +130%, 'broche aesthetic' +110%, 'jelly candy' +100%."],
+      q: [["labubu",1000000,"b"],["bebê reborn",1000000,"c"],["bobbie goods",500000,"b"],["morango do amor",450000,"d"],["como fazer morango do amor",200000,"d"],["doces para vender",60000,"b"],["jelly blush",40000,"b"]],
+      of: [["E-commerce","Revenda rápida de itens virais no TikTok Shop e no Kwai Shop","margem de 20–60%","Entrar na subida da curva e sair antes do pico."],["Produto digital","Receitas virais para vender (doces, marmitas)","R$ 27–67","Vídeo de preparo + preço de venda no TikTok e no Kwai."],["Produto digital","Desenhos para colorir no estilo 'bobbie goods'","R$ 9–29","Pinterest e Instagram."]],
+      soc: [2,3,3,3,3,3], socTxt: "Nasce nas redes (TikTok, Instagram, Kwai, Pinterest) e só depois chega ao Google. Quem vê primeiro nas redes vende antes.",
+      tags: ["labubu","morango do amor","tiktok shop","achadinhos"],
+      riskTxt: "Ondas duram semanas. Evite estoque grande e respeite marcas registradas: réplica de Labubu é falsificação." },
+    { id: "casa", n: "Casa: conta de luz, energia solar e limpeza", a: "Casa", lo: 1.5, hi: 3, tr: 0, risk: "b",
+      pain: "A conta de luz subiu, tem mofo na parede e quero resolver os problemas da casa.",
+      s: [100,95,80,70,72,75,72,68,75,85,95,100],
+      m25: ["Bandeiras tarifárias mais caras nos meses secos aumentam a busca por economia de energia."],
+      m26: ["TikTok Shop: casa e decoração é a 2ª categoria mais comprada (31% dos compradores).", "Pinterest Predicts 2026: 'Neo Déco' na decoração (banheiro de mármore vermelho +80%)."],
+      q: [["bandeira tarifária",200000,"d"],["ar condicionado inverter",150000,"b"],["quanto custa energia solar",90000,"c"],["como tirar mofo da parede",90000,"d"],["energia solar vale a pena",60000,"c"],["como desentupir pia",60000,"d"],["organizador de armário",60000,"b"],["como limpar sofá",50000,"d"]],
+      of: [["Leads","Leads de energia solar para integradores","R$ 50–200 por lead","Simulador 'quanto economizo com energia solar'."],["Afiliado","Limpeza e organização (TikTok Shop, Amazon)","comissão de 5–15%","Vídeos de antes/depois."],["Serviço local","Limpeza de estofados, impermeabilização, tratamento de mofo","R$ 150–800","Busca local + antes/depois no Instagram."]],
+      soc: [3,3,3,3,3,2], socTxt: "Antes/depois de limpeza é um dos formatos mais fortes do TikTok e do Instagram. Decoração vive no Pinterest.",
+      tags: ["limpeza","organização","energia solar","achadinhos casa"], riskTxt: "" }
+  ];
+
+  var MONTHS = ["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
+  var NET = ["Google","YouTube","TikTok","Instagram","Pinterest","Kwai"];
+  var TR = { "2": "↑↑ forte alta", "1": "↑ alta", "0": "= estável", "-1": "↓ perdendo força" };
+  var RISK = { b: "baixo", m: "médio", a: "alto" };
+  var NOW = new Date().getMonth();
+  var $ = function (id) { return document.getElementById(id); };
+  function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
+  function mi(n) { return n.toLocaleString("pt-BR", { maximumFractionDigits: 1 }); }
+  function bucket(v) {
+    if (v >= 1e6) return "1 mi–10 mi";
+    if (v >= 1e5) return "100 mil–1 mi";
+    if (v >= 1e4) return "10 mil–100 mil";
+    return "1 mil–10 mil";
+  }
+
+  C.forEach(function (c) {
+    var tot = 0, buy = 0;
+    c.q.forEach(function (q) { tot += q[1]; if (q[2] === "c" || q[2] === "b") buy += q[1]; });
+    c.buy = tot ? buy / tot : 0;
+    c.mid = (c.lo + c.hi) / 2;
+    var dem = Math.min(1, Math.log10(c.mid * 1e6) / Math.log10(2e7));
+    var gr = { "2": 1, "1": 0.75, "0": 0.5, "-1": 0.2 }[c.tr];
+    var rk = { b: 1, m: 0.6, a: 0.25 }[c.risk];
+    c.idx = Math.round(35 * dem + 30 * c.buy + 20 * gr + 15 * rk);
+    var pk = 0;
+    c.s.forEach(function (v, i) { if (v > c.s[pk]) pk = i; });
+    c.peak = pk;
+    c.until = (pk - NOW + 12) % 12;
+    c.hot = c.s[NOW] >= 85;
+    c.win = (pk - 2 + 12) % 12;
+  });
+
+  var ms = { cat: "", sort: "index", sel: null };
+  try { var saved = JSON.parse(localStorage.getItem("garimpo-mapa-v1") || "{}"); if (saved.sel) ms.sel = saved.sel; if (saved.sort) ms.sort = saved.sort; } catch (e) {}
+  function persist() { try { localStorage.setItem("garimpo-mapa-v1", JSON.stringify({ sel: ms.sel, sort: ms.sort })); } catch (e) {} }
+
+  var cats = [];
+  C.forEach(function (c) { if (cats.indexOf(c.a) < 0) cats.push(c.a); });
+  cats.sort().forEach(function (a) { var o = document.createElement("option"); o.textContent = a; $("mCat").appendChild(o); });
+  $("mSort").value = ms.sort;
+
+  function spark(s, w, h) {
+    var pts = s.map(function (v, i) { return [(i / 11) * (w - 4) + 2, h - 3 - (v / 100) * (h - 6)]; });
+    var line = pts.map(function (p) { return p[0].toFixed(1) + "," + p[1].toFixed(1); }).join(" ");
+    var area = "M2," + (h - 1) + " L" + line.replace(/ /g, " L") + " L" + (w - 2) + "," + (h - 1) + " Z";
+    var p = pts[NOW];
+    return '<svg viewBox="0 0 ' + w + ' ' + h + '" aria-hidden="true"><path d="' + area + '" fill="var(--teal)" opacity=".12"/><polyline points="' + line + '" fill="none" stroke="var(--teal)" stroke-width="1.6" stroke-linejoin="round"/><circle cx="' + p[0] + '" cy="' + p[1] + '" r="3" fill="var(--gold)" stroke="var(--surface)" stroke-width="1.5"/></svg>';
+  }
+
+  function renderKpis() {
+    var lo = 0, hi = 0, hot = [];
+    C.forEach(function (c) { lo += c.lo; hi += c.hi; if (c.hot) hot.push(c); });
+    $("mTotal").textContent = mi(lo) + "–" + mi(hi) + " mi";
+    $("mCount").textContent = C.length;
+    $("mCountS").textContent = "todos acima de 1 mi de buscas/mês";
+    $("mNowL").textContent = "Em alta em " + MONTHS[NOW];
+    $("mNow").textContent = hot.length;
+    $("mNowS").textContent = hot.length ? hot.slice(0, 2).map(function (c) { return c.n.split(/[,:(]/)[0].trim(); }).join(", ") + (hot.length > 2 ? " e mais" : "") : "nenhum no pico agora";
+    var next = C.filter(function (c) { return c.until >= 2; }).sort(function (a, b) { return a.until - b.until || b.idx - a.idx; })[0];
+    if (next) {
+      $("mNext").textContent = next.n.split(/[,:(]/)[0].trim();
+      $("mNextS").textContent = "pico em " + MONTHS[next.peak] + ": publique até " + MONTHS[next.win];
+    }
+  }
+
+  function sorted() {
+    var list = C.filter(function (c) { return !ms.cat || c.a === ms.cat; });
+    var f = {
+      index: function (a, b) { return b.idx - a.idx; },
+      demand: function (a, b) { return b.mid - a.mid; },
+      peak: function (a, b) { return a.until - b.until || b.idx - a.idx; },
+      growth: function (a, b) { return b.tr - a.tr || b.idx - a.idx; }
+    }[ms.sort];
+    return list.sort(f);
+  }
+
+  function renderList() {
+    var list = sorted();
+    if (!ms.sel || !list.some(function (c) { return c.id === ms.sel; })) ms.sel = list.length ? list[0].id : null;
+    $("clist").innerHTML = list.map(function (c) {
+      var flag = c.hot ? '<span class="flag now">em alta agora</span>' : (c.until <= 3 ? '<span class="flag soon">pico em ' + MONTHS[c.peak] + '</span>' : "");
+      var up = c.tr >= 1 ? '<span class="flag up">' + TR[c.tr] + '</span>' : "";
+      return '<button type="button" class="crow" role="listitem" data-id="' + c.id + '" aria-current="' + (c.id === ms.sel) + '">' +
+        '<span class="nm">' + esc(c.n) + '</span>' + spark(c.s, 92, 30) +
+        '<span class="meta"><span class="flag mi">1 mi+</span><span class="num">' + mi(c.lo) + '–' + mi(c.hi) + ' mi/mês</span><span>índice <b class="num" style="color:var(--ink)">' + c.idx + '</b></span>' + up + flag + '</span></button>';
+    }).join("");
+    renderDetail();
+    persist();
+  }
+
+  function flowChart(c) {
+    var W = Math.max(280, ($("detail").clientWidth || 520)), H = 150, pl = 4, pr = 4, pt = 18, pb = 22;
+    var bw = (W - pl - pr) / 12, out = [];
+    [50, 100].forEach(function (g) {
+      var y = pt + (1 - g / 100) * (H - pt - pb);
+      out.push('<line x1="' + pl + '" x2="' + (W - pr) + '" y1="' + y + '" y2="' + y + '" stroke="var(--line-soft)"/>');
+    });
+    c.s.forEach(function (v, i) {
+      var h = (v / 100) * (H - pt - pb), x = pl + i * bw + 3, y = H - pb - h, w = bw - 6;
+      var r = Math.min(4, w / 2, h);
+      var fill = i === NOW ? "var(--gold)" : "var(--teal)";
+      out.push('<path d="M' + x + ',' + (H - pb) + ' V' + (y + r) + ' Q' + x + ',' + y + ' ' + (x + r) + ',' + y + ' H' + (x + w - r) + ' Q' + (x + w) + ',' + y + ' ' + (x + w) + ',' + (y + r) + ' V' + (H - pb) + ' Z" fill="' + fill + '"><title>' + MONTHS[i] + ': ' + v + '</title></path>');
+      out.push('<text x="' + (x + w / 2) + '" y="' + (H - 6) + '" text-anchor="middle" font-size="10.5" fill="' + (i === NOW ? "var(--ink)" : "var(--muted)") + '"' + (i === NOW ? ' font-weight="600"' : "") + '>' + MONTHS[i] + '</text>');
+      if (i === c.peak) out.push('<text x="' + (x + w / 2) + '" y="' + (y - 5) + '" text-anchor="middle" font-size="10" fill="var(--ink-2)">pico</text>');
+      else if (i === NOW) out.push('<text x="' + (x + w / 2) + '" y="' + (y - 5) + '" text-anchor="middle" font-size="10" fill="var(--ink-2)">hoje</text>');
+    });
+    return '<svg id="flow" viewBox="0 0 ' + W + ' ' + H + '" height="' + H + '" role="img" aria-label="Interesse relativo por mês">' + out.join("") + '</svg>';
+  }
+
+  function dots(n) { var s = ""; for (var i = 0; i < 3; i++) s += '<i class="' + (i < n ? "on" : "") + '"></i>'; return '<span class="dots" aria-label="' + n + ' de 3">' + s + '</span>'; }
+
+  function renderDetail() {
+    var c = C.filter(function (x) { return x.id === ms.sel; })[0];
+    if (!c) { $("detail").innerHTML = '<p class="note">Nenhum problema nesse filtro.</p>'; return; }
+    var st = { d: "dúvida", c: "comparação", b: "compra", n: "navegação" };
+    var hotTxt = c.hot ? "em alta agora" : "pico em " + MONTHS[c.peak];
+    $("detail").innerHTML =
+      '<div style="display:grid;gap:6px"><div class="eyebrow">' + esc(c.a) + ' · tendência ' + TR[c.tr] + ' · risco ' + RISK[c.risk] + '</div>' +
+      '<h2 style="font-size:22px">' + esc(c.n) + '</h2><p class="pain">“' + esc(c.pain) + '”</p></div>' +
+      '<div class="facts"><div><b>' + mi(c.lo) + '–' + mi(c.hi) + ' mi</b><span>buscas/mês no Google</span></div><div><b>' + c.idx + '</b><span>índice de oferta (0–100)</span></div><div><b>' + Math.round(c.buy * 100) + '%</b><span>do volume em comparação ou compra</span></div></div>' +
+      '<section><h3>Fluxo ao longo do ano</h3>' + flowChart(c) +
+      '<p class="note">' + (c.hot ? "O fluxo está alto agora: publique e anuncie já, e prepare a próxima onda." : "Próximo pico em <b>" + MONTHS[c.peak] + "</b>. Tenha o conteúdo no ar até <b>" + MONTHS[c.win] + "</b> para chegar posicionado.") + '</p></section>' +
+      '<section><h3>O que mudou de 2025 para 2026</h3><div class="timeline"><div><h4>2025</h4><ul>' + c.m25.map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("") + '</ul></div><div><h4>2026 e adiante</h4><ul>' + c.m26.map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("") + '</ul></div></div></section>' +
+      '<section><h3>Ofertas para vender com esse fluxo</h3><div class="offers">' + c.of.map(function (o) {
+        return '<div class="offer"><span class="t">' + esc(o[0]) + '</span><span class="o">' + esc(o[1]) + '</span><span class="p">' + esc(o[2]) + '</span><span class="c">' + esc(o[3]) + '</span></div>';
+      }).join("") + '</div>' + (c.riskTxt ? '<p class="risk"><b>Cuidado:</b> ' + esc(c.riskTxt) + '</p>' : "") + '</section>' +
+      '<section><h3>Funil de consultas no Google</h3><div class="table-wrap"><table class="qtable"><thead><tr><th>Consulta</th><th>Etapa</th><th class="r">Buscas/mês</th></tr></thead><tbody>' +
+      c.q.slice().sort(function (a, b) { return b[1] - a[1]; }).map(function (q) {
+        return '<tr><td>' + esc(q[0]) + '</td><td><span class="stage ' + q[2] + '">' + st[q[2]] + '</span></td><td class="r"><span class="bucket' + (q[1] >= 1e6 ? " big" : "") + '">' + bucket(q[1]) + '</span></td></tr>';
+      }).join("") + '</tbody></table></div></section>' +
+      '<section><h3>Onde o fluxo está nas redes</h3><div class="soc">' + NET.map(function (nm, i) { return '<div>' + nm + dots(c.soc[i]) + '</div>'; }).join("") + '</div>' +
+      '<p class="note">' + esc(c.socTxt) + '</p><div class="tags" aria-label="Termos para pesquisar no TikTok e no Instagram">' + c.tags.map(function (t) { return "<span>" + esc(t) + "</span>"; }).join("") + '</div></section>' +
+      '<div class="io-actions"><button class="primary" type="button" id="sendQ">Enviar ' + c.q.length + ' consultas para a análise</button><span class="status" id="sendS" role="status"></span></div>';
+    $("sendQ").addEventListener("click", function () {
+      var intent = { d: "Informacional", c: "Comercial", b: "Transacional", n: "Navegacional" };
+      var kd = { b: 35, m: 50, a: 65 }[c.risk];
+      var n = window.garimpoAdd ? window.garimpoAdd(c.q.map(function (q) { return [q[0], q[1], 0, intent[q[2]], kd, 0, ""]; })) : 0;
+      $("sendS").textContent = n ? n + " consultas adicionadas em 'Seu garimpo'. Ajuste posição e KD com seus dados." : "Essas consultas já estão na análise.";
+    });
+  }
+
+  $("clist").addEventListener("click", function (e) {
+    var b = e.target.closest("[data-id]"); if (!b) return;
+    ms.sel = b.getAttribute("data-id");
+    Array.prototype.forEach.call($("clist").children, function (el) { el.setAttribute("aria-current", String(el.getAttribute("data-id") === ms.sel)); });
+    renderDetail(); persist();
+  });
+  $("mCat").addEventListener("change", function () { ms.cat = this.value; renderList(); });
+  $("mSort").addEventListener("change", function () { ms.sort = this.value; renderList(); });
+  var rt; window.addEventListener("resize", function () { clearTimeout(rt); rt = setTimeout(renderDetail, 150); });
+
+  renderKpis();
+  renderList();
+})();
+</script>

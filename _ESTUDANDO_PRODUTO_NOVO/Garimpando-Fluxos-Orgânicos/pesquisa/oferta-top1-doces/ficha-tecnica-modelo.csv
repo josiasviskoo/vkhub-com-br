@@ -1,0 +1,11 @@
+tipo,item,unidade_compra,quantidade_pacote,preco_pago_brl,unidade_uso,quantidade_usada,custo_calculado_brl,observacoes
+ingrediente,,,,,,,=IFERROR(E2/D2*G2,0),Exemplo demonstrativo; substituir por dado real
+ingrediente,,,,,,,=IFERROR(E3/D3*G3,0),
+ingrediente,,,,,,,=IFERROR(E4/D4*G4,0),
+embalagem,,,,,,,=IFERROR(E5/D5*G5,0),Informe custo unitário e quantidade usada
+outro custo direto,,,,,,,=IFERROR(E6/D6*G6,0),
+rendimento,,,,,,,"Informe em H8 quantas unidades vendáveis saíram do lote"
+resumo,custo_total_lote,,,,,,=SUM(H2:H6),Inclua linhas adicionais no intervalo se precisar
+resumo,custo_por_unidade,,,,,,=IFERROR(H8/H7,0),Custo lote dividido pelo rendimento em H7
+hipotese,margem_alvo_sobre_preco,,,,,,0.4,"Exemplo ilustrativo 40%; altere a hipótese ou deixe em branco"
+resultado,preco_teorico,,,,,,=IFERROR(H9/(1-H10),0),Preço matemático preliminar; confira todos os custos e valide o mercado
