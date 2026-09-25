@@ -1,8 +1,8 @@
 # VK Hub
 
-> Biblioteca virtual de produtos digitais de Josias Viskoo: e-books, templates Elementor, textos de LGPD, ganchos virais para vídeos, e-book de receitas de pudim, livro sobre o Apocalipse, livro de colorir da família com IA, sorteador de bingo online, um jogo de roleta grátis (sem dinheiro real) e um livro infantil. Site em português (Brasil), com uma página de vendas em inglês e espanhol para o pacote Harley Davidson.
+> Biblioteca virtual de produtos digitais de Josias Viskoo: e-books, templates Elementor, textos de LGPD, ganchos virais para vídeos, e-books de receitas de pudim e de bolo de pote (com artigos e calculadoras de preço), livro sobre o Apocalipse, livro de colorir da família com IA, sorteador de bingo online, um jogo de roleta grátis (sem dinheiro real) e um livro infantil. Site em português (Brasil), com uma página de vendas em inglês e espanhol para o pacote Harley Davidson.
 
-Cada página abaixo é uma página de vendas independente. A compra é feita no checkout indicado em cada página (Kiwify, Hotmart, Stripe ou Amazon). O jogo Diabinho da Sorte é gratuito e não envolve apostas reais.
+Cada página abaixo é uma página de vendas independente. A compra é feita no checkout indicado em cada página (Kiwify, Hotmart, Stripe ou Amazon). O jogo Diabinho da Sorte é gratuito e não envolve apostas reais. Os artigos sobre bolo de pote são conteúdo gratuito, com calculadoras, e não páginas de vendas.
 
 ## Produtos
 
@@ -24,6 +24,21 @@ Cada página abaixo é uma página de vendas independente. A compra é feita no 
 - [Pudim: 100 Receitas Irresistíveis](https://vkhub.com.br/pudim-100-receitas-irresistiveis-ebook/): E-book com 100 receitas de pudim testadas, do clássico de leite condensado ao gourmet. Sem furinhos, sem empelotar. Acesso imediato em PDF por R$ 37.
 - [Apocalipse Sem Censura](https://vkhub.com.br/apocalipse-sem-censura/): Apocalipse Sem Censura: 34 capítulos ilustrados que explicam o livro mais temido da Bíblia do início ao fim, com os versículos originais. Digital, por R$ 37.
 - [Diabinho da Sorte - Jogo de Roleta Grátis](https://vkhub.com.br/diabinho-da-sorte/): Jogo de roleta estilo tigrinho grátis no navegador: gire, acumule DiaboCoins e use o curinga em linha, coluna e diagonal. Sem apostas e sem dinheiro real.
+- [Bolo de Pote: Receita, Custo e Preço](https://vkhub.com.br/bolo-de-pote-para-vender/): Receitas base, montagem e a conta completa do bolo de pote: quantos potes a receita rende, quanto custa cada um e por quanto vender. E-book em PDF por R$ 29,90.
+
+## Artigos: bolo de pote para vender
+
+- [Bolo de pote para vender: guias e calculadoras](https://vkhub.com.br/bolo-de-pote-artigos/): Artigos com calculadora sobre bolo de pote para vender: quanto cobrar, custo e lucro, rendimento, sabores, tamanhos, etiqueta, festas, iFood e venda na rua.
+- [Quanto cobrar no bolo de pote (com exemplo de 20 potes)](https://vkhub.com.br/bolo-de-pote-artigos/quanto-cobrar-no-bolo-de-pote/): Aprenda a calcular o preço do bolo de pote em 6 passos: rendimento, ingredientes, embalagem, trabalho, taxas e margem. Exemplo de 20 potes e calculadora.
+- [Bolo de pote: custo e lucro de cada pote](https://vkhub.com.br/bolo-de-pote-artigos/bolo-de-pote-custo-e-lucro/): Veja a diferença entre custo direto, custo total e margem do bolo de pote, com exemplo de pote de 250 ml e calculadora para descobrir quanto sobra por pote.
+- [Quantos potes rende uma receita de bolo de pote](https://vkhub.com.br/bolo-de-pote-artigos/quantos-potes-rende-uma-receita-de-bolo-de-pote/): Descubra quantos potes a sua receita de bolo de pote rende de verdade: teste de rendimento com a balança, porção padrão por camada e calculadora de rendimento.
+- [Bolo de pote para vender: guia para iniciantes](https://vkhub.com.br/bolo-de-pote-artigos/bolo-de-pote-para-vender-guia-para-iniciantes/): Como começar a vender bolo de pote: utensílios, lote de teste, sabores, tamanho do pote, preço, onde vender e formalização. Com calculadora do primeiro lote.
+- [Sabores de bolo de pote mais pedidos, com uma só base](https://vkhub.com.br/bolo-de-pote-artigos/sabores-de-bolo-de-pote-com-uma-base/): Cardápio de 3 a 5 sabores de bolo de pote com uma só base de recheio: brigadeiro, ninho, prestígio, maracujá e ninho com morango, com o custo de cada um.
+- [Bolo de pote 150, 250 ou 350 ml: o preço de cada tamanho](https://vkhub.com.br/bolo-de-pote-artigos/bolo-de-pote-150-250-350-ml-preco/): Quanto vai de bolo em cada pote de 150, 250 e 350 ml e como calcular o preço de cada tamanho pelo custo por grama. Tabela de exemplo e calculadora.
+- [Etiqueta de bolo de pote: o que colocar](https://vkhub.com.br/bolo-de-pote-artigos/etiqueta-de-bolo-de-pote/): O que colocar na etiqueta do bolo de pote: sabor, fabricação, validade, conservação, ingredientes e alergênicos. Com gerador de etiquetas para imprimir.
+- [Bolo de pote como lembrancinha: orçamento de 100 potes](https://vkhub.com.br/bolo-de-pote-artigos/bolo-de-pote-lembrancinha-orcamento-100-potes/): Como fazer o orçamento de bolo de pote para lembrancinha de festa: custo de 50 ou 100 potes, personalização, horas de trabalho e entrega. Com calculadora.
+- [Compensa vender bolo de pote no iFood?](https://vkhub.com.br/bolo-de-pote-artigos/compensa-vender-bolo-de-pote-no-ifood/): Descubra se compensa vender bolo de pote no iFood e em apps de entrega: como a comissão muda o preço, embalagem de transporte e calculadora de preço para app.
+- [Como vender bolo de pote na rua e na escola](https://vkhub.com.br/bolo-de-pote-artigos/como-vender-bolo-de-pote-na-rua-e-na-escola/): Como vender bolo de pote na rua, na escola e no trabalho: autorização, caixa térmica, preço redondo, abordagem e quantos potes levar. Com calculadora.
 
 ## Sobre
 
