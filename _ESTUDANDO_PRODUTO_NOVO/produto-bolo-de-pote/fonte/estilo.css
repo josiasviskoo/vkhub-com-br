@@ -1,0 +1,120 @@
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap");
+
+:root {
+  --ink: #2B1A15;
+  --ink-2: #5A4640;
+  --muted: #8A766F;
+  --line: #E6D9D2;
+  --line-soft: #F1E8E3;
+  --paper: #FFFFFF;
+  --cream: #FBF5F0;
+  --accent: #B8395A;
+  --accent-soft: #F8E4EA;
+  --choc: #5B3426;
+  --gold: #A8740C;
+  --gold-soft: #FBF0D9;
+  --display: "Bricolage Grotesque", "Segoe UI", sans-serif;
+  --body: "IBM Plex Sans", "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", monospace;
+}
+
+@page {
+  size: A4;
+  margin: 16mm 16mm 18mm;
+  @bottom-left { font: 8pt "IBM Plex Sans", sans-serif; color: #8A766F; }
+  @bottom-right { content: counter(page); font: 8pt "IBM Plex Mono", monospace; color: #8A766F; }
+}
+@page capa { margin: 0; @bottom-left { content: none; } @bottom-right { content: none; } }
+
+* { box-sizing: border-box; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 10.5pt/1.55 var(--body); }
+
+/* Capa */
+.capa {
+  page: capa; break-after: page;
+  height: 297mm; padding: 30mm 22mm 24mm;
+  background: var(--cream);
+  display: flex; flex-direction: column; justify-content: space-between;
+  border-top: 10mm solid var(--accent);
+}
+.capa .selo { font: 500 9pt var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+.capa h1 { font: 700 38pt/1.02 var(--display); letter-spacing: -.02em; margin: 10mm 0 6mm; color: var(--choc); }
+.capa .sub { font-size: 14pt; line-height: 1.45; color: var(--ink-2); max-width: 140mm; margin: 0; }
+.capa ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 3mm; font-size: 11pt; }
+.capa li { padding-left: 7mm; position: relative; }
+.capa li::before { content: ""; position: absolute; left: 0; top: 2.2mm; width: 3mm; height: 3mm; border-radius: 50%; background: var(--accent); }
+.capa .rodape { font-size: 9pt; color: var(--muted); border-top: 1px solid var(--line); padding-top: 4mm; }
+
+/* Texto */
+h2 { font: 700 19pt/1.15 var(--display); letter-spacing: -.01em; color: var(--choc); margin: 0 0 3mm; break-after: avoid; }
+h3 { font: 700 12.5pt/1.25 var(--display); color: var(--ink); margin: 6mm 0 2mm; break-after: avoid; }
+p { margin: 0 0 3mm; }
+.etapa { font: 500 8.5pt var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5mm; }
+section.pg { break-before: page; }
+section.pg:first-of-type { break-before: auto; }
+ul, ol { margin: 0 0 3mm; padding-left: 6mm; }
+li { margin-bottom: 1.2mm; }
+strong { font-weight: 600; }
+
+.formula {
+  background: var(--cream); border-left: 3px solid var(--choc); border-radius: 0 6px 6px 0;
+  padding: 3mm 5mm; margin: 3mm 0 4mm; font-size: 11pt; break-inside: avoid;
+}
+.formula b { font-family: var(--mono); font-weight: 500; }
+.dica { background: var(--gold-soft); border-radius: 6px; padding: 3mm 5mm; margin: 3mm 0 4mm; break-inside: avoid; }
+.dica::before { content: "Dica"; display: block; font: 500 8pt var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--gold); margin-bottom: 1mm; }
+.alerta { background: var(--accent-soft); border-radius: 6px; padding: 3mm 5mm; margin: 3mm 0 4mm; break-inside: avoid; }
+.alerta::before { content: "Atenção"; display: block; font: 500 8pt var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1mm; }
+.exemplo { border: 1.5px dashed var(--muted); border-radius: 8px; padding: 4mm 5mm; margin: 3mm 0 4mm; break-inside: avoid; }
+.exemplo::before { content: "Exemplo fictício · números só para demonstrar o cálculo"; display: block; font: 500 8pt var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 2mm; }
+
+/* Tabelas */
+table { width: 100%; border-collapse: collapse; margin: 2mm 0 4mm; font-size: 9.5pt; break-inside: auto; }
+th { font: 500 7.5pt/1.2 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); text-align: left; background: var(--line-soft); padding: 2mm 2.5mm; border: 1px solid var(--line); }
+td { padding: 1.8mm 2.5mm; border: 1px solid var(--line); vertical-align: top; }
+tr { break-inside: avoid; }
+td.n, th.n { text-align: right; font-family: var(--mono); font-variant-numeric: tabular-nums; }
+tr.total td { font-weight: 600; background: var(--cream); }
+table.ficha td { height: 8.5mm; }
+.campo { display: flex; gap: 3mm; align-items: flex-end; margin: 0 0 3mm; }
+.campo span { white-space: nowrap; }
+.campo i { flex: 1; border-bottom: 1px solid var(--ink-2); height: 5mm; }
+
+/* Checklist */
+ul.check { list-style: none; padding: 0; }
+ul.check li { padding-left: 7mm; position: relative; }
+ul.check li::before { content: ""; position: absolute; left: 0; top: 1mm; width: 3.4mm; height: 3.4mm; border: 1.2px solid var(--ink-2); border-radius: 2px; }
+
+/* Etiquetas recortáveis */
+.etiquetas { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; }
+.etq { border: 1.2px dashed var(--muted); border-radius: 6px; padding: 3mm 4mm; font-size: 8.5pt; break-inside: avoid; }
+.etq .nome { font: 700 11pt var(--display); color: var(--choc); margin-bottom: 1.5mm; }
+.etq .l { display: flex; gap: 2mm; margin-bottom: 1.3mm; }
+.etq .l span { white-space: nowrap; color: var(--ink-2); }
+.etq .l i { flex: 1; border-bottom: 1px solid var(--line); }
+
+.aviso-final { font-size: 9pt; color: var(--ink-2); border-top: 1px solid var(--line); padding-top: 4mm; margin-top: 6mm; }
+.exemplo table { font-size: 9pt; margin: 1.5mm 0 2.5mm; }
+.exemplo td { padding: 1.1mm 2.5mm; }
+.exemplo th { padding: 1.4mm 2.5mm; }
+.exemplo p { margin-bottom: 2mm; }
+
+/* Receitas */
+.receita { border: 1px solid var(--line); border-radius: 10px; margin: 3mm 0 5mm; break-inside: avoid; overflow: hidden; }
+.receita .cab { background: var(--accent-soft); padding: 3mm 5mm; display: flex; justify-content: space-between; align-items: baseline; gap: 4mm; }
+.receita .cab h3 { margin: 0; color: var(--choc); }
+.receita .cab span { font: 500 8.5pt var(--mono); color: var(--accent); white-space: nowrap; }
+.receita .corpo { display: grid; grid-template-columns: 62mm 1fr; }
+.receita .ing { background: var(--cream); padding: 3.5mm 5mm; border-right: 1px solid var(--line); font-size: 9.5pt; }
+.receita .ing ul { list-style: none; padding: 0; margin: 0; }
+.receita .ing li { padding: 1mm 0; border-bottom: 1px dotted var(--line); }
+.receita .ing li:last-child { border-bottom: none; }
+.receita .ing small { color: var(--muted); }
+.receita .prep { padding: 3.5mm 5mm; font-size: 9.8pt; }
+.receita .prep ol { margin: 0; padding-left: 5mm; }
+.receita .lbl { font: 500 7.5pt var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 1.5mm; }
+.sumario { list-style: none; padding: 0; margin: 4mm 0; columns: 2; column-gap: 10mm; }
+.sumario li { padding: 1.4mm 0; border-bottom: 1px dotted var(--line); break-inside: avoid; }
+.sumario b { font-family: var(--mono); font-weight: 500; color: var(--accent); margin-right: 2mm; }
+.duas { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; }

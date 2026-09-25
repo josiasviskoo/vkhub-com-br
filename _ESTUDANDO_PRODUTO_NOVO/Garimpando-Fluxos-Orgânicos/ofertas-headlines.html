@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="pt-BR">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Headlines de Oferta</title>
+<meta name="description" content="Dez ofertas com headlines e frases de oferta escritas a partir da dor urgente de cada público, para testar demanda.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --bg: #EEF2EF;
+    --surface: #FBFBF8;
+    --surface-2: #F3F6F3;
+    --ink: #14262B;
+    --ink-2: #3C5055;
+    --muted: #5E6F72;
+    --line: #D6DEDA;
+    --line-soft: #E5EBE8;
+    --teal: #0087A6;
+    --gold: #B27A0C;
+    --gold-soft: #F5E9CE;
+    --danger: #B3362B;
+    --danger-soft: #F6E1DE;
+    --focus: #0087A6;
+    --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+    --body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --bg: #0F1B20;
+      --surface: #15232A;
+      --surface-2: #1A2B32;
+      --ink: #E4ECEA;
+      --ink-2: #BFCDCB;
+      --muted: #93A5A8;
+      --line: #2A3E45;
+      --line-soft: #213339;
+      --teal: #1FA3B0;
+      --gold: #D59E2A;
+      --gold-soft: #3A2F16;
+      --danger: #F08276;
+      --danger-soft: #3B211F;
+      --focus: #4CC3CF;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #0F1B20;
+    --surface: #15232A;
+    --surface-2: #1A2B32;
+    --ink: #E4ECEA;
+    --ink-2: #BFCDCB;
+    --muted: #93A5A8;
+    --line: #2A3E45;
+    --line-soft: #213339;
+    --teal: #1FA3B0;
+    --gold: #D59E2A;
+    --gold-soft: #3A2F16;
+    --danger: #F08276;
+    --danger-soft: #3B211F;
+    --focus: #4CC3CF;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 15px;
+    line-height: 1.55;
+    padding: 28px 16px 56px;
+  }
+  .wrap { max-width: 920px; margin: 0 auto; display: grid; gap: 22px; }
+  h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; }
+  h1 { font-size: clamp(28px, 4.6vw, 42px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.05; }
+  .eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+  .lede { color: var(--ink-2); max-width: 64ch; margin: 10px 0 0; font-size: 16px; }
+  .note {
+    background: var(--gold-soft); border-radius: 8px; padding: 12px 16px;
+    font-size: 13.5px; color: var(--ink-2);
+  }
+  .note strong { color: var(--ink); }
+
+  nav.index { display: flex; flex-wrap: wrap; gap: 6px; }
+  nav.index a {
+    font: 500 12.5px/1 var(--body); color: var(--ink-2); text-decoration: none;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 7px 11px;
+  }
+  nav.index a:hover { border-color: var(--muted); color: var(--ink); }
+
+  .offer {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+    padding: 22px 24px; display: grid; gap: 14px; scroll-margin-top: 16px;
+  }
+  .offer-top { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: baseline; justify-content: space-between; }
+  .offer-top h2 { font-size: 20px; letter-spacing: -0.01em; }
+  .tag { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+  .price { font-family: var(--mono); font-size: 12px; color: var(--gold); }
+
+  .pain {
+    border-left: 3px solid var(--danger); background: var(--danger-soft);
+    border-radius: 0 8px 8px 0; padding: 10px 14px; font-style: italic; color: var(--ink);
+  }
+  .pain .lbl { font-style: normal; display: block; margin-bottom: 2px; }
+
+  .headline {
+    font-family: var(--display); font-weight: 700; font-size: clamp(21px, 3vw, 27px);
+    line-height: 1.2; letter-spacing: -0.015em; margin: 0; text-wrap: balance;
+  }
+  .lbl { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+
+  .variants { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+  .variants li, .pitch, .headline-row {
+    display: flex; gap: 10px; align-items: flex-start; justify-content: space-between;
+  }
+  .variants li { background: var(--surface-2); border-radius: 7px; padding: 8px 10px; font-weight: 500; }
+  .pitch { background: var(--surface-2); border-radius: 8px; padding: 12px 14px; color: var(--ink-2); }
+  .cta { font-weight: 600; color: var(--teal); }
+
+  button.copy {
+    flex: none; font: 500 11.5px/1 var(--body); color: var(--muted);
+    background: transparent; border: 1px solid var(--line); border-radius: 6px;
+    padding: 5px 8px; cursor: pointer;
+  }
+  button.copy:hover { color: var(--ink); border-color: var(--muted); }
+  button.copy.done { color: var(--teal); border-color: var(--teal); }
+  :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+  footer { color: var(--muted); font-size: 13px; display: grid; gap: 8px; }
+  footer a { color: var(--teal); }
+  @media (max-width: 560px) {
+    .offer { padding: 18px 16px; }
+    .variants li, .pitch, .headline-row { flex-direction: column; }
+  }
+</style>
+<body>
+<main class="wrap">
+  <header>
+    <div class="eyebrow">Pesquisa de demanda · 24/09/2026</div>
+    <h1>Headlines de oferta</h1>
+    <p class="lede">Dez ofertas para dores urgentes. As headlines dizem de forma direta o que a pessoa recebe e qual problema resolve. Cada oferta tem uma headline principal, duas variações, uma frase de oferta e uma chamada para ação.</p>
+  </header>
+
+  <div class="note">
+    <strong>Material de teste.</strong> As ofertas são as mesmas do <a href="garimpo-organico.html">relatório Garimpo Orgânico</a>, e os preços continuam sendo hipóteses. As headlines servem para medir interesse em conversas, anúncios ou páginas simples. Não prometem renda, nota, lucro nem resultado garantido.
+  </div>
+
+  <nav class="index" aria-label="Ofertas">
+    <a href="#o1">01 Doces</a><a href="#o2">02 Encomendas</a><a href="#o3">03 Redação</a><a href="#o4">04 Tema difícil</a><a href="#o5">05 Embreagem</a><a href="#o6">06 Baliza</a><a href="#o7">07 Sofá em casa</a><a href="#o8">08 Sofá no bairro</a><a href="#o9">09 Orçamento</a><a href="#o10">10 Meta</a>
+  </nav>
+
+  <article class="offer" id="o1">
+    <div class="offer-top"><div><div class="tag">Oferta 01 · Doces</div><h2>Kit Primeira Produção</h2></div><span class="price">Kit digital · teste R$ 47</span></div>
+    <p class="pain"><span class="lbl">Dor urgente</span>“Tenho encomenda para entregar e não sei quanto cobrar sem sair no prejuízo.”</p>
+    <div class="headline-row"><p class="headline">Descubra quanto custa cada bolo no pote que você faz e por quanto vender.</p></div>
+    <ul class="variants">
+      <li>Calcule o custo de cada doce antes de definir o preço.</li>
+      <li>Uma ficha que mostra o custo e o preço de cada bolo no pote.</li>
+    </ul>
+    <p class="pitch"><span>O Kit Primeira Produção coloca seus ingredientes, embalagens e rendimento numa ficha pronta e mostra o custo de cada unidade, para você definir o preço antes do próximo lote. <span class="cta">Quero calcular meu próximo lote →</span></span></p>
+  </article>
+
+  <article class="offer" id="o2">
+    <div class="offer-top"><div><div class="tag">Oferta 02 · Doces</div><h2>Oficina Cardápio para Encomendas</h2></div><span class="price">Oficina em grupo · teste R$ 97</span></div>
+    <p class="pain"><span class="lbl">Dor urgente</span>“Os pedidos começaram a chegar pelo WhatsApp e eu estou me perdendo em sabores, prazos e valores.”</p>
+    <div class="headline-row"><p class="headline">Monte o cardápio dos seus bolos no pote e organize suas encomendas.</p></div>
+    <ul class="variants">
+      <li>Uma oficina para montar cardápio, tabela de preços e formulário de encomendas.</li>
+      <li>Saia da oficina com cinco sabores definidos e o preço de cada um.</li>
+    </ul>
+    <p class="pitch"><span>Na Oficina Cardápio para Encomendas você monta um cardápio enxuto, recebe revisão da sua ficha de custo e sai com um formulário de pedidos pronto para usar. <span class="cta">Quero organizar minhas encomendas →</span></span></p>
+  </article>
+
+  <article class="offer" id="o3">
+    <div class="offer-top"><div><div class="tag">Oferta 03 · Redação</div><h2>Redação com Devolutiva</h2></div><span class="price">Serviço educacional · teste R$ 79</span></div>
+    <p class="pain"><span class="lbl">Dor urgente</span>“O Enem está chegando e eu não sei o que estou errando na redação.”</p>
+    <div class="headline-row"><p class="headline">Um professor corrige sua redação do Enem duas vezes e mostra o que melhorar.</p></div>
+    <ul class="variants">
+      <li>Envie sua redação do Enem e receba duas correções comentadas por professor.</li>
+      <li>Descubra onde sua redação do Enem perde pontos, com correção de professor.</li>
+    </ul>
+    <p class="pitch"><span>Envie sua redação, receba um diagnóstico comentado por professor e reescreva com um roteiro individual. São duas correções para você chegar à prova sabendo onde melhorar. <span class="cta">Quero minha redação corrigida →</span></span></p>
+  </article>
+
+  <article class="offer" id="o4">
+    <div class="offer-top"><div><div class="tag">Oferta 04 · Redação</div><h2>Laboratório Tema Difícil</h2></div><span class="price">Oficina prática · teste R$ 59</span></div>
+    <p class="pain"><span class="lbl">Dor urgente</span>“Tenho medo de abrir a prova e não saber nada sobre o tema.”</p>
+    <div class="headline-row"><p class="headline">Aprenda a escrever a redação do Enem mesmo sem conhecer o tema.</p></div>
+    <ul class="variants">
+      <li>Treine tese e argumentos com três temas que você nunca estudou.</li>
+      <li>Uma oficina para não travar quando o tema da redação for desconhecido.</li>
+    </ul>
+    <p class="pitch"><span>No Laboratório Tema Difícil você pratica com três temas inesperados, usa mapas de argumento e recebe devolutiva em grupo, para chegar à prova com um caminho já testado. <span class="cta">Quero treinar temas difíceis →</span></span></p>
+  </article>
+
+  <article class="offer" id="o5">
+    <div class="offer-top"><div><div class="tag">Oferta 05 · Direção</div><h2>Embreagem na Prática</h2></div><span class="price">Serviço local · preço por cidade</span></div>
+    <p class="pain"><span class="lbl">Dor urgente</span>“O carro morre no semáforo, alguém buzina e eu entro em pânico.”</p>
+    <div class="headline-row"><p class="headline">Aulas de direção para parar de deixar o carro morrer.</p></div>
+    <ul class="variants">
+      <li>Duas aulas com instrutor só para treinar embreagem e arrancada.</li>
+      <li>Aprenda a sair com o carro sem deixar morrer, inclusive na subida.</li>
+    </ul>
+    <p class="pitch"><span>Em duas aulas individuais com instrutor autorizado, você treina arrancada, parada e rampa no seu ritmo e acompanha a evolução registrada aula a aula. <span class="cta">Quero agendar minha avaliação →</span></span></p>
+  </article>
+
+  <article class="offer" id="o6">
+    <div class="offer-top"><div><div class="tag">Oferta 06 · Direção</div><h2>Estacione no Seu Percurso</h2></div><span class="price">Para habilitados · preço por cidade</span></div>
+    <p class="pain"><span class="lbl">Dor urgente</span>“Eu dou volta no quarteirão porque não consigo fazer baliza.”</p>
+    <div class="headline-row"><p class="headline">Aulas de baliza para quem já tem carteira e ainda tem medo de estacionar.</p></div>
+    <ul class="variants">
+      <li>Aprenda a fazer baliza no seu carro, nas vagas que você usa no dia a dia.</li>
+      <li>Duas aulas com instrutor para estacionar sem dar volta no quarteirão.</li>
+    </ul>
+    <p class="pitch"><span>O Estacione no Seu Percurso leva o instrutor às vagas que você usa de verdade, como trabalho, mercado e casa, e ajusta as referências ao seu carro. <span class="cta">Quero estacionar sem medo →</span></span></p>
+  </article>
+
+  <article class="offer" id="o7">
+    <div class="offer-top"><div><div class="tag">Oferta 07 · Casa</div><h2>Sofá Cuidado em Casa</h2></div><span class="price">Kit físico · preço após custo</span></div>
+    <p class="pain"><span class="lbl">Dor urgente</span>“Tenho visita chegando, o sofá está manchado e tenho medo de estragar o tecido.”</p>
+    <div class="headline-row"><p class="headline">Kit para limpar seu sofá em casa, escolhido para o tecido dele.</p></div>
+    <ul class="variants">
+      <li>Mande a foto da etiqueta e receba o produto certo para limpar seu sofá.</li>
+      <li>Limpe o sofá em casa sem usar produto errado no tecido.</li>
+    </ul>
+    <p class="pitch"><span>Mande a foto da etiqueta: o Sofá Cuidado em Casa indica um kit compatível com o seu tecido, com produto regularizado e guia de uso, para limpar sem arriscar o estofado. <span class="cta">Quero o kit para o meu sofá →</span></span></p>
+  </article>
+
+  <article class="offer" id="o8">
+    <div class="offer-top"><div><div class="tag">Oferta 08 · Casa</div><h2>Sofá Limpo no Bairro</h2></div><span class="price">Serviço local · preço após avaliação</span></div>
+    <p class="pain"><span class="lbl">Dor urgente</span>“Derrubaram suco no sofá e eu não tenho tempo nem jeito para resolver.”</p>
+    <div class="headline-row"><p class="headline">Limpeza de sofá na sua casa, com orçamento pela foto.</p></div>
+    <ul class="variants">
+      <li>Mande uma foto do sofá e receba o preço da limpeza.</li>
+      <li>Um profissional vai até sua casa e limpa o sofá por você.</li>
+    </ul>
+    <p class="pitch"><span>O Sofá Limpo no Bairro faz a triagem por foto e etiqueta, passa o orçamento pelo tamanho e pelo tecido e executa a limpeza na sua casa, com orientação de secagem. <span class="cta">Quero meu orçamento →</span></span></p>
+  </article>
+
+  <article class="offer" id="o9">
+    <div class="offer-top"><div><div class="tag">Oferta 09 · Finanças</div><h2>Orçamento que Cabe</h2></div><span class="price">Kit guiado · teste R$ 19</span></div>
+    <p class="pain"><span class="lbl">Dor urgente</span>“Ainda falta metade do mês e o dinheiro já acabou.”</p>
+    <div class="headline-row"><p class="headline">Uma planilha simples para ver para onde vai o seu salário.</p></div>
+    <ul class="variants">
+      <li>Organize as contas do mês em uma folha, mesmo ganhando pouco.</li>
+      <li>Saiba quais contas pagar primeiro quando o dinheiro é curto.</li>
+    </ul>
+    <p class="pitch"><span>O Orçamento que Cabe traz uma planilha simples ou versão para imprimir, aula de preenchimento e roteiro semanal para você decidir quais contas vêm primeiro. <span class="cta">Quero organizar meu mês →</span></span></p>
+  </article>
+
+  <article class="offer" id="o10">
+    <div class="offer-top"><div><div class="tag">Oferta 10 · Finanças</div><h2>Meta Possível</h2></div><span class="price">Oficina + acompanhamento · teste R$ 39</span></div>
+    <p class="pain"><span class="lbl">Dor urgente</span>“Todo mês eu prometo guardar dinheiro e não consigo.”</p>
+    <div class="headline-row"><p class="headline">Descubra quanto você consegue guardar por mês e em quanto tempo chega à sua meta.</p></div>
+    <ul class="variants">
+      <li>Calcule uma meta de economia que cabe no seu salário.</li>
+      <li>Defina uma meta, calcule o prazo e acompanhe o progresso com duas revisões.</li>
+    </ul>
+    <p class="pitch"><span>No Meta Possível você define uma meta, calcula o prazo com a sobra real do seu mês e acompanha o progresso em duas revisões semanais. Se não houver sobra, o primeiro passo é reorganizar as contas. <span class="cta">Quero montar minha meta →</span></span></p>
+  </article>
+
+  <footer>
+    <p><strong>Como testar:</strong> use a mesma oferta com headlines diferentes e compare cliques, respostas ou pedidos de orçamento. Mais do que a curtida, conta quem pede preço, agenda ou paga.</p>
+    <p><strong>Cuidados:</strong> redação sem promessa de nota; direção só com instrutor autorizado; limpeza seguindo tecido, rótulo e fabricante, sem alegação de desinfecção; finanças sem promessa de quitar dívidas ou enriquecer.</p>
+  </footer>
+</main>
+<script>
+(function () {
+  "use strict";
+  function addCopy(el, textEl) {
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "copy";
+    b.textContent = "Copiar";
+    b.addEventListener("click", function () {
+      var text = (textEl || el).innerText.replace(/\s*→\s*$/, "").trim();
+      var done = function () {
+        b.textContent = "Copiado";
+        b.classList.add("done");
+        setTimeout(function () { b.textContent = "Copiar"; b.classList.remove("done"); }, 1400);
+      };
+      try {
+        navigator.clipboard.writeText(text).then(done, function () {});
+      } catch (e) {}
+    });
+    el.appendChild(b);
+  }
+  document.querySelectorAll(".headline-row").forEach(function (row) { addCopy(row, row.querySelector(".headline")); });
+  document.querySelectorAll(".variants li").forEach(function (li) {
+    var span = document.createElement("span");
+    span.textContent = li.textContent;
+    li.textContent = "";
+    li.appendChild(span);
+    addCopy(li, span);
+  });
+  document.querySelectorAll(".pitch").forEach(function (p) { addCopy(p, p.querySelector("span")); });
+})();
+</script>
+</body>
+</html>

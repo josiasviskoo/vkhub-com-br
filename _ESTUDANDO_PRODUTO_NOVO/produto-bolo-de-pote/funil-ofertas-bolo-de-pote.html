@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="pt-BR">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Funil Bolo de Pote</title>
+<meta name="description" content="Desenho do funil de ofertas do bolo de pote: produto principal, order bumps, upsells, as 12 ofertas e um simulador de faturamento.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --bg: #FBF6F2; --surface: #FFFFFF; --surface-2: #F6EEE8;
+    --ink: #2B1A15; --ink-2: #5A4640; --muted: #8A766F; --line: #E8DCD5;
+    --principal: #B8395A; --principal-soft: #FBE5EC;
+    --bump: #C98A0B; --bump-soft: #FCF1D8;
+    --upsell: #2F7A57; --upsell-soft: #DFF1E7;
+    --combo: #5B4BB5; --combo-soft: #E9E6F8;
+    --reserva: #7A6E69; --reserva-soft: #EEE9E6;
+    --focus: #B8395A;
+    --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+    --body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --bg: #1A1311; --surface: #241B18; --surface-2: #2E231F;
+      --ink: #F3E9E4; --ink-2: #D2C2BB; --muted: #A8958D; --line: #3D302B;
+      --principal: #F07C9A; --principal-soft: #43222B;
+      --bump: #E9B54A; --bump-soft: #3D3017;
+      --upsell: #6CC897; --upsell-soft: #1C3A2B;
+      --combo: #A99BF2; --combo-soft: #2C2747;
+      --reserva: #B5A8A2; --reserva-soft: #332B28;
+      --focus: #F07C9A;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #1A1311; --surface: #241B18; --surface-2: #2E231F;
+    --ink: #F3E9E4; --ink-2: #D2C2BB; --muted: #A8958D; --line: #3D302B;
+    --principal: #F07C9A; --principal-soft: #43222B;
+    --bump: #E9B54A; --bump-soft: #3D3017;
+    --upsell: #6CC897; --upsell-soft: #1C3A2B;
+    --combo: #A99BF2; --combo-soft: #2C2747;
+    --reserva: #B5A8A2; --reserva-soft: #332B28;
+    --focus: #F07C9A;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.55 var(--body); padding: 28px 16px 64px; }
+  .wrap { max-width: 1100px; margin: 0 auto; display: grid; gap: 36px; }
+  h1, h2, h3 { font-family: var(--display); margin: 0; text-wrap: balance; }
+  h1 { font-size: clamp(30px, 5vw, 46px); letter-spacing: -0.02em; line-height: 1.05; }
+  h2 { font-size: clamp(22px, 3vw, 28px); letter-spacing: -0.01em; }
+  h3 { font-size: 17px; }
+  p { margin: 0; }
+  .eyebrow { font: 500 11px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  .lede { color: var(--ink-2); font-size: 17px; max-width: 62ch; margin-top: 10px; }
+  .sec-head { display: grid; gap: 6px; margin-bottom: 16px; }
+  .sec-head p { color: var(--ink-2); max-width: 70ch; }
+  .num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+  :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+  /* legenda */
+  .legend { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .tag { display: inline-flex; align-items: center; gap: 6px; font: 600 12px/1 var(--body); padding: 6px 10px; border-radius: 999px; }
+  .tag::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+  .t-principal { color: var(--principal); background: var(--principal-soft); }
+  .t-bump { color: var(--bump); background: var(--bump-soft); }
+  .t-upsell { color: var(--upsell); background: var(--upsell-soft); }
+  .t-combo { color: var(--combo); background: var(--combo-soft); }
+  .t-reserva { color: var(--reserva); background: var(--reserva-soft); }
+
+  /* mapa do funil */
+  .flow { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; align-items: stretch; }
+  .step { position: relative; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 16px 14px; display: grid; gap: 8px; align-content: start; margin-right: 26px; }
+  .step:last-child { margin-right: 0; }
+  .step:not(:last-child)::after {
+    content: ""; position: absolute; right: -22px; top: 50%; width: 18px; height: 2px; background: var(--muted);
+  }
+  .step:not(:last-child)::before {
+    content: ""; position: absolute; right: -24px; top: calc(50% - 5px); border: 6px solid transparent; border-left: 8px solid var(--muted); border-right: 0;
+  }
+  .step .n { font: 700 13px var(--mono); color: var(--surface); background: var(--ink); width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; }
+  .step .ico { font-size: 26px; line-height: 1; }
+  .step h3 { font-size: 16px; }
+  .step p { font-size: 13px; color: var(--ink-2); }
+  .step .tag { justify-self: start; font-size: 11px; }
+  @media (max-width: 860px) {
+    .flow { grid-template-columns: 1fr; gap: 26px; }
+    .step { margin-right: 0; }
+    .step:not(:last-child)::after { right: auto; left: 50%; top: auto; bottom: -20px; width: 2px; height: 14px; }
+    .step:not(:last-child)::before { right: auto; left: calc(50% - 5px); top: auto; bottom: -26px; border: 6px solid transparent; border-top: 8px solid var(--muted); border-bottom: 0; }
+  }
+
+  /* desenhos: checkout e upsell */
+  .drawings { display: grid; grid-template-columns: 1.15fr 1fr; gap: 22px; align-items: start; }
+  @media (max-width: 860px) { .drawings { grid-template-columns: 1fr; } }
+  .device { background: var(--surface); border: 2px solid var(--ink); border-radius: 18px; overflow: hidden; box-shadow: 6px 6px 0 var(--line); }
+  .device .bar { background: var(--ink); color: var(--bg); font: 500 11px var(--mono); padding: 8px 14px; display: flex; gap: 6px; align-items: center; }
+  .device .bar i { width: 8px; height: 8px; border-radius: 50%; background: var(--bg); opacity: .5; }
+  .device .bar span { margin-left: 8px; }
+  .device .screen { padding: 18px; display: grid; gap: 12px; }
+  .prod { display: flex; justify-content: space-between; gap: 10px; align-items: center; background: var(--principal-soft); border-radius: 10px; padding: 12px 14px; }
+  .prod b { font-family: var(--display); font-size: 16px; }
+  .prod .preco { font: 600 17px var(--mono); color: var(--principal); white-space: nowrap; }
+  .bumpbox { display: grid; grid-template-columns: auto 1fr auto; gap: 10px; align-items: start; border: 2px dashed var(--bump); background: var(--bump-soft); border-radius: 10px; padding: 12px 14px; cursor: pointer; }
+  .bumpbox input { width: 20px; height: 20px; margin: 2px 0 0; accent-color: var(--bump); cursor: pointer; }
+  .bumpbox .t { font-weight: 600; }
+  .bumpbox .s { font-size: 13px; color: var(--ink-2); }
+  .bumpbox .preco { font: 600 15px var(--mono); color: var(--bump); white-space: nowrap; }
+  .total { display: flex; justify-content: space-between; align-items: baseline; border-top: 2px solid var(--line); padding-top: 12px; }
+  .total .v { font: 700 26px var(--display); }
+  .btn-fake { background: var(--upsell); color: #fff; font-weight: 700; text-align: center; padding: 13px; border-radius: 10px; }
+  .hint { font-size: 12.5px; color: var(--muted); text-align: center; }
+  .upsell-screen { text-align: center; }
+  .upsell-screen .espera { font: 700 22px var(--display); color: var(--upsell); }
+  .upsell-screen .card { background: var(--upsell-soft); border-radius: 12px; padding: 14px; display: grid; gap: 4px; }
+  .upsell-screen .card b { font-family: var(--display); font-size: 18px; }
+  .upsell-screen .de { text-decoration: line-through; color: var(--muted); font-family: var(--mono); font-size: 13px; }
+  .upsell-screen .por { font: 700 24px var(--mono); color: var(--upsell); }
+  .btn-nao { font-size: 13px; color: var(--muted); text-decoration: underline; }
+  .arrow-down { text-align: center; font: 500 12px var(--mono); color: var(--muted); padding: 6px 0; }
+  .arrow-down::before { content: "↓"; display: block; font-size: 22px; color: var(--ink-2); }
+  .note { font-size: 13px; color: var(--ink-2); background: var(--surface-2); border-radius: 10px; padding: 10px 14px; }
+
+  /* cartões das ofertas */
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+  .filters button { font: 600 12.5px var(--body); border: 1px solid var(--line); background: var(--surface); color: var(--ink-2); padding: 7px 12px; border-radius: 999px; cursor: pointer; }
+  .filters button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 14px; }
+  .card-o { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 16px; display: grid; gap: 10px; align-content: start; border-top: 5px solid var(--c); }
+  .card-o[hidden] { display: none; }
+  .card-o .top { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  .card-o .id { font: 500 12px var(--mono); color: var(--muted); }
+  .card-o h3 { font-size: 18px; }
+  .card-o .hl { font-size: 14.5px; color: var(--ink); font-weight: 500; }
+  .card-o .price { font: 700 22px var(--mono); color: var(--c); }
+  .card-o .ev { font-size: 13px; color: var(--ink-2); background: var(--surface-2); border-radius: 8px; padding: 8px 10px; }
+  .card-o .ev b { display: block; font: 500 10.5px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
+  .meter { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--muted); }
+  .meter .dots { display: flex; gap: 3px; }
+  .meter .dots i { width: 18px; height: 6px; border-radius: 3px; background: var(--line); }
+  .meter .dots i.on { background: var(--c); }
+  .warn { font-size: 12px; color: var(--principal); }
+
+  /* simulador */
+  .sim { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media (max-width: 760px) { .sim { grid-template-columns: 1fr; } }
+  .sim label { display: grid; gap: 4px; font-size: 13.5px; color: var(--ink-2); }
+  .sim .row { display: grid; grid-template-columns: 1fr 90px; gap: 10px; align-items: center; margin-bottom: 10px; }
+  .sim input[type=number] { font: 500 15px var(--mono); padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface-2); color: var(--ink); width: 100%; }
+  .res { display: grid; gap: 10px; align-content: start; }
+  .res .big { background: var(--principal-soft); border-radius: 12px; padding: 14px 16px; }
+  .res .big .v { font: 700 34px var(--display); color: var(--principal); }
+  .res .line { display: flex; justify-content: space-between; border-bottom: 1px dashed var(--line); padding: 6px 0; font-size: 14px; }
+  .bars { display: grid; gap: 6px; margin-top: 6px; }
+  .bars .b { display: grid; grid-template-columns: 110px 1fr 90px; gap: 8px; align-items: center; font-size: 12.5px; }
+  .bars .track { height: 12px; background: var(--surface-2); border-radius: 6px; overflow: hidden; }
+  .bars .fill { height: 100%; border-radius: 6px; }
+
+  footer { font-size: 13px; color: var(--muted); display: grid; gap: 6px; border-top: 1px solid var(--line); padding-top: 16px; }
+</style>
+<body>
+<main class="wrap">
+
+  <header>
+    <div class="eyebrow">Pesquisa de demanda · bolo de pote · 24/09/2026</div>
+    <h1>O funil do bolo de pote, desenhado</h1>
+    <p class="lede">Como as 12 ofertas se encaixam: o que o cliente compra primeiro, o que aparece no checkout, o que vem depois da compra e o que fica guardado para testar mais tarde.</p>
+    <div class="legend">
+      <span class="tag t-principal">Produto principal</span>
+      <span class="tag t-bump">Order bump (no checkout)</span>
+      <span class="tag t-upsell">Upsell (depois da compra)</span>
+      <span class="tag t-combo">Combo (opção de preço)</span>
+      <span class="tag t-reserva">Reserva (testar depois)</span>
+    </div>
+  </header>
+
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">1 · O caminho do cliente</div>
+      <h2>Do vídeo até a área de membros</h2>
+      <p>Cada caixa é uma tela que o cliente vê. As setas mostram a ordem.</p>
+    </div>
+    <div class="flow">
+      <div class="step"><span class="n">1</span><span class="ico" aria-hidden="true">📱</span><h3>Conteúdo</h3><p>Vídeo, post ou status sobre custo e preço do bolo de pote, com link para a página.</p></div>
+      <div class="step"><span class="n">2</span><span class="ico" aria-hidden="true">📄</span><h3>Página de vendas</h3><p>Mostra o produto principal e, ao lado, o Kit Completo como opção maior.</p><span class="tag t-principal">Oferta 1 · R$ 27</span><span class="tag t-combo">Oferta 11 · R$ 47</span></div>
+      <div class="step"><span class="n">3</span><span class="ico" aria-hidden="true">🛒</span><h3>Checkout</h3><p>Antes de pagar, aparecem 3 caixinhas de order bump.</p><span class="tag t-bump">Ofertas 2, 3 e 5</span></div>
+      <div class="step"><span class="n">4</span><span class="ico" aria-hidden="true">🎁</span><h3>Página de obrigado</h3><p>Uma oferta extra com um clique, só para quem já comprou.</p><span class="tag t-upsell">Oferta 6 · depois 7</span></div>
+      <div class="step"><span class="n">5</span><span class="ico" aria-hidden="true">🔑</span><h3>Área de membros</h3><p>Recebe os PDFs. Depois, pode receber as ofertas da reserva por e-mail.</p><span class="tag t-reserva">Ofertas 4, 8, 9, 10, 12</span></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">2 · Como fica na tela</div>
+      <h2>O checkout e o upsell, desenhados</h2>
+      <p>Clique nas caixinhas amarelas do checkout para ver o total mudar. É assim que o order bump funciona: um clique, sem novo pagamento.</p>
+    </div>
+    <div class="drawings">
+      <div class="device" aria-label="Desenho do checkout">
+        <div class="bar"><i></i><i></i><i></i><span>checkout · pagamento</span></div>
+        <div class="screen">
+          <div class="prod"><div><div class="eyebrow">Você está comprando</div><b>Bolo de Pote: Receita, Custo e Preço</b></div><span class="preco">R$ 27,00</span></div>
+          <label class="bumpbox"><input type="checkbox" data-price="9.90"><span><span class="t">Sim, quero o Cardápio de Uma Base</span><br><span class="s">3 a 5 sabores com uma só base de recheio.</span></span><span class="preco">+ R$ 9,90</span></label>
+          <label class="bumpbox"><input type="checkbox" data-price="7.90"><span><span class="t">Sim, quero o Guia de Tamanho, Pote e Preço</span><br><span class="s">Quanto cobrar no pote de 150, 250 e 350 ml.</span></span><span class="preco">+ R$ 7,90</span></label>
+          <label class="bumpbox"><input type="checkbox" data-price="14.90"><span><span class="t">Sim, quero a Planilha Calculadora</span><br><span class="s">Digite os ingredientes e veja custo e preço na hora.</span></span><span class="preco">+ R$ 14,90</span></label>
+          <div class="total"><span>Total</span><span class="v num" id="ckTotal">R$ 27,00</span></div>
+          <div class="btn-fake">Finalizar compra</div>
+          <p class="hint">Desenho ilustrativo. Os preços são hipóteses de teste.</p>
+        </div>
+      </div>
+
+      <div>
+        <div class="device" aria-label="Desenho da página de upsell">
+          <div class="bar"><i></i><i></i><i></i><span>obrigado · oferta especial</span></div>
+          <div class="screen upsell-screen">
+            <p class="espera">Espere! Seu pedido foi confirmado.</p>
+            <p>Antes de acessar, uma oferta só para quem acabou de comprar:</p>
+            <div class="card">
+              <b>Receitas Extras: 10 Sabores de Bolo de Pote</b>
+              <span>Receita e custo de cada sabor.</span>
+              <span class="por">R$ 19,90</span>
+            </div>
+            <div class="btn-fake">Sim, adicionar ao meu pedido</div>
+            <span class="btn-nao">Não, obrigado</span>
+          </div>
+        </div>
+        <div class="arrow-down">se disser não</div>
+        <div class="device" aria-label="Desenho do segundo upsell">
+          <div class="bar"><i></i><i></i><i></i><span>última oferta</span></div>
+          <div class="screen upsell-screen">
+            <div class="card">
+              <b>Encomendas para Festas e Lembrancinhas</b>
+              <span>Orçamento de 50, 100 ou mais potes.</span>
+              <span class="por">R$ 17,90</span>
+            </div>
+            <div class="btn-fake">Sim, quero</div>
+            <span class="btn-nao">Não, ir para meus arquivos</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">3 · Todas as ofertas</div>
+      <h2>As 12 ofertas, com a base da pesquisa</h2>
+      <p>A barrinha mostra a força da evidência: 3 partes é forte, 1 parte é fraca. Use os botões para filtrar.</p>
+    </div>
+    <div class="filters" role="group" aria-label="Filtrar ofertas">
+      <button type="button" data-f="all" aria-pressed="true">Todas</button>
+      <button type="button" data-f="principal" aria-pressed="false">Principal</button>
+      <button type="button" data-f="bump" aria-pressed="false">Order bump</button>
+      <button type="button" data-f="upsell" aria-pressed="false">Upsell</button>
+      <button type="button" data-f="combo" aria-pressed="false">Combo</button>
+      <button type="button" data-f="reserva" aria-pressed="false">Reserva</button>
+    </div>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">4 · Simulador</div>
+      <h2>Quanto entra a cada 100 compradores</h2>
+      <p>Mude os números à esquerda. Os percentuais que vêm preenchidos são <strong>exemplos para você brincar</strong>, não resultados medidos. Os números reais só aparecem depois de vender.</p>
+    </div>
+    <div class="sim">
+      <div>
+        <div class="row"><label for="sBuyers">Compradores do produto principal</label><input type="number" id="sBuyers" value="100" min="0"></div>
+        <div class="row"><label for="sB2">% que marcam o Cardápio de Uma Base (R$ 9,90)</label><input type="number" id="sB2" value="30" min="0" max="100"></div>
+        <div class="row"><label for="sB3">% que marcam o Guia de Tamanho (R$ 7,90)</label><input type="number" id="sB3" value="20" min="0" max="100"></div>
+        <div class="row"><label for="sB5">% que marcam a Planilha Calculadora (R$ 14,90)</label><input type="number" id="sB5" value="25" min="0" max="100"></div>
+        <div class="row"><label for="sU6">% que aceitam o upsell de Receitas Extras (R$ 19,90)</label><input type="number" id="sU6" value="15" min="0" max="100"></div>
+        <div class="row"><label for="sU7">% que aceitam o upsell de Festas (R$ 17,90)</label><input type="number" id="sU7" value="8" min="0" max="100"></div>
+        <p class="note">Taxas da plataforma de pagamento não estão descontadas. Confira as taxas da sua plataforma.</p>
+      </div>
+      <div class="res">
+        <div class="big"><div class="eyebrow">Faturamento bruto</div><div class="v num" id="rTotal">–</div></div>
+        <div class="line"><span>Ticket médio por comprador</span><b class="num" id="rTicket">–</b></div>
+        <div class="line"><span>Só com o produto principal</span><b class="num" id="rMain">–</b></div>
+        <div class="line"><span>A mais por causa dos bumps e upsells</span><b class="num" id="rExtra">–</b></div>
+        <div class="bars" id="rBars"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p><strong>De onde vêm os preços:</strong> ofertas concorrentes consultadas em 24/09/2026. O ebook de receitas da Delícias da Thata custa R$ 19,90; o curso da Leidy Cake, R$ 27 (ou R$ 10 só o ebook); o ebook Doces Gourmet, R$ 47; o Kit Festas, R$ 50; e o curso de geladinho com planilha de precificação, R$ 67.</p>
+    <p><strong>Cuidados:</strong> as receitas precisam ser testadas por uma confeiteira. Os materiais de validade e congelamento (ofertas 4 e 9) precisam de revisão de um profissional de alimentos. Nenhuma oferta deve prometer lucro ou renda.</p>
+  </footer>
+</main>
+
+<script>
+(function () {
+  "use strict";
+  var ROLE = {
+    principal: { label: "Produto principal", c: "var(--principal)", cls: "t-principal" },
+    bump: { label: "Order bump", c: "var(--bump)", cls: "t-bump" },
+    upsell: { label: "Upsell", c: "var(--upsell)", cls: "t-upsell" },
+    combo: { label: "Combo", c: "var(--combo)", cls: "t-combo" },
+    reserva: { label: "Reserva", c: "var(--reserva)", cls: "t-reserva" }
+  };
+  var OFFERS = [
+    { id: 1, r: "principal", n: "Bolo de Pote: Receita, Custo e Preço", h: "Aprenda a fazer bolo de pote e descubra quanto custa cada um e por quanto vender.", p: "R$ 27", ev: 3, base: "Nenhuma das 8 ofertas dos vídeos acima de 1 mi ensina custo e preço. Buscas reais: “quanto cobrar bolo de pote”, “bolo de pote custo e lucro”." },
+    { id: 2, r: "bump", n: "Cardápio de Uma Base", h: "Monte de 3 a 5 sabores de bolo de pote com uma só base de recheio.", p: "R$ 9,90", ev: 3, base: "Vídeos de 6,7 mi (Delícias da Thata) e 1,7 mi (Anelyse Martins) sobre vários sabores com uma base." },
+    { id: 3, r: "bump", n: "Guia de Tamanho, Pote e Preço", h: "Veja quanto cobrar no pote de 150, 250 e 350 ml.", p: "R$ 7,90", ev: 2, base: "Buscas “bolo de pote 200ml preço”, “250ml”, “350ml”. Vídeo de 130 mil sobre preço por tamanho." },
+    { id: 5, r: "bump", n: "Planilha Calculadora do Bolo de Pote", h: "Digite seus ingredientes e a planilha mostra o custo e o preço de cada pote.", p: "R$ 14,90", ev: 3, base: "O curso de geladinho de R$ 67 usa uma planilha de precificação como bônus. Busca “calcular custo bolo de pote”." },
+    { id: 6, r: "upsell", n: "Receitas Extras: 10 Sabores", h: "10 sabores de bolo de pote com a receita e o custo de cada um.", p: "R$ 19,90", ev: 3, base: "A única oferta direta ativa nos vídeos é um ebook de receitas a R$ 19,90. Buscas por prestígio, ninho com morango, maracujá.", warn: "Precisa de receitas testadas por confeiteira." },
+    { id: 7, r: "upsell", n: "Encomendas para Festas e Lembrancinhas", h: "Faça o orçamento de encomendas de 50, 100 ou mais bolos de pote.", p: "R$ 17,90", ev: 2, base: "Vídeos “quanto cobrei por 100 bolos no pote” (236 mil) e lembrancinha de casamento (225 mil)." },
+    { id: 11, r: "combo", n: "Kit Completo do Bolo de Pote", h: "Receita, custo, preço, sabores, tamanhos e etiqueta em um só kit.", p: "R$ 47", ev: 2, base: "Mesma faixa de preço de Doces Gourmet (R$ 47) e Kit Festas (R$ 50), divulgados em vídeo de 1,5 mi." },
+    { id: 4, r: "reserva", n: "Etiqueta e Validade", h: "Monte a etiqueta e controle a validade de cada lote de bolo de pote.", p: "R$ 7,90", ev: 1, base: "Muitas buscas sobre validade, mas vídeos com pouca audiência (até 81 mil).", warn: "Precisa de revisão de profissional de alimentos." },
+    { id: 8, r: "reserva", n: "Bolo de Pote no iFood", h: "Calcule se compensa vender seu bolo de pote no iFood depois das taxas.", p: "R$ 14,90", ev: 2, base: "Busca “compensa vender bolo de pote no ifood”. Vídeos de 138 mil e 115 mil sobre confeitaria no iFood." },
+    { id: 9, r: "reserva", n: "Plano para Sobras", h: "Saiba o que fazer com os bolos de pote que não venderam.", p: "R$ 9,90", ev: 2, base: "Vídeo “não consegui vender, como congelar?” (123 mil). Busca “pode congelar bolo de pote para vender”.", warn: "Precisa de revisão de profissional de alimentos." },
+    { id: 10, r: "reserva", n: "Roteiro de Venda na Rua e na Feira", h: "O que falar, onde oferecer e quantos potes levar para vender na rua.", p: "R$ 9,90", ev: 1, base: "Vídeos de 77 mil e 58 mil. Buscas “vender bolo de pote na rua”, “na feira”." },
+    { id: 12, r: "reserva", n: "Oficina: Minha Ficha de Custo", h: "Monte a ficha de custo do seu bolo de pote ao vivo, em grupo.", p: "R$ 97", ev: 1, base: "Hipótese da pesquisa inicial. Não há concorrente para comparar o preço." }
+  ];
+
+  function esc(s) { var d = document.createElement("div"); d.textContent = s; return d.innerHTML; }
+  var grid = document.getElementById("grid");
+  grid.innerHTML = OFFERS.map(function (o) {
+    var R = ROLE[o.r], dots = "";
+    for (var i = 1; i <= 3; i++) dots += '<i class="' + (i <= o.ev ? "on" : "") + '"></i>';
+    var lvl = ["", "fraca", "média", "forte"][o.ev];
+    return '<article class="card-o" data-r="' + o.r + '" style="--c:' + R.c + '">' +
+      '<div class="top"><span class="tag ' + R.cls + '">' + R.label + '</span><span class="id">Oferta ' + (o.id < 10 ? "0" : "") + o.id + '</span></div>' +
+      '<h3>' + esc(o.n) + '</h3>' +
+      '<p class="hl">“' + esc(o.h) + '”</p>' +
+      '<div class="price">' + o.p + '</div>' +
+      '<div class="meter"><span class="dots">' + dots + '</span>Evidência ' + lvl + '</div>' +
+      '<div class="ev"><b>Base na pesquisa</b>' + esc(o.base) + '</div>' +
+      (o.warn ? '<div class="warn">⚠ ' + esc(o.warn) + '</div>' : "") +
+      '</article>';
+  }).join("");
+
+  var btns = document.querySelectorAll(".filters button");
+  btns.forEach(function (b) {
+    b.addEventListener("click", function () {
+      var f = b.getAttribute("data-f");
+      btns.forEach(function (x) { x.setAttribute("aria-pressed", String(x === b)); });
+      grid.querySelectorAll(".card-o").forEach(function (c) {
+        c.hidden = !(f === "all" || c.getAttribute("data-r") === f);
+      });
+    });
+  });
+
+  function brl(v) { return v.toLocaleString("pt-BR", { style: "currency", currency: "BRL" }); }
+
+  var boxes = document.querySelectorAll(".bumpbox input");
+  function ck() {
+    var t = 27;
+    boxes.forEach(function (b) { if (b.checked) t += parseFloat(b.getAttribute("data-price")); });
+    document.getElementById("ckTotal").textContent = brl(t);
+  }
+  boxes.forEach(function (b) { b.addEventListener("change", ck); });
+
+  var S = [
+    { id: "sB2", n: "Cardápio", p: 9.90, c: "var(--bump)" },
+    { id: "sB3", n: "Tamanho", p: 7.90, c: "var(--bump)" },
+    { id: "sB5", n: "Planilha", p: 14.90, c: "var(--bump)" },
+    { id: "sU6", n: "Receitas Extras", p: 19.90, c: "var(--upsell)" },
+    { id: "sU7", n: "Festas", p: 17.90, c: "var(--upsell)" }
+  ];
+  function num(id) { var v = parseFloat(document.getElementById(id).value); return isFinite(v) && v > 0 ? v : 0; }
+  function sim() {
+    var buyers = num("sBuyers"), main = buyers * 27, parts = [{ n: "Principal", v: main, c: "var(--principal)" }], extra = 0;
+    S.forEach(function (s) { var v = buyers * Math.min(num(s.id), 100) / 100 * s.p; extra += v; parts.push({ n: s.n, v: v, c: s.c }); });
+    var total = main + extra;
+    document.getElementById("rTotal").textContent = brl(total);
+    document.getElementById("rTicket").textContent = buyers ? brl(total / buyers) : "–";
+    document.getElementById("rMain").textContent = brl(main);
+    document.getElementById("rExtra").textContent = brl(extra) + (main ? " (+" + Math.round(extra / main * 100) + "%)" : "");
+    var max = Math.max.apply(null, parts.map(function (p) { return p.v; })) || 1;
+    document.getElementById("rBars").innerHTML = parts.map(function (p) {
+      return '<div class="b"><span>' + p.n + '</span><div class="track"><div class="fill" style="width:' + (p.v / max * 100) + '%;background:' + p.c + '"></div></div><span class="num">' + brl(p.v) + '</span></div>';
+    }).join("");
+  }
+  document.querySelectorAll(".sim input").forEach(function (i) { i.addEventListener("input", sim); });
+  sim();
+})();
+</script>
+</body>
+</html>

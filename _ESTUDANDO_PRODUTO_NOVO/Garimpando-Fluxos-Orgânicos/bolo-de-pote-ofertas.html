@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="pt-BR">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Ofertas Bolo de Pote</title>
+<meta name="description" content="Dez ofertas de bolo de pote, cada uma embasada em buscas reais do Google, vídeos do YouTube e concorrentes na Hotmart.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --bg: #EEF2EF;
+    --surface: #FBFBF8;
+    --surface-2: #F3F6F3;
+    --ink: #14262B;
+    --ink-2: #3C5055;
+    --muted: #5E6F72;
+    --line: #D6DEDA;
+    --line-soft: #E5EBE8;
+    --teal: #0087A6;
+    --gold: #B27A0C;
+    --gold-soft: #F5E9CE;
+    --danger: #B3362B;
+    --danger-soft: #F6E1DE;
+    --focus: #0087A6;
+    --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+    --body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --bg: #0F1B20;
+      --surface: #15232A;
+      --surface-2: #1A2B32;
+      --ink: #E4ECEA;
+      --ink-2: #BFCDCB;
+      --muted: #93A5A8;
+      --line: #2A3E45;
+      --line-soft: #213339;
+      --teal: #1FA3B0;
+      --gold: #D59E2A;
+      --gold-soft: #3A2F16;
+      --danger: #F08276;
+      --danger-soft: #3B211F;
+      --focus: #4CC3CF;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #0F1B20;
+    --surface: #15232A;
+    --surface-2: #1A2B32;
+    --ink: #E4ECEA;
+    --ink-2: #BFCDCB;
+    --muted: #93A5A8;
+    --line: #2A3E45;
+    --line-soft: #213339;
+    --teal: #1FA3B0;
+    --gold: #D59E2A;
+    --gold-soft: #3A2F16;
+    --danger: #F08276;
+    --danger-soft: #3B211F;
+    --focus: #4CC3CF;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 15px;
+    line-height: 1.55;
+    padding: 28px 16px 56px;
+  }
+  .wrap { max-width: 920px; margin: 0 auto; display: grid; gap: 22px; }
+  h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; }
+  h1 { font-size: clamp(28px, 4.6vw, 42px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.05; }
+  .eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+  .lede { color: var(--ink-2); max-width: 64ch; margin: 10px 0 0; font-size: 16px; }
+  .note {
+    background: var(--gold-soft); border-radius: 8px; padding: 12px 16px;
+    font-size: 13.5px; color: var(--ink-2);
+  }
+  .note strong { color: var(--ink); }
+
+  nav.index { display: flex; flex-wrap: wrap; gap: 6px; }
+  nav.index a {
+    font: 500 12.5px/1 var(--body); color: var(--ink-2); text-decoration: none;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 7px 11px;
+  }
+  nav.index a:hover { border-color: var(--muted); color: var(--ink); }
+
+  .offer {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+    padding: 22px 24px; display: grid; gap: 14px; scroll-margin-top: 16px;
+  }
+  .offer-top { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: baseline; justify-content: space-between; }
+  .offer-top h2 { font-size: 20px; letter-spacing: -0.01em; }
+  .tag { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+  .price { font-family: var(--mono); font-size: 12px; color: var(--gold); }
+
+  .pain {
+    border-left: 3px solid var(--danger); background: var(--danger-soft);
+    border-radius: 0 8px 8px 0; padding: 10px 14px; font-style: italic; color: var(--ink);
+  }
+  .pain .lbl { font-style: normal; display: block; margin-bottom: 2px; }
+
+  .headline {
+    font-family: var(--display); font-weight: 700; font-size: clamp(21px, 3vw, 27px);
+    line-height: 1.2; letter-spacing: -0.015em; margin: 0; text-wrap: balance;
+  }
+  .lbl { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+
+  .variants { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+  .variants li, .pitch, .headline-row {
+    display: flex; gap: 10px; align-items: flex-start; justify-content: space-between;
+  }
+  .variants li { background: var(--surface-2); border-radius: 7px; padding: 8px 10px; font-weight: 500; }
+  .pitch { background: var(--surface-2); border-radius: 8px; padding: 12px 14px; color: var(--ink-2); }
+  .cta { font-weight: 600; color: var(--teal); }
+
+  button.copy {
+    flex: none; font: 500 11.5px/1 var(--body); color: var(--muted);
+    background: transparent; border: 1px solid var(--line); border-radius: 6px;
+    padding: 5px 8px; cursor: pointer;
+  }
+  button.copy:hover { color: var(--ink); border-color: var(--muted); }
+  button.copy.done { color: var(--teal); border-color: var(--teal); }
+  :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+  footer { color: var(--muted); font-size: 13px; display: grid; gap: 8px; }
+  footer a { color: var(--teal); }
+  @media (max-width: 560px) {
+    .offer { padding: 18px 16px; }
+    .variants li, .pitch, .headline-row { flex-direction: column; }
+  }
+
+  .pill { font: 600 11px/1 var(--body); padding: 5px 9px; border-radius: 999px; white-space: nowrap; }
+  .pill.f { background: #DDEFE3; color: #1F6B3E; }
+  .pill.m { background: var(--gold-soft); color: #7E5507; }
+  .pill.w { background: var(--line-soft); color: var(--ink-2); }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .pill.f { background: #193A28; color: #6BC08E; } :root:not([data-theme="light"]) .pill.m { color: #E6BD62; } }
+  :root[data-theme="dark"] .pill.f { background: #193A28; color: #6BC08E; }
+  :root[data-theme="dark"] .pill.m { color: #E6BD62; }
+  .num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+  .table-wrap { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line-soft); vertical-align: top; }
+  th { font: 500 10.5px/1.2 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+  tr:last-child td { border-bottom: none; }
+  td a { color: var(--ink); font-weight: 600; text-decoration: none; }
+  td a:hover { color: var(--teal); }
+  .sub { font-size: 12px; color: var(--muted); }
+  .pitch, .deliv, .limit, .read { display: block; margin: 0; }
+  .pitch .lbl, .deliv .lbl, .limit .lbl, .read .lbl, .evidence .lbl { display: block; margin-bottom: 4px; }
+  .deliv { color: var(--ink-2); }
+  .evidence { border: 1px dashed var(--line); border-radius: 10px; padding: 14px 16px; display: grid; gap: 14px; }
+  .queries { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+  .queries li { font: 400 12.5px/1.2 var(--mono); background: var(--surface-2); border: 1px solid var(--line-soft); border-radius: 6px; padding: 5px 8px; }
+  .videos { list-style: none; margin: 0; padding: 0; display: grid; gap: 7px; font-size: 13.5px; }
+  .videos li { display: grid; grid-template-columns: 64px 1fr; gap: 10px; align-items: baseline; }
+  .videos .views { color: var(--gold); font-weight: 500; text-align: right; font-size: 12.5px; }
+  .videos a { color: var(--ink); text-decoration-color: var(--line); }
+  .videos a:hover { color: var(--teal); }
+  .ch { color: var(--muted); }
+  .read { font-size: 14px; color: var(--ink-2); }
+  .limit { font-size: 14px; color: var(--ink-2); border-top: 1px solid var(--line-soft); padding-top: 12px; }
+  .method { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px 22px; display: grid; gap: 8px; font-size: 14px; color: var(--ink-2); }
+  .method h2 { font-size: 18px; color: var(--ink); }
+  .method p { margin: 0; }
+  .method a { color: var(--teal); }
+</style>
+<body>
+<main class="wrap">
+  <header>
+    <div class="eyebrow">Pesquisa de demanda · bolo de pote · 24/09/2026</div>
+    <h1>10 ofertas de bolo de pote</h1>
+    <p class="lede">Cada oferta nasce de uma dúvida que as pessoas já pesquisam. Ao lado de cada uma estão as buscas reais do Google, os vídeos do YouTube sobre o mesmo problema e o que já existe à venda.</p>
+  </header>
+
+  <div class="note">
+    <strong>Como ler as evidências.</strong> As sugestões do Google mostram que a busca existe, mas não quantas vezes ela é feita. As visualizações do YouTube são acumuladas desde a publicação. Elas mostram atenção ao assunto, não vendas. Nenhuma oferta tem compra confirmada, e os preços ficam de fora porque não foram pesquisados.
+  </div>
+
+  <section class="table-wrap" aria-label="Resumo">
+    <table>
+      <thead><tr><th>#</th><th>Oferta</th><th>Maior vídeo</th><th>Buscas</th><th>Evidência</th></tr></thead>
+      <tbody>
+<tr><td class="num">01</td><td><a href="#o1">Cardápio de Uma Base</a><div class="sub">Sabores</div></td><td class="num">6,7 mi</td><td class="num">5</td><td><span class="pill f">Forte</span></td></tr>
+<tr><td class="num">02</td><td><a href="#o2">Roteiro do Primeiro Lote</a><div class="sub">Iniciantes</div></td><td class="num">618 mil</td><td class="num">5</td><td><span class="pill f">Forte</span></td></tr>
+<tr><td class="num">03</td><td><a href="#o3">Planejador de Lote</a><div class="sub">Rendimento</div></td><td class="num">500 mil</td><td class="num">6</td><td><span class="pill f">Forte</span></td></tr>
+<tr><td class="num">04</td><td><a href="#o4">Calculadora de Preço do Bolo de Pote</a><div class="sub">Precificação</div></td><td class="num">501 mil</td><td class="num">8</td><td><span class="pill m">Média</span></td></tr>
+<tr><td class="num">05</td><td><a href="#o5">Encomendas para Festas</a><div class="sub">Eventos</div></td><td class="num">236 mil</td><td class="num">4</td><td><span class="pill m">Média</span></td></tr>
+<tr><td class="num">06</td><td><a href="#o6">Guia de Tamanho, Pote e Preço</a><div class="sub">Embalagem</div></td><td class="num">130 mil</td><td class="num">7</td><td><span class="pill m">Média</span></td></tr>
+<tr><td class="num">07</td><td><a href="#o7">Plano para Sobras</a><div class="sub">Congelamento</div></td><td class="num">123 mil</td><td class="num">6</td><td><span class="pill m">Média</span></td></tr>
+<tr><td class="num">08</td><td><a href="#o8">Bolo de Pote no iFood</a><div class="sub">Delivery</div></td><td class="num">138 mil</td><td class="num">5</td><td><span class="pill m">Média</span></td></tr>
+<tr><td class="num">09</td><td><a href="#o9">Etiqueta e Validade</a><div class="sub">Conservação</div></td><td class="num">81 mil</td><td class="num">6</td><td><span class="pill w">Fraca a média</span></td></tr>
+<tr><td class="num">10</td><td><a href="#o10">Roteiro de Venda na Rua</a><div class="sub">Vendas</div></td><td class="num">77 mil</td><td class="num">5</td><td><span class="pill w">Fraca a média</span></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <article class="offer" id="o1">
+    <div class="offer-top"><div><div class="tag">Oferta 01 · Sabores</div><h2>Cardápio de Uma Base</h2></div><span class="pill f">Evidência forte</span></div>
+    <p class="pain"><span class="lbl">Dor urgente</span>“Não sei quais sabores fazer e perco tempo preparando recheio demais.”</p>
+    <p class="headline">Monte um cardápio de 3 a 5 sabores de bolo de pote usando uma só base de recheio.</p>
+    <ul class="variants"><li>Escolha os sabores do seu cardápio e prepare uma base só para todos.</li><li>Uma base de recheio, vários sabores e o custo de cada um calculado.</li></ul>
+    <p class="pitch"><span class="lbl">Frase de oferta</span>O Cardápio de Uma Base ajuda você a escolher os sabores, preparar uma única base e calcular o custo de cada variação antes de vender.</p>
+    <p class="deliv"><span class="lbl">Entrega</span>Guia de escolha de sabores, planilha de custo por sabor e modelo de cardápio.</p>
+    <div class="evidence">
+      <div><span class="lbl">Buscas reais no Google (sugestões)</span><ul class="queries"><li>bolo de pote sabores mais vendidos</li><li>bolo de pote recheios mais vendidos</li><li>cardapio bolo de pote sabores</li><li>bolo de pote 3 sabores</li><li>bolo de pote massa branca sabores</li></ul></div>
+      <div><span class="lbl">Vídeos no YouTube · visualizações</span><ul class="videos"><li><span class="views num">6,7 mi</span><span><a href="https://www.youtube.com/watch?v=QSmB7mLgyY8" target="_blank" rel="noopener">3 SABORES DE BOLO NO POTE COM APENAS UMA BASE DE RECHEIO | 3 SABORES QUE VENDE MUITO | FAÇA E VENDA</a> <span class="ch">· Delícias da Thata</span></span></li><li><span class="views num">1,7 mi</span><span><a href="https://www.youtube.com/watch?v=dx_V_f06ei4" target="_blank" rel="noopener">BOLO DE POTE PERFEITO: 1 BASE, 7 SABORES! | O segredo das grandes confeitarias!</a> <span class="ch">· Anelyse Martins</span></span></li><li><span class="views num">915 mil</span><span><a href="https://www.youtube.com/watch?v=BCBIJftyE5o" target="_blank" rel="noopener">Quatro Sabores de BOLO NO POTE para VENDER MUITO - Lucro Garantido - Faça e Venda</a> <span class="ch">· Delícias da Thata</span></span></li><li><span class="views num">453 mil</span><span><a href="https://www.youtube.com/watch?v=DJdCGq4GtQU" target="_blank" rel="noopener">BOLO NO POTE DE CHOCOLATE CREMOSO E MOLHADINHO: FAÇA E VENDA | 2 BASES, 4 SABORES MAIS PEDIDOS!</a> <span class="ch">· Anelyse Martins</span></span></li></ul></div>
+      <p class="read"><span class="lbl">O que isso mostra</span>Na Hotmart, o “Curso Faça e Venda – Bolo de Pote” (nota 4,1, 15 avaliações) já vende “mais de 15 sabores” a partir de uma receita base.</p>
+    </div>
+    <p class="limit"><span class="lbl">Limite</span>É o tema com mais audiência, mas também o mais atendido por receitas gratuitas e por cursos pagos. A diferença precisa ser o custo de cada sabor, não mais receitas. Não repetir promessas de “lucro garantido” que aparecem nos títulos.</p>
+  </article>
+  <article class="offer" id="o2">
+    <div class="offer-top"><div><div class="tag">Oferta 02 · Iniciantes</div><h2>Roteiro do Primeiro Lote</h2></div><span class="pill f">Evidência forte</span></div>
+    <p class="pain"><span class="lbl">Dor urgente</span>“Quero começar a vender bolo de pote, mas não sei por onde começar e tenho medo de errar.”</p>
+    <p class="headline">Um roteiro passo a passo para produzir e vender seu primeiro lote de bolo de pote.</p>
+    <ul class="variants"><li>Comece a vender bolo de pote sabendo o que decidir antes de ir para a cozinha.</li><li>Sabores, tamanho, quantidade, custo e preço: tudo o que definir antes do primeiro lote.</li></ul>
+    <p class="pitch"><span class="lbl">Frase de oferta</span>O Roteiro do Primeiro Lote mostra, em ordem, o que decidir antes de produzir: sabores, tamanho do pote, quantidade, custo, preço e onde vender.</p>
+    <p class="deliv"><span class="lbl">Entrega</span>Checklist em etapas, planilha do primeiro lote e lista dos erros mais comuns de quem está começando.</p>
+    <div class="evidence">
+      <div><span class="lbl">Buscas reais no Google (sugestões)</span><ul class="queries"><li>bolo de pote para vender iniciantes</li><li>bolo no pote para vender iniciante</li><li>bolo de pote como começar a vender</li><li>como começar vender bolo de pote</li><li>bolo de pote como fazer para vender</li></ul></div>
+      <div><span class="lbl">Vídeos no YouTube · visualizações</span><ul class="videos"><li><span class="views num">618 mil</span><span><a href="https://www.youtube.com/watch?v=5p6Vzhrwdes" target="_blank" rel="noopener">APRENDA Á FAZER BOLO NO POTE DO ZERO! FIZ 28 BOLOS NO POTE COM 2 RECHEIOS E 2 MASSAS!</a> <span class="ch">· Wytórya de Sousa</span></span></li><li><span class="views num">484 mil</span><span><a href="https://www.youtube.com/watch?v=I8LVDICyNfs" target="_blank" rel="noopener">Bolo de Pote.. NÃO cometa esses 3 ERROS ao VENDER Bolo de Pote</a> <span class="ch">· Canal da Júlia</span></span></li><li><span class="views num">438 mil</span><span><a href="https://www.youtube.com/watch?v=fz-uMBSBTL8" target="_blank" rel="noopener">5 RECEITAS DE BOLO NO POTE COM APENAS UMA BASE (pra iniciantes)</a> <span class="ch">· Empreendedora do Guetto</span></span></li><li><span class="views num">72 mil</span><span><a href="https://www.youtube.com/watch?v=j7UHJHgcZIo" target="_blank" rel="noopener">Bolo de Pote - NÃO Cometa Esses 6 ERROS ao Vender BOLO DE POTE!</a> <span class="ch">· Daniela Pereira</span></span></li></ul></div>
+      <p class="read"><span class="lbl">O que isso mostra</span>Na Hotmart, o “Curso Bolos no Pote 3.0” (Marrara Bortoloti, nota 4,8, 87 avaliações) cobre “do básico ao avançado… massas, recheios, montagem, decoração e a venda”.</p>
+    </div>
+    <p class="limit"><span class="lbl">Limite</span>É o público principal dos cursos completos que já existem. Um roteiro curto só se diferencia se for mais barato, mais rápido e aplicado ao lote real do comprador.</p>
+  </article>
+  <article class="offer" id="o3">
+    <div class="offer-top"><div><div class="tag">Oferta 03 · Rendimento</div><h2>Planejador de Lote</h2></div><span class="pill f">Evidência forte</span></div>
+    <p class="pain"><span class="lbl">Dor urgente</span>“Não sei quantos potes a minha receita rende nem quanto sai cada um.”</p>
+    <p class="headline">Saiba quantos potes sua receita rende e quanto custa cada um antes de produzir.</p>
+    <ul class="variants"><li>Calcule quantos bolos de pote sua massa e seu recheio rendem em cada tamanho de pote.</li><li>Descubra o custo de massa e recheio por pote antes de comprar os ingredientes.</li></ul>
+    <p class="pitch"><span class="lbl">Frase de oferta</span>O Planejador de Lote calcula, a partir da sua própria receita, quantos potes de cada tamanho você vai produzir e quanto custa a massa e o recheio de cada um.</p>
+    <p class="deliv"><span class="lbl">Entrega</span>Planilha de rendimento por tamanho de pote, teste de rendimento guiado e custo por pote.</p>
+    <div class="evidence">
+      <div><span class="lbl">Buscas reais no Google (sugestões)</span><ul class="queries"><li>bolo de pote quanto rende</li><li>quantos bolo de pote rende uma massa pronta</li><li>como fazer bolo de pote render</li><li>massa para bolo de pote que rende</li><li>recheio para bolo de pote que rende muito</li><li>bolo de pote quanto gasta para fazer</li></ul></div>
+      <div><span class="lbl">Vídeos no YouTube · visualizações</span><ul class="videos"><li><span class="views num">500 mil</span><span><a href="https://www.youtube.com/watch?v=VQt-CGscO6U" target="_blank" rel="noopener">RENDE 35 BOLOS NO POTE ESSA MASSA DE CHOCOLATE DELICIOSA</a> <span class="ch">· Doce, Sal e Etc – Lori Fonseca</span></span></li><li><span class="views num">481 mil</span><span><a href="https://www.youtube.com/watch?v=M43z1INSr1E" target="_blank" rel="noopener">MASSA PARA BOLO NO POTE CUSTA 8,50 E RENDE 30 POTES DE 250ML</a> <span class="ch">· Doce, Sal e Etc – Lori Fonseca</span></span></li><li><span class="views num">151 mil</span><span><a href="https://www.youtube.com/watch?v=GjBTs3x0x-4" target="_blank" rel="noopener">Com essa massa vc faz 100 Bolos no pote com muita economia</a> <span class="ch">· Canal Babi</span></span></li><li><span class="views num">90 mil</span><span><a href="https://www.youtube.com/watch?v=QWLkv_Wq5qY" target="_blank" rel="noopener">BOLO NO POTE DE PRESTÍGIO COM ALTO RENDIMENTO E CUSTO ABAIXO DE R$3,00</a> <span class="ch">· Bru Na Cozinha</span></span></li></ul></div>
+      <p class="read"><span class="lbl">O que isso mostra</span>Os títulos com mais visualizações trazem o número de potes e o custo no próprio título (“rende 35”, “custa 8,50 e rende 30”). O público quer ver números.</p>
+    </div>
+    <p class="limit"><span class="lbl">Limite</span>Os vídeos entregam uma receita pronta de graça. A oferta só tem valor se calcular com a receita, os preços e o pote do comprador.</p>
+  </article>
+  <article class="offer" id="o4">
+    <div class="offer-top"><div><div class="tag">Oferta 04 · Precificação</div><h2>Calculadora de Preço do Bolo de Pote</h2></div><span class="pill m">Evidência média</span></div>
+    <p class="pain"><span class="lbl">Dor urgente</span>“Não sei quanto cobrar e tenho medo de estar tendo prejuízo.”</p>
+    <p class="headline">Descubra quanto cobrar no seu bolo de pote com base no que ele custa para você.</p>
+    <ul class="variants"><li>Calcule o custo de cada bolo de pote e o preço que cobre ingredientes, embalagem e seu trabalho.</li><li>Pare de copiar o preço dos outros: calcule o preço do seu bolo de pote com os seus custos.</li></ul>
+    <p class="pitch"><span class="lbl">Frase de oferta</span>Você informa ingredientes, embalagem e rendimento, e a calculadora mostra o custo de cada pote e o preço para cobrir os custos e o seu trabalho.</p>
+    <p class="deliv"><span class="lbl">Entrega</span>Calculadora de custo e preço, explicação de margem e roteiro para atualizar o preço quando os ingredientes sobem.</p>
+    <div class="evidence">
+      <div><span class="lbl">Buscas reais no Google (sugestões)</span><ul class="queries"><li>quanto cobrar bolo de pote</li><li>bolo de pote quanto vender</li><li>bolo de pote preço para venda</li><li>bolo de pote custo e lucro</li><li>calcular custo bolo de pote</li><li>margem de lucro bolo de pote</li><li>como calcular lucro bolo de pote</li><li>vender bolo de pote da lucro</li></ul></div>
+      <div><span class="lbl">Vídeos no YouTube · visualizações</span><ul class="videos"><li><span class="views num">501 mil</span><span><a href="https://www.youtube.com/watch?v=ta47jVJaH9w" target="_blank" rel="noopener">MINI CURSO DE BOLO NO POTE – O MELHOR FAÇA E VENDA – COM TODO PASSO A PASSO E PRECIFICAÇÃO</a> <span class="ch">· Bruna e você na confeitaria</span></span></li><li><span class="views num">123 mil</span><span><a href="https://www.youtube.com/watch?v=lNNgmqhu0Mg" target="_blank" rel="noopener">COMO PRECIFICAR MEU BOLO NO POTE? | AULA COMPLETA SOBRE CUSTO DE CADA BOLO NO POTE | QUANTO COBRAR?</a> <span class="ch">· Doceria Garcez</span></span></li><li><span class="views num">60 mil</span><span><a href="https://www.youtube.com/watch?v=IRL7bhvGPH4" target="_blank" rel="noopener">Por quanto vender bolo no pote – precificação passo a passo</a> <span class="ch">· Cleides Boller</span></span></li><li><span class="views num">56 mil</span><span><a href="https://www.youtube.com/watch?v=LxCq9cHKDn0" target="_blank" rel="noopener">Como Escolher o Preço Ideal do Bolo de Pote?</a> <span class="ch">· Canal da Júlia</span></span></li></ul></div>
+      <p class="read"><span class="lbl">O que isso mostra</span>A página do curso de Marrara Bortoloti na Hotmart lista massas, recheios, montagem, decoração e venda, mas não mostra um módulo de precificação.</p>
+    </div>
+    <p class="limit"><span class="lbl">Limite</span>Os vídeos só de preço têm menos audiência (até 123 mil) do que os de receita. O preço final também depende da concorrência local, que não foi pesquisada.</p>
+  </article>
+  <article class="offer" id="o5">
+    <div class="offer-top"><div><div class="tag">Oferta 05 · Eventos</div><h2>Encomendas para Festas</h2></div><span class="pill m">Evidência média</span></div>
+    <p class="pain"><span class="lbl">Dor urgente</span>“Me pediram 100 bolos de pote para uma festa e não sei quanto cobrar.”</p>
+    <p class="headline">Faça o orçamento de encomendas de 50, 100 ou mais bolos de pote para festas.</p>
+    <ul class="variants"><li>Calcule ingredientes, potes e preço de uma encomenda grande de bolo de pote.</li><li>Bolo de pote como lembrancinha: monte o orçamento de casamentos e aniversários.</li></ul>
+    <p class="pitch"><span class="lbl">Frase de oferta</span>A planilha calcula ingredientes, potes, tempo de produção e o preço total de uma encomenda grande, para você responder o cliente com segurança.</p>
+    <p class="deliv"><span class="lbl">Entrega</span>Planilha de orçamento por quantidade, modelo de proposta ao cliente e cronograma de produção.</p>
+    <div class="evidence">
+      <div><span class="lbl">Buscas reais no Google (sugestões)</span><ul class="queries"><li>bolo de pote como lembrancinha</li><li>bolo de pote como lembrancinha de casamento</li><li>bolo de pote como lembrancinha de aniversário</li><li>bolo no pote embalagem personalizada</li></ul></div>
+      <div><span class="lbl">Vídeos no YouTube · visualizações</span><ul class="videos"><li><span class="views num">236 mil</span><span><a href="https://www.youtube.com/watch?v=Af3yFFvG4g0" target="_blank" rel="noopener">QUANTO COBREI para produzir 100 bolos no pote? Faça e venda!</a> <span class="ch">· Se Vira nos 30</span></span></li><li><span class="views num">225 mil</span><span><a href="https://www.youtube.com/watch?v=MOpg1ZDLiIY" target="_blank" rel="noopener">MOSTREI TUDO! Minha produção de 115 mini bolinhos para um casamento! Lembrancinha de casamento</a> <span class="ch">· Ju Estivaneli</span></span></li></ul></div>
+      <p class="read"><span class="lbl">O que isso mostra</span>O vídeo sobre quanto cobrar por 100 potes tem quase o dobro das visualizações do vídeo mais visto só de precificação.</p>
+    </div>
+    <p class="limit"><span class="lbl">Limite</span>Há só dois vídeos fortes neste ângulo. Encomendas grandes são menos frequentes que a venda diária, e isso pode limitar a recompra.</p>
+  </article>
+  <article class="offer" id="o6">
+    <div class="offer-top"><div><div class="tag">Oferta 06 · Embalagem</div><h2>Guia de Tamanho, Pote e Preço</h2></div><span class="pill m">Evidência média</span></div>
+    <p class="pain"><span class="lbl">Dor urgente</span>“Não sei se vendo pote de 150, 250 ou 350 ml nem quanto cobrar em cada um.”</p>
+    <p class="headline">Escolha o tamanho do pote e calcule o preço do bolo de pote em cada tamanho.</p>
+    <ul class="variants"><li>Pote de 150, 250 ou 350 ml? Veja quanto vai em cada um e quanto cobrar.</li><li>Compare tamanhos e embalagens de bolo de pote antes de comprar os potes.</li></ul>
+    <p class="pitch"><span class="lbl">Frase de oferta</span>O guia compara os tamanhos mais usados, mostra quanto de massa e recheio vai em cada pote e calcula o custo e o preço de cada tamanho.</p>
+    <p class="deliv"><span class="lbl">Entrega</span>Tabela de porções por ml, comparativo de embalagens e calculadora de preço por tamanho.</p>
+    <div class="evidence">
+      <div><span class="lbl">Buscas reais no Google (sugestões)</span><ul class="queries"><li>bolo de pote quantos ml</li><li>bolo no pote para vender 250ml</li><li>quanto cobrar no bolo de pote de 250ml</li><li>bolo de pote 140ml preço</li><li>bolo de pote 200ml preço</li><li>bolo de pote 350ml preço</li><li>bolo de pote qual embalagem usar</li></ul></div>
+      <div><span class="lbl">Vídeos no YouTube · visualizações</span><ul class="videos"><li><span class="views num">130 mil</span><span><a href="https://www.youtube.com/watch?v=TUPjRpvek80" target="_blank" rel="noopener">Por Quanto Vender Bolo de Pote de 200ml 300ml e 500ml? Qual o tamanho ideal?</a> <span class="ch">· Canal da Júlia</span></span></li><li><span class="views num">107 mil</span><span><a href="https://www.youtube.com/watch?v=vtUuC2fCqFY" target="_blank" rel="noopener">Dicas Embalagem para Bolo de Pote</a> <span class="ch">· Teka Cakes – Confeitaria Em Casa</span></span></li><li><span class="views num">26 mil</span><span><a href="https://www.youtube.com/watch?v=F9VsE5eoAg4" target="_blank" rel="noopener">Embalagem para bolo de pote – As mais utilizadas (descartáveis, de vidro e acrílicas)</a> <span class="ch">· Doces e Salgados Lucrativos</span></span></li><li><span class="views num">23 mil</span><span><a href="https://www.youtube.com/watch?v=VsFXv1et7Hk" target="_blank" rel="noopener">Qual o valor do bolo de pote de 250ml? Como Montar o Bolo no Pote e Quanto Cobrar?</a> <span class="ch">· Camila Santos</span></span></li></ul></div>
+      <p class="read"><span class="lbl">O que isso mostra</span>As sugestões do Google trazem o preço por tamanho (140, 200, 250, 350 ml). É um sinal de que a pessoa pensa em preço por pote, não por receita.</p>
+    </div>
+    <p class="limit"><span class="lbl">Limite</span>Poderia ser um módulo da Calculadora de Preço em vez de um produto separado. Testar juntos antes de dividir.</p>
+  </article>
+  <article class="offer" id="o7">
+    <div class="offer-top"><div><div class="tag">Oferta 07 · Congelamento</div><h2>Plano para Sobras</h2></div><span class="pill m">Evidência média</span></div>
+    <p class="pain"><span class="lbl">Dor urgente</span>“Fiz bolo de pote demais, não vendi tudo e não sei se posso congelar.”</p>
+    <p class="headline">Saiba o que fazer com os bolos de pote que não venderam antes de perder o lote.</p>
+    <ul class="variants"><li>Posso congelar bolo de pote para vender? Veja o que pode, o que não pode e como etiquetar.</li><li>Produza a quantidade certa e perca menos bolo de pote no fim da semana.</li></ul>
+    <p class="pitch"><span class="lbl">Frase de oferta</span>O guia reúne orientações sobre o que pode ou não ser congelado, como planejar a produção para sobrar menos e como etiquetar o que foi congelado.</p>
+    <p class="deliv"><span class="lbl">Entrega</span>Guia de congelamento por tipo de recheio, planilha de produção por demanda e modelo de etiqueta.</p>
+    <div class="evidence">
+      <div><span class="lbl">Buscas reais no Google (sugestões)</span><ul class="queries"><li>bolo de pote pode congelar</li><li>pode congelar bolo de pote pronto</li><li>como congelar bolo de pote para vender</li><li>pode congelar bolo de pote para vender</li><li>posso congelar bolo de pote com chantilly</li><li>pode congelar bolo de pote com morango</li></ul></div>
+      <div><span class="lbl">Vídeos no YouTube · visualizações</span><ul class="videos"><li><span class="views num">123 mil</span><span><a href="https://www.youtube.com/watch?v=HlZv9wYNhnM" target="_blank" rel="noopener">FIZ BOLOS DE POTE, PORÉM NÃO CONSEGUI VENDER, COMO CONGELAR?</a> <span class="ch">· Canal Babi</span></span></li><li><span class="views num">50 mil</span><span><a href="https://www.youtube.com/watch?v=oTxMgbNsI4Y" target="_blank" rel="noopener">Posso congelar bolos no pote? O céu é o limite</a> <span class="ch">· Canal Babi</span></span></li><li><span class="views num">31 mil</span><span><a href="https://www.youtube.com/watch?v=dLl8bcmFYoM" target="_blank" rel="noopener">POSSO CONGELAR BOLO DE POTE?</a> <span class="ch">· Bolos para Vender</span></span></li><li><span class="views num">13 mil</span><span><a href="https://www.youtube.com/watch?v=qRF9xAHKnn4" target="_blank" rel="noopener">O segredo do “congelamento inteligente” que faz seus bolos no pote ficarem ainda mais saborosos!</a> <span class="ch">· Ateliê Dani Dias</span></span></li></ul></div>
+      <p class="read"><span class="lbl">O que isso mostra</span>O vídeo mais visto deste tema já traz a dor urgente no título: “não consegui vender, como congelar?”.</p>
+    </div>
+    <p class="limit"><span class="lbl">Limite</span>Orientação de congelamento é assunto de segurança de alimentos. O conteúdo técnico precisa ser revisado por nutricionista ou profissional de alimentos e seguir as regras sanitárias.</p>
+  </article>
+  <article class="offer" id="o8">
+    <div class="offer-top"><div><div class="tag">Oferta 08 · Delivery</div><h2>Bolo de Pote no iFood</h2></div><span class="pill m">Evidência média</span></div>
+    <p class="pain"><span class="lbl">Dor urgente</span>“Quero vender no iFood, mas não sei se compensa depois das taxas.”</p>
+    <p class="headline">Calcule se compensa vender seu bolo de pote no iFood depois das taxas.</p>
+    <ul class="variants"><li>Veja quanto sobra de cada bolo de pote vendido no iFood, com taxa e embalagem de entrega.</li><li>Compare o que sobra vendendo pelo iFood e vendendo direto para o cliente.</li></ul>
+    <p class="pitch"><span class="lbl">Frase de oferta</span>A calculadora mostra quanto sobra de cada pote vendido no iFood, com taxa, embalagem de entrega e desconto, e compara com a venda direta.</p>
+    <p class="deliv"><span class="lbl">Entrega</span>Calculadora de preço para aplicativo, checklist de cadastro do cardápio e comparativo com a venda direta.</p>
+    <div class="evidence">
+      <div><span class="lbl">Buscas reais no Google (sugestões)</span><ul class="queries"><li>vender bolo de pote no ifood</li><li>bolo de pote vende bem no ifood</li><li>compensa vender bolo de pote no ifood</li><li>valor do bolo de pote no ifood</li><li>como vender bolo de pote pelo ifood</li></ul></div>
+      <div><span class="lbl">Vídeos no YouTube · visualizações</span><ul class="videos"><li><span class="views num">138 mil</span><span><a href="https://www.youtube.com/watch?v=OnK-irhqDmQ" target="_blank" rel="noopener">3 MESES NO IFOOD: Tudo o que eu fiz desde a abertura da loja para ganhar dinheiro</a> <span class="ch">· Mayris Marcarini</span></span></li><li><span class="views num">115 mil</span><span><a href="https://www.youtube.com/watch?v=WMMO2_gE33Y" target="_blank" rel="noopener">Do Básico ao Profissional: Confeitaria no iFood – Parte 1</a> <span class="ch">· Laíse Patisserie</span></span></li><li><span class="views num">19 mil</span><span><a href="https://www.youtube.com/watch?v=lYITYVfNm8g" target="_blank" rel="noopener">Como Vender Bolo de Pote Pelo IFOOD? Tenha Sucesso com Seus Bolos de Pote!</a> <span class="ch">· Daniela Pereira</span></span></li><li><span class="views num">4 mil</span><span><a href="https://www.youtube.com/watch?v=GDZqFvCBqwI" target="_blank" rel="noopener">DELIVERY EM CASA – IFOOD – NEGÓCIO – POUCAS VENDAS</a> <span class="ch">· Casal Doce Negócio</span></span></li></ul></div>
+      <p class="read"><span class="lbl">O que isso mostra</span>A sugestão “compensa vender bolo de pote no ifood” mostra a dúvida sobre o que sobra depois das taxas.</p>
+    </div>
+    <p class="limit"><span class="lbl">Limite</span>Os dois vídeos mais vistos tratam de delivery e confeitaria em geral, não só de bolo de pote. As taxas do iFood mudam e precisam ser conferidas na época do teste.</p>
+  </article>
+  <article class="offer" id="o9">
+    <div class="offer-top"><div><div class="tag">Oferta 09 · Conservação</div><h2>Etiqueta e Validade</h2></div><span class="pill w">Evidência fraca a média</span></div>
+    <p class="pain"><span class="lbl">Dor urgente</span>“Não sei quantos dias meu bolo de pote dura e o que colocar na etiqueta.”</p>
+    <p class="headline">Organize a validade, a conservação e a etiqueta de cada sabor do seu bolo de pote.</p>
+    <ul class="variants"><li>Monte a etiqueta do seu bolo de pote com data de produção e validade.</li><li>Saiba como guardar cada sabor e quando tirar os potes antigos da venda.</li></ul>
+    <p class="pitch"><span class="lbl">Frase de oferta</span>Um guia com modelo de etiqueta, orientações de conservação por tipo de recheio e um controle para retirar os potes antigos da venda.</p>
+    <p class="deliv"><span class="lbl">Entrega</span>Modelo de etiqueta, tabela de conservação por tipo de recheio revisada por profissional e controle de lotes.</p>
+    <div class="evidence">
+      <div><span class="lbl">Buscas reais no Google (sugestões)</span><ul class="queries"><li>bolo de pote validade na geladeira</li><li>bolo de pote tem validade de quantos dias</li><li>bolo de pote quanto tempo dura fora da geladeira</li><li>bolo de pote fica na geladeira ou fora</li><li>bolo de pote estraga na geladeira</li><li>validade bolo de pote com frutas</li></ul></div>
+      <div><span class="lbl">Vídeos no YouTube · visualizações</span><ul class="videos"><li><span class="views num">81 mil</span><span><a href="https://www.youtube.com/watch?v=vPTGzBLYe0U" target="_blank" rel="noopener">QUAL A VALIDADE DO BOLO NO POTE?</a> <span class="ch">· Bolos para Vender</span></span></li><li><span class="views num">41 mil</span><span><a href="https://www.youtube.com/watch?v=qfGl3De97f0" target="_blank" rel="noopener">Qual a Validade CERTA do Bolo no Pote.</a> <span class="ch">· Canal da Júlia</span></span></li><li><span class="views num">27 mil</span><span><a href="https://www.youtube.com/watch?v=M3eFrHsscUQ" target="_blank" rel="noopener">A Forma CERTA de Conservar/Armazenar Bolo de Pote.</a> <span class="ch">· Canal da Júlia</span></span></li><li><span class="views num">11 mil</span><span><a href="https://www.youtube.com/watch?v=LxrBKp0poWY" target="_blank" rel="noopener">Qual a validade do bolo de pote? O que fazer se não conseguir vender os bolos no prazo de validade?</a> <span class="ch">· Camila Santos</span></span></li></ul></div>
+      <p class="read"><span class="lbl">O que isso mostra</span>O Google sugere muitas variações sobre validade, e os blogs dão prazos diferentes (de 1 dia com fruta fresca até 3 a 5 dias). Há confusão sobre o assunto.</p>
+    </div>
+    <p class="limit"><span class="lbl">Limite</span>Os vídeos têm pouca audiência. A validade depende da receita e das boas práticas (RDC Anvisa 216/2004) e não pode ser inventada. Talvez funcione melhor como bônus do que como produto.</p>
+  </article>
+  <article class="offer" id="o10">
+    <div class="offer-top"><div><div class="tag">Oferta 10 · Vendas</div><h2>Roteiro de Venda na Rua</h2></div><span class="pill w">Evidência fraca a média</span></div>
+    <p class="pain"><span class="lbl">Dor urgente</span>“Tenho vergonha de oferecer bolo de pote na rua e não sei como abordar as pessoas.”</p>
+    <p class="headline">Aprenda a abordar clientes e vender bolo de pote na rua e em feiras.</p>
+    <ul class="variants"><li>O que falar para oferecer bolo de pote na rua sem ficar sem graça.</li><li>Onde oferecer, quantos potes levar e o que falar para vender bolo de pote na rua.</li></ul>
+    <p class="pitch"><span class="lbl">Frase de oferta</span>Um roteiro com falas de abordagem, pontos de venda, quantidade de potes para levar e registro do que vendeu em cada lugar.</p>
+    <p class="deliv"><span class="lbl">Entrega</span>Roteiro de abordagem, planilha de pontos de venda e checklist do dia de venda.</p>
+    <div class="evidence">
+      <div><span class="lbl">Buscas reais no Google (sugestões)</span><ul class="queries"><li>como vender bolo de pote na rua</li><li>bolo de pote para vender na rua</li><li>como vender bolo de pote na feira</li><li>como vender bolo de pote na escola</li><li>como vender bolo de pote em casa</li></ul></div>
+      <div><span class="lbl">Vídeos no YouTube · visualizações</span><ul class="videos"><li><span class="views num">77 mil</span><span><a href="https://www.youtube.com/watch?v=mBbY-5A5tV0" target="_blank" rel="noopener">BOLO NO POTE, VENDENDO NAS RUAS, COMO ABORDO OS CLIENTES. VENDI TUDO</a> <span class="ch">· SLS Dicas Sérgio Fonseca</span></span></li><li><span class="views num">58 mil</span><span><a href="https://www.youtube.com/watch?v=2l3-P7_FocI" target="_blank" rel="noopener">Como Vender Bolos de Pote na rua – O Mestre do Bolo</a> <span class="ch">· O Mestre do Bolo</span></span></li><li><span class="views num">27 mil</span><span><a href="https://www.youtube.com/watch?v=_LVqyiiXO-8" target="_blank" rel="noopener">Como Vender Bolo de Pote na Rua Sem Oferecer</a> <span class="ch">· Canal da Júlia</span></span></li><li><span class="views num">8 mil</span><span><a href="https://www.youtube.com/watch?v=RT7iOzUt5gU" target="_blank" rel="noopener">Como ABORDAR Pessoas na Rua para Vender (BOLO DE POTE, GELADINHO GOURMET, ETC)</a> <span class="ch">· Canal da Júlia</span></span></li></ul></div>
+      <p class="read"><span class="lbl">O que isso mostra</span>O Google sugere vários lugares de venda (rua, feira, escola, em casa), o que mostra dúvida sobre onde vender.</p>
+    </div>
+    <p class="limit"><span class="lbl">Limite</span>Tem a menor audiência entre os dez temas. Vender na rua pode exigir autorização da prefeitura, e isso precisa aparecer na oferta.</p>
+  </article>
+
+  <section class="method">
+    <h2>Método e fontes</h2>
+    <p><strong>Google:</strong> sugestões de preenchimento automático coletadas em 24/09/2026 (idioma pt-BR, país Brasil) para 20 buscas iniciais, como “bolo de pote para vender”, “bolo de pote quanto”, “quanto cobrar bolo de pote”, “bolo de pote congelar” e “bolo de pote ifood”. A sugestão prova que a busca é feita, mas não mede volume.</p>
+    <p><strong>YouTube:</strong> 12 buscas em 24/09/2026. As visualizações são as exibidas na página de resultados, arredondadas nesta página. Contam atenção acumulada, não pessoas únicas nem vendas.</p>
+    <p><strong>Concorrência paga:</strong> a busca por cursos de bolo de pote na Hotmart listou pelo menos sete produtos. Foram abertos dois: <a href="https://hotmart.com/pt-br/marketplace/produtos/curso-bolos-no-pote-com-marrara-bortoloti/M54680868M" target="_blank" rel="noopener">Curso Bolos no Pote 3.0</a> (4,8, 87 avaliações) e <a href="https://hotmart.com/pt-br/marketplace/produtos/curso-faca-e-venda-bolo-de-pote/Q42757297U" target="_blank" rel="noopener">Curso Faça e Venda – Bolo de Pote</a> (4,1, 15 avaliações). Avaliações indicam que houve compradores, mas os preços não apareciam nas páginas.</p>
+    <p><strong>Validade:</strong> os blogs consultados, como <a href="https://bolosparavender.com/qual-a-validade-do-bolo-no-pote/" target="_blank" rel="noopener">Bolos para Vender</a> e <a href="https://www.delgo.com.br/noticias/como-conservar-bolo-de-pote-para-vender.html" target="_blank" rel="noopener">Delgo</a>, dão prazos diferentes. Por isso essas ofertas precisam de revisão técnica.</p>
+    <p><strong>Próximo passo:</strong> medir o volume das buscas mais fortes no Planejador de palavras-chave e no Google Trends, e levantar os preços dos concorrentes.</p>
+  </section>
+</main>
+</body>
+</html>

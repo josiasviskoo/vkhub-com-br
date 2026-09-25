@@ -1,0 +1,1073 @@
+<!doctype html>
+<html lang="pt-BR">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Plano Bolo de Pote</title>
+<meta name="description" content="Planejamento completo do produto Bolo de Pote: Receita, Custo e Preço, aplicando o método Escala Sem Aposta: 7 leis, oferta, página, checkout, 50 headlines, 1-2-50, orgânico, escala e cronograma.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --bg: #FBF6F2; --surface: #FFFFFF; --surface-2: #F6EEE8;
+    --ink: #2B1A15; --ink-2: #5A4640; --muted: #8A766F; --line: #E8DCD5;
+    --accent: #B8395A; --accent-soft: #FBE5EC;
+    --gold: #A87206; --gold-soft: #FCF1D8;
+    --ok: #2F7A57; --ok-soft: #DFF1E7;
+    --violet: #5B4BB5; --violet-soft: #E9E6F8;
+    --warn: #B4531B; --warn-soft: #FBE7DA;
+    --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+    --body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --bg: #1A1311; --surface: #241B18; --surface-2: #2E231F;
+      --ink: #F3E9E4; --ink-2: #D2C2BB; --muted: #A8958D; --line: #3D302B;
+      --accent: #F07C9A; --accent-soft: #43222B;
+      --gold: #E9B54A; --gold-soft: #3D3017;
+      --ok: #6CC897; --ok-soft: #1C3A2B;
+      --violet: #A99BF2; --violet-soft: #2C2747;
+      --warn: #F0A06A; --warn-soft: #3F2718;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #1A1311; --surface: #241B18; --surface-2: #2E231F;
+    --ink: #F3E9E4; --ink-2: #D2C2BB; --muted: #A8958D; --line: #3D302B;
+    --accent: #F07C9A; --accent-soft: #43222B;
+    --gold: #E9B54A; --gold-soft: #3D3017;
+    --ok: #6CC897; --ok-soft: #1C3A2B;
+    --violet: #A99BF2; --violet-soft: #2C2747;
+    --warn: #F0A06A; --warn-soft: #3F2718;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 70px; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.6 var(--body); }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+  h1, h2, h3, h4 { font-family: var(--display); margin: 0; text-wrap: balance; }
+  h1 { font-size: clamp(34px, 6vw, 60px); letter-spacing: -0.025em; line-height: 1.02; }
+  h2 { font-size: clamp(24px, 3.4vw, 34px); letter-spacing: -0.015em; line-height: 1.1; }
+  h3 { font-size: 18px; line-height: 1.25; }
+  h4 { font-size: 15px; }
+  p { margin: 0; }
+  ul, ol { margin: 0; padding-left: 20px; }
+  li + li { margin-top: 4px; }
+  a { color: var(--accent); }
+  b, strong { font-weight: 600; }
+  .num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+  .eyebrow { font: 500 11px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  .muted { color: var(--muted); }
+  .small { font-size: 13px; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  /* topo */
+  .nav { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .nav .wrap { display: flex; gap: 6px; overflow-x: auto; padding-top: 10px; padding-bottom: 10px; scrollbar-width: none; align-items: center; }
+  .nav .wrap::-webkit-scrollbar { display: none; }
+  .nav a { flex: none; text-decoration: none; color: var(--ink-2); font: 500 13px var(--body); padding: 6px 11px; border-radius: 999px; border: 1px solid transparent; }
+  .nav a:hover { border-color: var(--line); background: var(--surface); }
+  .nav a span { font-family: var(--mono); color: var(--muted); margin-right: 5px; font-size: 11px; }
+  .theme-btn { flex: none; margin-left: auto; border: 1px solid var(--line); background: var(--surface); color: var(--ink-2); border-radius: 999px; padding: 6px 11px; font: 500 13px var(--body); cursor: pointer; }
+
+  header.hero { padding: 48px 0 32px; }
+  .hero .lede { color: var(--ink-2); font-size: 18px; max-width: 64ch; margin-top: 14px; }
+  .hero h1 em { font-style: normal; color: var(--accent); }
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; margin-top: 28px; }
+  .kpi { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; }
+  .kpi .v { font: 700 26px/1.1 var(--display); letter-spacing: -0.01em; }
+  .kpi .l { font-size: 13px; color: var(--ink-2); margin-top: 4px; }
+
+  section.sec { padding: 44px 0; border-top: 1px solid var(--line); }
+  .sec-head { display: grid; gap: 8px; margin-bottom: 22px; max-width: 76ch; }
+  .sec-head p { color: var(--ink-2); }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; }
+  .card.soft { background: var(--surface-2); }
+  .grid2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+  .grid3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+  @media (max-width: 820px) { .grid2, .grid3 { grid-template-columns: 1fr; } }
+  .stack { display: grid; gap: 14px; }
+  .stack-s { display: grid; gap: 8px; }
+
+  .note { border-left: 3px solid var(--gold); background: var(--gold-soft); padding: 12px 14px; border-radius: 0 10px 10px 0; font-size: 14px; }
+  .note.red { border-color: var(--accent); background: var(--accent-soft); }
+  .note.green { border-color: var(--ok); background: var(--ok-soft); }
+  .note.warn { border-color: var(--warn); background: var(--warn-soft); }
+  .note b:first-child { display: block; margin-bottom: 2px; }
+
+  .pill { display: inline-flex; align-items: center; gap: 6px; font: 600 12px/1 var(--body); padding: 6px 10px; border-radius: 999px; white-space: nowrap; }
+  .p-ok { color: var(--ok); background: var(--ok-soft); }
+  .p-adj { color: var(--gold); background: var(--gold-soft); }
+  .p-red { color: var(--accent); background: var(--accent-soft); }
+  .p-vio { color: var(--violet); background: var(--violet-soft); }
+  .p-mut { color: var(--ink-2); background: var(--surface-2); }
+
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font: 500 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  td.r, th.r { text-align: right; }
+  .tbl { overflow-x: auto; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+  .tbl table tr:last-child td { border-bottom: 0; }
+
+  /* decisão */
+  .decision { display: grid; grid-template-columns: 1.3fr 1fr; gap: 14px; }
+  @media (max-width: 820px) { .decision { grid-template-columns: 1fr; } }
+  .promise { font: 700 clamp(22px, 3vw, 30px)/1.15 var(--display); letter-spacing: -0.01em; }
+  .promise em { font-style: normal; color: var(--accent); }
+  dl.facts { display: grid; grid-template-columns: auto 1fr; gap: 8px 16px; margin: 0; font-size: 14px; }
+  dl.facts dt { color: var(--muted); font: 500 12px var(--mono); padding-top: 2px; }
+  dl.facts dd { margin: 0; }
+
+  /* leis */
+  .laws { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; }
+  .law { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 16px; display: grid; gap: 10px; align-content: start; }
+  .law .top { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  .law .n { font: 500 12px var(--mono); color: var(--muted); }
+  .law ul { list-style: none; padding: 0; font-size: 14px; }
+  .law li { display: grid; grid-template-columns: 22px 1fr; gap: 4px; }
+  .law li::before { content: "✓"; color: var(--ok); font-weight: 700; }
+  .law li.no::before { content: "!"; color: var(--gold); }
+  .law .ev { font-size: 13px; color: var(--ink-2); border-top: 1px dashed var(--line); padding-top: 8px; }
+
+  /* demanda */
+  .rank { display: grid; gap: 8px; }
+  .rank-row { display: grid; grid-template-columns: 80px 1fr auto; gap: 12px; align-items: baseline; padding: 10px 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; font-size: 14px; }
+  .rank-row .v { font: 700 18px var(--display); }
+  .rank-row .t { color: var(--ink); }
+  .rank-row .t small { display: block; color: var(--muted); font-size: 12px; }
+  @media (max-width: 640px) { .rank-row { grid-template-columns: 70px 1fr; } .rank-row .pill { grid-column: 2; justify-self: start; } }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip { font-size: 13px; padding: 4px 10px; border-radius: 8px; background: var(--surface-2); border: 1px solid var(--line); color: var(--ink-2); }
+
+  /* ângulos */
+  .angles { display: grid; grid-template-columns: 1fr auto 1fr; gap: 16px; align-items: center; }
+  .angles .core { background: var(--accent); color: #fff; border-radius: 18px; padding: 22px; text-align: center; font: 700 20px/1.2 var(--display); }
+  .angles .core small { display: block; font: 500 12px var(--body); opacity: .85; margin-top: 6px; }
+  :root[data-theme="dark"] .angles .core, :root:not([data-theme="light"]) .angles .core { color: #fff; }
+  .angles .col { display: grid; gap: 8px; }
+  .angles .a { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; font-size: 14px; }
+  .angles .a b { display: block; }
+  .angles .a span { color: var(--muted); font-size: 13px; }
+  @media (max-width: 820px) { .angles { grid-template-columns: 1fr; } }
+
+  /* funil */
+  .funnel { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+  @media (max-width: 900px) { .funnel { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 520px) { .funnel { grid-template-columns: 1fr; } }
+  .stage { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px; display: grid; gap: 8px; align-content: start; }
+  .stage .h { font: 500 11px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+  .offer { border-radius: 10px; padding: 10px 12px; font-size: 14px; display: grid; gap: 2px; }
+  .offer .p { font-family: var(--mono); font-weight: 500; }
+  .o-main { background: var(--accent-soft); border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent); }
+  .o-bump { background: var(--gold-soft); border: 1px solid color-mix(in srgb, var(--gold) 35%, transparent); }
+  .o-up { background: var(--ok-soft); border: 1px solid color-mix(in srgb, var(--ok) 35%, transparent); }
+  .o-back { background: var(--surface-2); border: 1px dashed var(--line); }
+  .offer small { color: var(--ink-2); }
+  .status { font: 500 11px var(--mono); }
+
+  /* calculadoras */
+  .calc { display: grid; grid-template-columns: 300px 1fr; gap: 16px; }
+  @media (max-width: 820px) { .calc { grid-template-columns: 1fr; } }
+  .fields { display: grid; gap: 10px; align-content: start; }
+  label.f { display: grid; gap: 4px; font-size: 13px; color: var(--ink-2); }
+  label.f input { font: 500 15px var(--mono); padding: 8px 10px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); color: var(--ink); width: 100%; }
+  .out { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; align-content: start; }
+  .out .o { background: var(--surface-2); border-radius: 12px; padding: 12px 14px; }
+  .out .o .v { font: 700 22px var(--display); }
+  .out .o .l { font-size: 12.5px; color: var(--ink-2); }
+  .out .o.hl { background: var(--accent-soft); }
+  .out .o.hl .v { color: var(--accent); }
+
+  /* headlines */
+  .hl-tools { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; align-items: center; }
+  .hl-tools button, .btn { border: 1px solid var(--line); background: var(--surface); color: var(--ink-2); border-radius: 999px; padding: 6px 12px; font: 500 13px var(--body); cursor: pointer; }
+  .hl-tools button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  .hl-tools .sp { flex: 1; }
+  .hl-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  @media (max-width: 820px) { .hl-list { grid-template-columns: 1fr; } }
+  .hl { display: grid; grid-template-columns: 58px 1fr auto; gap: 10px; align-items: start; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px; }
+  .hl.win { border-color: var(--ok); box-shadow: inset 0 0 0 1px var(--ok); }
+  .hl .id { font: 500 12px var(--mono); color: var(--muted); padding-top: 3px; }
+  .hl .txt { font: 600 16px/1.3 var(--display); }
+  .hl .meta { font-size: 12px; color: var(--muted); margin-top: 4px; }
+  .hl .star { color: var(--gold); }
+  .hl .acts { display: flex; gap: 4px; }
+  .icon-btn { border: 1px solid var(--line); background: var(--surface-2); color: var(--ink-2); border-radius: 8px; width: 32px; height: 32px; cursor: pointer; font-size: 14px; display: grid; place-items: center; }
+  .icon-btn[aria-pressed="true"] { background: var(--ok); color: #fff; border-color: var(--ok); }
+
+  /* página de vendas */
+  .blocks { display: grid; gap: 10px; }
+  .block { display: grid; grid-template-columns: 44px 1fr; gap: 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 16px; }
+  .block .bn { width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center; font: 700 15px var(--display); background: var(--surface-2); }
+  .block.cta .bn { background: var(--accent); color: #fff; }
+  .block .bt { display: grid; gap: 8px; min-width: 0; }
+  .block .bt h3 { font-size: 16px; }
+  .copybox { position: relative; background: var(--surface-2); border-radius: 10px; padding: 12px 14px; font-size: 14.5px; white-space: pre-line; }
+  .copybox .cp { position: absolute; top: 8px; right: 8px; font: 500 12px var(--body); padding: 4px 8px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface); color: var(--ink-2); cursor: pointer; }
+  .copybox .red { color: var(--accent); }
+  .copybox.has-cp { padding-right: 76px; }
+  .alt { display: grid; gap: 4px; font-size: 14px; list-style: none; padding: 0; }
+  .alt li { display: grid; grid-template-columns: 90px 1fr; gap: 8px; }
+  .alt li span:first-child { font: 500 11px var(--mono); text-transform: uppercase; letter-spacing: .06em; padding-top: 3px; }
+  .alt li.c span:first-child { color: var(--violet); }
+  .alt li.e span:first-child { color: var(--accent); }
+  .ctabtn { display: inline-block; background: var(--accent); color: #fff; font: 700 15px var(--display); padding: 10px 18px; border-radius: 10px; letter-spacing: .02em; }
+
+  /* criativo mock */
+  .ads { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+  @media (max-width: 900px) { .ads { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .ad { aspect-ratio: 1; border-radius: 12px; overflow: hidden; position: relative; display: grid; font-family: var(--display); color: #fff; }
+  .ad .bg { position: absolute; inset: 0; }
+  .ad .h { position: relative; font-weight: 700; font-size: 13px; line-height: 1.15; padding: 10px; }
+  .ad .book { position: relative; justify-self: center; align-self: center; width: 42%; aspect-ratio: .72; background: linear-gradient(160deg, #F3C6D3, #B8395A); border-radius: 4px; box-shadow: 0 8px 20px rgba(0,0,0,.4); display: grid; place-items: center; text-align: center; font-size: 9px; padding: 6px; color: #fff; }
+  .ad-cap { font-size: 12.5px; color: var(--ink-2); margin-top: 6px; }
+
+  /* timeline */
+  .timeline { display: grid; gap: 12px; }
+  .week { display: grid; grid-template-columns: 170px 1fr; gap: 16px; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 16px 18px; }
+  @media (max-width: 720px) { .week { grid-template-columns: 1fr; } }
+  .week .wh .d { font: 500 12px var(--mono); color: var(--muted); }
+  .week .wh h3 { margin-top: 4px; }
+  .week .wh .bar { height: 6px; background: var(--surface-2); border-radius: 99px; margin-top: 10px; overflow: hidden; }
+  .week .wh .bar i { display: block; height: 100%; width: 0; background: var(--ok); transition: width .3s; }
+  .checks { list-style: none; padding: 0; display: grid; gap: 6px; }
+  .checks label { display: grid; grid-template-columns: 22px 1fr; gap: 8px; font-size: 14px; cursor: pointer; }
+  .checks input { margin-top: 3px; accent-color: var(--ok); }
+  .checks input:checked + span { color: var(--muted); text-decoration: line-through; }
+
+  /* fluxo de decisão */
+  .flowd { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 720px) { .flowd { grid-template-columns: 1fr; } }
+  .flowd .col { display: grid; gap: 8px; align-content: start; }
+  .flowd .hd { font: 700 15px var(--display); padding: 10px 14px; border-radius: 10px; }
+  .flowd .it { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; font-size: 14px; }
+  .flowd .it b { display: block; }
+
+  footer { padding: 36px 0 60px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+  .toast { position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%) translateY(20px); opacity: 0; background: var(--ink); color: var(--bg); padding: 8px 14px; border-radius: 10px; font-size: 14px; transition: .2s; pointer-events: none; z-index: 20; }
+  .toast.on { opacity: 1; transform: translateX(-50%) translateY(0); }
+  @media print { .nav, .theme-btn, .icon-btn, .cp { display: none !important; } section.sec { break-inside: avoid-page; } }
+</style>
+
+<nav class="nav" aria-label="Seções">
+  <div class="wrap">
+    <a href="#decisao"><span>01</span>Decisão</a>
+    <a href="#leis"><span>02</span>7 leis</a>
+    <a href="#demanda"><span>03</span>Demanda</a>
+    <a href="#oferta"><span>04</span>Oferta</a>
+    <a href="#headlines"><span>05</span>50 headlines</a>
+    <a href="#pagina"><span>06</span>Página</a>
+    <a href="#checkout"><span>07</span>Checkout</a>
+    <a href="#criativos"><span>08</span>Criativos</a>
+    <a href="#meta"><span>09</span>Meta e pixel</a>
+    <a href="#teste"><span>10</span>1-2-50</a>
+    <a href="#organico"><span>11</span>Orgânico</a>
+    <a href="#escala"><span>12</span>Escala</a>
+    <a href="#cronograma"><span>13</span>Cronograma</a>
+    <a href="#cuidados"><span>14</span>Cuidados</a>
+    <button class="theme-btn" id="themeBtn" type="button">◐ Tema</button>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<header class="hero">
+  <p class="eyebrow">Planejamento de produto · Escala Sem Aposta aplicado · 24/09/2026</p>
+  <h1>Bolo de pote:<br>do garimpo à <em>escala com controle</em></h1>
+  <p class="lede">Tudo o que foi pesquisado (buscas do Google, vídeos com milhões de visualizações, ofertas concorrentes e os 4 PDFs já prontos) organizado na ordem do método: primeiro decidir, depois montar a operação, por último ligar o tráfego e escalar.</p>
+  <div class="kpis">
+    <div class="kpi"><div class="v num">6,7 mi</div><div class="l">views do maior vídeo do tema (3 sabores, 1 base)</div></div>
+    <div class="kpi"><div class="v num">11</div><div class="l">vídeos de bolo de pote acima de 1 milhão</div></div>
+    <div class="kpi"><div class="v num">0</div><div class="l">ofertas concorrentes que ensinam custo e preço</div></div>
+    <div class="kpi"><div class="v num">R$ 29,90</div><div class="l">ticket de entrada recomendado pelo método</div></div>
+    <div class="kpi"><div class="v num">7 / 7</div><div class="l">leis aprovadas (com 2 pontos de atenção)</div></div>
+  </div>
+</header>
+
+<!-- 01 DECISÃO -->
+<section class="sec" id="decisao">
+  <div class="sec-head">
+    <p class="eyebrow">01 · A decisão</p>
+    <h2>O produto em uma tela</h2>
+    <p>O garimpo mostrou onde está o fluxo (receitas de bolo de pote para vender) e onde está o buraco (ninguém vende a conta). O produto entra pelo fluxo e se diferencia pelo buraco.</p>
+  </div>
+  <div class="decision">
+    <div class="card stack">
+      <p class="eyebrow">Promessa (entendida em 5 segundos)</p>
+      <p class="promise">Faça bolo de pote para vender sabendo <em>quanto custa cada pote e por quanto cobrar</em>.</p>
+      <dl class="facts">
+        <dt>Produto</dt><dd><b>Bolo de Pote: Receita, Custo e Preço</b> · ebook PDF (arquivo 01, pronto)</dd>
+        <dt>Preço</dt><dd><span class="num">R$ 29,90</span> à vista · parcelado na plataforma</dd>
+        <dt>Dor latente</dt><dd>Precisa de renda extra e tem medo de trabalhar de graça ou sair no prejuízo</dd>
+        <dt>Diferencial</dt><dd>Receita + rendimento + custo + preço com os números da pessoa. Os concorrentes vendem só receita.</dd>
+        <dt>Entrega</dt><dd>Kiwify (ou Hotmart/Kirvano/Cakto) · área de membros “Baixe seu ebook aqui”</dd>
+        <dt>Canal</dt><dd>Orgânico como semente desde a semana 1 · tráfego pago 1-2-50 na semana 3</dd>
+      </dl>
+    </div>
+    <div class="stack">
+      <div class="note green"><b>Por que este produto passa</b>Demanda comprovada por audiência (6,7 mi, 6,2 mi, 3,6 mi de views) e por dinheiro circulando (ebook da Thata a R$ 19,90 em 2 vídeos acima de 1 mi; curso da Leidy a R$ 27; cursos na Hotmart com 87 avaliações). Tema presente em vídeos de 2017 a 2025: não é moda como o “morango do amor”.</div>
+      <div class="note"><b>O ponto fraco que o plano resolve</b>Receita grátis existe aos montes. Por isso a copy nunca vende “mais receitas”: vende a conta (custo, rendimento, preço). É o que nenhum dos 8 produtos divulgados nos vídeos de 1 mi entrega.</div>
+      <div class="note red"><b>O que ainda não foi provado</b>Nenhuma venda. Visualização é atenção, não compra. A campanha 1-2-50 é a prova: ela diz se vende, qual headline vende e qual público compra.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 LEIS -->
+<section class="sec" id="leis">
+  <div class="sec-head">
+    <p class="eyebrow">02 · Parte II do ebook · aulas 3 a 9</p>
+    <h2>As 7 leis aplicadas ao bolo de pote</h2>
+    <p>Três perguntas por lei, sim ou não. 3 × sim passa; 1 × não, ajustar; 2 ou mais, travado. Sem apego: são os números da pesquisa que respondem.</p>
+  </div>
+  <div class="laws">
+    <div class="law"><div class="top"><h3>1 · Demanda</h3><span class="pill p-ok">Passa</span></div>
+      <ul><li>Muitos criadores falando do tema?</li><li>Vídeos com milhões de visualizações?</li><li>Já existe gente vendendo (dinheiro circulando)?</li></ul>
+      <p class="ev">179 vídeos em 25 buscas; 11 acima de 1 mi com “pote” no título; 8 ofertas divulgadas nesses vídeos; cursos na Hotmart com avaliações.</p></div>
+    <div class="law"><div class="top"><h3>2 · Frequência</h3><span class="pill p-ok">Passa</span></div>
+      <ul><li>Vende o ano todo, sem depender de data?</li><li>O problema “fica na cabeça” (volta todo mês)?</li><li>Continua atual depois de anos?</li></ul>
+      <p class="ev">Renda extra e conta do fim do mês voltam todo mês. Vídeos acima de 1 mi publicados em 2017, 2018, 2019, 2020, 2021, 2022, 2024 e 2025.</p></div>
+    <div class="law"><div class="top"><h3>3 · Simplicidade</h3><span class="pill p-ok">Passa</span></div>
+      <ul><li>Uma criança de 8 anos entende a proposta?</li><li>Dá para explicar numa frase?</li><li>Resultado visível (o pote pronto e o preço)?</li></ul>
+      <p class="ev">“Receita, custo e preço do bolo de pote.” Três palavras que a pessoa já pesquisa.</p></div>
+    <div class="law"><div class="top"><h3>4 · Preço</h3><span class="pill p-ok">Passa</span></div>
+      <ul><li>Entre R$ 29,90 e R$ 97?</li><li>Combina com a promessa?</li><li>Compra por impulso, sem precisar de autoridade?</li></ul>
+      <p class="ev">Concorrentes: R$ 10 (só ebook Leidy), R$ 19,90 (Thata), R$ 27 (Leidy curso), R$ 47 (Doces Gourmet). R$ 29,90 = preço de 4 potes.</p></div>
+    <div class="law"><div class="top"><h3>5 · Nicho aberto</h3><span class="pill p-ok">Passa</span></div>
+      <ul><li>Aceita vários públicos?</li><li>Aceita vários ângulos sem mudar o produto?</li><li>Público grande o bastante para não saturar rápido?</li></ul>
+      <p class="ev">Iniciantes, quem já vende sem lucro, mães em casa, quem busca renda extra, festas e lembrancinhas, venda na rua, iFood (seção 04).</p></div>
+    <div class="law"><div class="top"><h3>6 · Promessa replicável</h3><span class="pill p-adj">Passa, com atenção</span></div>
+      <ul><li>Funciona sem o rosto do autor?</li><li>Aguenta repetição por meses?</li><li class="no">Pode ser anunciada sem prometer renda?</li></ul>
+      <p class="ev">Sim, se a headline falar de custo, preço e receita, e não de “ganhe R$ 3 mil por mês”. Promessa de renda derruba anúncio no Meta e é propaganda enganosa.</p></div>
+    <div class="law"><div class="top"><h3>7 · Entrega simples</h3><span class="pill p-ok">Passa</span></div>
+      <ul><li>Entrega automática pela plataforma?</li><li>Zero atendimento por WhatsApp para entregar?</li><li>Página carrega em até 3 s?</li></ul>
+      <p class="ev">PDF na área de membros. Página estática no seu domínio (o site já é otimizado para velocidade).</p></div>
+    <div class="law" style="background:var(--surface-2)"><div class="top"><h3>Check-up (aula 2)</h3><span class="pill p-adj">2 pendências</span></div>
+      <ul><li>Produto resolve problema real e que dói</li><li>Promessa clara</li><li class="no">Números: sem CPA e ROI ainda (vem do teste)</li><li class="no">Estrutura: falta depoimento real e revisão técnica da etiqueta</li></ul>
+      <p class="ev">As duas pendências estão no cronograma (semanas 1 e 3).</p></div>
+  </div>
+</section>
+
+<!-- 03 DEMANDA -->
+<section class="sec" id="demanda">
+  <div class="sec-head">
+    <p class="eyebrow">03 · Garimpando fluxos orgânicos</p>
+    <h2>Onde está o fluxo de pessoas</h2>
+    <p>Quanto mais gente já assiste e busca, maior o público que o anúncio pode alcançar. Os ângulos abaixo estão em ordem de audiência. Os maiores viram as primeiras headlines e o texto de abertura da página.</p>
+  </div>
+  <div class="grid2">
+    <div class="stack-s">
+      <p class="eyebrow">Ângulos por audiência do maior vídeo</p>
+      <div class="rank">
+        <div class="rank-row"><span class="v num">6,7 mi</span><span class="t">Sabores com uma base de recheio<small>Delícias da Thata · também 1,7 mi e 915 mil</small></span><span class="pill p-ok">Forte</span></div>
+        <div class="rank-row"><span class="v num">6,2 mi</span><span class="t">5 receitas “faça e venda”<small>Gabriel Freitas · oferta do vídeo fora do ar (404)</small></span><span class="pill p-ok">Forte</span></div>
+        <div class="rank-row"><span class="v num">3,7 mi</span><span class="t">Bolo de pote para vender super fácil<small>Bete com carinho · sem oferta própria</small></span><span class="pill p-ok">Forte</span></div>
+        <div class="rank-row"><span class="v num">1,5 mi</span><span class="t">Renda extra (“ganho até 3 mil por mês”)<small>Lori Fonseca · 3 ofertas de afiliado</small></span><span class="pill p-ok">Forte</span></div>
+        <div class="rank-row"><span class="v num">618 mil</span><span class="t">Do zero, primeiro lote<small>Wytórya · e “não cometa esses 3 erros” (484 mil)</small></span><span class="pill p-ok">Forte</span></div>
+        <div class="rank-row"><span class="v num">501 mil</span><span class="t">Precificação / quanto cobrar<small>Bruna e você na confeitaria · 8 buscas diferentes no Google</small></span><span class="pill p-adj">Média</span></div>
+        <div class="rank-row"><span class="v num">500 mil</span><span class="t">Rendimento (“rende 35 potes”)<small>Lori Fonseca · 481 mil “custa 8,50 e rende 30”</small></span><span class="pill p-ok">Forte</span></div>
+        <div class="rank-row"><span class="v num">236 mil</span><span class="t">Encomendas para festas<small>“Quanto cobrei por 100 bolos no pote”</small></span><span class="pill p-adj">Média</span></div>
+        <div class="rank-row"><span class="v num">138 mil</span><span class="t">iFood e delivery<small>“compensa vender bolo de pote no ifood”</small></span><span class="pill p-adj">Média</span></div>
+        <div class="rank-row"><span class="v num">130 mil</span><span class="t">Tamanho do pote e preço<small>buscas por 140, 200, 250, 350 ml</small></span><span class="pill p-adj">Média</span></div>
+        <div class="rank-row"><span class="v num">123 mil</span><span class="t">Sobras e congelamento<small>“fiz, não consegui vender, como congelar?”</small></span><span class="pill p-adj">Média</span></div>
+        <div class="rank-row"><span class="v num">81 mil</span><span class="t">Validade e etiqueta<small>muitas buscas, pouca audiência</small></span><span class="pill p-mut">Fraca</span></div>
+      </div>
+    </div>
+    <div class="stack">
+      <div class="card stack-s">
+        <h3>A leitura que define a estratégia</h3>
+        <ol>
+          <li><b>O fluxo está em receita e sabores.</b> É por onde a pessoa entra. As headlines de maior alcance falam de sabor, receita e “para vender”.</li>
+          <li><b>O dinheiro está na conta.</b> Custo, rendimento e preço têm audiência menor, mas é o que ninguém vende e o que justifica pagar.</li>
+          <li><b>Portanto:</b> anúncio abre pelo fluxo (sabor, receita, renda extra) e a página fecha pela conta (custo e preço).</li>
+        </ol>
+      </div>
+      <div class="card stack-s">
+        <h3>Buscas reais no Google (sugestões)</h3>
+        <p class="small muted">Provam que a busca existe, não o volume. Viram pauta de conteúdo orgânico e artigo no site.</p>
+        <div class="chips">
+          <span class="chip">bolo de pote sabores mais vendidos</span><span class="chip">bolo de pote para vender iniciantes</span><span class="chip">como começar vender bolo de pote</span><span class="chip">quanto cobrar bolo de pote</span><span class="chip">bolo de pote custo e lucro</span><span class="chip">calcular custo bolo de pote</span><span class="chip">margem de lucro bolo de pote</span><span class="chip">bolo de pote quanto rende</span><span class="chip">bolo de pote 250ml preço</span><span class="chip">bolo de pote qual embalagem usar</span><span class="chip">bolo de pote como lembrancinha</span><span class="chip">compensa vender bolo de pote no ifood</span><span class="chip">pode congelar bolo de pote para vender</span><span class="chip">bolo de pote validade na geladeira</span><span class="chip">como vender bolo de pote na rua</span>
+        </div>
+      </div>
+      <div class="note"><b>Próximo passo da pesquisa</b>Medir volume das 5 buscas mais fortes no Planejador de palavras-chave e no Google Trends. Não trava o lançamento: o teste pago mede a demanda de verdade.</div>
+    </div>
+  </div>
+
+  <div class="stack" style="margin-top:22px">
+    <p class="eyebrow">Um produto, vários ângulos (lei do nicho aberto)</p>
+    <div class="angles">
+      <div class="col">
+        <div class="a"><b>Renda extra</b><span>quem precisa fechar o mês</span></div>
+        <div class="a"><b>Iniciante</b><span>nunca vendeu, medo de errar</span></div>
+        <div class="a"><b>Já vende e não sobra</b><span>copia o preço da vizinha</span></div>
+        <div class="a"><b>Mãe em casa</b><span>trabalhar sem sair de casa</span></div>
+      </div>
+      <div class="core">Bolo de Pote:<br>Receita, Custo e Preço<small>o mesmo PDF para todos</small></div>
+      <div class="col">
+        <div class="a"><b>Sabores</b><span>cardápio com uma base só</span></div>
+        <div class="a"><b>Festas e lembrancinhas</b><span>orçamento de 50 ou 100 potes</span></div>
+        <div class="a"><b>Onde vender</b><span>rua, escola, feira, iFood</span></div>
+        <div class="a"><b>Sem desperdício</b><span>produzir a quantidade certa</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 OFERTA -->
+<section class="sec" id="oferta">
+  <div class="sec-head">
+    <p class="eyebrow">04 · Oferta e funil</p>
+    <h2>O que a pessoa compra, em que ordem</h2>
+    <p>Low ticket vive de ticket médio: os order bumps pagam o tráfego. Três complementos já estão prontos em PDF. O resto entra depois de o principal vender.</p>
+  </div>
+  <div class="funnel">
+    <div class="stage"><span class="h">1 · Página</span>
+      <div class="offer o-main"><b>Bolo de Pote: Receita, Custo e Preço</b><span class="p">R$ 29,90</span><small>Receitas base, montagem, rendimento, custo, preço, produção, onde vender, registro.</small><span class="status" style="color:var(--ok)">● PDF pronto (01)</span></div>
+    </div>
+    <div class="stage"><span class="h">2 · Checkout (order bumps)</span>
+      <div class="offer o-bump"><b>Cardápio de Uma Base</b><span class="p">+ R$ 9,90</span><small>3 a 5 sabores com uma base. É o ângulo de 6,7 mi.</small><span class="status" style="color:var(--ok)">● PDF pronto (03)</span></div>
+      <div class="offer o-bump"><b>Guia de Tamanho, Pote e Preço</b><span class="p">+ R$ 7,90</span><small>150, 250 e 350 ml: gramas, custo e preço.</small><span class="status" style="color:var(--ok)">● PDF pronto (02)</span></div>
+      <div class="offer o-bump"><b>Etiqueta e Validade</b><span class="p">+ R$ 7,90</span><small>Etiqueta, conservação, controle de lotes.</small><span class="status" style="color:var(--gold)">● PDF pronto (04) · revisar com profissional</span></div>
+    </div>
+    <div class="stage"><span class="h">3 · Obrigado (upsell)</span>
+      <div class="offer o-up"><b>Receitas Extras: 10 Sabores</b><span class="p">R$ 19,90</span><small>Receita e custo de cada sabor. Mesmo preço do ebook da Thata.</small><span class="status" style="color:var(--muted)">○ a produzir · receitas testadas</span></div>
+      <div class="offer o-up"><b>Downsell: Encomendas para Festas</b><span class="p">R$ 17,90</span><small>Orçamento de 50, 100 ou mais potes.</small><span class="status" style="color:var(--muted)">○ a produzir</span></div>
+    </div>
+    <div class="stage"><span class="h">4 · Depois (LTV por e-mail)</span>
+      <div class="offer o-back"><b>Planilha Calculadora</b><span class="p">R$ 14,90</span><small>Testar no lugar do bump de menor adesão.</small></div>
+      <div class="offer o-back"><b>Bolo de Pote no iFood</b><span class="p">R$ 14,90</span></div>
+      <div class="offer o-back"><b>Plano para Sobras</b><span class="p">R$ 9,90</span><small>Precisa de revisão técnica.</small></div>
+      <div class="offer o-back"><b>Venda na Rua e na Feira</b><span class="p">R$ 9,90</span></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <h3 style="margin-bottom:12px">Calculadora de ticket médio e CPA máximo</h3>
+    <div class="calc">
+      <div class="fields">
+        <label class="f">Preço do principal (R$)<input id="tPrice" type="number" step="0.01" value="29.90"></label>
+        <label class="f">Você recebe por venda do principal, após taxas (R$)<input id="tNet" type="number" step="0.01" value="25.00"></label>
+        <label class="f">% que marcam cada bump (média)<input id="tBump" type="number" value="30"></label>
+        <label class="f">% que aceitam o upsell<input id="tUp" type="number" value="15"></label>
+        <p class="small muted">Referências do ebook: order bump ~30% e upsell ~20% das vendas. O líquido de R$ 25 é estimativa: confira a taxa da sua plataforma.</p>
+      </div>
+      <div class="out">
+        <div class="o"><div class="v num" id="tAov">–</div><div class="l">ticket médio bruto por comprador</div></div>
+        <div class="o"><div class="v num" id="tAovNet">–</div><div class="l">líquido médio por comprador (mesma taxa proporcional)</div></div>
+        <div class="o hl"><div class="v num" id="tCpa">–</div><div class="l">CPA de empate: acima disso, cada venda dá prejuízo</div></div>
+        <div class="o"><div class="v num" id="tCpaGood">–</div><div class="l">CPA para escalar com folga (≤ 60% do líquido)</div></div>
+        <div class="o"><div class="v num" id="tGain">–</div><div class="l">a mais por comprador graças aos bumps e upsell</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 HEADLINES -->
+<section class="sec" id="headlines">
+  <div class="sec-head">
+    <p class="eyebrow">05 · Capítulo 11 · as 50 copys</p>
+    <h2>As 50 headlines (AD 01 a AD 50)</h2>
+    <p>Cada uma foi adaptada de um título de vídeo com audiência alta ou de uma busca real, sem promessa de renda. Na fase 1 todos os 50 criativos têm a mesma imagem e só a frase muda. Quando o teste acabar, marque as vencedoras com ✓: fica salvo neste navegador.</p>
+  </div>
+  <div class="hl-tools" id="hlTools"></div>
+  <div class="hl-list" id="hlList"></div>
+  <p class="small muted" style="margin-top:12px">★ = as 10 que o instinto aposta primeiro (maior audiência de origem). Use-as no bloco 1 da página e na seção “O que você terá” até o teste mostrar as campeãs.</p>
+</section>
+
+<!-- 06 PÁGINA -->
+<section class="sec" id="pagina">
+  <div class="sec-head">
+    <p class="eyebrow">06 · Capítulo 06 · estrutura Ramos</p>
+    <h2>A página de vendas, bloco por bloco, já escrita</h2>
+    <p>Treze blocos, cinco botões “DESEJO ADQUIRIR”, todos para o mesmo checkout. Design livre (tons de rosa e chocolate combinam com o nicho); estrutura fixa. Endereço sugerido: <b>vkhub.com.br/bolo-de-pote</b> (um domínio para a editora inteira).</p>
+  </div>
+  <div class="blocks">
+    <div class="block"><div class="bn">1</div><div class="bt"><h3>Mockup + copy principal</h3>
+      <div class="copybox has-cp"><button class="cp" type="button">Copiar</button><b>Bolo de pote para vender: <span class="red">a receita, o custo e o preço de cada pote</span></b>
+Descubra quanto custa cada bolo de pote que você faz e por quanto vender, antes de ir para a cozinha.</div>
+      <p class="small muted">Antes do teste, vale o instinto. Depois da 1-2-50, troque pela headline que mais vendeu.</p></div></div>
+    <div class="block cta"><div class="bn">✓</div><div class="bt"><span class="ctabtn">DESEJO ADQUIRIR</span></div></div>
+    <div class="block"><div class="bn">2</div><div class="bt"><h3>Foto do ebook + texto de consciência (substitui a VSL)</h3>
+      <div class="copybox has-cp"><button class="cp" type="button">Copiar</button><b>Você pode fazer o bolo de pote mais gostoso do bairro <span class="red">e mesmo assim trabalhar de graça.</span></b>
+
+Muita gente começa do mesmo jeito: vê uma receita no YouTube, compra os potes, olha quanto a vizinha cobra e coloca o mesmo preço. Vende tudo, fica feliz, e no fim do mês não sabe para onde foi o dinheiro.
+
+O problema quase nunca é a receita. <b>É a conta.</b> Quem não sabe quantos potes a receita rende, quanto custa cada um e quanto vale a própria hora acaba cobrando R$ 5,00 num pote que custa mais do que isso para fazer.
+
+Este guia junta num lugar só a receita base, a montagem e a conta completa: rendimento, ingredientes, embalagem, gás, perdas, trabalho e taxas, até chegar ao preço de cada pote.
+
+Você preenche com os preços que pagou no seu mercado e segue o passo a passo, com um exemplo completo do começo ao fim.
+
+Assim o seu primeiro lote sai da cozinha com o preço certo, e você <b>sabe quanto sobra em cada pote</b> em vez de descobrir no fim do mês.</div></div></div>
+    <div class="block cta"><div class="bn">3</div><div class="bt"><span class="ctabtn">FAZER DOWNLOAD</span><p class="small muted">Gera muito clique: a pessoa pensa que vai baixar, vê R$ 29,90 e compra.</p></div></div>
+    <div class="block"><div class="bn">4</div><div class="bt"><h3>“Veja o depoimento de quem adquiriu” · 8 quadrados</h3>
+      <p>Somente relatos reais dos leitores beta (semana 1), com nome, cidade e autorização. Canva, formato quadrado, 5 estrelas amarelas.</p></div></div>
+    <div class="block"><div class="bn">5</div><div class="bt"><h3>“O que você terá com o Bolo de Pote: Receita, Custo e Preço”</h3>
+      <ul class="alt">
+        <li class="c"><span>conteúdo</span>Receitas base: massa branca, massa de chocolate, brigadeiro cremoso, creme de ninho e calda</li>
+        <li class="e"><span>copy</span>Bolo de pote para vender, super fácil de fazer</li>
+        <li class="c"><span>conteúdo</span>Montagem do pote passo a passo, com porção padrão por camada</li>
+        <li class="e"><span>copy</span>Todo pote com o mesmo peso, como nas confeitarias</li>
+        <li class="c"><span>conteúdo</span>Teste de rendimento com a sua própria receita</li>
+        <li class="e"><span>copy</span>Quantos potes rende a sua receita de bolo?</li>
+        <li class="c"><span>conteúdo</span>Custo de cada ingrediente pela quantidade usada</li>
+        <li class="e"><span>copy</span>Descubra quanto custa cada bolo de pote que você faz</li>
+        <li class="c"><span>conteúdo</span>Embalagem, gás e perdas: os custos que quase todo mundo esquece</li>
+        <li class="e"><span>copy</span>O erro de preço que faz o bolo de pote não dar dinheiro</li>
+        <li class="c"><span>conteúdo</span>Como colocar o valor do seu trabalho no preço</li>
+        <li class="e"><span>copy</span>O preço do bolo de pote que paga até o seu trabalho</li>
+        <li class="c"><span>conteúdo</span>A fórmula do preço com taxas e margem (e por que dividir, não somar)</li>
+        <li class="e"><span>copy</span>Pare de copiar o preço da vizinha</li>
+        <li class="c"><span>conteúdo</span>Exemplo completo: 20 potes de 250 ml, do mercado ao preço final</li>
+        <li class="e"><span>copy</span>Quanto cobrar no bolo de pote sem sair no prejuízo</li>
+        <li class="c"><span>conteúdo</span>Planejamento da produção: quanto fazer para não sobrar</li>
+        <li class="e"><span>copy</span>Produza a quantidade certa e perca menos bolo de pote</li>
+        <li class="c"><span>conteúdo</span>Onde e como vender, registro de vendas e formalização (MEI)</li>
+        <li class="e"><span>copy</span>Renda extra com bolo de pote, feito na sua cozinha</li>
+      </ul></div></div>
+    <div class="block cta"><div class="bn">6</div><div class="bt"><span class="ctabtn">DESEJO ADQUIRIR</span></div></div>
+    <div class="block"><div class="bn">7</div><div class="bt"><h3>Para quem é (mata objeções)</h3>
+      <div class="copybox has-cp"><button class="cp" type="button">Copiar</button>Para quem quer começar a vender bolo de pote e não sabe por onde começar.
+Para quem já vende, mas não sabe se está tendo lucro.
+Para quem copia o preço da vizinha e sente que trabalha de graça.
+Para quem nunca calculou quanto custa cada pote.
+Para quem não sabe quantos potes a receita rende.
+Para quem tem medo de cobrar caro e perder cliente.
+Para quem precisa de uma renda extra sem sair de casa.
+Para quem tem pouco tempo e quer produzir sem desperdício.
+Para quem não tem cozinha profissional, só a de casa.
+Para quem não sabe se vende pote de 150, 250 ou 350 ml.
+Para quem quer um cardápio de sabores sem fazer cinco recheios diferentes.
+Para quem vai vender na rua, na escola, no trabalho ou por encomenda.
+Para quem recebe pedido de festa e não sabe quanto cobrar.
+Para quem esquece de contar a embalagem, o gás e as perdas.
+Para quem não é boa com números: o guia faz a conta com você, passo a passo.
+Para quem quer um preço que paga o próprio trabalho.
+Para quem prefere ler no celular, no próprio ritmo.
+Para quem quer começar pequeno e crescer com o pé no chão.</div></div></div>
+    <div class="block"><div class="bn">8</div><div class="bt"><h3>“Veja o depoimento de quem já testou” · mais 2 a 4</h3><p>Priorize relatos com número (“descobri que meu pote custava R$ X”), sempre reais.</p></div></div>
+    <div class="block"><div class="bn">9</div><div class="bt"><h3>Benefícios fixos (copie e cole do ebook)</h3>
+      <div class="copybox has-cp"><button class="cp" type="button">Copiar</button>Se liga nos benefícios que você terá hoje
+✔ Acesso por tempo ilimitado
+✔ Leia quando quiser, em qualquer lugar do mundo
+✔ Imprima e tenha a versão física
+✔ Baixe o ebook e leia no modo offline, sem precisar de internet
+✔ Garantia de recebimento do produto
+✔ Linguagem objetiva e de fácil entendimento
+✔ Satisfação garantida
+✔ Garantia incondicional
+✔ Acesso ao ebook logo após a compra
+✔ Informações 100% revisadas e testadas</div>
+      <p class="small muted">Só mantenha “100% revisadas e testadas” depois de testar as receitas (semana 1).</p></div></div>
+    <div class="block cta"><div class="bn">10</div><div class="bt"><span class="ctabtn">DESEJO ADQUIRIR</span></div></div>
+    <div class="block"><div class="bn">11</div><div class="bt"><h3>Uma fórmula comprovada (racional + emocional)</h3>
+      <div class="copybox has-cp"><button class="cp" type="button">Copiar</button>A maioria dos cursos de bolo de pote ensina mais receitas. Este guia ensina o que vem depois da receita: quanto ela rende, quanto custa cada pote e por quanto vender. Você usa os seus preços, a sua receita e o seu pote, e chega a um número que cobre ingredientes, embalagem, gás, perdas, taxas e o seu trabalho. É a mesma conta que as confeitarias fazem, explicada para quem está começando na cozinha de casa.
+
+Cada semana vendendo sem saber o custo é uma semana trabalhando por menos do que vale o seu tempo. O ingrediente sobe, o pote sobe, e o preço fica parado porque você não sabe quanto precisa aumentar. Quem faz a conta hoje decide com números; quem deixa para depois continua trabalhando muito e sobrando pouco.</div></div></div>
+    <div class="block"><div class="bn">12</div><div class="bt"><h3>Preço (ancoragem honesta)</h3>
+      <div class="copybox has-cp"><button class="cp" type="button">Copiar</button>Adquira agora o Bolo de Pote: Receita, Custo e Preço por <b>R$ 29,90</b>.
+Menos do que você recebe vendendo quatro potes.</div>
+      <p class="small muted">“De R$ 97 por R$ 29,90” só se o R$ 97 tiver sido praticado de verdade (CDC). A âncora de 4 potes é real e não tem risco.</p></div></div>
+    <div class="block cta"><div class="bn">13</div><div class="bt"><span class="ctabtn">DESEJO ADQUIRIR</span><p class="small muted">Os cinco botões levam ao mesmo link de checkout. Teste um por um antes de ligar o tráfego.</p></div></div>
+  </div>
+</section>
+
+<!-- 07 CHECKOUT -->
+<section class="sec" id="checkout">
+  <div class="sec-head">
+    <p class="eyebrow">07 · Capítulo 09</p>
+    <h2>Checkout de alta conversão</h2>
+    <p>Uma coluna, fundo branco, a mesma cor da página em tudo. Monte no desktop e clique em “Copiar do desktop” na visão de celular.</p>
+  </div>
+  <div class="grid2">
+    <div class="tbl"><table>
+      <thead><tr><th>#</th><th>Bloco</th><th>Texto para bolo de pote</th></tr></thead>
+      <tbody>
+        <tr><td class="num">1</td><td>Cronômetro 15 min (fixo)</td><td>“Aproveite nosso valor promocional antes que o tempo termine.”</td></tr>
+        <tr><td class="num">2</td><td>Banner (Canva)</td><td>“Parabéns, o primeiro passo já foi dado. Prossiga abaixo para descobrir quanto custa e por quanto vender cada bolo de pote.” + capa + ★★★★★</td></tr>
+        <tr><td class="num">3</td><td>Dados do cliente</td><td>Não mexer. Cartão, boleto e Pix.</td></tr>
+        <tr><td class="num">3b</td><td>Order bumps</td><td>“Sim, quero o Cardápio de Uma Base”, “Sim, quero o Guia de Tamanho, Pote e Preço”, “Sim, quero a Etiqueta e Validade”.</td></tr>
+        <tr><td class="num">4</td><td>Depoimentos</td><td>Até 3, em linha de 3 colunas (reais).</td></tr>
+        <tr><td class="num">5</td><td>Vantagens</td><td>Garantia de 7 dias · Compra segura · Entrega via e-mail</td></tr>
+        <tr><td class="num">6</td><td>Selo</td><td>Imagem “garantia 7 dias”.</td></tr>
+      </tbody></table></div>
+    <div class="stack">
+      <div class="note"><b>Área de membros</b>Módulo 1: “Baixe seu ebook aqui” (PDF 01). Módulos separados para cada bump comprado. Separar em módulos reduz reembolso, segundo a aula.</div>
+      <div class="note warn"><b>Cronômetro</b>Se usar, que seja coerente: um preço que “acaba” e continua igual no dia seguinte é urgência falsa. Alternativa honesta: cronômetro só para os bumps com preço de lançamento.</div>
+      <div class="note green"><b>Teste antes de anunciar</b>Clicar nos 5 botões; gerar um Pix e ver a notificação chegar; comprar com cupom de 100% (ou valor mínimo) e conferir e-mail e área de membros.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 CRIATIVOS -->
+<section class="sec" id="criativos">
+  <div class="sec-head">
+    <p class="eyebrow">08 · Capítulos 11 e 20</p>
+    <h2>Criativos: 50 frases, uma imagem, depois 5 estruturas</h2>
+    <p>Fase 1: a capa do ebook no centro, fundo de bolo de pote desfocado e escuro, headline em fonte limpa no topo, 1080 × 1080. Duplique 49 vezes trocando só a frase. Nunca escreva “compre” no criativo: quem vende é a página.</p>
+  </div>
+  <div class="ads">
+    <div><div class="ad"><div class="bg" style="background:radial-gradient(circle at 50% 70%,#6b3a2a,#1d100b)"></div><div class="h">3 sabores de bolo de pote com uma só base de recheio</div><div class="book">BOLO DE POTE<br>Receita, Custo e Preço</div></div><p class="ad-cap"><b>Fase 1</b> · capa + fundo apagado</p></div>
+    <div><div class="ad" style="background:linear-gradient(#B8395A 0 45%, #7a3b2e)"><div class="h" style="font-size:14px">Quanto cobrar no bolo de pote sem sair no prejuízo</div></div><p class="ad-cap"><b>1</b> · fundo sólido + foto em gradiente</p></div>
+    <div><div class="ad"><div class="bg" style="background:linear-gradient(135deg,#e7b9a3,#8c4b3a)"></div><div class="h" style="align-self:end;background:#111;margin:10px;border-radius:6px">Quanto cobrar no bolo de pote sem sair no prejuízo</div></div><p class="ad-cap"><b>2</b> · foto do pote + quadrado preto</p></div>
+    <div><div class="ad"><div class="bg" style="background:radial-gradient(circle at 30% 30%,#f5d0b5,#6d3b2b)"></div><div class="h" style="background:rgba(0,0,0,.55)">Quanto cobrar no bolo de pote sem sair no prejuízo</div></div><p class="ad-cap"><b>4</b> · foto ampliada + tarja translúcida</p></div>
+    <div><div class="ad"><div class="bg" style="background:linear-gradient(160deg,#3a1f17,#a8573d)"></div><div class="h" style="align-self:center;text-align:center;font-size:15px">Quanto cobrar no bolo de pote sem sair no prejuízo</div></div><p class="ad-cap"><b>5</b> · só imagem e copy</p></div>
+  </div>
+  <div class="grid3" style="margin-top:16px">
+    <div class="card stack-s"><h4>Imagem de fundo</h4><p class="small">Fotos próprias do lote de teste (semana 1): potes em camadas, vista lateral, luz natural. Banco de imagens só como plano B. Passe 10 a 20 minutos escolhendo: um fundo ruim vira 50 criativos ruins.</p></div>
+    <div class="card stack-s"><h4>Cores</h4><p class="small">Fundo marrom-chocolate escuro; headline em branco ou amarelo-creme; capa rosa. Evite capa rosa em fundo rosa (nada se destaca).</p></div>
+    <div class="card stack-s"><h4>Arquivos</h4><p class="small">Pasta <b>criativos/fase-1</b> com AD 01.png a AD 50.png, na mesma ordem da lista de headlines. Fase 2 em <b>criativos/fase-2</b> com o número da headline vencedora no nome.</p></div>
+  </div>
+</section>
+
+<!-- 09 META -->
+<section class="sec" id="meta">
+  <div class="sec-head">
+    <p class="eyebrow">09 · Capítulos 13, 14 e 15</p>
+    <h2>Estrutura no Meta, pixel e colunas</h2>
+    <p>Nomenclatura com números desde o primeiro dia. Quando houver 5 contas escalando, bater o olho e saber “é a CA 03” economiza dinheiro.</p>
+  </div>
+  <div class="grid2">
+    <div class="tbl"><table>
+      <thead><tr><th>Peça</th><th>Nome</th></tr></thead>
+      <tbody>
+        <tr><td>Perfil do Facebook</td><td>O seu, antigo (perfil novo é arriscado)</td></tr>
+        <tr><td>Business Manager</td><td class="num">BM 01 - [Editora]</td></tr>
+        <tr><td>Conta de anúncios</td><td class="num">CA 01 - [Editora] · BRL · Brasil</td></tr>
+        <tr><td>Página do Facebook</td><td>[Editora] · categoria Editora · bio “Editora de livros online”</td></tr>
+        <tr><td>Instagram</td><td>@ da editora (o mesmo do orgânico)</td></tr>
+        <tr><td>Pixel (conjunto de dados)</td><td class="num">Pixel - Bolo de Pote - 2026</td></tr>
+        <tr><td>Campanha</td><td class="num">Alfa - Bolo de Pote - DD/MM</td></tr>
+        <tr><td>Conjuntos</td><td class="num">Conjunto A - Aberto · Conjunto B - Fechado</td></tr>
+        <tr><td>Anúncios</td><td class="num">AD 01 … AD 50</td></tr>
+      </tbody></table></div>
+    <div class="stack">
+      <div class="card stack-s"><h3>Pixel em dois lugares</h3>
+        <ol class="small"><li>Script no &lt;head&gt; da página vkhub.com.br/bolo-de-pote-para-vender → PageView.</li><li>Só o ID no produto da Kiwify (Configurações → Pixel) → InitiateCheckout e Purchase.</li><li>Domínio verificado na plataforma. Testar em “Testar eventos” e com o Meta Pixel Helper.</li></ol></div>
+      <div class="card stack-s"><h3>Colunas (salvar como predefinição)</h3>
+        <p class="small">Valor usado · Compras · CPA · Valor de conversão · <b>Lucro</b> · ROAS · CPM · Cliques no link · CPC (link) · CTR (link) · Visualizações da página · <b>Connect rate</b> · Finalizações iniciadas · <b>Página → checkout</b> · <b>Página → compra</b></p>
+        <p class="small muted">Metas: CTR &gt; 2% · Connect &gt; 80% · Página → checkout 20–30% · Checkout → compra 10–15% · Página → compra 1–2%.</p></div>
+      <div class="card stack-s"><h3>Conjunto B · até 5 interesses óbvios</h3>
+        <div class="chips"><span class="chip">Confeitaria</span><span class="chip">Bolo</span><span class="chip">Doce</span><span class="chip">Receitas</span><span class="chip">Empreendedorismo</span></div>
+        <p class="small muted">Confira no Gerenciador quais existem. Sem idade nem gênero no primeiro teste: o aberto (A) mostra quem compra.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 TESTE -->
+<section class="sec" id="teste">
+  <div class="sec-head">
+    <p class="eyebrow">10 · Capítulos 16 a 18</p>
+    <h2>A campanha 1-2-50 e as regras de corte</h2>
+    <p>1 campanha de Vendas, 2 conjuntos, os mesmos 50 anúncios em cada. Orçamento CBO = ticket × 2. Programar para 23:59 do dia anterior. Os números abaixo recalculam se você mudar o preço.</p>
+  </div>
+  <div class="card">
+    <div class="calc">
+      <div class="fields">
+        <label class="f">Preço do produto (R$)<input id="cPrice" type="number" step="0.01" value="29.90"></label>
+        <label class="f">Número de conjuntos<input id="cSets" type="number" value="2"></label>
+        <p class="small muted">Arredonde o orçamento para cima: R$ 59,80 vira R$ 60.</p>
+      </div>
+      <div class="out">
+        <div class="o hl"><div class="v num" id="cBudget">–</div><div class="l">orçamento diário da campanha (CBO)</div></div>
+        <div class="o"><div class="v num" id="cJudge">–</div><div class="l">não conclua nada antes de gastar isto (2 × ticket)</div></div>
+        <div class="o"><div class="v num" id="cAdCut">–</div><div class="l">anúncio que gastou isto sem vender: desliga (½ ticket)</div></div>
+        <div class="o"><div class="v num" id="cRead">–</div><div class="l">sem venda até aqui: ler métricas e corrigir (5 × ticket)</div></div>
+        <div class="o"><div class="v num" id="cStop">–</div><div class="l">limite máximo no prejuízo: desliga ou troca (10 × ticket)</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="flowd" style="margin-top:16px">
+    <div class="col">
+      <div class="hd" style="background:var(--ok-soft);color:var(--ok)">✓ Fez venda depois de 2 × ticket</div>
+      <div class="it"><b>Só um conjunto vendeu</b>Desligue o outro. Fique com o público comprador.</div>
+      <div class="it"><b>Anúncios que venderam</b>Não mexa. Estão dando ROI.</div>
+      <div class="it"><b>Gastou ½ ticket e não vendeu</b>Desligue o anúncio.</div>
+      <div class="it"><b>Ainda não gastou</b>Deixe. Você ainda não sabe.</div>
+      <div class="it"><b>CPA abaixo do empate e estável</b>Vá para a escala (seção 12).</div>
+    </div>
+    <div class="col">
+      <div class="hd" style="background:var(--accent-soft);color:var(--accent)">✗ Não fez venda</div>
+      <div class="it"><b>Gastou menos de 5 × ticket</b>Calma, deixe gastar.</div>
+      <div class="it"><b>CTR &lt; 2%</b>O problema é a headline ou a imagem: fundo, contraste, frases.</div>
+      <div class="it"><b>Connect rate &lt; 80%</b>Página lenta. Comprimir imagens, tirar scripts.</div>
+      <div class="it"><b>Página → checkout &lt; 20%</b>Página: bloco 1, texto de consciência, depoimentos.</div>
+      <div class="it"><b>Checkout → compra &lt; 10%</b>Checkout: banner, confiança, formas de pagamento.</div>
+      <div class="it"><b>Tudo bom e sem venda até 10 × ticket</b>A ideia não vende no pago. Sem apego: próximo produto (redação ou finanças do garimpo).</div>
+    </div>
+  </div>
+  <div class="card soft" style="margin-top:14px">
+    <h3 style="margin-bottom:6px">Legenda do anúncio (texto principal)</h3>
+    <div class="copybox has-cp" style="background:var(--surface)"><button class="cp" type="button">Copiar</button>Você faz bolo de pote, mas sabe quanto custa cada um?
+
+A maioria das pessoas olha o preço da vizinha e cobra igual. Vende tudo e, no fim do mês, sobra quase nada.
+
+O Bolo de Pote: Receita, Custo e Preço traz as receitas base, a montagem e a conta completa: quantos potes a sua receita rende, quanto custa cada um e por quanto vender cobrindo ingredientes, embalagem, taxas e o seu trabalho.
+
+📲 Leia no celular, imprima se quiser. Acesso logo após a compra.
+
+👉 Toque em “Saiba mais” e veja o que tem dentro.</div>
+    <p class="small muted" style="margin-top:8px">Título do anúncio: “Bolo de Pote: Receita, Custo e Preço”. Descrição: ★★★★★. Desative aprimoramentos do criativo e “otimizar texto por pessoa”.</p>
+  </div>
+</section>
+
+<!-- 11 ORGÂNICO -->
+<section class="sec" id="organico">
+  <div class="sec-head">
+    <p class="eyebrow">11 · Capítulo 12 + garimpo</p>
+    <h2>Fluxo orgânico: a semente que paga o tráfego</h2>
+    <p>O orgânico começa na semana 1, antes do pago, e nunca para. Três frentes: vídeos curtos, comunidades e busca (Google). A busca é o fluxo que continua chegando depois que o vídeo morre.</p>
+  </div>
+  <div class="grid3">
+    <div class="card stack-s"><span class="pill p-red" style="justify-self:start">Frente 1</span><h3>Vídeos curtos sem rosto</h3>
+      <p class="small">Perfis da editora no Instagram, TikTok, YouTube Shorts e Kwai. <b>2 vídeos por dia em cada rede, por 30 dias.</b> Mãos montando o pote, texto na tela, narração. Legenda: “acesse o link na nossa bio”.</p>
+      <p class="small muted">Conteúdo próprio: repostar vídeo viral de outros perfis pode derrubar a conta.</p></div>
+    <div class="card stack-s"><span class="pill p-vio" style="justify-self:start">Frente 2</span><h3>Comunidades</h3>
+      <p class="small">Grupos de Facebook e WhatsApp de confeitaria, renda extra e mães empreendedoras. Entregue valor (a conta de um pote, o erro do preço da vizinha) e deixe o criativo com o link de forma sutil. Respeite as regras de cada grupo.</p></div>
+    <div class="card stack-s"><span class="pill p-ok" style="justify-self:start">Frente 3</span><h3>Artigos no site (SEO)</h3>
+      <p class="small">Um artigo por cluster de busca em vkhub.com.br, cada um com a calculadora simples e um botão para a página de vendas. É o fluxo que o garimpo encontrou, virando tráfego próprio.</p></div>
+  </div>
+  <div class="grid2" style="margin-top:14px">
+    <div class="tbl"><table>
+      <thead><tr><th>Artigo (cluster de busca)</th><th>Leva para</th></tr></thead>
+      <tbody>
+        <tr><td>Quanto cobrar no bolo de pote (com exemplo de 20 potes)</td><td>Principal</td></tr>
+        <tr><td>Bolo de pote: custo e lucro de cada pote</td><td>Principal</td></tr>
+        <tr><td>Quantos potes rende uma receita de bolo de pote</td><td>Principal</td></tr>
+        <tr><td>Bolo de pote para vender: guia para iniciantes</td><td>Principal</td></tr>
+        <tr><td>Sabores de bolo de pote mais pedidos, com uma base</td><td>Principal + bump Cardápio</td></tr>
+        <tr><td>Bolo de pote 150, 250 ou 350 ml: preço de cada tamanho</td><td>Principal + bump Tamanho</td></tr>
+        <tr><td>Etiqueta de bolo de pote: o que colocar</td><td>Principal + bump Etiqueta</td></tr>
+        <tr><td>Bolo de pote como lembrancinha: orçamento de 100 potes</td><td>Principal (upsell Festas)</td></tr>
+        <tr><td>Compensa vender bolo de pote no iFood?</td><td>Principal</td></tr>
+        <tr><td>Como vender bolo de pote na rua e na escola</td><td>Principal</td></tr>
+      </tbody></table></div>
+    <div class="card stack-s">
+      <h3>Pauta de vídeos (repetir e variar)</h3>
+      <ol class="small">
+        <li>“Fiz 20 potes com esta receita. Quanto custou cada um?” (conta na tela)</li>
+        <li>“3 sabores com uma base só de recheio” (montagem)</li>
+        <li>“Se você cobra R$ 5 no bolo de pote, veja isto”</li>
+        <li>“Pote de 150, 250 ou 350 ml: quanto vai dentro” (balança)</li>
+        <li>“O custo que ninguém coloca no preço: gás e embalagem”</li>
+        <li>“Quanto cobrar por 100 potes de lembrancinha”</li>
+        <li>“Como montar o pote com camadas bonitas” (satisfatório)</li>
+        <li>“3 erros de quem começa a vender bolo de pote”</li>
+        <li>“Por que dividir e não somar a margem” (conta rápida)</li>
+        <li>“Etiqueta do bolo de pote: o que colocar”</li>
+      </ol>
+      <p class="small muted">Os vídeos com mais views viram novas headlines: o orgânico também é laboratório de copy.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 12 ESCALA -->
+<section class="sec" id="escala">
+  <div class="sec-head">
+    <p class="eyebrow">12 · Capítulos 19 a 21</p>
+    <h2>Escala sem aposta</h2>
+    <p>Só escala com CPA abaixo do empate por dias seguidos. Vertical: +30% no fim de cada dia bom. Horizontal: duplicar o que vende. Campanha de teste nunca desliga: R$ 20 por dia com anúncios novos.</p>
+  </div>
+  <div class="card">
+    <div class="calc">
+      <div class="fields">
+        <label class="f">Orçamento inicial por campanha (R$)<input id="sBudget" type="number" value="60"></label>
+        <label class="f">Aumento diário (%)<input id="sInc" type="number" value="30"></label>
+        <label class="f">Campanhas em paralelo<input id="sCamps" type="number" value="1"></label>
+        <label class="f">CPA esperado (R$)<input id="sCpa" type="number" step="0.01" value="15"></label>
+        <label class="f">Líquido médio por comprador (R$)<input id="sNet" type="number" step="0.01" value="33.90"></label>
+        <p class="small muted">Simulação, não promessa: assume CPA constante. Se o CPA subir, pare de aumentar. O líquido por comprador vem da calculadora de ticket médio (seção 04).</p>
+      </div>
+      <div class="stack-s">
+        <div class="out">
+          <div class="o"><div class="v num" id="sTotInv">–</div><div class="l">investido em 14 dias</div></div>
+          <div class="o"><div class="v num" id="sTotSales">–</div><div class="l">vendas em 14 dias</div></div>
+          <div class="o hl"><div class="v num" id="sTotProfit">–</div><div class="l">resultado em 14 dias</div></div>
+        </div>
+        <div class="tbl"><table id="sTable"><thead><tr><th>Dia</th><th class="r">Orçamento</th><th class="r">Vendas</th><th class="r">Resultado do dia</th></tr></thead><tbody></tbody></table></div>
+      </div>
+    </div>
+  </div>
+  <div class="grid3" style="margin-top:14px">
+    <div class="card stack-s"><h4>Fase 2 · variação de criativo</h4><p class="small">Headline vencedora fixa, imagem varia nas 5 estruturas. Campanha nova, só o conjunto vencedor, R$ 60.</p></div>
+    <div class="card stack-s"><h4>Saturou?</h4><p class="small">Troque a foto de fundo, não a frase. Headline quase não satura; imagem satura.</p></div>
+    <div class="card stack-s"><h4>Campanhas são descartáveis</h4><p class="small">2 dias ruins seguidos: desligue e suba outra. Não tenha dó.</p></div>
+  </div>
+  <div class="note" style="margin-top:14px"><b>Caixa</b>A plataforma segura o dinheiro das vendas por alguns dias. Tenha o orçamento do mês separado antes de escalar: quem gasta tudo na primeira semana para no dia 5.</div>
+</section>
+
+<!-- 13 CRONOGRAMA -->
+<section class="sec" id="cronograma">
+  <div class="sec-head">
+    <p class="eyebrow">13 · Cronograma de execução</p>
+    <h2>Seis semanas, do PDF à escala</h2>
+    <p>Marque cada tarefa ao concluir. Fica salvo neste navegador. As datas começam amanhã, 25/09/2026.</p>
+  </div>
+  <div class="timeline" id="timeline"></div>
+</section>
+
+<!-- 14 CUIDADOS -->
+<section class="sec" id="cuidados">
+  <div class="sec-head">
+    <p class="eyebrow">14 · Riscos e cuidados</p>
+    <h2>O que pode derrubar a operação</h2>
+  </div>
+  <div class="grid2">
+    <div class="note red"><b>Promessa de renda</b>Nada de “ganhe R$ 3 mil por mês” nem “lucro garantido”, mesmo que os vídeos usem. Viola as políticas do Meta (conta bloqueada) e o CDC. As 50 headlines já seguem essa regra.</div>
+    <div class="note red"><b>Depoimentos e ancoragem</b>Somente relatos reais, com autorização. “De R$ 97” só se foi praticado. Depoimento inventado é propaganda enganosa (CDC art. 37).</div>
+    <div class="note warn"><b>Segurança de alimentos</b>O PDF de Etiqueta e Validade precisa de revisão de nutricionista ou profissional de alimentos antes de ser vendido. Receitas testadas numa cozinha real antes do lançamento.</div>
+    <div class="note warn"><b>Concorrência de receita grátis</b>Se o CTR for bom e a página → checkout for fraca, a página está vendendo receita. Reforce a conta (bloco 2 e bloco 11).</div>
+    <div class="note"><b>Conta de anúncios</b>Perfil antigo, página completa, forma de pagamento no cartão. Sem “anúncios com vários anunciantes”.</div>
+    <div class="note green"><b>Plano B sem apego</b>Se chegar a 10 × ticket sem venda com métricas boas, o garimpo já tem os próximos candidatos (redação do Enem e orçamento pessoal). O método é o mesmo.</div>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    Fontes: ebook Escala Sem Aposta (33 aulas, Marcos Ramos); pesquisas em Garimpando-Fluxos-Orgânicos (garimpo, ofertas e headlines, 23 e 24/09/2026); planilhas de ofertas do YouTube; funil de ofertas; PDFs 01 a 04 do produto; página da Leidy Cake. Visualizações são acumuladas e indicam atenção, não vendas. Preços dos complementos são hipóteses de teste.
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function () {
+  "use strict";
+  var store = {
+    get: function (k, d) { try { var v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } },
+    set: function (k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+  };
+  function brl(v) { return v.toLocaleString("pt-BR", { style: "currency", currency: "BRL" }); }
+  function num(id) { var v = parseFloat(document.getElementById(id).value); return isFinite(v) ? v : 0; }
+  var toastEl = document.getElementById("toast"), tt;
+  function toast(msg) { toastEl.textContent = msg; toastEl.classList.add("on"); clearTimeout(tt); tt = setTimeout(function () { toastEl.classList.remove("on"); }, 1400); }
+  function copy(text) {
+    if (navigator.clipboard) navigator.clipboard.writeText(text).then(function () { toast("Copiado"); }, function () { toast("Não foi possível copiar"); });
+  }
+
+  /* tema */
+  var root = document.documentElement, th = store.get("bp-theme", null);
+  if (th) root.setAttribute("data-theme", th);
+  document.getElementById("themeBtn").addEventListener("click", function () {
+    var dark = root.getAttribute("data-theme") ? root.getAttribute("data-theme") === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+    var n = dark ? "light" : "dark"; root.setAttribute("data-theme", n); store.set("bp-theme", n);
+  });
+
+  /* botões copiar */
+  document.querySelectorAll(".copybox .cp").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var box = b.parentNode.cloneNode(true); box.querySelector(".cp").remove();
+      copy(box.innerText.trim());
+    });
+  });
+
+  /* headlines */
+  var ANG = {
+    sab: "Sabores / uma base", faca: "Faça e venda", preco: "Custo e preço", rend: "Rendimento",
+    renda: "Renda extra", erro: "Erros", pote: "Tamanho do pote", festa: "Festas", onde: "Onde vender", sobra: "Sobras e validade"
+  };
+  var H = [
+    ["sab", "3 sabores de bolo de pote com uma só base de recheio", "6,7 mi · Delícias da Thata", 1],
+    ["sab", "1 base, 7 sabores: bolo de pote para vender", "1,7 mi · Anelyse Martins", 1],
+    ["sab", "Uma panela de recheio, cinco sabores no cardápio", "1,7 mi · Anelyse Martins", 0],
+    ["sab", "Quatro sabores de bolo de pote para você vender", "915 mil · Delícias da Thata", 0],
+    ["sab", "Monte seu cardápio de bolo de pote sem fazer cinco recheios", "busca: cardápio bolo de pote sabores", 0],
+    ["sab", "Ninho, brigadeiro, prestígio e maracujá com a mesma base", "busca: sabores mais vendidos", 0],
+    ["sab", "Os sabores de bolo de pote que mais aparecem nas buscas", "busca: bolo de pote sabores mais vendidos", 0],
+    ["faca", "Bolo de pote para vender, super fácil de fazer", "3,7 mi · Bete com carinho", 1],
+    ["faca", "5 receitas de bolo de pote para fazer e vender", "6,2 mi · Gabriel Freitas", 1],
+    ["faca", "Aprenda a fazer bolo de pote do zero para vender", "618 mil · Wytórya de Sousa", 0],
+    ["faca", "Seu primeiro lote de bolo de pote, do jeito certo", "busca: como começar vender bolo de pote", 0],
+    ["faca", "Bolo de pote para vender, feito na cozinha da sua casa", "busca: bolo de pote para vender iniciantes", 0],
+    ["faca", "Comece a vender bolo de pote com poucos utensílios", "Leidy Cake: “baixo investimento”", 0],
+    ["faca", "O passo a passo para vender o seu primeiro bolo de pote", "busca: bolo de pote como fazer para vender", 0],
+    ["preco", "Quanto cobrar no bolo de pote sem sair no prejuízo", "501 mil · precificação", 1],
+    ["preco", "Por quanto vender o seu bolo de pote?", "60 mil · Cleides Boller", 0],
+    ["preco", "Pare de copiar o preço da vizinha no bolo de pote", "busca: bolo de pote quanto vender", 1],
+    ["preco", "Descubra quanto custa cada bolo de pote que você faz", "busca: calcular custo bolo de pote", 1],
+    ["preco", "O preço do bolo de pote que paga até o seu trabalho", "busca: margem de lucro bolo de pote", 0],
+    ["preco", "Bolo de pote a R$ 5 pode estar te dando prejuízo", "exemplo do guia (cap. 12)", 0],
+    ["preco", "A conta que toda boleira deveria fazer antes de vender", "123 mil · Doceria Garcez", 0],
+    ["preco", "Vender bolo de pote compensa? Faça a conta antes", "busca: vender bolo de pote dá lucro", 0],
+    ["rend", "Quantos potes rende a sua receita de bolo?", "500 mil · Lori Fonseca", 1],
+    ["rend", "Uma massa, 20 potes: saiba o custo de cada um", "481 mil · “custa 8,50 e rende 30”", 0],
+    ["rend", "Rende 35 potes? Faça o teste com a sua receita", "500 mil · “rende 35 bolos no pote”", 0],
+    ["rend", "Quanto sai cada bolo de pote da sua receita", "busca: bolo de pote quanto gasta para fazer", 0],
+    ["renda", "Renda extra com bolo de pote, feito na sua cozinha", "1,5 mi · Lori Fonseca (sem o valor)", 1],
+    ["renda", "Bolo de pote: uma renda extra que cabe na sua rotina", "1,5 mi · Lori Fonseca", 0],
+    ["renda", "Transforme a sua cozinha num ponto de venda de bolo de pote", "Leidy Cake: “cozinha da sua casa”", 0],
+    ["renda", "Venda bolo de pote sabendo quanto sobra de cada um", "busca: bolo de pote custo e lucro", 0],
+    ["renda", "Quer uma renda extra? Comece pelo bolo de pote", "1,5 mi · Lori Fonseca", 0],
+    ["renda", "Bolo de pote para vender sem sair de casa", "busca: como vender bolo de pote em casa", 0],
+    ["renda", "Faça bolo de pote para vender ainda nesta semana", "3,7 mi · “super fácil”", 0],
+    ["erro", "Não cometa estes 3 erros ao vender bolo de pote", "484 mil · Canal da Júlia", 0],
+    ["erro", "O erro de preço que faz o bolo de pote não dar dinheiro", "484 mil · Canal da Júlia", 0],
+    ["erro", "Massa seca, recheio mole: acerte o seu bolo de pote", "Leidy Cake: massa que desmorona", 0],
+    ["erro", "Os 6 erros de quem começa a vender bolo de pote", "72 mil · Daniela Pereira", 0],
+    ["pote", "Pote de 150, 250 ou 350 ml: quanto cobrar em cada um?", "130 mil · Canal da Júlia", 0],
+    ["pote", "Qual o tamanho ideal de pote para vender bolo?", "130 mil · Canal da Júlia", 0],
+    ["pote", "Bolo de pote de 250 ml: quanto vai dentro e quanto cobrar", "busca: quanto cobrar bolo de pote 250ml", 0],
+    ["festa", "Pediram 100 bolos de pote. Quanto cobrar?", "236 mil · Se Vira nos 30", 0],
+    ["festa", "Bolo de pote como lembrancinha de festa", "225 mil · Ju Estivaneli", 0],
+    ["festa", "Orçamento de 50 ou 100 potes sem medo de errar", "busca: bolo de pote como lembrancinha", 0],
+    ["onde", "Onde vender bolo de pote: rua, escola, feira ou iFood", "buscas: na rua, na feira, na escola", 0],
+    ["onde", "Compensa vender bolo de pote no iFood?", "138 mil · busca: compensa vender no ifood", 0],
+    ["onde", "Como oferecer bolo de pote sem ficar com vergonha", "77 mil · SLS Dicas", 0],
+    ["sobra", "Fiz bolo de pote e não vendi. E agora?", "123 mil · Canal Babi", 0],
+    ["sobra", "Produza a quantidade certa e perca menos bolo de pote", "123 mil · Canal Babi", 0],
+    ["sobra", "O que colocar na etiqueta do seu bolo de pote", "busca: bolo de pote validade", 0],
+    ["faca", "O segredo das confeitarias: todo pote com o mesmo peso", "1,7 mi · “o segredo das grandes confeitarias”", 1]
+  ];
+  var wins = store.get("bp-wins", {}), filter = "all";
+  var tools = document.getElementById("hlTools"), list = document.getElementById("hlList");
+  var fdefs = [["all", "Todas (50)"], ["top", "★ Top 10"], ["win", "✓ Vencedoras"]].concat(Object.keys(ANG).map(function (k) { return [k, ANG[k]]; }));
+  tools.innerHTML = fdefs.map(function (f) { return '<button type="button" data-f="' + f[0] + '" aria-pressed="' + (f[0] === "all") + '">' + f[1] + '</button>'; }).join("") +
+    '<span class="sp"></span><button type="button" id="copyAll">Copiar as 50</button>';
+  function pad(i) { return (i < 10 ? "0" : "") + i; }
+  function esc(s) { var d = document.createElement("div"); d.textContent = s; return d.innerHTML; }
+  function render() {
+    list.innerHTML = H.map(function (h, i) {
+      var id = i + 1;
+      var show = filter === "all" || (filter === "top" && h[3]) || (filter === "win" && wins[id]) || h[0] === filter;
+      if (!show) return "";
+      return '<div class="hl' + (wins[id] ? " win" : "") + '"><span class="id">AD ' + pad(id) + '</span><div><div class="txt">' + esc(h[1]) + (h[3] ? ' <span class="star">★</span>' : "") + '</div><div class="meta">' + ANG[h[0]] + ' · ' + esc(h[2]) + '</div></div>' +
+        '<div class="acts"><button class="icon-btn" type="button" data-copy="' + i + '" aria-label="Copiar AD ' + pad(id) + '">⧉</button><button class="icon-btn" type="button" data-win="' + id + '" aria-pressed="' + !!wins[id] + '" aria-label="Marcar AD ' + pad(id) + ' como vencedora">✓</button></div></div>';
+    }).join("") || '<p class="muted">Nenhuma headline marcada ainda.</p>';
+  }
+  tools.addEventListener("click", function (e) {
+    var b = e.target.closest("button"); if (!b) return;
+    if (b.id === "copyAll") { copy(H.map(function (h, i) { return "AD " + pad(i + 1) + " - " + h[1]; }).join("\n")); return; }
+    filter = b.getAttribute("data-f");
+    tools.querySelectorAll("[data-f]").forEach(function (x) { x.setAttribute("aria-pressed", String(x === b)); });
+    render();
+  });
+  list.addEventListener("click", function (e) {
+    var b = e.target.closest("button"); if (!b) return;
+    if (b.hasAttribute("data-copy")) copy(H[+b.getAttribute("data-copy")][1]);
+    if (b.hasAttribute("data-win")) { var id = b.getAttribute("data-win"); if (wins[id]) delete wins[id]; else wins[id] = 1; store.set("bp-wins", wins); render(); }
+  });
+  render();
+
+  /* ticket médio */
+  var BUMPS = [9.90, 7.90, 7.90], UP = 19.90;
+  function ticket() {
+    var price = num("tPrice"), net = num("tNet"), br = Math.min(num("tBump"), 100) / 100, ur = Math.min(num("tUp"), 100) / 100;
+    var extra = BUMPS.reduce(function (a, b) { return a + b * br; }, 0) + UP * ur;
+    var aov = price + extra, rate = price ? net / price : 0, aovNet = aov * rate;
+    document.getElementById("tAov").textContent = brl(aov);
+    document.getElementById("tAovNet").textContent = brl(aovNet);
+    document.getElementById("tCpa").textContent = brl(aovNet);
+    document.getElementById("tCpaGood").textContent = brl(aovNet * 0.6);
+    document.getElementById("tGain").textContent = brl(extra);
+  }
+  ["tPrice", "tNet", "tBump", "tUp"].forEach(function (id) { document.getElementById(id).addEventListener("input", ticket); });
+  ticket();
+
+  /* 1-2-50 */
+  function c1250() {
+    var p = num("cPrice"), s = Math.max(1, Math.round(num("cSets")));
+    document.getElementById("cBudget").textContent = brl(Math.ceil(p * s));
+    document.getElementById("cJudge").textContent = brl(p * 2);
+    document.getElementById("cAdCut").textContent = brl(p / 2);
+    document.getElementById("cRead").textContent = brl(p * 5);
+    document.getElementById("cStop").textContent = brl(p * 10);
+  }
+  ["cPrice", "cSets"].forEach(function (id) { document.getElementById(id).addEventListener("input", c1250); });
+  c1250();
+
+  /* simulador de escala */
+  function scale() {
+    var b = num("sBudget"), inc = num("sInc") / 100, n = Math.max(1, Math.round(num("sCamps"))), cpa = num("sCpa"), net = num("sNet");
+    var rows = "", ti = 0, ts = 0, tp = 0;
+    for (var d = 1; d <= 14; d++) {
+      var spend = b * n, sales = cpa > 0 ? spend / cpa : 0, prof = sales * net - spend;
+      ti += spend; ts += sales; tp += prof;
+      rows += "<tr><td class='num'>" + d + "</td><td class='r num'>" + brl(spend) + "</td><td class='r num'>" + sales.toFixed(1).replace(".", ",") + "</td><td class='r num' style='color:" + (prof >= 0 ? "var(--ok)" : "var(--accent)") + "'>" + brl(prof) + "</td></tr>";
+      b = b * (1 + inc);
+    }
+    document.querySelector("#sTable tbody").innerHTML = rows;
+    document.getElementById("sTotInv").textContent = brl(ti);
+    document.getElementById("sTotSales").textContent = Math.round(ts).toLocaleString("pt-BR");
+    document.getElementById("sTotProfit").textContent = brl(tp);
+  }
+  ["sBudget", "sInc", "sCamps", "sCpa", "sNet"].forEach(function (id) { document.getElementById(id).addEventListener("input", scale); });
+  scale();
+
+  /* cronograma */
+  var W = [
+    ["25/09 – 01/10", "Semana 1 · Produto e prova", [
+      "Revisar os PDFs 01 a 04 (texto, números do exemplo, links)",
+      "Fazer um lote real com as receitas do guia e ajustar o que precisar",
+      "Fotografar o lote: potes em camadas, lateral, luz natural (fundos dos criativos)",
+      "Enviar o PDF de Etiqueta e Validade para revisão de nutricionista ou profissional de alimentos",
+      "Escolher o nome da editora e criar Instagram, TikTok, YouTube e Kwai",
+      "Dar o ebook para 8 a 10 leitores beta e pedir relato com autorização",
+      "Começar o orgânico: 2 vídeos por dia em cada rede"
+    ]],
+    ["02/10 – 08/10", "Semana 2 · Operação", [
+      "Criar a página vkhub.com.br/bolo-de-pote-para-vender com os 13 blocos (seção 06)",
+      "Mockup do ebook (capa + celular) para o bloco 1 e o checkout",
+      "Depoimentos reais em quadrados no Canva (8 + 3)",
+      "Cadastrar produto na Kiwify: R$ 29,90, área de membros “Baixe seu ebook aqui”",
+      "Cadastrar os 3 order bumps (Cardápio, Tamanho, Etiqueta)",
+      "Montar o checkout de 6 blocos e copiar para o celular",
+      "Colar o link do checkout nos 5 botões, publicar, testar botões e Pix",
+      "Publicar os 3 primeiros artigos de SEO (quanto cobrar, custo e lucro, rendimento)"
+    ]],
+    ["09/10 – 15/10", "Semana 3 · Meta e lançamento", [
+      "BM 01, CA 01 (BRL), página do Facebook completa, Instagram conectado",
+      "Pixel - Bolo de Pote - 2026: script no site + ID na Kiwify + domínio verificado",
+      "Testar PageView no Gerenciador de eventos e no Pixel Helper",
+      "Salvar o padrão de colunas com as 4 métricas personalizadas",
+      "Produzir os 50 criativos (AD 01 a AD 50) com a mesma imagem",
+      "Subir a Alfa - Bolo de Pote: CBO R$ 60, Conjunto A aberto, 50 anúncios",
+      "Duplicar para o Conjunto B fechado (5 interesses) e programar para 23:59"
+    ]],
+    ["16/10 – 22/10", "Semana 4 · Leitura e otimização", [
+      "Não mexer antes de gastar R$ 59,80 (2 × ticket)",
+      "Desligar anúncios com R$ 15 gastos e zero venda",
+      "Desligar o conjunto que não vendeu",
+      "Se R$ 150 sem venda: diagnosticar CTR, connect, página, checkout",
+      "Anotar CPA diário e comparar com o CPA de empate (seção 04)",
+      "Marcar as headlines vencedoras nesta página",
+      "Trocar o bloco 1 da página pela headline campeã"
+    ]],
+    ["23/10 – 29/10", "Semana 5 · Escala vertical e fase 2", [
+      "Com CPA estável abaixo do empate: +30% no fim de cada dia",
+      "Criar criativos nas 5 estruturas com a headline vencedora",
+      "Subir campanha de fase 2 só com o conjunto vencedor (R$ 60)",
+      "Manter a campanha de teste a R$ 20/dia com headlines novas",
+      "Começar a produzir o upsell Receitas Extras (receitas testadas)"
+    ]],
+    ["30/10 – 05/11", "Semana 6 · Horizontal e LTV", [
+      "Duplicar a campanha vencedora (ou só o conjunto, ou só os anúncios)",
+      "Ligar o upsell na página de obrigado e medir a adesão",
+      "Trocar o bump de menor adesão pela Planilha Calculadora e comparar",
+      "E-mail para compradores com as ofertas de reserva",
+      "Revisar o mês: investido, faturado, lucro, CPA, ticket médio"
+    ]]
+  ];
+  var done = store.get("bp-done", {});
+  var tl = document.getElementById("timeline");
+  tl.innerHTML = W.map(function (w, wi) {
+    return '<div class="week" data-w="' + wi + '"><div class="wh"><div class="d">' + w[0] + '</div><h3>' + w[1] + '</h3><div class="bar"><i></i></div></div><ul class="checks">' +
+      w[2].map(function (t, ti) { var k = wi + "-" + ti; return '<li><label><input type="checkbox" data-k="' + k + '"' + (done[k] ? " checked" : "") + '><span>' + esc(t) + '</span></label></li>'; }).join("") + '</ul></div>';
+  }).join("");
+  function bars() {
+    tl.querySelectorAll(".week").forEach(function (w) {
+      var all = w.querySelectorAll("input"), c = w.querySelectorAll("input:checked");
+      w.querySelector(".bar i").style.width = (all.length ? c.length / all.length * 100 : 0) + "%";
+    });
+  }
+  tl.addEventListener("change", function (e) {
+    var k = e.target.getAttribute("data-k"); if (!k) return;
+    if (e.target.checked) done[k] = 1; else delete done[k];
+    store.set("bp-done", done); bars();
+  });
+  bars();
+})();
+</script>
+</html>

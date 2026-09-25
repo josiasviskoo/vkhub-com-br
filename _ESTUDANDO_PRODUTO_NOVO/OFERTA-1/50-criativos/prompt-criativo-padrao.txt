@@ -1,0 +1,245 @@
+PROMPT · CRIATIVO PADRÃO (FASE 1 · TESTE DE HEADLINE)
+Oferta 1 · Bolo de Pote: Receita, Custo e Preço
+Base: planejamento-bolo-de-pote.html (seções 05 e 08), Escala Sem Aposta
+(capítulos 11 e 20) e as 10 referências visuais em 50-criativos/referencias/
+
+######################################################################
+PRONTO PARA COPIAR E COLAR · PRIMEIRO CRIATIVO (AD 01)
+######################################################################
+Antes de colar, anexe no gerador de imagem estas 4 fotos da pasta
+referencias/:
+  f42acdfe64bd42e0b9fa6baff665083a.jpg
+  9405b79c62dfb6a5a1cbf8eb0fd6d24e.jpg
+  156a937800a879d73656541d34330680.jpg
+  415075f7f413cd72c8a027d1128384de.jpg
+Depois copie tudo entre as linhas ▼ e ▲ e cole.
+
+▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼
+
+Use as imagens anexadas como referência de ESTILO: fotografia de produto de bolo de pote, pote transparente com camadas nítidas e cremosas, luz quente e natural, fundo desfocado, paleta de chocolate, caramelo, creme e laranja, tipografia grossa sem serifa. Não copie logotipos, etiquetas nem marcas que aparecem nas referências.
+
+Crie uma imagem quadrada de 1080 × 1080 px para anúncio de feed no Instagram e no Facebook.
+
+COMPOSIÇÃO, de cima para baixo:
+
+1. HEADLINE no topo, ocupando cerca de 25% da altura, em português, escrita exatamente assim, sem mudar, tirar ou acrescentar nenhuma palavra ou acento:
+"3 sabores de bolo de pote com uma só base de recheio"
+Quebre em 3 linhas: "3 sabores de bolo de pote" / "com uma só base" / "de recheio". Fonte sem serifa bem grossa (estilo Montserrat ExtraBold ou Poppins Black), cor branca, com as palavras "3 sabores" e "uma só base" em laranja-caramelo (#F28C28). Texto centralizado, com margem lateral de pelo menos 80 px.
+
+2. CENTRO, protagonista, ocupando cerca de 50% da altura: mockup 3D de um ebook em pé, levemente inclinado para a direita, com sombra suave embaixo. A capa do ebook tem fundo em degradê de creme (#FBEFE3) para caramelo (#C8742E) e, no meio da capa, a foto de um bolo de pote em pote transparente com tampa, com camadas bem definidas de massa de chocolate, brigadeiro e creme de ninho, e gotas de chocolate por cima. Na parte de cima da capa, o título "BOLO DE POTE" em letras grandes marrom-chocolate (#3A1F17) e, logo abaixo, "Receita, Custo e Preço" em letras menores da mesma cor.
+
+3. FUNDO, a imagem inteira atrás: uma cena de cozinha caseira com uma mão segurando um bolo de pote transparente de camadas, outros potes de bolo enfileirados, uma tábua de madeira e granulado de chocolate espalhado. Tudo MUITO DESFOCADO (bokeh forte) e ESCURECIDO (cerca de 55% mais escuro), em tons de marrom-chocolate (#1D100B a #6B3A2A). O fundo dá o clima e a vontade de comer, mas não compete com o ebook nem com a headline.
+
+CONTRASTE: capa clara (creme e caramelo) sobre fundo marrom escuro; headline branca e laranja sobre a parte mais escura do topo; luz quente e suave vinda do alto e da lateral, como luz de janela.
+
+NÃO INCLUIR: as palavras "compre", "compra", "oferta" ou "promoção"; preço ou valores em dinheiro; promessa de renda ou de lucro; logotipos, etiquetas de marca, selos, estrelas, botões, setas, emojis ou molduras; rosto de pessoa (só a mão, desfocada, no fundo); nenhum outro texto além da headline e do título da capa.
+
+Estilo final: fotografia de produto realista de confeitaria caseira com mockup 3D de ebook, cores quentes, alto contraste, aparência de editora profissional, pronta para anúncio.
+
+▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
+
+Se a IA errar alguma letra ou acento da headline ou da capa, corrija no
+Canva por cima. Salve como AD 01.png nesta pasta.
+######################################################################
+
+======================================================================
+O QUE AS REFERÊNCIAS MOSTRAM (e o que o prompt copia delas)
+======================================================================
+Arquivo (pasta referencias/)            O que aproveitar
+--------------------------------------  ------------------------------------------
+156a937800a879d73656541d34330680.jpg    Clima escuro e sofisticado: fundo marrom,
+                                        luz lateral quente, pote em destaque.
+1c85d18a641bc3e9a9163ea0e8d8200e.jpg    Camadas bem visíveis (chocolate, creme,
+                                        morango), tábua de madeira, gotas de
+                                        chocolate espalhadas.
+415075f7f413cd72c8a027d1128384de.jpg    Vários potes enfileirados ao fundo,
+                                        camadas marrom e amarelo, granulado solto.
+47218f2900af464705e8affb92196d8d.jpg    Potes quadrados com tampa, vistos de cima,
+                                        etiqueta redonda na tampa.
+70475c7727f5c5365a3172d3f91e29a4.jpg    Fundo vermelho sólido, morangos em
+                                        movimento, grupo de potes, título grande.
+86c4a258efbcdbd8a14ca958df60868a.jpg    Fundo rosa, pote em close, setas e textos
+                                        brancos apontando cada camada.
+9405b79c62dfb6a5a1cbf8eb0fd6d24e.jpg    Mão segurando o pote, colher entrando,
+                                        suéter claro, luz natural de janela.
+9aff8ee0c9082791ff7b7ff1b6c9b56b.jpg    Fundo caramelo em tons de laranja, colher
+                                        puxando doce cremoso, título curvado.
+b455ee2801451eba5b7e9856b16f6a45.jpg    Mão segurando o pote, fundo desfocado,
+                                        título em fonte condensada grossa branca.
+f42acdfe64bd42e0b9fa6baff665083a.jpg    Dois potes empilhados na mão, colher com
+                                        bolo, headline laranja em fonte grossa,
+                                        palavra gigante apagada no fundo.
+
+Padrão que se repete nas 10:
+- O bolo de pote é o herói: pote TRANSPARENTE, camadas nítidas e
+  cremosas (massa escura + recheio claro), vistas de lado.
+- Fotografia realista, luz quente e natural, profundidade de campo
+  curta (fundo desfocado).
+- Paleta quente: chocolate, caramelo, laranja, creme, rosa/vermelho do
+  morango.
+- Mão segurando o pote ou colher tirando uma porção = sensação de
+  "dá vontade de comer".
+- Tipografia grossa, sem serifa, às vezes condensada; destaque em
+  laranja ou creme.
+
+O que NÃO copiar: logotipos e etiquetas das marcas das fotos (Sr Cake,
+Fábula Cakes, Mochi Me, Doce de Leite da Fazenda, Docinho Delícia).
+As referências são para estilo, não para reproduzir fotos alheias.
+
+======================================================================
+COMO USAR
+======================================================================
+1. Abra o gerador de imagem que aceita referência (ChatGPT com imagem,
+   Ideogram, Leonardo, Midjourney com --sref, Canva Magic Media).
+2. ANEXE estas 4 referências junto com o prompt (são as mais próximas
+   do criativo padrão):
+     - f42acdfe64bd42e0b9fa6baff665083a.jpg  (composição e headline)
+     - 9405b79c62dfb6a5a1cbf8eb0fd6d24e.jpg  (mão + pote + luz)
+     - 156a937800a879d73656541d34330680.jpg  (clima escuro e quente)
+     - 415075f7f413cd72c8a027d1128384de.jpg  (camadas e potes ao fundo)
+3. Cole o PROMPT abaixo. Troque [HEADLINE] pela frase do AD.
+   Comece pelo AD 01: "3 sabores de bolo de pote com uma só base de recheio".
+4. Gere o criativo padrão UMA vez. No Canva, duplique a página 49 vezes
+   trocando SÓ a headline (AD 01 a AD 50). A imagem não muda: no teste
+   1-2-50 a headline é a única variável.
+5. Salve como AD 01.png ... AD 50.png nesta pasta.
+
+IA de imagem costuma errar texto em português. O mais seguro é gerar a
+versão SEM TEXTO (mais abaixo) e escrever capa e headline no Canva.
+
+======================================================================
+PROMPT (versão completa, com texto)
+======================================================================
+
+Use as imagens anexadas como referência de ESTILO: fotografia de
+produto de bolo de pote, pote transparente com camadas nítidas e
+cremosas, luz quente e natural, fundo desfocado, paleta de chocolate,
+caramelo, creme e laranja, tipografia grossa sem serifa. Não copie
+logotipos nem etiquetas de marca das referências.
+
+Crie uma imagem quadrada de 1080 × 1080 px para anúncio de feed no
+Instagram e no Facebook.
+
+COMPOSIÇÃO (de cima para baixo):
+
+1. HEADLINE no topo (cerca de 25% da altura), em português, escrita
+   exatamente assim, sem mudar nenhuma palavra:
+   "[HEADLINE]"
+   Fonte sem serifa grossa (tipo Montserrat ExtraBold, Poppins Black ou
+   Bebas Neue para palavras curtas), como na referência
+   f42acdfe64bd42e0b9fa6baff665083a.jpg. Branca, com 1 ou 2
+   palavras-chave em laranja-caramelo (#F28C28). Centralizada, no
+   máximo 3 linhas, margem lateral de pelo menos 80 px.
+
+2. CENTRO (protagonista, cerca de 50% da altura): mockup 3D de um
+   ebook em pé, levemente inclinado, com sombra suave embaixo.
+   Capa do ebook:
+     • Fundo em degradê de creme (#FBEFE3) para caramelo (#C8742E).
+     • Foto de um bolo de pote no estilo das referências: pote
+       transparente com tampa, camadas de massa de chocolate,
+       brigadeiro e creme de ninho bem definidas, gotas de chocolate
+       por cima.
+     • Título na capa: "BOLO DE POTE" (grande, marrom-chocolate
+       #3A1F17) e, embaixo, "Receita, Custo e Preço" (menor).
+
+3. FUNDO (a imagem inteira atrás): cena de cozinha caseira como nas
+   referências 9405b79c62dfb6a5a1cbf8eb0fd6d24e.jpg e
+   415075f7f413cd72c8a027d1128384de.jpg: uma mão segurando um bolo de
+   pote transparente de camadas, com outros potes enfileirados, uma
+   tábua de madeira e granulado espalhado. Tudo MUITO DESFOCADO (bokeh
+   forte) e ESCURECIDO (cerca de 55% mais escuro), em tons de
+   marrom-chocolate (#1D100B a #6B3A2A), como o clima da referência
+   156a937800a879d73656541d34330680.jpg. O fundo dá o clima e a vontade
+   de comer, mas não compete com a capa nem com a headline.
+
+REGRAS DE CONTRASTE:
+- Capa clara (creme e caramelo) sobre fundo marrom escuro.
+- Headline branca e laranja sobre a parte mais escura do topo.
+- Luz quente e suave vinda do alto e da lateral, como luz de janela.
+
+NÃO INCLUIR:
+- "compre", "compra", "oferta", "promoção", preço ou valores em dinheiro.
+  O anúncio não vende: leva a pessoa para a página.
+- "ganhe R$", "lucro garantido" ou qualquer promessa de renda.
+- Logotipos, etiquetas de marca, selos, estrelas, botões, setas, emojis
+  ou molduras.
+- Qualquer texto além da headline e do título da capa.
+- Rosto de pessoa (só mãos, desfocadas, no fundo).
+
+Estilo final: fotografia de produto realista de confeitaria caseira com
+mockup 3D de ebook, cores quentes, alto contraste, aparência de editora
+profissional.
+
+======================================================================
+PROMPT (versão SEM TEXTO · recomendada para o Canva)
+======================================================================
+
+Use as imagens anexadas como referência de ESTILO (fotografia de bolo
+de pote, pote transparente com camadas cremosas, luz quente, fundo
+desfocado, paleta chocolate, caramelo e creme). Não copie logotipos.
+
+Crie uma imagem quadrada de 1080 × 1080 px. No centro, um mockup 3D de
+ebook em pé, levemente inclinado, com sombra suave. A capa tem fundo em
+degradê de creme (#FBEFE3) para caramelo (#C8742E) e a foto de um bolo
+de pote transparente com camadas de massa de chocolate, brigadeiro e
+creme de ninho, com gotas de chocolate por cima. Deixe a área do título
+da capa lisa, sem nenhum texto.
+O fundo é uma cozinha caseira com uma mão segurando um bolo de pote de
+camadas, outros potes enfileirados, tábua de madeira e granulado
+espalhado, tudo muito desfocado (bokeh), escurecido e em tons de
+marrom-chocolate (#1D100B a #6B3A2A).
+Deixe os 25% de cima mais escuros e livres, sem objetos, para eu
+escrever uma headline por cima.
+Sem nenhum texto, letra, número, logotipo ou rosto na imagem.
+Fotografia realista, luz quente e suave vinda do alto, alto contraste
+entre a capa clara e o fundo escuro.
+
+Depois, no Canva:
+- Título na capa: "BOLO DE POTE" / "Receita, Custo e Preço", em
+  marrom-chocolate #3A1F17.
+- Headline no topo: fonte grossa sem serifa, branca, palavras-chave em
+  #F28C28, centralizada, no máximo 3 linhas.
+- Duplique a página 49 vezes e troque só a headline (AD 01 a AD 50).
+
+======================================================================
+CHECKLIST ANTES DE EXPORTAR
+======================================================================
+[ ] 1080 × 1080 px (post quadrado)
+[ ] Headline legível na miniatura do celular (diminua o zoom para testar)
+[ ] Headline exatamente como na lista, com acentos certos
+[ ] Capa do ebook no centro, em destaque
+[ ] Camadas do bolo de pote nítidas, como nas referências
+[ ] Fundo escuro e desfocado, sem competir com a capa
+[ ] Nenhum logotipo das referências na imagem
+[ ] Nada de "compre", preço ou promessa de renda
+[ ] Os 50 com a MESMA imagem; só a frase muda
+[ ] Arquivos AD 01.png ... AD 50.png, na ordem da lista
+
+Quando tiver a foto própria do lote de teste (semana 1 do cronograma),
+use-a no fundo e na capa no lugar da foto gerada: foto real passa mais
+confiança e não tem risco de parecer com a foto de outra confeiteira.
+
+======================================================================
+FASE 2 (só depois do teste 1-2-50) · referência para cada estrutura
+======================================================================
+Com a headline vencedora definida, ela fica fixa e o que muda é a
+imagem. As 5 estruturas validadas (seção 08 do planejamento) e a
+referência mais próxima de cada uma:
+
+1. Frase + fundo sólido + foto em gradiente
+   → 70475c7727f5c5365a3172d3f91e29a4.jpg (fundo vermelho, morangos)
+2. Foto do bolo de pote + quadrado preto com a frase
+   → 9405b79c62dfb6a5a1cbf8eb0fd6d24e.jpg (mão + pote, luz natural)
+3. Livro + fundo + frase (este criativo padrão, trocando só o fundo)
+   → 156a937800a879d73656541d34330680.jpg / 415075f7f413cd72c8a027d1128384de.jpg
+4. Foto ampliada + tarja preta translúcida com a frase
+   → 1c85d18a641bc3e9a9163ea0e8d8200e.jpg (close das camadas com morango)
+5. Só imagem e frase, sem o ebook
+   → f42acdfe64bd42e0b9fa6baff665083a.jpg (headline laranja + potes na mão)
+   → b455ee2801451eba5b7e9856b16f6a45.jpg (fonte condensada branca)
+   → 9aff8ee0c9082791ff7b7ff1b6c9b56b.jpg (fundo caramelo, colher)
+
+Variação extra para testar depois: pote em close com setas e textos
+brancos explicando cada camada, como em
+86c4a258efbcdbd8a14ca958df60868a.jpg (ex.: "massa de chocolate",
+"brigadeiro", "creme de ninho"), com a headline vencedora no topo.

@@ -1,0 +1,14 @@
+Use case: ads-marketing. Create AD 01, a square 1080 × 1080 px Instagram/Facebook feed advertisement. The four input images are STYLE REFERENCES ONLY: 1 orange bold headline and transparent layers; 2 hand holding cake jar with natural window light; 3 dark warm sophisticated chocolate mood; 4 rows of layered jars. Do not reproduce their branding, labels or compositions.
+
+COMPOSITION top to bottom:
+Top approximately 25%: headline in very heavy sans serif like Montserrat ExtraBold/Poppins Black, centered with at least 80px side margins. EXACTLY these three lines:
+3 sabores de bolo de pote
+com uma só base
+de recheio
+White text except “3 sabores” and “uma só base” in orange caramel #F28C28. All accents and words exact. Make readable with generous spacing on darkest background.
+
+Center protagonist approximately 50% image height: realistic 3D standing ebook mockup, slightly inclined to right with soft ground shadow. Cover gradient cream #FBEFE3 to caramel #C8742E. On upper cover title EXACT “BOLO DE POTE” large dark chocolate #3A1F17; below EXACT “Receita, Custo e Preço” smaller same color. In middle of cover beautiful realistic photo of transparent cake jar WITH clear lid, distinct moist chocolate cake, brigadeiro and white milk cream layers, chocolate chips on top. Clear light cover contrast and professional editorial design.
+
+Entire background: home kitchen scene, ONE blurred hand holding transparent layered cake jar, other jars lined up, wooden board, scattered chocolate sprinkles. VERY STRONGLY BLURRED bokeh and darkened around 55%, chocolate brown #1D100B to #6B3A2A. Background atmospheric, subordinate to ebook and headline. Soft warm window light from above and side.
+
+No additional text beyond exact headline and two cover titles. No words compre, compra, oferta, promoção; no price, money values, income or profit promises. No logos, brand labels, seals, stars, buttons, arrows, emojis, frames, faces or watermarks. Photorealistic homemade confectionery product photography, warm colors, high contrast, professional publisher appearance.

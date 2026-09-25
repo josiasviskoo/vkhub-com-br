@@ -1,0 +1,47 @@
+TAREFA: gerar 50 criativos a partir de "AD 01.png", trocando SOMENTE a headline do topo.
+
+ARQUIVOS (nesta pasta):
+- Imagem base: "AD 01.png" (1080 x 1080 px, anúncio de feed quadrado)
+- Headlines: "headlines.txt" (50 linhas numeradas de 1 a 50)
+
+O QUE FAZER
+Leia o "headlines.txt". Para cada uma das 50 linhas, remova o número inicial ("1. ", "2. " etc.) e use o texto restante, exatamente como está escrito, como a nova headline. Gere UMA imagem por headline, sempre partindo do "AD 01.png" original (nunca de uma imagem já gerada), usando edição de imagem (image-to-image / edit), e não geração do zero. Faça uma imagem por vez, até completar as 50.
+
+SALVAR
+Crie a pasta "criativos-headlines" e salve cada imagem como PNG 1080 x 1080 px, com o número da headline no nome:
+criativos-headlines/AD-01.png, AD-02.png ... AD-50.png
+(AD-01 usa a headline 1, AD-02 usa a headline 2, e assim por diante.)
+Não sobrescreva nem altere o "AD 01.png" original.
+
+O QUE MUDA (só isto)
+Apenas o texto da headline no topo da imagem (a área que hoje diz "3 sabores de bolo de pote / com uma só base / de recheio"). Apague a headline antiga por completo, sem sobrar nenhuma letra, e escreva a nova no mesmo lugar.
+
+COMO A NOVA HEADLINE DEVE FICAR (idêntico ao estilo atual)
+- Mesma fonte: sans serif muito pesada, estilo Montserrat ExtraBold / Poppins Black, só letras minúsculas exceto onde o texto do txt tiver maiúscula (siga o txt: nomes próprios, "R$", "iFood", "ml" etc.).
+- Mesmo tamanho de letra, mesma posição, centralizada, com pelo menos 80 px de margem nas laterais.
+- 2 ou 3 linhas, quebradas em pontos naturais da frase. Se a frase for longa, pode reduzir levemente o tamanho da fonte para caber em no máximo 3 linhas, sem nunca invadir o livro.
+- O texto precisa ficar inteiro entre y = 60 px e y = 275 px, sem encostar no topo do ebook.
+- Cores: texto branco, com 1 ou 2 trechos de destaque (as palavras-chave mais fortes da frase, como números, sabores, preço, "renda extra", "erro") na cor laranja caramelo #F28C28, igual ao "3 sabores" e "uma só base" do original. Nunca mais de 2 destaques.
+- Mesma sombra suave atrás das letras que existe hoje, para leitura sobre o fundo escuro.
+- Ortografia EXATA do txt: todos os acentos (á, ã, ç, é, ê, ó, ú), pontuação, interrogações, dois-pontos, números e "R$ 5" exatamente como escritos. Não traduza, não resuma, não reescreva, não acrescente nem retire palavras.
+
+O QUE NÃO PODE MUDAR (manter 100% igual ao AD 01.png)
+- O ebook 3D (capa, título "BOLO DE POTE", subtítulo "Receita, Custo e Preço", o pote da capa, ângulo, sombra, posição e tamanho).
+- O fundo desfocado: mão segurando o pote à esquerda, potes enfileirados à direita, tigela de granulado, pano, mesa de madeira, granulados espalhados.
+- Cores, iluminação, desfoque, enquadramento, contraste e resolução.
+- Não adicione nenhum texto, logo, selo, botão, seta, emoji, preço extra, moldura ou marca d'água além da headline.
+
+GARANTIA DE QUE O RESTO FICA IGUAL (fazer em cada imagem)
+Depois de gerar cada imagem, faça uma composição com Python/PIL: mantenha a faixa do topo da imagem gerada (y = 0 até 290 px) e, de y = 290 px até o fim, use os pixels do "AD 01.png" original, com uma transição suave (degradê de 20 px) na emenda para não aparecer corte. Assim o ebook e todo o fundo abaixo da headline ficam pixel a pixel iguais ao original. Salve o resultado final com o nome AD-XX.png.
+
+CONFERÊNCIA (antes de passar para a próxima)
+Abra a imagem salva e confira:
+1. A headline está escrita letra por letra igual à linha correspondente do txt, com todos os acentos?
+2. Não sobrou nenhum pedaço da headline antiga?
+3. O texto cabe dentro das margens e não encosta no livro?
+4. Tem no máximo 2 trechos em laranja #F28C28 e o resto em branco?
+5. O restante da imagem está igual ao AD 01.png?
+Se qualquer item falhar, gere de novo essa mesma imagem antes de continuar.
+
+AO FINAL
+Liste os 50 arquivos gerados com a headline usada em cada um (AD-01 -> headline 1, ..., AD-50 -> headline 50) e aponte qualquer imagem que precisou ser refeita.

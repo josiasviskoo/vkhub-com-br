@@ -1,0 +1,1601 @@
+<title>Escala Sem Aposta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --bg:#F3F4F6; --surface:#FFFFFF; --surface-2:#EBEDF1; --ink:#15171C; --muted:#5A606C; --line:#D9DCE2;
+  --accent:#C8162F; --accent-ink:#FFFFFF; --accent-soft:#FBE4E8;
+  --good:#1D7F55; --good-soft:#DDF3E8; --warn:#9A6400; --warn-soft:#FBEFD5; --bad:#B42318; --bad-soft:#FDE3E0;
+  --shadow:0 1px 2px rgba(20,22,28,.06),0 6px 24px rgba(20,22,28,.06);
+  --f-display:"Bricolage Grotesque",ui-sans-serif,system-ui,"Segoe UI",Arial,sans-serif;
+  --f-body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --f-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#101217; --surface:#191C23; --surface-2:#232731; --ink:#ECEEF1; --muted:#A2A8B4; --line:#2E333E;
+    --accent:#FF4F63; --accent-ink:#1A0A0D; --accent-soft:#3A1920;
+    --good:#43CC8E; --good-soft:#123326; --warn:#EDBB4F; --warn-soft:#352A12; --bad:#FF7A6B; --bad-soft:#3A1C19;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 6px 24px rgba(0,0,0,.3);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#101217; --surface:#191C23; --surface-2:#232731; --ink:#ECEEF1; --muted:#A2A8B4; --line:#2E333E;
+  --accent:#FF4F63; --accent-ink:#1A0A0D; --accent-soft:#3A1920;
+  --good:#43CC8E; --good-soft:#123326; --warn:#EDBB4F; --warn-soft:#352A12; --bad:#FF7A6B; --bad-soft:#3A1C19;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 6px 24px rgba(0,0,0,.3);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:18px;line-height:1.62;padding-inline:16px;padding-block:0}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.12;text-wrap:balance;margin:0}
+p{margin:0}
+.layout{display:grid;grid-template-columns:260px minmax(0,1fr);gap:48px;max-width:1240px;margin:0 auto}
+@media (max-width:980px){.layout{grid-template-columns:minmax(0,1fr);gap:0}}
+
+/* TOC */
+.toc{position:sticky;top:env(safe-area-inset-top,0px);height:100vh;overflow:auto;padding-block:32px;font-family:var(--f-display);font-size:14px}
+.toc .brand{font-weight:800;font-size:18px;letter-spacing:-.01em;margin-bottom:4px}
+.toc .brand span{color:var(--accent)}
+.toc .sub{color:var(--muted);font-size:12.5px;margin-bottom:20px}
+.toc ol{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.toc .part{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:16px;margin-bottom:4px;font-weight:600}
+.toc a{display:grid;grid-template-columns:28px 1fr;gap:6px;text-decoration:none;color:var(--ink);padding:5px 8px;border-radius:6px;line-height:1.3}
+.toc a .n{font-family:var(--f-mono);font-size:12px;color:var(--muted);padding-top:1px}
+.toc a:hover{background:var(--surface-2)}
+.toc a.active{background:var(--accent-soft);color:var(--accent)}
+.toc a.active .n{color:var(--accent)}
+@media (max-width:980px){.toc{display:none}}
+.mobile-toc{display:none}
+@media (max-width:980px){.mobile-toc{display:block;margin-block:16px}}
+.mobile-toc summary{font-family:var(--f-display);font-weight:600;cursor:pointer;padding:12px 16px;background:var(--surface);border:1px solid var(--line);border-radius:10px}
+.mobile-toc ol{list-style:none;padding:8px 0 0;margin:0;display:grid;gap:2px;font-family:var(--f-display);font-size:15px}
+.mobile-toc a{display:block;padding:6px 16px;color:var(--ink);text-decoration:none}
+
+main{min-width:0;padding-block:32px 96px}
+.prose{max-width:68ch}
+.prose > * + *{margin-top:1em}
+.prose h3{font-size:1.3rem;margin-top:1.8em}
+.prose h4{font-size:1.05rem;margin-top:1.4em}
+.prose ul,.prose ol{padding-left:1.3em}
+.prose li + li{margin-top:.35em}
+strong{font-weight:600}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+
+/* Cover */
+.cover{background:var(--ink);color:var(--bg);border-radius:18px;padding:clamp(28px,6vw,64px);position:relative;overflow:hidden}
+.cover .eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;opacity:.7}
+.cover h1{font-size:clamp(44px,8vw,96px);font-weight:800;letter-spacing:-.035em;line-height:.95;margin-top:18px}
+.cover h1 .strike{position:relative;color:transparent;-webkit-text-stroke:1.5px var(--bg)}
+.cover h1 .strike::after{content:"";position:absolute;left:-2%;right:-2%;top:52%;height:.09em;background:var(--accent);transform:rotate(-3deg)}
+.cover h1 em{font-style:normal;color:var(--accent)}
+.cover .lede{font-size:clamp(18px,2.2vw,22px);max-width:40ch;margin-top:22px;opacity:.88}
+.cover .meta{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:32px;font-family:var(--f-display);font-size:14px}
+.cover .meta b{display:block;font-size:26px;font-weight:800;color:var(--accent)}
+.cover svg.cover-chart{position:absolute;right:-20px;bottom:-10px;width:min(52%,520px);opacity:.9;pointer-events:none}
+@media (max-width:720px){.cover svg.cover-chart{position:static;width:100%;margin-top:24px}}
+
+/* Sections */
+section.chapter{margin-top:96px;scroll-margin-top:24px}
+.part-opener{margin-top:120px;padding-block:28px;border-top:3px solid var(--ink);display:grid;grid-template-columns:auto 1fr;gap:8px 28px;align-items:end}
+.part-opener .pn{font-family:var(--f-display);font-weight:800;font-size:clamp(64px,10vw,120px);line-height:.8;color:var(--accent);letter-spacing:-.04em}
+.part-opener h2{font-size:clamp(28px,4vw,44px);letter-spacing:-.02em}
+.part-opener p{grid-column:2;color:var(--muted);max-width:60ch}
+@media (max-width:600px){.part-opener{grid-template-columns:1fr}.part-opener p{grid-column:1}}
+.ch-head{display:flex;gap:18px;align-items:baseline;margin-bottom:22px;flex-wrap:wrap}
+.ch-head .num{font-family:var(--f-mono);font-size:13px;color:var(--accent);border:1px solid var(--accent);border-radius:999px;padding:2px 10px;white-space:nowrap}
+.ch-head h2{font-size:clamp(28px,3.6vw,40px);letter-spacing:-.02em;flex:1 1 320px}
+.ch-head .src{width:100%;font-family:var(--f-display);font-size:13px;color:var(--muted)}
+
+/* Callouts */
+.callout{border-radius:12px;padding:16px 18px;background:var(--surface);border:1px solid var(--line);font-size:17px}
+.callout .lbl{font-family:var(--f-display);font-weight:800;font-size:12px;letter-spacing:.12em;text-transform:uppercase;display:block;margin-bottom:4px}
+.callout.rule{background:var(--accent-soft);border-color:transparent}
+.callout.rule .lbl{color:var(--accent)}
+.callout.legal{background:var(--warn-soft);border-color:transparent}
+.callout.legal .lbl{color:var(--warn)}
+.callout.tip .lbl{color:var(--good)}
+.quote{font-family:var(--f-display);font-size:clamp(22px,2.8vw,30px);font-weight:600;line-height:1.2;letter-spacing:-.015em;border-left:4px solid var(--accent);padding-left:18px;max-width:30ch}
+.quote cite{display:block;font-size:14px;font-weight:400;color:var(--muted);font-style:normal;margin-top:8px}
+
+/* Figures */
+figure{margin:0}
+.fig{margin-top:28px;margin-bottom:8px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:clamp(16px,3vw,28px);box-shadow:var(--shadow);max-width:920px}
+.fig figcaption{font-family:var(--f-display);font-size:13.5px;color:var(--muted);margin-top:14px}
+.fig figcaption b{color:var(--ink)}
+.fig .fig-title{font-family:var(--f-display);font-weight:800;font-size:17px;margin-bottom:14px;display:flex;gap:10px;align-items:baseline}
+.fig .fig-title .tag{font-family:var(--f-mono);font-weight:400;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.scroll-x{overflow-x:auto}
+svg text{font-family:var(--f-display)}
+.t-ink{fill:var(--ink)} .t-muted{fill:var(--muted)} .t-accent{fill:var(--accent)} .t-good{fill:var(--good)} .t-bad{fill:var(--bad)}
+.s-ink{stroke:var(--ink)} .s-line{stroke:var(--line)} .s-accent{stroke:var(--accent)} .s-muted{stroke:var(--muted)} .s-good{stroke:var(--good)}
+.f-surface{fill:var(--surface)} .f-surface2{fill:var(--surface-2)} .f-accent{fill:var(--accent)} .f-accentsoft{fill:var(--accent-soft)} .f-goodsoft{fill:var(--good-soft)} .f-good{fill:var(--good)} .f-none{fill:none} .f-ink{fill:var(--ink)} .f-bg{fill:var(--bg)}
+
+/* Steps */
+.steps{list-style:none;padding:0;margin:0;counter-reset:st;display:grid;gap:0}
+.steps > li{counter-increment:st;display:grid;grid-template-columns:44px 1fr;gap:14px;padding-block:14px;border-top:1px solid var(--line)}
+.steps > li:last-child{border-bottom:1px solid var(--line)}
+.steps > li::before{content:counter(st);font-family:var(--f-display);font-weight:800;font-size:18px;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:var(--bg)}
+.steps > li b{font-family:var(--f-display);font-weight:600}
+.steps .path{font-family:var(--f-mono);font-size:13.5px;background:var(--surface-2);padding:1px 6px;border-radius:5px;white-space:normal}
+.steps + *{margin-top:1.2em}
+
+/* Grid cards */
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.card h4{font-size:16px;margin-bottom:6px}
+.card p,.card li{font-size:16px}
+.card ul{padding-left:1.1em;margin:0}
+
+/* Tables */
+table{border-collapse:collapse;width:100%;font-size:15.5px;font-family:var(--f-display)}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+td.mono,th.mono{font-family:var(--f-mono);font-size:13.5px}
+.pill{display:inline-block;font-family:var(--f-display);font-size:12.5px;font-weight:600;padding:2px 9px;border-radius:999px;white-space:nowrap}
+.pill.good{background:var(--good-soft);color:var(--good)}
+.pill.warn{background:var(--warn-soft);color:var(--warn)}
+.pill.bad{background:var(--bad-soft);color:var(--bad)}
+.pill.acc{background:var(--accent-soft);color:var(--accent)}
+
+/* Prompt blocks */
+.prompt{background:var(--surface-2);border-radius:12px;padding:14px 16px 14px;position:relative;font-family:var(--f-mono);font-size:14px;line-height:1.55;white-space:pre-wrap;max-width:780px}
+.prompt .ph{background:var(--accent-soft);color:var(--accent);border-radius:4px;padding:0 4px}
+.prompt-head{display:flex;justify-content:space-between;align-items:center;gap:10px;font-family:var(--f-display);font-size:13px;font-weight:600;color:var(--muted);max-width:780px;margin-bottom:6px}
+button{font:inherit;cursor:pointer}
+.btn{font-family:var(--f-display);font-size:13px;font-weight:600;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:5px 12px}
+.btn:hover{border-color:var(--ink)}
+.btn.primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+
+/* Interactive checklists */
+.checklist{display:grid;gap:8px}
+.qrow{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;padding:10px 12px;border-radius:10px;background:var(--surface-2);font-size:16px}
+.yn{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--surface)}
+.yn button{border:0;background:transparent;color:var(--muted);font-family:var(--f-display);font-weight:600;font-size:13px;padding:5px 14px}
+.yn button[aria-pressed="true"].y{background:var(--good);color:var(--surface)}
+.yn button[aria-pressed="true"].n{background:var(--bad);color:var(--surface)}
+.verdict{margin-top:12px;font-family:var(--f-display);font-size:15px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.law{border:1px solid var(--line);border-radius:14px;padding:18px;background:var(--surface);margin-top:18px}
+.law-head{display:flex;justify-content:space-between;gap:12px;align-items:baseline;flex-wrap:wrap;margin-bottom:10px}
+.law-head h4{font-size:19px}
+.law .principle{font-style:italic;color:var(--muted);margin-bottom:12px;font-size:17px}
+
+/* Calculators */
+.calc{display:grid;gap:14px}
+.calc label{font-family:var(--f-display);font-size:13px;font-weight:600;color:var(--muted);display:grid;gap:4px}
+.calc input,.calc select{font-family:var(--f-mono);font-size:16px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);width:100%}
+.calc .inputs{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.kpi{background:var(--surface-2);border-radius:10px;padding:10px 12px}
+.kpi .k{font-family:var(--f-display);font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.kpi .v{font-family:var(--f-mono);font-size:22px;font-weight:600;font-variant-numeric:tabular-nums}
+.kpi .v.acc{color:var(--accent)}
+
+/* Flow boxes */
+.flow{display:flex;align-items:stretch;gap:0;flex-wrap:wrap}
+.flow .node{flex:1 1 140px;background:var(--surface-2);border-radius:10px;padding:12px 14px;font-family:var(--f-display);font-size:14.5px;min-width:0}
+.flow .node b{display:block;font-size:15.5px;margin-bottom:2px}
+.flow .node.hot{background:var(--accent);color:var(--accent-ink)}
+.flow .arrow{flex:0 0 28px;display:grid;place-items:center;color:var(--muted);font-family:var(--f-display);font-size:20px}
+@media (max-width:640px){.flow{flex-direction:column}.flow .arrow{transform:rotate(90deg);height:28px}}
+
+/* Wireframes */
+.wire{display:grid;grid-template-columns:minmax(0,340px) 1fr;gap:28px;align-items:start}
+@media (max-width:760px){.wire{grid-template-columns:1fr}}
+.phone{border:10px solid var(--ink);border-radius:30px;background:var(--surface);padding:10px;max-width:340px;width:100%}
+.phone .blk{border-radius:8px;padding:8px 10px;margin-bottom:6px;font-family:var(--f-display);font-size:12.5px;display:flex;gap:8px;align-items:center;background:var(--surface-2)}
+.phone .blk .i{font-family:var(--f-mono);font-size:11px;min-width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:var(--bg);flex:0 0 auto}
+.phone .blk.cta{background:var(--accent);color:var(--accent-ink);justify-content:center;font-weight:800;letter-spacing:.02em}
+.phone .blk.cta .i{background:var(--accent-ink);color:var(--accent)}
+.phone .blk.proof{background:var(--good-soft);color:var(--good)}
+.phone .blk.tall{min-height:64px}
+.legend-list{list-style:none;padding:0;margin:0;display:grid;gap:8px;counter-reset:lg}
+.legend-list li{display:grid;grid-template-columns:28px 1fr;gap:10px;font-size:16px;line-height:1.45}
+.legend-list li .i{font-family:var(--f-mono);font-size:12px;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:var(--bg);margin-top:2px}
+.legend-list li .i.cta{background:var(--accent);color:var(--accent-ink)}
+
+/* Creative mocks */
+.ads{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px}
+.ad{aspect-ratio:1/1;border-radius:10px;overflow:hidden;position:relative;font-family:var(--f-display);max-width:100%}
+.ad .hl{position:absolute;left:8%;right:8%;top:8%;font-weight:800;font-size:clamp(13px,1.6vw,16px);line-height:1.1;text-align:center}
+.book{position:absolute;width:34%;aspect-ratio:2/3;left:33%;bottom:10%;border-radius:3px 6px 6px 3px;box-shadow:6px 8px 16px rgba(0,0,0,.35);display:grid;place-items:center;text-align:center;font-weight:800;font-size:10px;padding:6px;line-height:1.05}
+.ad-cap{font-family:var(--f-display);font-size:13px;color:var(--muted);margin-top:6px}
+
+.two-col{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+hr.sep{border:0;border-top:1px solid var(--line);margin-block:48px}
+.footer{margin-top:120px;padding-top:24px;border-top:1px solid var(--line);font-family:var(--f-display);font-size:14px;color:var(--muted)}
+.theme-toggle{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:10}
+</style>
+
+<div class="layout">
+<nav class="toc" aria-label="Sumário">
+  <div class="brand">Escala <span>Sem Aposta</span></div>
+  <div class="sub">Método das 33 aulas · Marcos Ramos</div>
+  <ol id="toc-list"></ol>
+</nav>
+
+<main>
+<header class="cover" id="inicio">
+  <div class="eyebrow">Ebook de implementação · 4 partes · 22 capítulos</div>
+  <h1><span class="strike">Apostar</span><br>Escalar <em>com controle.</em></h1>
+  <p class="lede">O método completo para criar, lançar e escalar um ebook low ticket com tráfego pago. Da decisão de qual produto vale a pena até a campanha 1-2-50 rodando e subindo 30% por dia.</p>
+  <div class="meta">
+    <div><b>7</b>leis antes de escalar</div>
+    <div><b>1-2-50</b>estrutura de teste</div>
+    <div><b>30%</b>por dia na escala vertical</div>
+    <div><b>R$ 29,90</b>ticket de entrada</div>
+  </div>
+  <svg class="cover-chart" viewBox="0 0 520 260" aria-hidden="true">
+    <polyline points="10,230 70,120 110,210 160,60 205,235 250,150 290,245" fill="none" stroke="#8A8F9A" stroke-width="2" stroke-dasharray="4 5"/>
+    <text x="14" y="252" font-size="12" fill="#8A8F9A">aposta</text>
+    <polyline points="10,240 80,236 150,228 220,216 290,198 360,172 430,136 510,86" fill="none" stroke="#FF4F63" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="510" cy="86" r="7" fill="#FF4F63"/>
+    <text x="440" y="70" font-size="12" fill="#FF4F63">escala</text>
+  </svg>
+</header>
+
+<details class="mobile-toc"><summary>Sumário</summary><ol id="toc-mobile"></ol></details>
+
+<section class="chapter" id="como-usar" data-toc="Como usar este ebook" data-n="·">
+  <div class="ch-head"><span class="num">Antes de começar</span><h2>Como usar este ebook</h2></div>
+  <div class="prose">
+    <p>Este ebook organiza as 33 aulas do curso em uma sequência de trabalho. Ele não segue a ordem das aulas: segue a ordem em que você vai executar. Primeiro você decide se o produto aguenta escala. Depois constrói a operação (site, plataforma, checkout). Por último liga o tráfego, lê os números e escala.</p>
+    <p>Cada capítulo termina em ação. Onde a aula mostrava uma tela, você encontra um passo a passo numerado. Onde havia uma regra de decisão, há um diagrama ou uma calculadora que você pode usar com os seus números.</p>
+  </div>
+  <figure class="fig">
+    <div class="fig-title"><span class="tag">Mapa</span> A jornada em quatro partes</div>
+    <div class="flow">
+      <div class="node"><b>I · Mentalidade</b>O que é escala e o check-up da sua operação</div>
+      <div class="arrow">→</div>
+      <div class="node"><b>II · As 7 Leis</b>O checklist que diz se o produto escala</div>
+      <div class="arrow">→</div>
+      <div class="node"><b>III · Operação</b>Site, plataforma, checkout e links</div>
+      <div class="arrow">→</div>
+      <div class="node hot"><b>IV · Tráfego e escala</b>Criativos, Meta Ads, 1-2-50, otimização</div>
+    </div>
+    <figcaption>As partes I e II são de decisão. As partes III e IV são de execução. Não pule direto para a IV: dinheiro em tráfego só amplia o que já existe.</figcaption>
+  </figure>
+  <div class="prose" style="margin-top:24px">
+    <div class="callout tip"><span class="lbl">Seu progresso fica salvo</span>Os checklists e as respostas sim/não deste ebook ficam guardados no seu navegador. Você pode fechar a página e continuar depois.</div>
+  </div>
+</section>
+
+<!-- =================== PARTE I =================== -->
+<div class="part-opener" id="parte-1">
+  <div class="pn">I</div>
+  <h2>Mentalidade de escala</h2>
+  <p>Aulas 1 e 2. Antes de mexer em orçamento, entenda o que é escalar e descubra onde a sua operação está hoje.</p>
+</div>
+
+<section class="chapter" id="cap1" data-toc="A lógica da escala" data-n="01">
+  <div class="ch-head"><span class="num">Capítulo 01</span><h2>A lógica da escala</h2><span class="src">Aula 01 · A lógica da escala no marketing digital</span></div>
+  <div class="prose">
+    <p class="quote">Escalar não tem nada a ver com emoção. Escalar é processo.<cite>Marcos Ramos, aula 01</cite></p>
+    <p>O erro clássico é achar que escalar é vender mais hoje: aumentar o orçamento, duplicar a campanha, "socar" 50% ou 100% a mais porque o dia foi bom. Isso é forçar crescimento. Forçar crescimento sem estrutura gera três problemas: <strong>instabilidade, perda de controle e prejuízo</strong>.</p>
+    <h3>A definição correta</h3>
+    <p>Escala é <strong>aumentar lucro e volume sem perder previsibilidade, controle e margem</strong>. Quem entende isso cresce com controle. Quem não entende cresce rápido e quebra rápido.</p>
+  </div>
+
+  <figure class="fig">
+    <div class="fig-title"><span class="tag">Diagrama</span> Aposta × escala</div>
+    <div class="scroll-x">
+    <svg viewBox="0 0 760 250" width="100%" style="min-width:560px" role="img" aria-label="Comparação entre crescimento forçado, com picos e quedas, e escala controlada, que sobe em degraus.">
+      <line x1="40" y1="210" x2="360" y2="210" class="s-line" stroke-width="1"/>
+      <line x1="420" y1="210" x2="740" y2="210" class="s-line" stroke-width="1"/>
+      <text x="40" y="30" class="t-ink" font-size="15" font-weight="800">Apostar</text>
+      <text x="40" y="48" class="t-muted" font-size="12.5">aumenta o orçamento na emoção</text>
+      <polyline points="40,190 80,170 110,90 140,185 175,60 210,200 250,120 285,205 320,150 355,208" class="s-muted f-none" stroke-width="2.5" stroke-linejoin="round"/>
+      <circle cx="175" cy="60" r="4" class="f-ink"/><text x="183" y="58" class="t-muted" font-size="11.5">+100% num dia bom</text>
+      <circle cx="210" cy="200" r="4" class="f-accent"/><text x="218" y="196" class="t-accent" font-size="11.5">dinheiro acaba no dia 5</text>
+      <text x="420" y="30" class="t-ink" font-size="15" font-weight="800">Escalar</text>
+      <text x="420" y="48" class="t-muted" font-size="12.5">sabe quanto investe, quanto volta, o que acontece</text>
+      <polyline points="420,200 460,200 460,188 500,188 500,174 540,174 540,158 580,158 580,140 620,140 620,118 660,118 660,94 700,94 700,68 740,68" class="s-accent f-none" stroke-width="3" stroke-linejoin="round"/>
+      <text x="590" y="228" class="t-muted" font-size="11.5">degraus de +30% com CPA estável</text>
+      <text x="40" y="238" class="t-muted" font-size="11.5">tempo →</text>
+      <text x="420" y="238" class="t-muted" font-size="11.5">tempo →</text>
+    </svg>
+    </div>
+    <figcaption><b>Low ticket é um jogo de 7 dias, não de um dia.</b> O resultado diário oscila. A decisão de subir ou segurar vem da leitura da semana.</figcaption>
+  </figure>
+
+  <div class="prose" style="margin-top:28px">
+    <h3>As 3 perguntas que a escala responde</h3>
+    <p>Se você não consegue responder às três, você não está escalando. Está apostando.</p>
+  </div>
+  <div class="grid g3" style="margin-top:14px;max-width:920px">
+    <div class="card"><h4>1 · Quanto posso investir?</h4><p>O orçamento do mês inteiro, não o de hoje. Quem gasta tudo na primeira semana para a operação no dia 5, porque a plataforma ainda não liberou o dinheiro das vendas.</p></div>
+    <div class="card"><h4>2 · Quanto tende a voltar?</h4><p>Você precisa conhecer o seu CPA e o seu ROI atuais. Sem isso, qualquer aumento é chute.</p></div>
+    <div class="card"><h4>3 · O que acontece se eu aumentar?</h4><p>Saber o efeito de cada botão: orçamento, duplicação, troca de criativo, mudança na página.</p></div>
+  </div>
+  <div class="prose" style="margin-top:28px">
+    <h3>Escala não começa no orçamento</h3>
+    <p>Orçamento é consequência. A escala começa quando você sabe três coisas:</p>
+    <ol>
+      <li><strong>Se o produto aguenta volume.</strong> Às vezes o anúncio chega a 2 milhões de pessoas, mas só 500 mil se interessam pelo tema.</li>
+      <li><strong>Se o público não tem teto de repetição.</strong> Ele pode continuar vendo e comprando?</li>
+      <li><strong>Se a estrutura segura o crescimento.</strong> Página, checkout, entrega e suporte.</li>
+    </ol>
+    <div class="callout rule"><span class="lbl">Regra</span>Dinheiro não conserta operação ruim. Dinheiro escancara a operação ruim. Se ela não vende com pouco, vai perder mais com muito.</div>
+    <h3>Escala é decisão</h3>
+    <p>"Escala não é o que você faz. Escala é o que você decide manter." Na prática, decidir significa:</p>
+    <ul>
+      <li><strong>O que repetir.</strong> Repetição é uma das chaves. Não troque um criativo vencedor por outro sem relação com ele.</li>
+      <li><strong>O que não mexer.</strong> Separar e duplicar uma campanha que está vendendo muito costuma derrubar tudo.</li>
+      <li><strong>Quando acelerar e quando segurar.</strong> Tem dia em que o certo é terminar com um lucro bom, e não com o máximo possível.</li>
+    </ul>
+    <p>Quem decide mal mexe demais. Quem mexe pouco decide melhor. Paciência, leitura de números, repetição do básico e controle emocional são o que sustenta o crescimento.</p>
+  </div>
+</section>
+
+<section class="chapter" id="cap2" data-toc="Check-up da operação" data-n="02">
+  <div class="ch-head"><span class="num">Capítulo 02</span><h2>Check-up da sua operação</h2><span class="src">Aula 02 · Check-up da sua operação atual</span></div>
+  <div class="prose">
+    <p>A maioria das pessoas erra antes de escalar porque não sabe de onde vem o dinheiro: por que vende, por que para de vender, o que é sorte e o que é estratégia. Quando essa pessoa coloca mais dinheiro, ela só amplifica o erro.</p>
+    <p>Responda aos seis check-ups abaixo com honestidade. Cada "não" é um ponto que precisa de ajuste antes de aumentar o investimento.</p>
+  </div>
+  <figure class="fig" id="checkup">
+    <div class="fig-title"><span class="tag">Interativo</span> Os 6 check-ups</div>
+    <div class="grid g2" id="checkup-grid"></div>
+    <div class="verdict" id="checkup-verdict"></div>
+    <figcaption>Marque sim ou não em cada pergunta. O resultado aparece embaixo e fica salvo neste navegador.</figcaption>
+  </figure>
+  <div class="prose" style="margin-top:28px">
+    <h3>O que cada check-up revela</h3>
+    <ul>
+      <li><strong>Produto.</strong> Resolve um problema real, que existe em grande escala e dói? Emagrecimento, ansiedade, relacionamento: gente sofrendo todo dia. Uma vassoura de palha não gera essa urgência. Para medir escala, pesquise no YouTube, TikTok e Instagram: muitos criadores falando do tema e vídeos com milhões de visualizações indicam demanda.</li>
+      <li><strong>Dor latente.</strong> Um problema existir em larga escala não significa que as pessoas sofram com ele. Espinha existe em larga escala, mas a pessoa resolve com um remédio. Para alguém tirar o cartão depois de ver um anúncio, o problema precisa doer.</li>
+      <li><strong>Promessa.</strong> Você vende para a massa, e a massa compra quando entende rápido. Se a promessa não é entendida em 5 segundos, a pessoa pula o anúncio. Exemplo claro: "ter o namorado de volta em 7 dias, mesmo que esteja bloqueada".</li>
+      <li><strong>Público.</strong> Operação milionária se constrói com dinheiro no bolso, não com curtida. Descubra quem compra, que nem sempre é quem engaja.</li>
+      <li><strong>Estrutura.</strong> Se as vendas dobrarem, o suporte, o checkout e a entrega aguentam? Sem isso vêm reembolsos e chargebacks.</li>
+      <li><strong>Números.</strong> Quanto investe, quanto volta, quanto sobra. Sem esses três números não há controle, e sem controle não há escala.</li>
+      <li><strong>Mente.</strong> "Prosperidade com propósito e liberdade com princípios." Faça o dinheiro e não deixe o dinheiro fazer você.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- =================== PARTE II =================== -->
+<div class="part-opener" id="parte-2">
+  <div class="pn">II</div>
+  <h2>As 7 leis da escala</h2>
+  <p>Aulas 3 a 10. Antes de escalar qualquer coisa, o produto passa pelo checklist: demanda, frequência, simplicidade, preço, nicho, promessa e entrega.</p>
+</div>
+
+<section class="chapter" id="cap3" data-toc="O checklist das 7 leis" data-n="03">
+  <div class="ch-head"><span class="num">Capítulo 03</span><h2>O checklist das 7 leis</h2><span class="src">Aulas 03 a 09 · Leis da demanda, frequência, simplicidade, preço, nicho aberto, promessa replicável e entrega simples</span></div>
+  <div class="prose">
+    <p>Cada lei tem um princípio e três perguntas. Responda sim ou não, sem meio-termo. A regra de leitura é a mesma para todas:</p>
+  </div>
+  <figure class="fig">
+    <div class="fig-title"><span class="tag">Regra de leitura</span> Como interpretar cada lei</div>
+    <div class="grid g3">
+      <div class="card" style="border-color:var(--good)"><span class="pill good">3 × sim</span><h4 style="margin-top:8px">Passa</h4><p>O produto escala nesse critério. Siga em frente.</p></div>
+      <div class="card" style="border-color:var(--warn)"><span class="pill warn">1 × não</span><h4 style="margin-top:8px">Ajustar</h4><p>Dá para escalar, mas corrija esse ponto: simplifique, abra o nicho, ajuste o preço.</p></div>
+      <div class="card" style="border-color:var(--bad)"><span class="pill bad">2 ou 3 × não</span><h4 style="margin-top:8px">Travado</h4><p>Do jeito que está, não escala. Ajuste a fundo ou troque de produto.</p></div>
+    </div>
+    <figcaption><b>Sem apego emocional ao produto.</b> Os números não mentem. Se não passar e não der para ajustar, troque o produto. Aqui é 100% racional.</figcaption>
+  </figure>
+
+  <div id="laws" style="max-width:920px"></div>
+
+  <figure class="fig" id="laws-summary-fig">
+    <div class="fig-title"><span class="tag">Painel</span> Resultado das 7 leis</div>
+    <div id="laws-summary"></div>
+    <figcaption>Atualiza enquanto você responde às perguntas acima.</figcaption>
+  </figure>
+
+  <div class="prose" style="margin-top:36px">
+    <h3>Visual de apoio: a faixa de preço do low ticket</h3>
+    <p>Na lei do preço, a recomendação é ficar entre R$ 29,90 e R$ 97. Acima de R$ 97 o produto precisa de autoridade (um perfil com muitos seguidores, por exemplo). Sem audiência, comece humilde.</p>
+  </div>
+  <figure class="fig">
+    <div class="fig-title"><span class="tag">Régua</span> Onde posicionar o seu primeiro ebook</div>
+    <div class="scroll-x">
+    <svg viewBox="0 0 760 170" width="100%" style="min-width:560px" role="img" aria-label="Régua de preços de 29,90 a 97 reais, com a zona recomendada para o primeiro produto entre 29,90 e 47.">
+      <rect x="40" y="70" width="680" height="18" rx="9" class="f-surface2"/>
+      <rect x="40" y="70" width="160" height="18" rx="9" class="f-accent"/>
+      <g class="t-ink" font-size="13" font-family="var(--f-mono)">
+        <line x1="40" y1="92" x2="40" y2="104" class="s-ink"/><text x="40" y="122" text-anchor="middle" class="t-ink" font-weight="800">29,90</text>
+        <line x1="200" y1="92" x2="200" y2="104" class="s-ink"/><text x="200" y="122" text-anchor="middle" class="t-ink">47</text>
+        <line x1="400" y1="92" x2="400" y2="104" class="s-ink"/><text x="400" y="122" text-anchor="middle" class="t-ink">67</text>
+        <line x1="600" y1="92" x2="600" y2="104" class="s-ink"/><text x="600" y="122" text-anchor="middle" class="t-ink">89</text>
+        <line x1="720" y1="92" x2="720" y2="104" class="s-ink"/><text x="720" y="122" text-anchor="middle" class="t-ink">97</text>
+      </g>
+      <text x="40" y="52" class="t-accent" font-size="13" font-weight="800">Primeiro ebook, sem seguidores</text>
+      <text x="40" y="150" class="t-muted" font-size="12">decisão rápida · muitas vendas por dia</text>
+      <text x="720" y="52" text-anchor="end" class="t-muted" font-size="13">Só com autoridade (ex.: perfil com 1 mi de seguidores)</text>
+      <text x="720" y="150" text-anchor="end" class="t-muted" font-size="12">acima de 97 deixa de ser low ticket</text>
+    </svg>
+    </div>
+    <figcaption>O preço precisa combinar com a promessa. Um curso de "como ganhar 100 milhões" por R$ 12 perde credibilidade, porque o preço não bate com o que é prometido.</figcaption>
+  </figure>
+
+  <div class="prose" style="margin-top:36px">
+    <h3>Visual de apoio: abrir o nicho sem perder clareza</h3>
+    <p>As leis do nicho aberto e da promessa replicável pedem a mesma habilidade: vender a mesma base por vários ângulos. O exemplo usado nas aulas é o nicho de ansiedade.</p>
+  </div>
+  <figure class="fig">
+    <div class="fig-title"><span class="tag">Diagrama</span> Um produto, vários ângulos</div>
+    <div class="scroll-x">
+    <svg viewBox="0 0 760 300" width="100%" style="min-width:560px" role="img" aria-label="Produto sobre ansiedade no centro, ligado a cinco ângulos: dormir melhor, relacionamento, emagrecimento, concurso público e saúde.">
+      <g class="s-line" stroke-width="2">
+        <line x1="380" y1="150" x2="130" y2="60"/><line x1="380" y1="150" x2="630" y2="60"/>
+        <line x1="380" y1="150" x2="110" y2="240"/><line x1="380" y1="150" x2="650" y2="240"/><line x1="380" y1="150" x2="380" y2="270"/>
+      </g>
+      <circle cx="380" cy="150" r="62" class="f-accent"/>
+      <text x="380" y="144" text-anchor="middle" font-size="12" style="fill:var(--accent-ink)">produto base</text>
+      <text x="380" y="164" text-anchor="middle" font-size="19" font-weight="800" style="fill:var(--accent-ink)">Ansiedade</text>
+      <g font-size="13.5">
+        <rect x="30" y="34" width="200" height="52" rx="10" class="f-surface2"/><text x="130" y="56" text-anchor="middle" class="t-ink" font-weight="800">Dormir melhor</text><text x="130" y="74" text-anchor="middle" class="t-muted" font-size="11.5">quem não consegue dormir</text>
+        <rect x="530" y="34" width="200" height="52" rx="10" class="f-surface2"/><text x="630" y="56" text-anchor="middle" class="t-ink" font-weight="800">Relacionamento</text><text x="630" y="74" text-anchor="middle" class="t-muted" font-size="11.5">melhorar a relação com o cônjuge</text>
+        <rect x="10" y="214" width="200" height="52" rx="10" class="f-surface2"/><text x="110" y="236" text-anchor="middle" class="t-ink" font-weight="800">Emagrecimento</text><text x="110" y="254" text-anchor="middle" class="t-muted" font-size="11.5">compulsão alimentar</text>
+        <rect x="550" y="214" width="200" height="52" rx="10" class="f-surface2"/><text x="650" y="236" text-anchor="middle" class="t-ink" font-weight="800">Concurso público</text><text x="650" y="254" text-anchor="middle" class="t-muted" font-size="11.5">notas melhores na prova</text>
+        <rect x="290" y="244" width="180" height="46" rx="10" class="f-surface2"/><text x="380" y="272" text-anchor="middle" class="t-ink" font-weight="800">Mais saúde</text>
+      </g>
+    </svg>
+    </div>
+    <figcaption>Quanto mais ângulos a mesma promessa aceita, mais públicos você alcança e mais demora para o público saturar.</figcaption>
+  </figure>
+
+  <div class="prose" style="margin-top:36px">
+    <h3>Exemplos que ficam na cabeça</h3>
+    <ul>
+      <li><strong>Demanda:</strong> demanda real é dinheiro circulando. Se já existe gente vendendo o tema, uma cópia melhor feita também vende.</li>
+      <li><strong>Frequência:</strong> produtos de Natal e Páscoa só vendem na data. Término de relacionamento, bebê que não dorme e emagrecimento voltam o ano todo. "Problema que fica na cabeça vende mais vezes."</li>
+      <li><strong>Simplicidade:</strong> um bom palestrante é entendido por uma criança de 8 anos. O produto pode ser profissional, mas a proposta é simples.</li>
+      <li><strong>Promessa replicável:</strong> o "morango do amor" vendeu muito como método de renda extra e depois sumiu. A promessa não aguentou repetição. E um curso de guitarra de blues com o rosto do autor tem teto médio: só compra quem gosta dele e do estilo.</li>
+      <li><strong>Entrega simples:</strong> quem vende pelo WhatsApp não atende mil clientes por dia. Use uma plataforma de vendas que entrega sozinha, e uma página que carregue em até 3 segundos.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="chapter" id="cap4" data-toc="Formas de escalar" data-n="04">
+  <div class="ch-head"><span class="num">Capítulo 04</span><h2>As duas formas de escalar</h2><span class="src">Aula 10 · Formas de escalar</span></div>
+  <div class="prose">
+    <p>Existem muitas técnicas, mas todas cabem em duas categorias. Não existe terceira. Pense como um guitarrista com pedais: ele não liga todos ao mesmo tempo. Cada música pede um timbre. Escalar é escolher a alavanca certa na hora certa.</p>
+  </div>
+  <figure class="fig">
+    <div class="fig-title"><span class="tag">Comparativo</span> As duas categorias</div>
+    <div class="two-col">
+      <div class="card" style="background:var(--accent-soft);border:0">
+        <span class="pill acc">Categoria 1</span>
+        <h4 style="margin-top:10px;font-size:20px">Escalar gastando dinheiro</h4>
+        <p style="margin-top:6px">Usar capital para acelerar: aumentar orçamento (escala vertical) e duplicar campanhas (escala horizontal). Só funciona se a operação já tem ROI.</p>
+      </div>
+      <div class="card" style="background:var(--good-soft);border:0">
+        <span class="pill good">Categoria 2</span>
+        <h4 style="margin-top:10px;font-size:20px">Escalar sem gastar dinheiro</h4>
+        <p style="margin-top:6px">Usar estrutura, lógica e repetição: corrigir a página, trocar criativos ruins, desligar o que gasta sem vender. Muitas vezes o lucro sobe sem investir um real a mais.</p>
+      </div>
+    </div>
+  </figure>
+  <div class="prose" style="margin-top:28px">
+    <h3>Três perguntas para escolher a categoria</h3>
+    <ol>
+      <li>Minha operação aguenta investimento?</li>
+      <li>Eu preciso acelerar colocando dinheiro, ou preciso melhorar a estrutura?</li>
+      <li>Estou comprando crescimento quando, na verdade, deveria corrigir erros?</li>
+    </ol>
+    <h3>A lógica que guia o resto do ebook</h3>
+    <p>Toda técnica daqui em diante responde a três perguntas: <strong>quando usar</strong>, <strong>o que você precisa ter</strong> para usar e <strong>como aplicar</strong> do jeito certo.</p>
+  </div>
+</section>
+
+<!-- =================== PARTE III =================== -->
+<div class="part-opener" id="parte-3">
+  <div class="pn">III</div>
+  <h2>Montando a operação</h2>
+  <p>Aulas 11 a 17. Página de vendas na estrutura Ramos, produto publicado na plataforma, checkout de alta conversão e todos os botões ligados.</p>
+</div>
+
+<section class="chapter" id="cap5" data-toc="Checklist de lançamento" data-n="05">
+  <div class="ch-head"><span class="num">Capítulo 05</span><h2>O checklist de lançamento</h2><span class="src">Aulas 15, 17 e 18 · revisões do cronograma</span></div>
+  <div class="prose">
+    <p>As aulas seguem um cronograma fixo de lançamento. Os passos 1 a 5 (ideia, copys, escrita do ebook, nome e capa) são de módulos anteriores do curso e aparecem aqui como pré-requisito. Do passo 6 em diante, tudo está detalhado neste ebook. Marque cada passo quando concluir.</p>
+  </div>
+  <figure class="fig">
+    <div class="fig-title"><span class="tag">Interativo</span> Do zero à primeira campanha</div>
+    <ol class="checklist" id="launch-list" style="list-style:none;padding:0;margin:0"></ol>
+    <div class="verdict" id="launch-verdict"></div>
+    <figcaption>Dependendo de quem faz, os 9 primeiros passos levam de 1 dia a 1 semana. No primeiro e no segundo ebook, vá devagar e capriche em cada detalhe.</figcaption>
+  </figure>
+  <div class="prose" style="margin-top:24px">
+    <div class="callout tip"><span class="lbl">O que você precisa ter antes de vender</span>Um perfil de <strong>editora</strong> (Instagram com nome e foto da editora, não o seu pessoal), um produto (ebook com nome e capa), as copys, um site e tráfego. Um domínio basta para a editora inteira. Cada produto ganha seu próprio endereço dentro dele (ex.: <span class="mono">editoraflex.com/arte-da-seducao</span>).</div>
+  </div>
+</section>
+
+<section class="chapter" id="cap6" data-toc="Página de vendas: estrutura Ramos" data-n="06">
+  <div class="ch-head"><span class="num">Capítulo 06</span><h2>A página de vendas na estrutura Ramos</h2><span class="src">Aulas 11, 12 e 13 · Estrutura do site e criação na prática</span></div>
+  <div class="prose">
+    <p><strong>Estrutura não é design.</strong> Design é a beleza: cor, fonte, fotos. Quem vende saúde pode usar verde e fotos de comida; quem vende relacionamento pode usar vermelho. Estrutura são os pilares que a página precisa ter, na ordem certa. Mude o design à vontade. Não mude a estrutura.</p>
+    <p>Segundo o curso, essa estrutura dispensa VSL: o texto de consciência faz o papel do vídeo, só que a pessoa lê em vez de assistir.</p>
+  </div>
+
+  <figure class="fig">
+    <div class="fig-title"><span class="tag">Wireframe</span> A página inteira, de cima para baixo</div>
+    <div class="wire">
+      <div class="phone" aria-hidden="true">
+        <div class="blk tall"><span class="i">1</span>Mockup + copy principal</div>
+        <div class="blk cta"><span class="i">1</span>DESEJO ADQUIRIR</div>
+        <div class="blk tall"><span class="i">2</span>Foto do ebook + texto de consciência</div>
+        <div class="blk cta"><span class="i">3</span>FAZER DOWNLOAD</div>
+        <div class="blk proof"><span class="i">4</span>★★★★★ Depoimentos (8)</div>
+        <div class="blk tall"><span class="i">5</span>O que você terá: conteúdo ⇄ copy</div>
+        <div class="blk cta"><span class="i">6</span>DESEJO ADQUIRIR</div>
+        <div class="blk tall"><span class="i">7</span>Para quem é (mata objeções)</div>
+        <div class="blk proof"><span class="i">8</span>★★★★★ Mais depoimentos</div>
+        <div class="blk"><span class="i">9</span>Benefícios fixos</div>
+        <div class="blk cta"><span class="i">10</span>DESEJO ADQUIRIR</div>
+        <div class="blk"><span class="i">11</span>Uma fórmula comprovada + foto</div>
+        <div class="blk"><span class="i">12</span><s>R$ 97</s>&nbsp;por R$ 29,90</div>
+        <div class="blk cta"><span class="i">13</span>DESEJO ADQUIRIR</div>
+      </div>
+      <ol class="legend-list">
+        <li><span class="i">1</span><div><b>Foto do produto + copy principal + CTA.</b> O mockup do ebook e a melhor copy que você tem. Antes de rodar, escolha pelo instinto (a copy com mais visualizações). Depois dos testes, troque pela que mais vendeu: quem chega pelo anúncio da copy 17 também é convencido pela campeã.</div></li>
+        <li><span class="i">2</span><div><b>Texto que eleva o nível de consciência.</b> O leitor sabe que tem o problema, mas não sabe que precisa do seu método. No máximo 5 parágrafos de 4 a 5 linhas. Título em negrito com uma parte vermelha e outra preta. Negrito só nas frases principais.</div></li>
+        <li><span class="i cta">3</span><div><b>CTA "Fazer download".</b> Gera muito clique: a pessoa pensa que vai baixar, vê o preço de R$ 29,90 e mesmo assim compra.</div></li>
+        <li><span class="i">4</span><div><b>"Veja o depoimento de quem adquiriu".</b> Oito imagens quadradas feitas no Canva, fáceis de ler.</div></li>
+        <li><span class="i">5</span><div><b>"O que você terá com o [nome]".</b> O sumário do ebook, alternando um item de conteúdo e uma copy. Até uns 20 itens.</div></li>
+        <li><span class="i cta">6</span><div><b>CTA.</b> Muita gente coloca um botão no começo e outro no fim, e perde quem cansa no meio. Encha a página de botões.</div></li>
+        <li><span class="i">7</span><div><b>Para quem é.</b> 18 a 20 frases começando com "Para quem…", cada uma matando uma objeção.</div></li>
+        <li><span class="i">8</span><div><b>"Veja o depoimento de quem já testou".</b> Mais 2 a 4 depoimentos.</div></li>
+        <li><span class="i">9</span><div><b>Benefícios.</b> Lista fixa, copie e cole (abaixo).</div></li>
+        <li><span class="i cta">10</span><div><b>CTA "Desejo adquirir".</b> Não mude o texto dos botões: foi testado.</div></li>
+        <li><span class="i">11</span><div><b>Uma fórmula comprovada.</b> Dois parágrafos: por que o método é diferente (racional) e o que acontece se a pessoa não agir (emocional).</div></li>
+        <li><span class="i">12</span><div><b>Ancoragem.</b> "Adquira agora mesmo o [nome] de R$ 97 por somente R$ 29,90. Promoção por tempo limitado."</div></li>
+        <li><span class="i cta">13</span><div><b>CTA final.</b> O botão grande "Desejo adquirir".</div></li>
+      </ol>
+    </div>
+    <figcaption>Os botões em vermelho são os CTAs. Cinco botões na página, todos levando ao mesmo checkout.</figcaption>
+  </figure>
+
+  <div class="prose" style="margin-top:36px">
+    <h3>Por que alternar conteúdo e copy</h3>
+    <p>Toda compra passa pelos dois lados do cérebro. O item de conteúdo convence o lado racional ("vou aprender a construir confiança interior"). A copy logo depois convence o emocional ("conquiste alguém em apenas 7 minutos"). E como essas copys vieram de títulos com milhões de cliques, a página inteira vira uma sequência de argumentos já testados.</p>
+  </div>
+  <figure class="fig">
+    <div class="fig-title"><span class="tag">Padrão</span> Seção "O que você terá"</div>
+    <div class="flow">
+      <div class="node"><b>Conteúdo</b>Construindo a confiança interior</div><div class="arrow">→</div>
+      <div class="node hot"><b>Copy</b>Conquiste alguém em 7 minutos</div><div class="arrow">→</div>
+      <div class="node"><b>Conteúdo</b>Técnicas para eliminar a insegurança</div><div class="arrow">→</div>
+      <div class="node hot"><b>Copy</b>Seja tranquilo e natural</div><div class="arrow">→</div>
+      <div class="node"><b>…</b>até ~20 itens</div>
+    </div>
+    <figcaption><b>Racional → emocional → racional → emocional.</b> Não use as 50 copys: a página fica cheia demais.</figcaption>
+  </figure>
+
+  <div class="prose" style="margin-top:36px">
+    <h3>Passo a passo: preenchendo cada bloco com IA</h3>
+    <p>Os textos podem ser escritos por você (com base na sua pesquisa) ou gerados no ChatGPT com os comandos abaixo. Leia sempre o resultado: peça para tirar o que não quer ("não liste o conteúdo, eu faço isso depois") e para acrescentar o que faltou ("adicione que ele pode conquistar pelo WhatsApp"). Troque tudo o que está em destaque pelos seus dados.</p>
+  </div>
+
+  <div style="margin-top:22px;display:grid;gap:22px">
+    <div>
+      <div class="prompt-head"><span>Bloco 2 · Texto de consciência (substitui a VSL)</span><button class="btn copy">Copiar</button></div>
+      <div class="prompt">Estou desenvolvendo um ebook intitulado <span class="ph">[NOME DO EBOOK]</span> e preciso de uma copy que apresente o produto de maneira emocional e racional. Conte a história de como o método foi descoberto e criado <span class="ph">[use a sua história real ou descreva-a como um exemplo ilustrativo]</span>, sempre escrevendo como um ótimo copywriter, vendendo de maneira emocional e racional. O ebook é um guia completo sobre <span class="ph">[O QUE O MÉTODO ENSINA]</span>. Escreva como se narrasse uma VSL, de maneira que prenda o leitor e o faça perceber que precisa do meu método. Comece com: "Você vai <span class="ph">[transformação]</span> em pouco tempo, mesmo se <span class="ph">[objeção principal]</span>".</div>
+    </div>
+    <div>
+      <div class="prompt-head"><span>Bloco 5 · Sumário para "O que você terá"</span><button class="btn copy">Copiar</button></div>
+      <div class="prompt">Com base no conteúdo real do meu ebook <span class="ph">[cole os capítulos]</span>, me dê 10 tópicos curtos para colocar como sumário na página de vendas.</div>
+    </div>
+    <div>
+      <div class="prompt-head"><span>Bloco 7 · Para quem é (passo 1 de 2)</span><button class="btn copy">Copiar</button></div>
+      <div class="prompt">Escreva 20 benefícios de quem adquire o meu método.</div>
+    </div>
+    <div>
+      <div class="prompt-head"><span>Bloco 7 · Para quem é (passo 2 de 2)</span><button class="btn copy">Copiar</button></div>
+      <div class="prompt">Pegue cada benefício desses e crie 20 respostas curtas para a pergunta "para quem é o meu produto", matando as objeções e falando dos benefícios. Sempre comece respondendo assim: "Para quem..."</div>
+    </div>
+    <div>
+      <div class="prompt-head"><span>Bloco 11 · Uma fórmula comprovada</span><button class="btn copy">Copiar</button></div>
+      <div class="prompt">Obrigado! Agora escreva um texto com dois parágrafos. O primeiro falando sobre como o método funciona e por que ele é diferente dos outros. O segundo explicando por que a pessoa precisa agir rápido e as más consequências que ela terá ao decorrer dos anos caso não aja.</div>
+    </div>
+  </div>
+  <div class="prose" style="margin-top:14px">
+    <p style="font-size:15px;color:var(--muted)">Dica da aula: agradecer antes de mudar de assunto ajuda a IA a entender que é uma nova tarefa. Se a resposta vier errada (uma resposta só em vez de 20), reformule a pergunta. A IA responde bem quando você pergunta certo.</p>
+  </div>
+
+  <div class="prose" style="margin-top:32px">
+    <h3>Bloco 9 · Benefícios fixos (copie e cole)</h3>
+  </div>
+  <div class="prompt-head" style="margin-top:10px"><span>"Se liga nos benefícios que você terá hoje"</span><button class="btn copy">Copiar</button></div>
+  <div class="prompt">✔ Acesso por tempo ilimitado
+✔ Leia quando quiser, em qualquer lugar do mundo
+✔ Imprima e tenha a versão física
+✔ Baixe o ebook e leia no modo offline, sem precisar de internet
+✔ Garantia de recebimento do produto
+✔ Linguagem objetiva e de fácil entendimento
+✔ Satisfação garantida
+✔ Garantia incondicional
+✔ Acesso ao ebook logo após a compra
+✔ Informações 100% revisadas e testadas</div>
+
+  <div class="prose" style="margin-top:32px">
+    <h3>Bloco 4 e 8 · Depoimentos</h3>
+    <ol>
+      <li>Abra o <strong>canva.com</strong> e pesquise "feedback". Escolha um modelo limpo, fácil de ler.</li>
+      <li>Formato <strong>quadrado</strong> é obrigatório (o espaço na página é quadrado).</li>
+      <li>Coloque nome, cidade, cinco estrelas (em amarelo) e um texto curto que caiba no quadrado.</li>
+      <li>Baixe e suba na página. O ideal são 8 no bloco 4 e 2 a 4 no bloco 8.</li>
+    </ol>
+    <div class="callout legal"><span class="lbl">Atenção legal</span>Na aula, os primeiros depoimentos são gerados por IA como provisórios, a serem trocados pelos reais. Publicar depoimento inventado como se fosse de cliente é propaganda enganosa pelo Código de Defesa do Consumidor (art. 37) e viola as políticas de anúncios da Meta, o que pode derrubar a sua conta. Mais seguro: dê o ebook para 8 a 10 leitores beta antes do lançamento e use os relatos deles, com autorização. O mesmo vale para a ancoragem "de R$ 97" (o preço anterior deve ter sido praticado de verdade) e para a história de criação do método (real, ou apresentada como ilustração).</div>
+    <h3>Dicas de design da aula</h3>
+    <ul>
+      <li>Título sempre em negrito, com uma parte vermelha e outra preta.</li>
+      <li>Nunca deixe tudo em negrito. Só as partes principais, para o olho ter onde parar.</li>
+      <li>O modelo validado foi feito no ClickPages. Quem usa WordPress pode importar o modelo pronto (próximo capítulo).</li>
+      <li>Faça os primeiros ebooks com calma. Um trabalho bem feito de uma semana pode ser o que te aposenta.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="chapter" id="cap7" data-toc="Página no WordPress" data-n="07">
+  <div class="ch-head"><span class="num">Capítulo 07</span><h2>Subindo a página pronta no WordPress</h2><span class="src">Aula 14 · Página de vendas no WordPress</span></div>
+  <div class="prose">
+    <p>Para quem usa WordPress com Elementor, o curso fornece o arquivo <span class="mono">PAGINA--DE--VENDA.zip</span> com as imagens e o modelo <strong>LP Comunidade Ramos</strong> em <span class="mono">.json</span>. A parte de instalação é feita uma vez; a parte da página se repete para cada produto.</p>
+  </div>
+  <figure class="fig">
+    <div class="fig-title"><span class="tag">Uma vez</span> Preparar o WordPress</div>
+    <ol class="steps">
+      <li><div><b>Instale o Elementor.</b> <span class="path">Plugins → Adicionar plugin</span>, pesquise "Elementor" (se não aparecer, tente com E maiúsculo). Instale o <em>Elementor Website Builder</em> e clique em Ativar. Pode fechar a tela de criar conta.</div></li>
+      <li><div><b>Extraia o .zip no computador.</b> Dentro há as imagens e o arquivo .json. Ignore a pasta <span class="mono">__MACOSX</span> se aparecer.</div></li>
+      <li><div><b>Suba as imagens.</b> <span class="path">Mídia → Biblioteca → Adicionar arquivo de mídia</span>, selecione todas as imagens extraídas. O WordPress não aceita o .json aqui, e está certo.</div></li>
+    </ol>
+  </figure>
+  <figure class="fig">
+    <div class="fig-title"><span class="tag">Para cada produto</span> Criar a página</div>
+    <ol class="steps">
+      <li><div><b>Nova página.</b> <span class="path">Páginas → Adicionar nova</span>, título = nome do produto. Se houver opção de modelo "Elementor", selecione. Clique em <b>Publicar</b>.</div></li>
+      <li><div><b>Abra no Elementor.</b> Clique em <span class="path">Editar com Elementor</span>.</div></li>
+      <li><div><b>Tela limpa.</b> Engrenagem de configurações da página → <span class="path">Layout da página → Elementor Canvas</span>. A página recarrega vazia.</div></li>
+      <li><div><b>Importe o modelo.</b> Ícone de pasta → <span class="path">Meus modelos → seta de importar → Selecionar arquivo</span> → escolha o .json → Continuar → Importar.</div></li>
+      <li><div><b>Insira.</b> Clique em <b>Inserir</b> no "Modelo LP Comunidade Ramos". Se a janela travar carregando, abra a pasta de novo em Meus modelos: ele estará lá.</div></li>
+      <li><div><b>Edite e publique.</b> Troque textos, imagens e cores. O modelo já é responsivo para tablet e celular. Clique em <b>Publicar</b>.</div></li>
+    </ol>
+  </figure>
+</section>
+
+<section class="chapter" id="cap8" data-toc="Produto na plataforma" data-n="08">
+  <div class="ch-head"><span class="num">Capítulo 08</span><h2>Publicando o produto na plataforma</h2><span class="src">Aula 15 · Publicando o produto na plataforma · aula 09 sobre plataformas</span></div>
+  <div class="prose">
+    <p>A plataforma de vendas faz a entrega sozinha: a pessoa compra no site, o dinheiro vai para a sua conta na plataforma e o produto vai para ela por e-mail. Nada de Pix manual e envio pelo WhatsApp. O curso mostra a <strong>Kiwify</strong>, mas cita também Hotmart, Kirvano e Cakto. Todas têm pontos positivos e negativos; o fluxo é parecido.</p>
+  </div>
+  <figure class="fig">
+    <div class="fig-title"><span class="tag">Passo a passo</span> Cadastro do produto na Kiwify</div>
+    <ol class="steps">
+      <li><div><b>Conta pronta.</b> Faça o cadastro e conecte sua conta bancária para sacar.</div></li>
+      <li><div><b>Criar produto.</b> <span class="path">Produtos → Criar produto</span> (canto superior direito) → <b>Pagamento único</b> → entrega pela <b>área de membros</b> da plataforma.</div></li>
+      <li><div><b>Dados básicos.</b> Nome do produto; descrição com pelo menos 100 caracteres (não aparece para o cliente, pode repetir a copy); URL do site (a sua página de vendas); preço.</div></li>
+      <li><div><b>Preço.</b> Para o primeiro produto, <span class="pill acc">R$ 29,90</span>. É um ticket que sai fácil.</div></li>
+      <li><div><b>Detalhes.</b> Categoria (relacionamento, saúde…), imagem do produto (o mockup), idioma português. Salvar.</div></li>
+      <li><div><b>Área de membros.</b> Crie um módulo com o título <b>"Baixe seu ebook aqui"</b>: muita gente compra e não sabe onde baixar.</div></li>
+      <li><div><b>Conteúdo.</b> <span class="path">+ → Adicionar conteúdo</span>. Aceita até 10 arquivos. Se o ebook tiver partes, separe em módulos (Módulo 1, Módulo 2…). Segundo a aula, isso reduz pedidos de reembolso. Criar e publicar.</div></li>
+      <li><div><b>Configurações.</b> Ajuste o parcelamento se quiser. Deixe anotado o campo <b>Pixel de conversão</b>: ele é configurado no capítulo 14.</div></li>
+    </ol>
+  </figure>
+</section>
+
+<section class="chapter" id="cap9" data-toc="Checkout de alta conversão" data-n="09">
+  <div class="ch-head"><span class="num">Capítulo 09</span><h2>Checkout de alta conversão</h2><span class="src">Aula 16 · Criando checkout</span></div>
+  <div class="prose">
+    <p>O checkout é onde a pessoa coloca os dados. Ela chegou pronta para comprar, mas se a página parece spam, ela desiste. A estrutura tem seis blocos, sempre nesta ordem.</p>
+  </div>
+  <figure class="fig">
+    <div class="fig-title"><span class="tag">Wireframe</span> Estrutura do checkout</div>
+    <div class="wire">
+      <div class="phone" aria-hidden="true">
+        <div class="blk cta" style="justify-content:space-between"><span>⏱ 14:59</span><span style="font-weight:400;font-size:11px">Aproveite o valor promocional</span></div>
+        <div class="blk tall" style="background:var(--ink);color:var(--bg)"><span class="i" style="background:var(--accent);color:var(--accent-ink)">2</span>Banner: "Parabéns, o primeiro passo já foi dado…" ★★★★★</div>
+        <div class="blk tall"><span class="i">3</span>Nome · E-mail · Confirmar e-mail · CPF · Cartão / Boleto / Pix</div>
+        <div class="blk proof"><span class="i">4</span>Até 3 depoimentos</div>
+        <div class="blk"><span class="i">5</span>🛡 Garantia 7 dias · 🔒 Compra segura · ✉ Entrega via e-mail</div>
+        <div class="blk"><span class="i">6</span>Selo de garantia de 7 dias</div>
+      </div>
+      <ol class="legend-list">
+        <li><span class="i cta">1</span><div><b>Cronômetro de 15 minutos, fixado no topo.</b> Texto ativo: <em>"Aproveite nosso valor promocional antes que o tempo termine."</em> Texto final: <em>"O tempo acabou. Essa é a sua última chance de adquirir no valor promocional."</em> Marque "fixar no topo".</div></li>
+        <li><span class="i">2</span><div><b>Banner feito no Canva.</b> Parabeniza e guia: "Parabéns, o primeiro passo já foi dado. Prossiga abaixo para ter acesso ao segredo que [transformação]." Com a capa e avaliação de cinco estrelas.</div></li>
+        <li><span class="i">3</span><div><b>Dados do cliente.</b> Não mexa. Apague só o título extra com o nome do produto se aparecer.</div></li>
+        <li><span class="i">4</span><div><b>Depoimentos.</b> Uma linha de três colunas, no máximo três.</div></li>
+        <li><span class="i">5</span><div><b>Vantagens.</b> "Garantia de 7 dias"; "Compra segura: sua informação 100% segura"; "Entrega via e-mail: acesso ao produto entregue por e-mail". Essa última evita o medo de golpe ("nem pediram meus dados para enviar").</div></li>
+        <li><span class="i">6</span><div><b>Garantia.</b> Uma imagem de "garantia 7 dias" (dá para achar no Google).</div></li>
+      </ol>
+    </div>
+  </figure>
+  <div class="prose" style="margin-top:28px">
+    <h3>Montando na Kiwify</h3>
+    <ol class="steps">
+      <li><div><b>Abra o editor.</b> <span class="path">Produto → Checkout → ⋯ → Personalizar</span>. Apague quase tudo e mude a grade para <b>uma coluna</b>.</div></li>
+      <li><div><b>Arraste os blocos</b> na ordem: cronômetro, linha com imagem (banner), dados do cliente, linha de 3 com depoimentos, vantagens, imagem de garantia.</div></li>
+      <li><div><b>Fundo branco.</b> Em configurações, troque o cinza por branco. Preto é possível, mas não recomendado.</div></li>
+      <li><div><b>Uma paleta só.</b> Se o cronômetro e o banner são vermelhos e pretos, não deixe um botão azul. Copie o mesmo vermelho para tudo.</div></li>
+      <li><div><b>Celular.</b> Troque para a visão de celular e clique em <b>Copiar do desktop</b>. Obrigatório, senão o celular fica diferente.</div></li>
+      <li><div><b>Salve.</b> Depois de pegar a prática, isso leva uns 10 minutos.</div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="chapter" id="cap10" data-toc="Arrumar detalhes: links" data-n="10">
+  <div class="ch-head"><span class="num">Capítulo 10</span><h2>Arrumar detalhes: ligando os botões</h2><span class="src">Aula 17 · Arrumar detalhes</span></div>
+  <div class="prose">
+    <p>Um passo rápido que ninguém pode esquecer: colocar o link do checkout em <strong>todos</strong> os botões da página. Se esquecer um, a pessoa clica e nada acontece.</p>
+  </div>
+  <figure class="fig">
+    <div class="fig-title"><span class="tag">Fluxo</span> O caminho da venda</div>
+    <div class="flow">
+      <div class="node"><b>Anúncio</b>Criativo com headline</div><div class="arrow">→</div>
+      <div class="node"><b>Página de vendas</b>5 botões "Desejo adquirir"</div><div class="arrow">→</div>
+      <div class="node hot"><b>Checkout</b>Link copiado da plataforma</div><div class="arrow">→</div>
+      <div class="node"><b>Entrega</b>E-mail + área de membros</div>
+    </div>
+  </figure>
+  <ol class="steps" style="max-width:780px;margin-top:22px">
+    <li><div><b>Copie o link.</b> Na plataforma: <span class="path">Produto → Links</span>. Esse é o link do checkout.</div></li>
+    <li><div><b>Cole em cada botão.</b> No editor do site, clique em cada CTA, apague o link antigo e cole o do checkout.</div></li>
+    <li><div><b>Salve e publique</b> a página.</div></li>
+    <li><div><b>Teste como cliente.</b> Abra a página numa guia nova e clique em <b>todos</b> os botões, um por um. Todos devem cair no mesmo checkout.</div></li>
+    <li><div><b>Teste o Pix.</b> Gere um Pix no checkout. Uma notificação de "Pix gerado" deve chegar no seu celular.</div></li>
+  </ol>
+  <div class="prose" style="margin-top:22px">
+    <p>Com isso, quem vai vender no orgânico já pode começar a divulgar a página. Quem vai de tráfego pago segue para criativos, conta de anúncios e pixel.</p>
+  </div>
+</section>
+
+<!-- =================== PARTE IV =================== -->
+<div class="part-opener" id="parte-4">
+  <div class="pn">IV</div>
+  <h2>Tráfego, otimização e escala</h2>
+  <p>Aulas 18 a 33. Criativos, estrutura no Meta, pixel, métricas, a campanha 1-2-50 e o que fazer com cada número que ela devolve.</p>
+</div>
+
+<section class="chapter" id="cap11" data-toc="Criativos" data-n="11">
+  <div class="ch-head"><span class="num">Capítulo 11</span><h2>Criativos: o que são e como fazer 50</h2><span class="src">Aulas 18 e 19 · Criativos e criativos na prática</span></div>
+  <div class="prose">
+    <p>O criativo é a ponte entre o produto e o site. Ele tem duas partes: a <strong>headline</strong> (a copy, o argumento escrito em cima) e a <strong>imagem</strong>. No dia a dia, "criativo", "copy" e "anúncio" são usados para o conjunto todo.</p>
+    <div class="callout rule"><span class="lbl">Regra</span>O objetivo do anúncio não é vender. É levar pessoas qualificadas para o site. Quem vende é o site. Nunca escreva "compre esse livro" no criativo: desperte interesse, como a capa de um livro na vitrine da livraria.</div>
+  </div>
+  <figure class="fig">
+    <div class="fig-title"><span class="tag">Anatomia</span> O criativo de teste</div>
+    <div class="wire">
+      <div>
+        <div class="ad" style="background:radial-gradient(circle at 50% 70%,#3a3a3a,#0d0d0d 70%);max-width:320px">
+          <div class="hl" style="color:#FFD23F;font-size:22px">Conquiste alguém em 7 minutos</div>
+          <div class="book" style="background:linear-gradient(160deg,#C8162F,#6d0a18);color:#fff;font-size:13px">A ARTE DA SEDUÇÃO</div>
+        </div>
+      </div>
+      <ol class="legend-list">
+        <li><span class="i">1</span><div><b>Headline.</b> Uma das suas ~50 copys (os títulos de vídeo com milhões de visualizações que você coletou). Fonte limpa, sem rabiscos: o curso usa uma fonte tipo Legata.</div></li>
+        <li><span class="i">2</span><div><b>Capa do ebook</b> no centro, como protagonista.</div></li>
+        <li><span class="i">3</span><div><b>Fundo apagado.</b> Escuro, desfocado, com a capa em destaque. Erro comum: fundo vermelho com capa vermelha, e nada se entende.</div></li>
+        <li><span class="i">4</span><div><b>Contraste de cores.</b> Não chute: pesquise psicologia das cores. Amarelo, laranja e rosa combinam com preto. Na dúvida, pergunte a alguém com olho bom para estética.</div></li>
+        <li><span class="i">5</span><div><b>Formato.</b> Post do Instagram (quadrado, 1080 × 1080) no Canva.</div></li>
+      </ol>
+    </div>
+  </figure>
+  <div class="prose" style="margin-top:28px">
+    <h3>Passo a passo no Canva</h3>
+  </div>
+  <ol class="steps" style="max-width:780px;margin-top:10px">
+    <li><div><b>Abra a pasta de copys</b> do produto e copie a primeira headline.</div></li>
+    <li><div><b>Crie um design</b> no Canva com o tamanho de post do Instagram.</div></li>
+    <li><div><b>Cole a headline</b> em uma caixa de texto com fonte limpa.</div></li>
+    <li><div><b>Coloque a capa</b> do ebook no centro.</div></li>
+    <li><div><b>Escolha o fundo</b> em Fotos, envie para trás, desfoque e diminua. Passe 10 a 20 minutos só nessa escolha: um fundo ruim vira 50 criativos ruins.</div></li>
+    <li><div><b>Duplique a página 49 vezes</b> trocando só a headline. No fim, 50 criativos iguais com 50 frases diferentes. Baixe todos numerados (AD 01 a AD 50).</div></li>
+  </ol>
+  <div class="prose" style="margin-top:22px">
+    <h3>O processo em duas fases</h3>
+    <p>Primeiro você descobre a melhor headline (todos os criativos iguais, só a frase muda). Depois de validada, você cria variações de imagem com a mesma frase. "Uma frase que vendeu milhões: continue com ela e só mude a foto." Isso é detalhado nos capítulos 18 e 21.</p>
+  </div>
+</section>
+
+<section class="chapter" id="cap12" data-toc="Orgânico ou pago" data-n="12">
+  <div class="ch-head"><span class="num">Capítulo 12</span><h2>Tráfego orgânico ou pago</h2><span class="src">Aula 20 · Desmistificando tráfego pago e orgânico</span></div>
+  <figure class="fig">
+    <div class="fig-title"><span class="tag">Comparativo</span> Os dois caminhos</div>
+    <div class="scroll-x">
+    <table>
+      <thead><tr><th></th><th>Orgânico · caminho longo</th><th>Pago · caminho curto</th></tr></thead>
+      <tbody>
+        <tr><td><b>Custo</b></td><td>Zero em dinheiro, muito em tempo</td><td>A partir de R$ 20–60 por dia</td></tr>
+        <tr><td><b>Primeira venda</b></td><td>10 a 30 dias, conforme a dedicação</td><td>Muitas vezes no primeiro dia</td></tr>
+        <tr><td><b>Risco</b></td><td><span class="pill good">Menor</span></td><td><span class="pill warn">Maior</span>, reduzido começando pequeno</td></tr>
+        <tr><td><b>Para quem</b></td><td>Quem não tem nem R$ 30 para investir</td><td>Quem tem o valor de uma pizza para testar</td></tr>
+        <tr><td><b>Papel</b></td><td>Semente: as primeiras vendas pagam o tráfego</td><td>Motor de escala</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </figure>
+  <div class="two-col" style="margin-top:22px;max-width:920px">
+    <div class="card">
+      <h4>Estratégia orgânica 1 · Viralizar</h4>
+      <ul>
+        <li>Perfis da editora no Instagram, TikTok, YouTube e Kwai.</li>
+        <li>Dois vídeos por dia em cada rede (Reels, Shorts, TikTok, Kwai) sobre o tema do ebook, por 15 a 30 dias.</li>
+        <li>Sem mostrar o rosto. O objetivo é audiência, não monetização.</li>
+        <li>Em toda legenda: "acesse o link na nossa bio".</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Estratégia orgânica 2 · Comunidades</h4>
+      <ul>
+        <li>Grupos de Facebook e WhatsApp sobre o tema.</li>
+        <li>Entregue valor e promova o produto de forma sutil, com o criativo e o link do site.</li>
+        <li>Segundo a aula, 30 a 50% de quem engaja num post que viraliza vai para o site.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="prose" style="margin-top:18px">
+    <div class="callout legal"><span class="lbl">Direitos autorais</span>A aula sugere repostar vídeos virais de outros perfis. Repostar sem autorização pode gerar denúncia e derrubar o perfil da editora. Prefira conteúdo próprio (dá para fazer sem rosto: texto na tela, narração, imagens de banco) ou peça permissão e dê o crédito.</div>
+    <p>No pago, o risco cai quando você começa pequeno e só aumenta com ROI (retorno sobre investimento). "Você não está aprendendo renda extra, está aprendendo a conquistar liberdade financeira." Tem o valor e tem medo? Invista. Não tem? Vá pelo orgânico e use as primeiras vendas como semente.</p>
+  </div>
+</section>
+
+<section class="chapter" id="cap13" data-toc="Perfil, BM e conta de anúncios" data-n="13">
+  <div class="ch-head"><span class="num">Capítulo 13</span><h2>Perfil, BM, conta de anúncios e página</h2><span class="src">Aulas 21, 22 e 24 · com João Vítor, especialista em Meta Ads</span></div>
+  <div class="prose">
+    <p>Para anunciar no Facebook e no Instagram você monta uma estrutura em camadas. Tudo nasce de um perfil pessoal do Facebook.</p>
+  </div>
+  <figure class="fig">
+    <div class="fig-title"><span class="tag">Hierarquia</span> Como as peças se encaixam no Meta</div>
+    <div class="scroll-x">
+    <svg viewBox="0 0 780 330" width="100%" style="min-width:620px" role="img" aria-label="Perfil do Facebook contém até 3 Business Managers. Cada BM contém contas de anúncios, a página do Facebook, o Instagram da editora e o pixel.">
+      <g font-size="13">
+        <rect x="290" y="14" width="200" height="54" rx="12" class="f-ink"/>
+        <text x="390" y="38" text-anchor="middle" font-weight="800" class="f-bg" style="fill:var(--bg)">Perfil do Facebook</text>
+        <text x="390" y="56" text-anchor="middle" font-size="11.5" style="fill:var(--bg);opacity:.75">antigo é melhor</text>
+        <path d="M390 68 V92 M150 92 H630 M150 92 V112 M390 92 V112 M630 92 V112" class="s-muted f-none" stroke-width="1.5"/>
+        <rect x="60" y="112" width="180" height="46" rx="10" class="f-accent"/><text x="150" y="140" text-anchor="middle" font-weight="800" style="fill:var(--accent-ink)">BM 01 - Editora</text>
+        <rect x="300" y="112" width="180" height="46" rx="10" class="f-surface2" stroke-dasharray="4 4" style="stroke:var(--muted)"/><text x="390" y="140" text-anchor="middle" class="t-muted">BM 02</text>
+        <rect x="540" y="112" width="180" height="46" rx="10" class="f-surface2" stroke-dasharray="4 4" style="stroke:var(--muted)"/><text x="630" y="140" text-anchor="middle" class="t-muted">BM 03 (máximo)</text>
+        <path d="M150 158 V184 M55 184 H700 M55 184 V204 M210 184 V204 M380 184 V204 M540 184 V204 M700 184 V204" class="s-muted f-none" stroke-width="1.5"/>
+        <rect x="0" y="204" width="110" height="64" rx="10" class="f-surface2"/>
+        <text x="55" y="228" text-anchor="middle" font-weight="800" class="t-ink">CA 01</text><text x="55" y="246" text-anchor="middle" font-size="11" class="t-muted">conta de</text><text x="55" y="259" text-anchor="middle" font-size="11" class="t-muted">anúncios</text>
+        <rect x="140" y="204" width="140" height="64" rx="10" class="f-surface2"/>
+        <text x="210" y="228" text-anchor="middle" font-weight="800" class="t-ink">CA 02, 03…</text><text x="210" y="246" text-anchor="middle" font-size="11" class="t-muted">liberadas após o</text><text x="210" y="259" text-anchor="middle" font-size="11" class="t-muted">1º pagamento</text>
+        <rect x="310" y="204" width="140" height="64" rx="10" class="f-surface2"/>
+        <text x="380" y="228" text-anchor="middle" font-weight="800" class="t-ink">Página FB</text><text x="380" y="246" text-anchor="middle" font-size="11" class="t-muted">obrigatória para</text><text x="380" y="259" text-anchor="middle" font-size="11" class="t-muted">anunciar</text>
+        <rect x="470" y="204" width="140" height="64" rx="10" class="f-surface2"/>
+        <text x="540" y="228" text-anchor="middle" font-weight="800" class="t-ink">Instagram</text><text x="540" y="246" text-anchor="middle" font-size="11" class="t-muted">da editora</text><text x="540" y="259" text-anchor="middle" font-size="11" class="t-muted">(um só)</text>
+        <rect x="630" y="204" width="140" height="64" rx="10" class="f-goodsoft"/>
+        <text x="700" y="228" text-anchor="middle" font-weight="800" class="t-good">Pixel</text><text x="700" y="246" text-anchor="middle" font-size="11" class="t-muted">"conjunto de dados"</text><text x="700" y="259" text-anchor="middle" font-size="11" class="t-muted">um por produto</text>
+        <text x="390" y="306" text-anchor="middle" font-size="12" class="t-muted">Tudo isso é conectado em Configurações do negócio → Pessoas / Ativos conectados</text>
+      </g>
+    </svg>
+    </div>
+    <figcaption><b>Perfil novo é arriscado.</b> O Facebook desconfia de um perfil recém-criado que já cria BM e anuncia, e pode pedir verificação ou bloquear. Se possível, use um perfil antigo que é seu.</figcaption>
+  </figure>
+
+  <div class="prose" style="margin-top:28px"><h3>Passo a passo</h3></div>
+  <ol class="steps" style="max-width:800px;margin-top:10px">
+    <li><div><b>Perfil.</b> Recupere a senha do seu perfil do Facebook, ou crie um se não tiver. Use o Google Chrome.</div></li>
+    <li><div><b>Criar a BM.</b> Acesse <span class="path">business.facebook.com</span> → Começar / Criar conta. Nome: <span class="mono">BM 01 - Nome da Editora</span>. Coloque seu nome e um e-mail que você acessa: chega um link de confirmação que precisa ser clicado.</div></li>
+    <li><div><b>Conta de anúncios.</b> <span class="path">Todas as ferramentas → Configurações do negócio → Contas de anúncios → Adicionar → Criar</span>. Nome: <span class="mono">CA 01 - Nome da Editora</span>. <b>Atenção ao país de faturamento e à moeda (BRL):</b> não dá para mudar depois.</div></li>
+    <li><div><b>Dê acesso a você.</b> Na conta de anúncios: <span class="path">Atribuir pessoas</span> → seu nome → controle total.</div></li>
+    <li><div><b>Página do Facebook.</b> <span class="path">Contas → Páginas → Adicionar → Criar nova</span>. Nome da editora, categoria "Editora" (Publisher), bio "Editora de livros online". Depois, na própria página: foto de perfil e capa (as mesmas do Instagram), bio, site principal (<span class="mono">editora.com</span>), serviços. Uma página completa aumenta a confiança do Facebook na sua conta.</div></li>
+    <li><div><b>Instagram.</b> <span class="path">Contas do Instagram → Adicionar → Conectar</span> com login e senha do Instagram da editora. Atribua a você e, em Ativos conectados, ligue à CA 01.</div></li>
+    <li><div><b>Sócio (se houver).</b> <span class="path">Pessoas → Convidar</span> com o e-mail do Facebook dele. Depois de aceito, dê os mesmos acessos.</div></li>
+  </ol>
+  <div class="prose" style="margin-top:22px">
+    <div class="callout tip"><span class="lbl">Nomenclatura dá ROI</span>Organize tudo com números: BM 01, CA 01, CA 05… Quando você estiver escalando em várias contas, bater o olho e saber "estou escalando na CA 05" economiza erros e dinheiro.</div>
+  </div>
+</section>
+
+<section class="chapter" id="cap14" data-toc="Pixel: criar e instalar" data-n="14">
+  <div class="ch-head"><span class="num">Capítulo 14</span><h2>Pixel: criar, instalar e testar</h2><span class="src">Aulas 22, 23 e 24 · Criação do pixel, instalando o pixel, acessos</span></div>
+  <div class="prose">
+    <p>"Estou vendendo, o Pix foi pago na plataforma, mas não marca no Facebook." Quase sempre é o pixel. Ele precisa estar em <strong>dois lugares</strong>: no site (para marcar visitas) e no checkout (para marcar início de compra e compra).</p>
+  </div>
+  <figure class="fig">
+    <div class="fig-title"><span class="tag">Diagrama</span> Onde o pixel mora</div>
+    <div class="scroll-x">
+    <svg viewBox="0 0 780 250" width="100%" style="min-width:620px" role="img" aria-label="O pixel é instalado como script no head do site, registrando PageView, e como ID na plataforma, registrando início de finalização e compra. Os eventos vão para o gerenciador de eventos, que otimiza a campanha para Compra.">
+      <g font-size="13">
+        <rect x="20" y="30" width="220" height="86" rx="12" class="f-surface2"/>
+        <text x="130" y="56" text-anchor="middle" font-weight="800" class="t-ink">Página de vendas</text>
+        <text x="130" y="78" text-anchor="middle" font-size="12" class="t-muted">script colado no &lt;head&gt;</text>
+        <text x="130" y="100" text-anchor="middle" font-size="12" class="t-accent" font-family="var(--f-mono)">PageView</text>
+        <rect x="20" y="140" width="220" height="86" rx="12" class="f-surface2"/>
+        <text x="130" y="166" text-anchor="middle" font-weight="800" class="t-ink">Checkout (Kiwify)</text>
+        <text x="130" y="188" text-anchor="middle" font-size="12" class="t-muted">só o ID do pixel</text>
+        <text x="130" y="210" text-anchor="middle" font-size="12" class="t-accent" font-family="var(--f-mono)">InitiateCheckout · Purchase</text>
+        <path d="M240 73 C320 73 320 128 380 128 M240 183 C320 183 320 128 380 128" class="s-muted f-none" stroke-width="2"/>
+        <rect x="380" y="92" width="170" height="72" rx="12" class="f-good"/>
+        <text x="465" y="122" text-anchor="middle" font-weight="800" style="fill:var(--surface)">Pixel</text>
+        <text x="465" y="142" text-anchor="middle" font-size="11.5" style="fill:var(--surface)">conjunto de dados</text>
+        <path d="M550 128 H600" class="s-muted" stroke-width="2"/>
+        <polygon points="600,122 610,128 600,134" class="f-ink"/>
+        <rect x="612" y="80" width="156" height="96" rx="12" class="f-accent"/>
+        <text x="690" y="112" text-anchor="middle" font-weight="800" style="fill:var(--accent-ink)">Campanha</text>
+        <text x="690" y="132" text-anchor="middle" font-size="11.5" style="fill:var(--accent-ink)">evento de conversão</text>
+        <text x="690" y="152" text-anchor="middle" font-size="13" font-weight="800" style="fill:var(--accent-ink)">Compra</text>
+      </g>
+    </svg>
+    </div>
+    <figcaption>Com o pixel só no site, você vê as visitas mas não as vendas. Com o pixel só no checkout, você perde o público de visitantes para remarketing.</figcaption>
+  </figure>
+
+  <div class="prose" style="margin-top:28px"><h3>1 · Criar o pixel</h3></div>
+  <ol class="steps" style="max-width:800px;margin-top:10px">
+    <li><div><span class="path">Configurações do negócio → Fontes de dados → Conjuntos de dados → Adicionar</span>. (O antigo menu "Pixels" hoje se chama "Conjuntos de dados".)</div></li>
+    <li><div>Nome: <span class="mono">Pixel - Nome do Produto - Ano</span>. Um pixel por produto. Capriche no nome: pixel não pode ser excluído.</div></li>
+    <li><div>Anote o <b>número (ID)</b> do pixel, no topo da tela.</div></li>
+    <li><div><span class="path">Atribuir pessoas</span> → você. <span class="path">Ativos conectados → Adicionar</span> → sua CA. Sem isso, o pixel não aparece na hora de criar a campanha.</div></li>
+  </ol>
+  <div class="prose" style="margin-top:22px"><h3>2 · Instalar no site</h3></div>
+  <ol class="steps" style="max-width:800px;margin-top:10px">
+    <li><div><span class="path">Gerenciador de eventos → seu pixel → Configurar pixel da Meta → Instalar código manualmente</span>. Copie o script. Não precisa entender de programação.</div></li>
+    <li><div>No editor do site (ClickPages, WordPress ou outro): engrenagem → <b>Scripts</b> → <b>Head</b> → Adicionar script. Nome: <span class="mono">pixel arte da seducao</span> (sem acento). Cole e adicione.</div></li>
+    <li><div><b>Publique o site.</b> Toda alteração sem publicar gera erro depois.</div></li>
+    <li><div><b>Teste.</b> Em Gerenciador de eventos → Testar eventos, cole a URL e abra o site. O evento <span class="mono">PageView</span> deve aparecer. Faça esse teste: ele também libera opções que você vai precisar.</div></li>
+    <li><div>Instale a extensão <b>Meta Pixel Helper</b> no Chrome. Ao abrir o site, ela fica azul/verde e mostra o final do ID. Confira se bate com o seu.</div></li>
+  </ol>
+  <div class="prose" style="margin-top:22px"><h3>3 · Instalar no checkout</h3></div>
+  <ol class="steps" style="max-width:800px;margin-top:10px">
+    <li><div>Na Kiwify: <span class="path">Produtos → seu produto → Configurações</span> (não é na aba Checkout) → Pixel → <b>Adicionar outro</b>.</div></li>
+    <li><div>Cole só o <b>ID</b> (a "identificação do conjunto de dados"), não o script.</div></li>
+    <li><div><b>Domínio.</b> Se só aparecer o domínio padrão da plataforma, clique na engrenagem → Gerenciar domínios → adicione o domínio da editora. Clique no aviso amarelo para verificar até ficar verde.</div></li>
+    <li><div>Salve. Pixel instalado no site e no checkout.</div></li>
+  </ol>
+</section>
+
+<section class="chapter" id="cap15" data-toc="Colunas e métricas" data-n="15">
+  <div class="ch-head"><span class="num">Capítulo 15</span><h2>Colunas e métricas personalizadas</h2><span class="src">Aula 25 · Colunas e métricas personalizadas</span></div>
+  <div class="prose">
+    <p>As colunas padrão do Gerenciador escondem o que importa para quem vende, como finalizações de compra e lucro. Monte o seu padrão de colunas uma vez e salve como predefinição. Em outra conta de anúncios, você precisa criar de novo, então anote.</p>
+  </div>
+  <figure class="fig">
+    <div class="fig-title"><span class="tag">Funil</span> Cada etapa tem uma métrica e uma meta</div>
+    <div class="scroll-x">
+    <svg viewBox="0 0 780 340" width="100%" style="min-width:640px" role="img" aria-label="Funil de impressões até compra com as taxas de referência: CTR acima de 2%, connect rate acima de 80%, página para checkout 20 a 30%, checkout para compra 10 a 15% e página para compra 1 a 2%.">
+      <g font-size="13">
+        <polygon points="20,20 440,20 410,76 50,76" class="f-surface2"/>
+        <polygon points="50,82 410,82 380,138 80,138" class="f-surface2"/>
+        <polygon points="80,144 380,144 350,200 110,200" class="f-surface2"/>
+        <polygon points="110,206 350,206 320,262 140,262" class="f-surface2"/>
+        <polygon points="140,268 320,268 290,324 170,324" class="f-accent"/>
+        <text x="230" y="53" text-anchor="middle" font-weight="800" class="t-ink">Impressões</text>
+        <text x="230" y="115" text-anchor="middle" font-weight="800" class="t-ink">Cliques no link</text>
+        <text x="230" y="177" text-anchor="middle" font-weight="800" class="t-ink">Visualizações da página</text>
+        <text x="230" y="239" text-anchor="middle" font-weight="800" class="t-ink">Finalizações iniciadas</text>
+        <text x="230" y="301" text-anchor="middle" font-weight="800" style="fill:var(--accent-ink)">Compras</text>
+        <g class="s-line" stroke-width="1"><line x1="440" y1="79" x2="470" y2="79"/><line x1="410" y1="141" x2="470" y2="141"/><line x1="380" y1="203" x2="470" y2="203"/><line x1="350" y1="265" x2="470" y2="265"/></g>
+        <text x="480" y="75" class="t-ink" font-weight="800">CTR (link)</text><text x="600" y="75" class="t-good" font-family="var(--f-mono)" font-weight="600">&gt; 2%</text>
+        <text x="480" y="92" font-size="11.5" class="t-muted">cliques ÷ impressões · anúncio</text>
+        <text x="480" y="137" class="t-ink" font-weight="800">Connect rate</text><text x="600" y="137" class="t-good" font-family="var(--f-mono)" font-weight="600">&gt; 80%</text>
+        <text x="480" y="154" font-size="11.5" class="t-muted">visualizações ÷ cliques · velocidade</text>
+        <text x="480" y="199" class="t-ink" font-weight="800">Página → checkout</text><text x="640" y="199" class="t-good" font-family="var(--f-mono)" font-weight="600">20–30%</text>
+        <text x="480" y="216" font-size="11.5" class="t-muted">finalizações ÷ visualizações · página</text>
+        <text x="480" y="261" class="t-ink" font-weight="800">Checkout → compra</text><text x="640" y="261" class="t-good" font-family="var(--f-mono)" font-weight="600">10–15%</text>
+        <text x="480" y="278" font-size="11.5" class="t-muted">compras ÷ finalizações · checkout</text>
+        <text x="480" y="312" class="t-ink" font-weight="800">Página → compra</text><text x="640" y="312" class="t-good" font-family="var(--f-mono)" font-weight="600">1–2%</text>
+      </g>
+    </svg>
+    </div>
+    <figcaption>Referências das aulas e do material de apoio. Connect rate: João aceita a partir de 75% e considera ótimo acima de 85%; Marcos usa 80%. Espere umas 48 h antes de julgar. Upsell ~20% e order bump ~30% das vendas são referências para quando você tiver esses itens.</figcaption>
+  </figure>
+
+  <div class="prose" style="margin-top:28px"><h3>As 4 métricas que você mesmo cria</h3>
+  <p><span class="path">Colunas → Personalizar colunas → Criar métrica personalizada</span>. Digite a fórmula, dê o nome e escolha o formato. Formato errado é o erro mais comum.</p></div>
+  <div class="scroll-x" style="max-width:920px;margin-top:12px">
+    <table>
+      <thead><tr><th>Nome</th><th>Fórmula</th><th>Formato</th></tr></thead>
+      <tbody>
+        <tr><td><b>Lucro</b></td><td class="mono">Valor de conversão da compra − Valor usado</td><td><span class="pill acc">Moeda</span></td></tr>
+        <tr><td><b>Connect rate</b></td><td class="mono">Visualizações da página de destino ÷ Cliques no link</td><td><span class="pill acc">Porcentagem</span></td></tr>
+        <tr><td><b>Taxa página → checkout</b></td><td class="mono">Finalizações de compra iniciadas ÷ Visualizações da página de destino</td><td><span class="pill acc">Porcentagem</span></td></tr>
+        <tr><td><b>Taxa página → compra</b></td><td class="mono">Compras ÷ Visualizações da página de destino</td><td><span class="pill acc">Porcentagem</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="prose" style="margin-top:14px"><p style="font-size:16px;color:var(--muted)">O "valor de conversão" é o que a plataforma registra já sem a taxa, não os R$ 29,90 cheios. Por isso o Lucro calculado assim é o real.</p></div>
+
+  <div class="prose" style="margin-top:28px"><h3>O padrão de colunas, na ordem</h3>
+  <p>Remova todas as colunas (fica só "Campanha") e adicione uma a uma pela busca. Ao adicionar ROAS, apague a coluna duplicada que aparece junto.</p></div>
+  <div class="scroll-x" style="max-width:920px;margin-top:12px">
+    <table id="cols-table">
+      <thead><tr><th class="mono">#</th><th>Coluna</th><th>Para que serve</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <div class="prose" style="margin-top:18px">
+    <div class="callout tip"><span class="lbl">Clique ≠ visita</span>Use sempre <b>Cliques no link</b> e o CPC/CTR "no link". A coluna "Cliques (todos)" soma curtidas e reações. E clique não é visita: se o site demora, a pessoa fecha antes de carregar. É isso que o Connect rate mede.</div>
+  </div>
+</section>
+
+<section class="chapter" id="cap16" data-toc="Estrutura 1-2-50" data-n="16">
+  <div class="ch-head"><span class="num">Capítulo 16</span><h2>A estrutura 1-2-50</h2><span class="src">Aulas 27, 28 e 30 · 1-2-50 partes 1 e 2</span></div>
+  <div class="prose">
+    <p>A 1-2-50 é a estrutura criada pelo Marcos para <strong>testar</strong> e depois escalar. Você acabou o ebook e não sabe se ele vende, se a página converte, qual copy funciona. A 1-2-50 responde a isso: <strong>1 campanha, 2 conjuntos, 50 anúncios</strong> em cada conjunto.</p>
+  </div>
+  <figure class="fig">
+    <div class="fig-title"><span class="tag">Estrutura</span> 1 campanha · 2 conjuntos · 50 anúncios</div>
+    <div class="scroll-x">
+    <svg viewBox="0 0 780 330" width="100%" style="min-width:640px" role="img" aria-label="Uma campanha de vendas com orçamento igual ao ticket vezes dois, dividida em conjunto A aberto e conjunto B fechado com até 5 interesses, cada um com 50 anúncios que mudam só a headline.">
+      <g font-size="13">
+        <rect x="250" y="12" width="280" height="70" rx="12" class="f-ink"/>
+        <text x="390" y="38" text-anchor="middle" font-weight="800" style="fill:var(--bg)">1 CAMPANHA · objetivo Vendas</text>
+        <text x="390" y="60" text-anchor="middle" font-size="12.5" style="fill:var(--bg);opacity:.8">orçamento CBO = ticket × 2 conjuntos</text>
+        <path d="M390 82 V104 M200 104 H580 M200 104 V124 M580 104 V124" class="s-muted f-none" stroke-width="1.5"/>
+        <rect x="80" y="124" width="240" height="76" rx="12" class="f-surface2"/>
+        <text x="200" y="150" text-anchor="middle" font-weight="800" class="t-ink">CONJUNTO A · aberto</text>
+        <text x="200" y="170" text-anchor="middle" font-size="12" class="t-muted">sem segmentação nenhuma</text>
+        <text x="200" y="188" text-anchor="middle" font-size="12" class="t-muted">"pixel, confio em você"</text>
+        <rect x="460" y="124" width="240" height="76" rx="12" class="f-accentsoft"/>
+        <text x="580" y="150" text-anchor="middle" font-weight="800" class="t-accent">CONJUNTO B · fechado</text>
+        <text x="580" y="170" text-anchor="middle" font-size="12" class="t-muted">segmentação mais óbvia</text>
+        <text x="580" y="188" text-anchor="middle" font-size="12" class="t-muted">máximo 5 interesses</text>
+        <path d="M200 200 V222 M580 200 V222" class="s-muted" stroke-width="1.5"/>
+      </g>
+      <g id="adgrid-a"></g><g id="adgrid-b"></g>
+      <text x="200" y="318" text-anchor="middle" font-size="12" class="t-muted">AD 01 … AD 50</text>
+      <text x="580" y="318" text-anchor="middle" font-size="12" class="t-muted">os mesmos 50 anúncios</text>
+    </svg>
+    </div>
+    <figcaption><b>No teste de headline, os 50 anúncios têm a mesma imagem (a capa) e só a frase muda.</b> Se o AD 24 vende mais que todos, a headline 24 é a melhor, porque ela é a única variável.</figcaption>
+  </figure>
+
+  <div class="prose" style="margin-top:28px">
+    <h3>Calculadora da sua 1-2-50</h3>
+    <p>Coloque o preço do seu produto. A calculadora devolve o orçamento e todos os limites de decisão das aulas de otimização.</p>
+  </div>
+  <figure class="fig">
+    <div class="fig-title"><span class="tag">Calculadora</span> Orçamento e limites de corte</div>
+    <div class="calc">
+      <div class="inputs">
+        <label for="c-ticket">Preço do produto (R$)<input id="c-ticket" type="number" min="1" step="0.1" value="29.90"></label>
+        <label for="c-sets">Número de conjuntos<input id="c-sets" type="number" min="1" step="1" value="2"></label>
+        <label for="c-net">Você recebe por venda (R$, após taxas)<input id="c-net" type="number" min="1" step="0.1" value="27.00"></label>
+      </div>
+      <div class="kpis" id="c-out"></div>
+    </div>
+    <figcaption>O valor líquido por venda depende da taxa da sua plataforma. Confira na sua conta e ajuste o último campo.</figcaption>
+  </figure>
+
+  <div class="prose" style="margin-top:28px">
+    <h3>Como escolher a segmentação do conjunto B</h3>
+    <ul>
+      <li><strong>A palavra mais óbvia do nicho.</strong> Reconquista → "reconquista", "amor". Sedução → "sedução", "amor", "solteiros".</li>
+      <li><strong>Se não existir a palavra, o público que o produto ajuda.</strong> Ansiedade não é interesse disponível? O produto ajuda estudantes (idade), trabalhadores CLT (profissão), mães de bebês recém-nascidos (pais com bebês).</li>
+      <li><strong>No máximo 5 interesses</strong> por conjunto. Idade e gênero só se o produto for claramente para um grupo.</li>
+    </ul>
+    <p>Por que abrir e fechar ao mesmo tempo? O aberto deixa o algoritmo achar o comprador sozinho. O fechado testa a sua hipótese de público. Depois do teste, você mantém o que vendeu.</p>
+  </div>
+</section>
+
+<section class="chapter" id="cap17" data-toc="Subindo a campanha" data-n="17">
+  <div class="ch-head"><span class="num">Capítulo 17</span><h2>Subindo a campanha, botão por botão</h2><span class="src">Aulas 26 e 28 · Criando campanha do zero e 1-2-50 na prática</span></div>
+  <div class="prose"><p>Crie todo o conjunto A primeiro, com os 50 anúncios. Depois duplique o conjunto e transforme a cópia no B. É bem menos trabalho.</p></div>
+  <figure class="fig">
+    <div class="fig-title"><span class="tag">Nível 1</span> Campanha</div>
+    <ol class="steps">
+      <li><div><b>Forma de pagamento: cartão de crédito.</b> Se escolher Pix ou boleto primeiro, pode não conseguir adicionar cartão depois, e na escala o cartão evita atrasos de saldo.</div></li>
+      <li><div><span class="path">Criar → Vendas → Continuar → Campanha de vendas manual</span>.</div></li>
+      <li><div><b>Nome</b> organizado (ex.: <span class="mono">Alfa - Arte da Sedução - 26/08</span>).</div></li>
+      <li><div><b>Orçamento da campanha Advantage (CBO): ativado.</b> Valor diário = ticket × 2. Para R$ 29,90, use R$ 60. Dá para testar com menos, mas com R$ 60 você conclui mais rápido.</div></li>
+    </ol>
+  </figure>
+  <figure class="fig">
+    <div class="fig-title"><span class="tag">Nível 2</span> Conjunto A (aberto)</div>
+    <ol class="steps">
+      <li><div><b>Nome:</b> <span class="mono">Conjunto A - Aberto</span>. Local da conversão: <b>Site</b>.</div></li>
+      <li><div><b>Pixel</b> do produto e evento de conversão <b>Compra</b>. Vá direto para Compra; não "esquente" com finalização de compra. Ignore os avisos de "poucas conversões".</div></li>
+      <li><div>Role até o fim e clique em <b>Mudar para opções originais de público</b>.</div></li>
+      <li><div><b>Programação.</b> Depois das 17 h, programe o início para <b>23:59 de hoje</b>. A campanha entra ativa, os anúncios passam pela análise antes e o gasto começa à meia-noite (começando às 00:01 ela às vezes fica em análise).</div></li>
+      <li><div><b>Público:</b> localização Brasil. Não mexa em mais nada.</div></li>
+      <li><div><b>Posicionamentos manuais.</b> Mantenha Feed do Facebook, Feed do Instagram, Feed de perfil do Instagram, Explorar (e página inicial do Explorar) e Stories. Tire Audience Network, Messenger, resultados de pesquisa e, se o criativo não for vídeo, Reels.</div></li>
+    </ol>
+  </figure>
+  <figure class="fig">
+    <div class="fig-title"><span class="tag">Nível 3</span> Anúncios</div>
+    <ol class="steps">
+      <li><div><b>Nome:</b> <span class="mono">AD 01</span>. Identidade: página do Facebook e Instagram <b>da editora</b>, não o seu pessoal. Desmarque "anúncios com vários anunciantes".</div></li>
+      <li><div><b>Formato:</b> imagem única. <b>Destino:</b> URL da página do produto. Confira em "Ver prévia da URL".</div></li>
+      <li><div><b>Texto principal:</b> a legenda gerada com o comando abaixo. <b>Título:</b> o nome do livro (só aparece no Facebook). <b>Descrição:</b> opcional; o curso usa cinco estrelinhas. <b>Botão:</b> "Saiba mais" ou "Comprar agora".</div></li>
+      <li><div><b>Mídia:</b> suba o criativo AD 01 (1080 × 1080). Se o recorte cortar texto, use o original.</div></li>
+      <li><div><b>Desative os aprimoramentos</b> do criativo e "otimizar texto por pessoa". Se ligados, o Facebook corta a imagem ou troca título e texto de lugar. Se o contador mostrar "1 de 5", ative e desative de novo.</div></li>
+      <li><div><b>Duplique o anúncio 49 vezes.</b> Em cada cópia, troque só o nome (AD 02…AD 50) e a mídia. Leva de 5 a 10 minutos.</div></li>
+      <li><div><b>Duplique o conjunto</b> (na mesma campanha). Renomeie para <span class="mono">Conjunto B - Fechado</span> e adicione até 5 interesses em Direcionamento detalhado. O pixel já vem configurado.</div></li>
+      <li><div><b>Publicar.</b></div></li>
+    </ol>
+  </figure>
+  <div class="prompt-head" style="margin-top:24px"><span>Comando para o texto principal (legenda)</span><button class="btn copy">Copiar</button></div>
+  <div class="prompt">Crie uma legenda para meu anúncio que utilize elementos das minhas copys. A legenda deve ter parágrafos pequenos, misturar apelos emocionais e racionais, e terminar com uma chamada para ação envolvente: <span class="ph">[cole aqui 5 das suas copys]</span></div>
+</section>
+
+<section class="chapter" id="cap18" data-toc="Otimização: o que desligar" data-n="18">
+  <div class="ch-head"><span class="num">Capítulo 18</span><h2>Otimização: lendo o resultado do teste</h2><span class="src">Aulas 29 e 30 · Otimizações partes 1 e 2 · anotações do curso</span></div>
+  <div class="prose">
+    <p>Não tire conclusões antes de gastar pelo menos <strong>2 × o preço do produto</strong>. Pode levar um dia ou cinco. Depois disso, a campanha segue por um de dois caminhos.</p>
+    <p class="quote">Direcione o dinheiro sempre para o anúncio vencedor.<cite>Aula 29</cite></p>
+  </div>
+  <figure class="fig">
+    <div class="fig-title"><span class="tag">Fluxograma</span> O que fazer depois do teste</div>
+    <div style="display:grid;gap:12px">
+      <div class="flow"><div class="node" style="text-align:center;background:var(--ink);color:var(--bg)"><b>A campanha gastou pelo menos 2 × o ticket</b>ex.: R$ 60 para um produto de R$ 29,90</div></div>
+      <div class="two-col">
+        <div style="display:grid;gap:8px;align-content:start">
+          <div class="node" style="background:var(--good);color:var(--surface);border-radius:10px;padding:12px 14px;font-family:var(--f-display)"><b>✓ Fez venda</b></div>
+          <div class="card"><h4>Conjuntos</h4><p>Só um conjunto vendeu? <b>Desligue o que não vendeu</b> e fique com o público comprador.</p></div>
+          <div class="card"><h4>Anúncios que venderam</h4><p><b>Não mexa.</b> Estão dando ROI.</p></div>
+          <div class="card"><h4>Anúncios que gastaram e não venderam</h4><p>Gastou <b>metade do ticket</b> (R$ 15 num produto de R$ 30) sem vender? <b>Desligue.</b></p></div>
+          <div class="card"><h4>Anúncios que ainda não gastaram</h4><p><b>Deixe.</b> Você ainda não sabe se são bons ou ruins.</p></div>
+          <div class="card"><h4>Vendeu, mas não está no lucro</h4><p>Desligue todo o resto e fique só com o que está lucrando.</p></div>
+          <div class="node" style="background:var(--accent);color:var(--accent-ink);border-radius:10px;padding:12px 14px;font-family:var(--f-display)"><b>CPA baixo e estável → escale</b>capítulo 19</div>
+        </div>
+        <div style="display:grid;gap:8px;align-content:start">
+          <div class="node" style="background:var(--bad);color:var(--surface);border-radius:10px;padding:12px 14px;font-family:var(--f-display)"><b>✗ Não fez venda</b></div>
+          <div class="card"><h4>Ainda não gastou 5 × o ticket?</h4><p><b>Calma, deixe gastar.</b> R$ 60 é cedo demais para dizer que o produto não presta.</p></div>
+          <div class="card"><h4>Gastou 5 × o ticket (R$ 150) sem vender?</h4><p><b>Leia as métricas</b> e corrija a etapa que está quebrada (diagnóstico abaixo).</p></div>
+          <div class="card"><h4>Métricas todas boas e mesmo assim sem venda?</h4><p>Forte indício de que a <b>ideia do produto</b> não é boa. Vá para o próximo ebook, sem apego.</p></div>
+          <div class="card" style="border-color:var(--bad)"><h4>Limite máximo</h4><p>Por volta de <b>10 × o ticket</b> (R$ 300 num produto de R$ 30) no prejuízo: desligue. Nunca deixe chegar a R$ 500 ou R$ 1.000.</p></div>
+        </div>
+      </div>
+    </div>
+    <figcaption><b>Precisa de 2 vendas para empatar e 3 para lucrar</b> num orçamento de R$ 60 com ticket de R$ 29,90.</figcaption>
+  </figure>
+
+  <div class="prose" style="margin-top:32px">
+    <h3>Diagnóstico: onde o funil quebrou</h3>
+    <p>Cada métrica aponta para uma peça diferente da operação. Coloque os números da sua campanha e veja qual peça consertar primeiro.</p>
+  </div>
+  <figure class="fig">
+    <div class="fig-title"><span class="tag">Interativo</span> Diagnóstico da campanha</div>
+    <div class="calc">
+      <div class="inputs">
+        <label for="d-spend">Valor gasto (R$)<input id="d-spend" type="number" min="0" step="1" value="150"></label>
+        <label for="d-ticket">Preço do produto (R$)<input id="d-ticket" type="number" min="1" step="0.1" value="29.90"></label>
+        <label for="d-impr">Impressões<input id="d-impr" type="number" min="0" step="1" value="9000"></label>
+        <label for="d-clicks">Cliques no link<input id="d-clicks" type="number" min="0" step="1" value="120"></label>
+        <label for="d-lpv">Visualizações da página<input id="d-lpv" type="number" min="0" step="1" value="80"></label>
+        <label for="d-ic">Finalizações iniciadas<input id="d-ic" type="number" min="0" step="1" value="22"></label>
+        <label for="d-sales">Compras<input id="d-sales" type="number" min="0" step="1" value="0"></label>
+      </div>
+      <div class="kpis" id="d-kpis"></div>
+      <div id="d-out" style="display:grid;gap:8px"></div>
+    </div>
+    <figcaption>Os números iniciais são um exemplo. As referências são as do capítulo 15.</figcaption>
+  </figure>
+
+  <div class="prose" style="margin-top:32px">
+    <h3>Glossário de métricas</h3>
+    <p>De todas, as duas que mais importam são <strong>CPA</strong> e <strong>CTR</strong>. E entre as duas, o CPA manda: "o que importa é o dinheiro no bolso". CTR bom sem venda não justifica colocar mais dinheiro.</p>
+  </div>
+  <div class="scroll-x" style="max-width:920px;margin-top:12px">
+    <table>
+      <thead><tr><th>Sigla</th><th>O que é</th><th>Meta</th><th>Se estiver ruim</th></tr></thead>
+      <tbody>
+        <tr><td><b>CPA</b> <span class="pill acc">principal</span></td><td>Custo por aquisição (cada venda)</td><td>Quanto menor, melhor</td><td>Melhore o site; teste novos criativos e públicos</td></tr>
+        <tr><td><b>CTR</b> <span class="pill acc">principal</span></td><td>% de quem vê o anúncio e clica</td><td>&gt; 2% (3% é muito bom)</td><td>Troque headline, imagem ou chamada</td></tr>
+        <tr><td><b>CPC</b></td><td>Custo por clique no link</td><td>Baixo (R$ 2 é caro)</td><td>Ajuste público, melhore o anúncio</td></tr>
+        <tr><td><b>CPM</b></td><td>Custo por mil impressões</td><td>Baixo</td><td>Reavalie público e qualidade do anúncio</td></tr>
+        <tr><td><b>ROAS / ROI</b></td><td>Receita por real investido</td><td>Alto</td><td>Reavalie anúncio, público e funil</td></tr>
+        <tr><td><b>LTV</b></td><td>Valor total de um cliente no tempo</td><td>Alto</td><td>Upsell, cross-sell, e-mail com novos ebooks</td></tr>
+        <tr><td><b>CPL</b></td><td>Custo por lead (lançamentos)</td><td>Baixo</td><td>Melhore a oferta e a página de captura</td></tr>
+        <tr><td><b>CAC</b></td><td>Custo total para adquirir um cliente</td><td>Baixo</td><td>Aumente a conversão</td></tr>
+        <tr><td><b>CPV</b></td><td>Custo por visualização de vídeo</td><td>Baixo</td><td>Melhore o início do vídeo</td></tr>
+        <tr><td><b>Frequência</b></td><td>Impressões ÷ alcance</td><td>Baixa em venda aberta</td><td>Alta só faz sentido em remarketing</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="prose" style="margin-top:18px">
+    <p><strong>CPA na prática:</strong> ebook de R$ 30 com CPA de R$ 10 sobram R$ 20. CPA de R$ 5 sobram R$ 25: escale. CPA de R$ 28 sobram R$ 2: não escale, teste.</p>
+    <div class="callout rule"><span class="lbl">Regra universal</span>Tudo é teste. Essa campanha funciona? Tem que testar. Esse anúncio vende? Tem que testar. As vendas pararam? Teste novos anúncios.</div>
+  </div>
+</section>
+
+<section class="chapter" id="cap19" data-toc="Escala vertical e horizontal" data-n="19">
+  <div class="ch-head"><span class="num">Capítulo 19</span><h2>Escala vertical e horizontal</h2><span class="src">Aulas 30 e 31 · Otimização parte 2 e Como escalar seus resultados</span></div>
+  <div class="prose">
+    <p class="quote">Escalar é investir mais dinheiro, fazer venda e não deixar o CPA subir.<cite>Aula 31</cite></p>
+    <p>Não existe botão secreto. Apertar o botão é a parte fácil. O segredo da escala é ter um bom produto, uma boa copy e bons anúncios. O Marcos conta que lucrou mais de R$ 300 mil numa única campanha 1-2-50 fazendo só isto: subir o orçamento um pouco todo dia.</p>
+  </div>
+  <figure class="fig">
+    <div class="fig-title"><span class="tag">Diagrama</span> Os dois jeitos de colocar mais dinheiro</div>
+    <div class="two-col">
+      <div>
+        <svg viewBox="0 0 320 200" width="100%" role="img" aria-label="Escala vertical: a mesma campanha com orçamento de 60, 78 e 101 reais.">
+          <g font-size="12">
+            <rect x="30" y="130" width="60" height="50" rx="6" class="f-surface2"/><text x="60" y="160" text-anchor="middle" class="t-ink" font-family="var(--f-mono)">60</text>
+            <rect x="130" y="115" width="60" height="65" rx="6" class="f-accentsoft"/><text x="160" y="152" text-anchor="middle" class="t-accent" font-family="var(--f-mono)">78</text>
+            <rect x="230" y="95" width="60" height="85" rx="6" class="f-accent"/><text x="260" y="142" text-anchor="middle" style="fill:var(--accent-ink)" font-family="var(--f-mono)">101</text>
+            <text x="60" y="196" text-anchor="middle" class="t-muted">dia 1</text><text x="160" y="196" text-anchor="middle" class="t-muted">dia 2</text><text x="260" y="196" text-anchor="middle" class="t-muted">dia 3</text>
+            <text x="10" y="24" class="t-ink" font-size="15" font-weight="800">Vertical</text>
+            <text x="10" y="44" class="t-muted">aumenta o orçamento da mesma campanha</text>
+            <text x="10" y="62" class="t-muted">+30% por dia, no fim do dia</text>
+          </g>
+        </svg>
+      </div>
+      <div>
+        <svg viewBox="0 0 320 200" width="100%" role="img" aria-label="Escala horizontal: a campanha original é duplicada, formando duas campanhas de 60 reais.">
+          <g font-size="12">
+            <rect x="40" y="110" width="90" height="60" rx="6" class="f-accent"/><text x="85" y="138" text-anchor="middle" style="fill:var(--accent-ink)" font-weight="800">Original</text><text x="85" y="156" text-anchor="middle" style="fill:var(--accent-ink)" font-family="var(--f-mono)">R$ 60</text>
+            <path d="M135 140 H175" class="s-muted" stroke-width="2"/><polygon points="175,134 185,140 175,146" class="f-ink"/>
+            <rect x="190" y="110" width="90" height="60" rx="6" class="f-accentsoft"/><text x="235" y="138" text-anchor="middle" class="t-accent" font-weight="800">Cópia</text><text x="235" y="156" text-anchor="middle" class="t-accent" font-family="var(--f-mono)">R$ 60</text>
+            <text x="160" y="192" text-anchor="middle" class="t-muted">total: R$ 120 / dia</text>
+            <text x="10" y="24" class="t-ink" font-size="15" font-weight="800">Horizontal</text>
+            <text x="10" y="44" class="t-muted">duplica a campanha (ou o conjunto)</text>
+            <text x="10" y="62" class="t-muted">o CPA tende a ficar o mesmo</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </figure>
+
+  <div class="prose" style="margin-top:28px">
+    <h3>Vertical, passo a passo</h3>
+    <ol>
+      <li>Espere o dia terminar vendendo com CPA bom.</li>
+      <li>No fim do dia, aumente o orçamento em <strong>30%</strong> (R$ 60 → R$ 78). O novo valor começa a valer à meia-noite.</li>
+      <li>Repita todo dia, enquanto o CPA não subir. Mais que 30% de uma vez desregula a campanha.</li>
+    </ol>
+    <h3>Horizontal, três jeitos</h3>
+    <ol>
+      <li><strong>Campanha inteira:</strong> <span class="mono">⋯ → Duplicar → configuração original → Duplicar</span>.</li>
+      <li><strong>Só o conjunto vencedor:</strong> duplique a campanha e apague o conjunto que não vendeu (a lixeira pede para digitar a confirmação).</li>
+      <li><strong>Só os anúncios vencedores:</strong> duplique a campanha e apague os anúncios que não venderam. Também dá para duplicar o conjunto vencedor dentro da mesma campanha.</li>
+    </ol>
+    <p>Não existe jeito certo, existe teste. Duplicar 50 vezes é possível se você tiver caixa para bancar as que derem errado. Sem caixa, duplique aos poucos.</p>
+  </div>
+
+  <figure class="fig">
+    <div class="fig-title"><span class="tag">Simulador</span> Quanto você investe em 14 dias subindo 30% ao dia</div>
+    <div class="calc">
+      <div class="inputs">
+        <label for="s-budget">Orçamento inicial por campanha (R$)<input id="s-budget" type="number" min="1" step="1" value="60"></label>
+        <label for="s-pct">Aumento diário (%)<input id="s-pct" type="number" min="0" max="100" step="1" value="30"></label>
+        <label for="s-camps">Campanhas em paralelo<input id="s-camps" type="number" min="1" step="1" value="1"></label>
+        <label for="s-cpa">CPA esperado (R$)<input id="s-cpa" type="number" min="0.1" step="0.5" value="10"></label>
+        <label for="s-net">Líquido por venda (R$)<input id="s-net" type="number" min="0.1" step="0.5" value="27"></label>
+      </div>
+      <div class="scroll-x"><svg id="s-chart" viewBox="0 0 760 240" width="100%" style="min-width:560px" role="img" aria-label="Gráfico do orçamento diário ao longo de 14 dias."></svg></div>
+      <div class="kpis" id="s-kpis"></div>
+    </div>
+    <figcaption><b>Simulação, não promessa:</b> assume que o CPA fica igual, o que só acontece com anúncios bons. Se o CPA subir, pare de aumentar. Da anotação do curso: com 1 campanha você sobe 30% ao dia; com 10 campanhas em paralelo, o aumento em reais é dez vezes maior.</figcaption>
+  </figure>
+  <div class="prose" style="margin-top:22px">
+    <div class="callout rule"><span class="lbl">Campanhas são descartáveis</span>A campanha que está ótima hoje pode estar ruim amanhã. Passou 2 dias ruim? Não tenha dó: desligue e suba outra.</div>
+  </div>
+</section>
+
+<section class="chapter" id="cap20" data-toc="Variação de criativos" data-n="20">
+  <div class="ch-head"><span class="num">Capítulo 20</span><h2>Variação de criativos e as 5 estruturas validadas</h2><span class="src">Aulas 32 e 33 · Variação de criativos e estrutura validada de criativos</span></div>
+  <div class="prose">
+    <p>Quando o teste da 1-2-50 termina, você sabe qual headline vende. A partir daí, a lógica muda: a frase fica fixa e a imagem varia.</p>
+  </div>
+  <figure class="fig">
+    <div class="fig-title"><span class="tag">Matriz</span> O que muda em cada fase</div>
+    <div class="scroll-x">
+    <table>
+      <thead><tr><th>Fase</th><th>Headline</th><th>Imagem</th><th>Objetivo</th></tr></thead>
+      <tbody>
+        <tr><td><b>1 · Teste de headline</b></td><td><span class="pill acc">50 diferentes</span></td><td><span class="pill good">a mesma</span> (capa sobre fundo apagado)</td><td>Descobrir a frase que vende</td></tr>
+        <tr><td><b>2 · Teste de criativo</b></td><td><span class="pill good">a mesma</span> (a vencedora)</td><td><span class="pill acc">várias</span> (5 estruturas abaixo)</td><td>Descobrir o visual que vende mais e fugir da saturação</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </figure>
+  <ol class="steps" style="max-width:800px;margin-top:22px">
+    <li><div><b>Favorite a headline vencedora.</b> Ex.: "Conquiste alguém em 7 minutos". Você vai usá-la para sempre.</div></li>
+    <li><div><b>Desligue</b> os anúncios que não venderam. Separe as 1 a 5 melhores headlines.</div></li>
+    <li><div><b>Monte variações</b> nas 5 estruturas abaixo (modelos editáveis no Canva, versão gratuita). Adapte a imagem ao nicho: saúde com foto de comida, relacionamento com casal.</div></li>
+    <li><div><b>Suba uma nova campanha</b> só com essas variações, usando o conjunto vencedor. Orçamento: R$ 60.</div></li>
+    <li><div><b>Quando as vendas caírem</b> (o público cansou), troque a foto de fundo. Headline é muito difícil de saturar; imagem satura. Criativos são ilimitados.</div></li>
+  </ol>
+  <figure class="fig">
+    <div class="fig-title"><span class="tag">Modelos</span> As 5 estruturas validadas</div>
+    <div class="ads">
+      <div><div class="ad" style="background:linear-gradient(180deg,#C8162F 0 48%,#7d2a36 62%,#3b2a30 100%)">
+        <div class="hl" style="color:#fff">Conquiste alguém em 7 minutos</div>
+        <div style="position:absolute;inset:50% 0 0 0;background:radial-gradient(ellipse at 50% 90%,#c79b86,#5b3b3f 70%);mask:linear-gradient(180deg,transparent,#000 35%);-webkit-mask:linear-gradient(180deg,transparent,#000 35%)"></div>
+      </div><div class="ad-cap"><b>1 · Frase + fundo sólido + foto em gradiente.</b> Fundo vermelho ou preto em cima, foto embaixo, sem divisão visível.</div></div>
+      <div><div class="ad" style="background:radial-gradient(circle at 35% 45%,#e9b8a6,#7c4a52 45%,#2a1d24 90%)">
+        <div style="position:absolute;left:8%;right:8%;bottom:10%;background:#111;padding:10px;border-radius:4px"><div style="color:#fff;font-weight:800;font-size:15px;text-align:center;line-height:1.1">Conquiste alguém em 7 minutos</div></div>
+      </div><div class="ad-cap"><b>2 · Foto do nicho + quadrado preto com a frase.</b> Ex.: casal apaixonado.</div></div>
+      <div><div class="ad" style="background:linear-gradient(135deg,#1e3b4f,#0b1a24)">
+        <div class="hl" style="color:#fff">Conquiste alguém em 7 minutos</div>
+        <div class="book" style="background:linear-gradient(160deg,#C8162F,#6d0a18);color:#fff">A ARTE DA SEDUÇÃO</div>
+      </div><div class="ad-cap"><b>3 · Livro + fundo + frase.</b> Quando saturar, só troque a imagem de fundo e volta a vender.</div></div>
+      <div><div class="ad" style="background:radial-gradient(circle at 60% 40%,#f0c7a8,#9b5b5b 55%,#3a2228)">
+        <div style="position:absolute;left:0;right:0;top:34%;background:rgba(0,0,0,.55);padding:10px 8%"><div style="color:#fff;font-weight:800;font-size:15px;text-align:center;line-height:1.1">Conquiste alguém em 7 minutos</div></div>
+      </div><div class="ad-cap"><b>4 · Foto ampliada + tarja preta translúcida.</b> Opacidade da tarja reduzida para a foto aparecer.</div></div>
+      <div><div class="ad" style="background:radial-gradient(circle at 50% 60%,#f6d2b8,#b9737b 50%,#4a2a35)">
+        <div class="hl" style="color:#fff;top:auto;bottom:10%;text-shadow:0 2px 8px rgba(0,0,0,.6);font-size:17px">Conquiste alguém em 7 minutos</div>
+      </div><div class="ad-cap"><b>5 · Só imagem e copy.</b> Sem ebook nenhum.</div></div>
+    </div>
+    <figcaption>Representações das estruturas mostradas na aula 33. Duplique qualquer uma e troque só a foto: 5 criativos viram 6, 20, 200. "Vender sem vender": nada no criativo diz "compre"; quem vende é a página.</figcaption>
+  </figure>
+</section>
+
+<section class="chapter" id="cap21" data-toc="Nunca pare de testar" data-n="21">
+  <div class="ch-head"><span class="num">Capítulo 21</span><h2>Nunca pare de testar</h2><span class="src">Aula 33 · encerramento</span></div>
+  <div class="prose">
+    <p>"Marcos, quando eu paro de testar anúncios?" Nunca. A campanha de teste nunca é desligada. Ela fica rodando com uns R$ 20 por dia, sempre com anúncios novos. O que vende muito ganha suas próprias campanhas (umas três). Quando ele cansar, já existe outro pronto para assumir.</p>
+  </div>
+  <figure class="fig">
+    <div class="fig-title"><span class="tag">Ciclo</span> A máquina de venda diária</div>
+    <div class="scroll-x">
+    <svg viewBox="0 0 760 300" width="100%" style="min-width:600px" role="img" aria-label="Ciclo contínuo: testar novos anúncios, encontrar o vencedor, escalar em novas campanhas, detectar saturação e voltar a testar.">
+      <g font-size="13">
+        <circle cx="380" cy="150" r="100" class="f-none s-line" stroke-width="2" stroke-dasharray="6 6"/>
+        <text x="380" y="144" text-anchor="middle" font-weight="800" class="t-ink" font-size="15">Venda todo dia</text>
+        <text x="380" y="164" text-anchor="middle" class="t-muted" font-size="12">décadas de vendas</text>
+        <rect x="290" y="16" width="180" height="56" rx="12" class="f-accent"/><text x="380" y="40" text-anchor="middle" font-weight="800" style="fill:var(--accent-ink)">1 · Testar</text><text x="380" y="58" text-anchor="middle" font-size="11.5" style="fill:var(--accent-ink)">campanha de teste ~R$ 20/dia</text>
+        <rect x="520" y="122" width="200" height="56" rx="12" class="f-surface2"/><text x="620" y="146" text-anchor="middle" font-weight="800" class="t-ink">2 · Achar o vencedor</text><text x="620" y="164" text-anchor="middle" font-size="11.5" class="t-muted">CPA baixo</text>
+        <rect x="290" y="228" width="180" height="56" rx="12" class="f-surface2"/><text x="380" y="252" text-anchor="middle" font-weight="800" class="t-ink">3 · Escalar</text><text x="380" y="270" text-anchor="middle" font-size="11.5" class="t-muted">~3 campanhas com ele</text>
+        <rect x="40" y="122" width="200" height="56" rx="12" class="f-surface2"/><text x="140" y="146" text-anchor="middle" font-weight="800" class="t-ink">4 · Saturou</text><text x="140" y="164" text-anchor="middle" font-size="11.5" class="t-muted">troque a foto, suba o próximo</text>
+        <g class="s-muted" stroke-width="2" fill="none"><path d="M470 50 C540 60 590 90 610 118"/><path d="M620 180 C600 230 530 256 474 258"/><path d="M288 258 C220 250 160 220 144 182"/><path d="M150 120 C170 80 230 55 286 46"/></g>
+        <g class="f-ink"><polygon points="606,112 614,122 618,110"/><polygon points="480,252 470,258 480,264"/><polygon points="140,188 144,178 150,188"/><polygon points="280,40 290,46 280,52"/></g>
+      </g>
+    </svg>
+    </div>
+  </figure>
+</section>
+
+<!-- =================== APÊNDICE =================== -->
+<div class="part-opener" id="apendice">
+  <div class="pn">+</div>
+  <h2>Folha de consulta rápida</h2>
+  <p>As regras de bolso do curso numa página só. Todos os valores assumem um ebook de R$ 29,90.</p>
+</div>
+
+<section class="chapter" id="cap22" data-toc="Regras de bolso" data-n="22" style="margin-top:32px">
+  <div class="grid g2" style="max-width:920px">
+    <div class="card"><h4>Produto</h4><ul>
+      <li>Passa nas 7 leis: 3 "sim" em cada.</li>
+      <li>Preço de entrada R$ 29,90; teto low ticket R$ 97.</li>
+      <li>Sem apego: não passou, troque.</li>
+    </ul></div>
+    <div class="card"><h4>Página e checkout</h4><ul>
+      <li>13 blocos da estrutura Ramos, 5 CTAs "Desejo adquirir".</li>
+      <li>Checkout: cronômetro 15 min, banner, dados, 3 depoimentos, vantagens, garantia.</li>
+      <li>Carregar em até 3 s; connect rate &gt; 80%.</li>
+    </ul></div>
+    <div class="card"><h4>Estrutura 1-2-50</h4><ul>
+      <li>1 campanha de Vendas, CBO = ticket × 2 = R$ 60.</li>
+      <li>Conjunto A aberto; B fechado com até 5 interesses óbvios.</li>
+      <li>50 anúncios: mesma imagem, headlines diferentes.</li>
+    </ul></div>
+    <div class="card"><h4>Otimização</h4><ul>
+      <li>Nada antes de gastar 2 × ticket.</li>
+      <li>Anúncio gastou ½ ticket sem vender: desliga.</li>
+      <li>Não gastou: deixa. Vendeu: não mexe.</li>
+      <li>5 × ticket sem venda: leia as métricas.</li>
+      <li>~10 × ticket no prejuízo: desliga / troca de ebook.</li>
+    </ul></div>
+    <div class="card"><h4>Métricas</h4><ul>
+      <li>Foque em CPA e CTR. O CPA manda.</li>
+      <li>CTR &gt; 2% · Connect &gt; 80%.</li>
+      <li>Página → checkout 20–30% · checkout → compra 10–15%.</li>
+      <li>Pelo valor bruto, 2 vendas empatam e 3 dão lucro num dia de R$ 60 (com taxas, pode ser 3 para empatar).</li>
+    </ul></div>
+    <div class="card"><h4>Escala</h4><ul>
+      <li>Só escala com ROI e sem deixar o CPA subir.</li>
+      <li>Vertical: +30% no fim de cada dia.</li>
+      <li>Horizontal: duplicar; CPA tende a se manter.</li>
+      <li>Headline vencedora fica; imagem varia.</li>
+      <li>Campanhas são descartáveis. Nunca pare de testar.</li>
+    </ul></div>
+  </div>
+</section>
+
+<div class="footer">
+  <p><b>Escala Sem Aposta</b> · ebook compilado a partir das transcrições das 33 aulas do curso de Marcos Ramos (com as aulas de Meta Ads de João Vítor) e das anotações do aluno. Telas e nomes de menus do Meta e das plataformas mudam com frequência: se um botão não estiver no lugar descrito, procure pela mesma função com outro nome.</p>
+</div>
+</main>
+</div>
+<button class="btn theme-toggle" id="theme-btn" type="button" aria-label="Alternar tema claro e escuro">◐ Tema</button>
+
+<script>
+(function(){
+const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
+const store={get(k,d){try{const v=localStorage.getItem('esa:'+k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem('esa:'+k,JSON.stringify(v))}catch(e){}}};
+const brl=v=>'R$ '+(Math.round(v*100)/100).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
+const pct=v=>isFinite(v)?(v*100).toLocaleString('pt-BR',{maximumFractionDigits:1})+'%':'—';
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+/* ---------- TOC ---------- */
+const tocItems=[];
+$$('.part-opener, section.chapter').forEach(el=>{
+  if(el.classList.contains('part-opener')) tocItems.push({part:el.querySelector('h2').textContent});
+  else tocItems.push({id:el.id,n:el.dataset.n,t:el.dataset.toc});
+});
+const renderToc=(ol,mobile)=>{ol.innerHTML=tocItems.map(i=>i.part?(mobile?'':`<li class="part">${esc(i.part)}</li>`):`<li><a href="#${i.id}" data-id="${i.id}">${mobile?'':`<span class="n">${esc(i.n)}</span>`}<span>${mobile&&i.n!=='·'?esc(i.n)+' · ':''}${esc(i.t)}</span></a></li>`).join('')};
+renderToc($('#toc-list'),false); renderToc($('#toc-mobile'),true);
+$$('#toc-mobile a').forEach(a=>a.addEventListener('click',()=>{a.closest('details').open=false}));
+if('IntersectionObserver' in window){
+  const links=$$('#toc-list a');
+  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){links.forEach(l=>l.classList.toggle('active',l.dataset.id===e.target.id))}})},{rootMargin:'-20% 0px -70% 0px'});
+  $$('section.chapter').forEach(s=>io.observe(s));
+}
+
+/* ---------- Yes/No widget ---------- */
+function ynRow(key,text,onChange){
+  const state=store.get('yn',{});
+  const row=document.createElement('div');row.className='qrow';
+  row.innerHTML=`<span>${esc(text)}</span><span class="yn" role="group" aria-label="Resposta"><button type="button" class="y" aria-pressed="false">Sim</button><button type="button" class="n" aria-pressed="false">Não</button></span>`;
+  const [by,bn]=row.querySelectorAll('button');
+  const paint=v=>{by.setAttribute('aria-pressed',v==='y');bn.setAttribute('aria-pressed',v==='n')};
+  paint(state[key]);
+  const set=v=>{const s=store.get('yn',{});s[key]=s[key]===v?undefined:v;store.set('yn',s);paint(s[key]);onChange()};
+  by.onclick=()=>set('y');bn.onclick=()=>set('n');
+  return row;
+}
+const answers=keys=>{const s=store.get('yn',{});let y=0,n=0;keys.forEach(k=>{if(s[k]==='y')y++;else if(s[k]==='n')n++});return{y,n,total:keys.length}};
+
+/* ---------- Check-up ---------- */
+const checkup=[
+ ['Produto',['Seu produto vende porque resolve um problema real (e não por sorte)?','Esse problema existe em grande escala?','Muita gente sofre com isso (dor latente)?','As pessoas procuram solução para isso com frequência?']],
+ ['Promessa',['Sua promessa é clara?','A pessoa entende em 5 segundos?','Ela sabe exatamente o que vai ganhar?']],
+ ['Público',['Você sabe exatamente quem compra?','Você fala com quem realmente paga?']],
+ ['Estrutura',['Sua estrutura aguenta volume?','Se as vendas dobrarem, tudo continua funcionando?']],
+ ['Números',['Você sabe quanto investe?','Sabe quanto volta?','Sabe quanto sobra?']],
+ ['Mente',['Você aceita olhar para número?','Aceita repetir o básico?','Aceita crescer sem emoção?','Aceita ganhar dinheiro sem glamour?']]
+];
+const ckKeys=[];
+function renderCheckupVerdict(){
+  const a=answers(ckKeys);const el=$('#checkup-verdict');
+  const left=a.total-a.y-a.n;
+  let pill;
+  if(a.n===0&&left===0) pill='<span class="pill good">Operação pronta para escalar</span>';
+  else if(a.n>0) pill=`<span class="pill ${a.n>3?'bad':'warn'}">${a.n} ponto${a.n>1?'s':''} para ajustar antes de investir mais</span>`;
+  else pill='<span class="pill acc">Continue respondendo</span>';
+  el.innerHTML=`${pill}<span class="mono" style="font-size:14px;color:var(--muted)">${a.y} sim · ${a.n} não · ${left} sem resposta</span>`;
+}
+checkup.forEach(([title,qs],i)=>{
+  const card=document.createElement('div');card.className='card';
+  card.innerHTML=`<h4>Check-up ${i+1} · ${esc(title)}</h4>`;
+  const list=document.createElement('div');list.className='checklist';list.style.marginTop='8px';
+  qs.forEach((q,j)=>{const k=`ck-${i}-${j}`;ckKeys.push(k);list.appendChild(ynRow(k,q,renderCheckupVerdict))});
+  card.appendChild(list);$('#checkup-grid').appendChild(card);
+});
+renderCheckupVerdict();
+
+/* ---------- 7 Leis ---------- */
+const laws=[
+ {id:'demanda',name:'Lei da Demanda',p:'Escala só existe onde existe demanda. Sem gente suficiente querendo comprar, só existe esforço.',q:['Tem muita gente com esse problema (milhares ou milhões)?','As pessoas já gastam dinheiro com isso?','Dá para repetir a venda em volume, sem depender de um evento raro ou sazonal?']},
+ {id:'freq',name:'Lei da Frequência',p:'Problema que acontece uma vez vende pouco. Problema que acontece sempre vende muito.',q:['Esse problema volta na vida das pessoas (toda semana, mês ou ano)?','A pessoa pensa nisso com frequência (sozinha, ao se arrumar, ao dormir)?','Dá para vender hoje e vender de novo amanhã, para o mesmo público?']},
+ {id:'simp',name:'Lei da Simplicidade',p:'Low ticket não pode ser complicado. Quanto mais simples de entender, mais vende em volume.',q:['A promessa é entendida em poucos segundos?','A decisão de compra é fácil, sem ficar calculando?','A entrega é simples: a pessoa recebe e usa sem esforço?']},
+ {id:'preco',name:'Lei do Preço',p:'Preço certo libera volume. Preço errado trava a escala.',q:['O preço permite uma decisão rápida?','Dá para vender muitas unidades por dia nesse preço?','O preço combina com a promessa (a entrega percebida justifica o valor)?']},
+ {id:'nicho',name:'Lei do Nicho Aberto',p:'Nicho fechado demais cria teto baixo. Escala grande precisa de público grande.',q:['Tem gente suficiente nesse nicho (conteúdo e buscas sobre o tema)?','Dá para ampliar o discurso sem perder clareza?','O nicho aguenta volume: muitos anúncios, criativos e repetição sem saturar rápido?']},
+ {id:'promessa',name:'Lei da Promessa Replicável',p:'Escala exige repetição. Promessa que só funciona quando você explica tem dificuldade de escalar.',q:['A promessa funciona sem você (dá para colocar num anúncio e vender)?','A promessa aguenta repetição sem cansar (não é moda passageira)?','Dá para criar variações de ângulo sem mudar a essência?']},
+ {id:'entrega',name:'Lei da Entrega Simples',p:'Escala não combina com complicação. Entrega difícil cria gargalo, reclamação e reembolso.',q:['A entrega funciona sem você (plataforma de vendas)?','A entrega aguenta volume (10 × mais vendas, e o suporte?)','A entrega é rápida e clara (o cliente sabe o que fazer ao receber)?']}
+];
+function lawVerdict(a){
+  if(a.y+a.n<a.total) return {cls:'acc',t:'Responda as 3'};
+  if(a.n===0) return {cls:'good',t:'Passa'};
+  if(a.n===1) return {cls:'warn',t:'Ajustar'};
+  return {cls:'bad',t:'Travado'};
+}
+const lawKeys=l=>l.q.map((_,j)=>`law-${l.id}-${j}`);
+function renderLawsSummary(){
+  $('#laws-summary').innerHTML=`<div class="scroll-x"><table><thead><tr><th>Lei</th><th>Sim</th><th>Não</th><th>Resultado</th></tr></thead><tbody>${laws.map(l=>{const a=answers(lawKeys(l));const v=lawVerdict(a);return `<tr><td><b>${esc(l.name)}</b></td><td class="mono">${a.y}</td><td class="mono">${a.n}</td><td><span class="pill ${v.cls}">${v.t}</span></td></tr>`}).join('')}</tbody></table></div>`;
+  laws.forEach(l=>{const v=lawVerdict(answers(lawKeys(l)));const b=document.getElementById('lv-'+l.id);if(b){b.className='pill '+v.cls;b.textContent=v.t}});
+  const all=laws.map(l=>lawVerdict(answers(lawKeys(l))).cls);
+  let msg='';
+  if(all.every(c=>c==='good')) msg='<span class="pill good">O produto passou no checklist: pode escalar</span>';
+  else if(all.includes('bad')) msg='<span class="pill bad">Há leis travadas: ajuste a fundo ou troque de produto</span>';
+  else if(all.includes('warn')) msg='<span class="pill warn">Escala com ajustes pontuais</span>';
+  $('#laws-summary').insertAdjacentHTML('beforeend',msg?`<div class="verdict">${msg}</div>`:'');
+}
+laws.forEach((l,i)=>{
+  const box=document.createElement('div');box.className='law';box.id='lei-'+l.id;
+  box.innerHTML=`<div class="law-head"><h4><span class="mono" style="color:var(--accent);font-size:14px">${i+1}/7</span> ${esc(l.name)}</h4><span id="lv-${l.id}" class="pill acc">Responda as 3</span></div><p class="principle">${esc(l.p)}</p>`;
+  const list=document.createElement('div');list.className='checklist';
+  l.q.forEach((q,j)=>list.appendChild(ynRow(`law-${l.id}-${j}`,q,renderLawsSummary)));
+  box.appendChild(list);$('#laws').appendChild(box);
+});
+renderLawsSummary();
+
+/* ---------- Checklist de lançamento ---------- */
+const launch=[
+ ['Ter uma boa ideia de produto','com demanda (passa nas 7 leis)',1],
+ ['Fazer boas copys','~50 headlines (títulos com milhões de visualizações)',1],
+ ['Escrever o ebook','pesquisa ou MVP com IA, desde que entregue o que promete',1],
+ ['Escolher o nome','genérico, porém forte',1],
+ ['Capa e mockups','no Canva',1],
+ ['Site / página de vendas','estrutura Ramos · cap. 06 e 07',0],
+ ['Publicar na plataforma','cap. 08',0],
+ ['Criar o checkout','cap. 09',0],
+ ['Arrumar detalhes','links nos botões e teste · cap. 10',0],
+ ['Fazer os criativos','50 criativos · cap. 11',0],
+ ['Estrutura no Meta e pixel','BM, CA, página, Instagram, pixel · cap. 13 e 14',0],
+ ['Subir a campanha 1-2-50','cap. 16 e 17',0]
+];
+function renderLaunch(){
+  const done=store.get('launch',{});
+  $('#launch-list').innerHTML=launch.map(([t,d,pre],i)=>`<li><label class="qrow" style="grid-template-columns:auto 1fr auto;cursor:pointer"><input type="checkbox" id="lc-${i}" data-i="${i}" ${done[i]?'checked':''} style="width:20px;height:20px;accent-color:var(--accent)"><span><b style="font-family:var(--f-display)">${i+1}. ${esc(t)}</b><br><span style="font-size:14px;color:var(--muted);font-family:var(--f-display)">${esc(d)}</span></span>${pre?'<span class="pill acc">pré-requisito</span>':''}</label></li>`).join('');
+  const n=Object.values(done).filter(Boolean).length;
+  $('#launch-verdict').innerHTML=`<span class="pill ${n===launch.length?'good':'acc'}">${n} de ${launch.length} passos concluídos</span>`;
+  $$('#launch-list input').forEach(c=>c.onchange=()=>{const s=store.get('launch',{});s[c.dataset.i]=c.checked;store.set('launch',s);renderLaunch()});
+}
+renderLaunch();
+
+/* ---------- Colunas ---------- */
+const cols=[
+ ['Veiculação','Saber se está ativa, em análise, programada'],['Ações','Opcional, a critério'],['Nome do anúncio','Ver qual anúncio sem abrir a campanha'],['Orçamento','Nível de campanha (CBO) ou de conjunto'],['Valor usado','Quanto já gastou no período (≈50% até o meio-dia)'],['Resultados','Compras, pelo objetivo de vendas'],['Custo por resultado','O CPA'],['Valor de conversão da compra','O que realmente caiu, já sem taxa'],['Lucro','Métrica personalizada'],['ROAS (resultado das compras)','Retorno sobre o investimento'],['Finalizações de compra iniciadas','Quantos chegaram ao checkout'],['Custo por finalização iniciada','R$ 15 para um produto de R$ 29,90 é caríssimo'],['Compras','Opcional: repete "Resultados"'],['Cliques no link','Só quem clicou no botão do anúncio'],['CPC (custo por clique no link)','Não use o CPC "todos"'],['CTR (taxa de cliques no link)','Mede se o anúncio atrai'],['Visualizações da página de destino','Quem de fato viu o site carregar'],['Connect rate','Métrica personalizada'],['Taxa página → checkout','Métrica personalizada'],['Taxa página → compra','Métrica personalizada'],['CPM','Custo por mil impressões'],['Alcance','Pessoas únicas'],['Impressões','Vezes que o anúncio apareceu'],['Frequência','Impressões ÷ alcance']
+];
+$('#cols-table tbody').innerHTML=cols.map((c,i)=>`<tr><td class="mono">${String(i+1).padStart(2,'0')}</td><td><b>${esc(c[0])}</b>${/personalizada/.test(c[1])?' <span class="pill acc">criar</span>':''}</td><td>${esc(c[1])}</td></tr>`).join('');
+
+/* ---------- Ad grid (1-2-50 svg) ---------- */
+function adGrid(g,cx,accent){
+  const cols=10,rows=5,s=16,gap=4,w=cols*s+(cols-1)*gap,x0=cx-w/2,y0=222;let h='';
+  for(let r=0;r<rows;r++)for(let c=0;c<cols;c++){h+=`<rect x="${x0+c*(s+gap)}" y="${y0+r*(s+gap)}" width="${s}" height="${s}" rx="3" class="${accent&&r===2&&c===3?'f-accent':'f-surface2'}" style="stroke:var(--line)"/>`}
+  g.innerHTML=h;
+}
+adGrid($('#adgrid-a'),200,true);adGrid($('#adgrid-b'),580,false);
+
+/* ---------- Calculadora 1-2-50 ---------- */
+function calc(){
+  const t=+$('#c-ticket').value||0,s=Math.max(1,+$('#c-sets').value||1),net=+$('#c-net').value||t;
+  const budget=t*s;const be=net>0?Math.ceil(budget/net):0;
+  const k=[['Orçamento diário (CBO)',brl(budget),1],['Gaste antes de concluir',brl(t*2)],['Desliga anúncio sem venda em',brl(t/2)],['Sem venda: leia as métricas em',brl(t*5)],['Limite no prejuízo (~10×)',brl(t*10)],['Vendas/dia para empatar',be+' vendas'],['Vendas/dia para lucrar',(net>0?Math.floor(budget/net)+1:0)+' vendas']];
+  $('#c-out').innerHTML=k.map(([a,b,h])=>`<div class="kpi"><div class="k">${a}</div><div class="v ${h?'acc':''}">${b}</div></div>`).join('');
+}
+['#c-ticket','#c-sets','#c-net'].forEach(s=>$(s).addEventListener('input',calc));calc();
+
+/* ---------- Diagnóstico ---------- */
+function diag(){
+  const v=id=>+$(id).value||0;
+  const spend=v('#d-spend'),t=v('#d-ticket'),imp=v('#d-impr'),cl=v('#d-clicks'),lpv=v('#d-lpv'),ic=v('#d-ic'),sa=v('#d-sales');
+  const ctr=imp?cl/imp:NaN,con=cl?lpv/cl:NaN,pc=lpv?ic/lpv:NaN,cc=ic?sa/ic:NaN,cpa=sa?spend/sa:NaN;
+  $('#d-kpis').innerHTML=[['CTR',pct(ctr)],['Connect rate',pct(con)],['Página → checkout',pct(pc)],['Checkout → compra',pct(cc)],['CPA',isFinite(cpa)?brl(cpa):'sem venda'],['Gasto ÷ ticket',t?(spend/t).toLocaleString('pt-BR',{maximumFractionDigits:1})+'×':'—']].map(([a,b])=>`<div class="kpi"><div class="k">${a}</div><div class="v">${b}</div></div>`).join('');
+  const out=[];
+  const row=(cls,lbl,txt)=>out.push(`<div class="qrow" style="grid-template-columns:auto 1fr"><span class="pill ${cls}">${lbl}</span><span>${txt}</span></div>`);
+  if(t&&spend<2*t) row('acc','Cedo','Ainda não gastou 2 × o ticket. Espere antes de tirar conclusões.');
+  if(sa>0){
+    if(isFinite(cpa)&&cpa<t*0.5) row('good','Escalar','CPA abaixo de metade do ticket. Desligue o que gastou sem vender e comece a escalar 30% ao dia.');
+    else if(isFinite(cpa)&&cpa<t) row('warn','Otimizar','Vende com lucro apertado. Desligue anúncios que gastaram ½ ticket sem vender e teste novos criativos antes de escalar.');
+    else row('bad','Prejuízo','CPA acima do ticket. Fique só com o que vende e melhore página e criativos antes de investir mais.');
+  } else if(t&&spend>=2*t&&spend<5*t) row('acc','Deixe gastar','Sem venda, mas ainda não chegou a 5 × o ticket. Não desista cedo.');
+  if(isFinite(ctr)&&ctr<0.02) row('bad','Anúncio','CTR abaixo de 2%: poucas pessoas clicam. Troque headline, imagem ou chamada.'); else if(isFinite(ctr)) row('good','Anúncio','CTR bom: o anúncio atrai cliques.');
+  if(isFinite(con)&&con<0.75) row('bad','Velocidade','Connect rate abaixo de 75%: a página demora a carregar. Reduza imagens pesadas, vídeos, GIFs e plugins.'); else if(isFinite(con)&&con<0.8) row('warn','Velocidade','Connect rate aceitável, mas abaixo de 80%. Vale otimizar o carregamento.'); else if(isFinite(con)) row('good','Velocidade','A página carrega bem.');
+  if(isFinite(pc)&&pc<0.2) row('bad','Página','Pouca gente clica em comprar. Revise a estrutura Ramos: copy principal, texto de consciência, CTAs.'); else if(isFinite(pc)) row('good','Página','A página leva gente ao checkout.');
+  if(ic>0&&sa===0&&ic>=10) row('bad','Checkout','Muita gente chega ao checkout e não compra. Revise o checkout (cap. 09) e confira se o preço aparece na página: às vezes a pessoa clica só para ver quanto custa.'); else if(isFinite(cc)&&cc<0.1&&sa>0) row('warn','Checkout','Conversão do checkout abaixo de 10%. Revise banner, depoimentos e vantagens.');
+  if(sa===0&&t&&spend>=5*t&&ctr>=0.02&&con>=0.8&&pc>=0.2) row('bad','Produto','Métricas boas e mesmo assim sem venda: forte indício de que a ideia do produto não é boa. Próximo ebook.');
+  if(t&&spend>=10*t&&(sa*t<spend)) row('bad','Limite','Passou de ~10 × o ticket no prejuízo. Desligue a campanha.');
+  $('#d-out').innerHTML=out.join('');
+}
+['#d-spend','#d-ticket','#d-impr','#d-clicks','#d-lpv','#d-ic','#d-sales'].forEach(s=>$(s).addEventListener('input',diag));diag();
+
+/* ---------- Simulador de escala ---------- */
+function sim(){
+  const b0=Math.max(1,+$('#s-budget').value||1),p=Math.max(0,+$('#s-pct').value||0)/100,n=Math.max(1,Math.round(+$('#s-camps').value||1)),cpa=Math.max(.1,+$('#s-cpa').value||1),net=+$('#s-net').value||0;
+  const days=14,arr=[];let b=b0;for(let d=0;d<days;d++){arr.push(b*n);b=b*(1+p)}
+  const max=Math.max(...arr),W=760,H=240,L=60,R=16,T=18,B=34,bw=(W-L-R)/days;
+  const nice=m=>{const e=Math.pow(10,Math.floor(Math.log10(m)));const f=m/e;return (f<=1?1:f<=2?2:f<=5?5:10)*e};
+  const top=nice(max),ticks=4;let h='';
+  for(let i=0;i<=ticks;i++){const v=top*i/ticks,y=T+(H-T-B)*(1-i/ticks);h+=`<line x1="${L}" x2="${W-R}" y1="${y}" y2="${y}" class="s-line" stroke-width="1"/><text x="${L-8}" y="${y+4}" text-anchor="end" font-size="11" class="t-muted" font-family="var(--f-mono)">${Math.round(v).toLocaleString('pt-BR')}</text>`}
+  arr.forEach((v,i)=>{const x=L+i*bw+bw*.15,w=bw*.7,y=T+(H-T-B)*(1-v/top),hh=H-B-y;h+=`<rect x="${x}" y="${y}" width="${w}" height="${Math.max(0,hh)}" rx="3" class="${i===days-1?'f-accent':'f-accentsoft'}"><title>Dia ${i+1}: ${brl(v)}</title></rect>`;if(i%2===0||i===days-1)h+=`<text x="${x+w/2}" y="${H-B+16}" text-anchor="middle" font-size="11" class="t-muted">d${i+1}</text>`});
+  const lx=L+(days-1)*bw+bw/2,ly=T+(H-T-B)*(1-arr[days-1]/top)-6;h+=`<text x="${lx}" y="${ly}" text-anchor="end" font-size="12" font-weight="800" class="t-accent">${brl(arr[days-1])}/dia</text>`;
+  $('#s-chart').innerHTML=h;
+  const total=arr.reduce((a,c)=>a+c,0),sales=total/cpa,profit=sales*net-total;
+  $('#s-kpis').innerHTML=[['Orçamento no dia 14',brl(arr[days-1]),1],['Investido em 14 dias',brl(total)],['Vendas estimadas',Math.round(sales).toLocaleString('pt-BR')],['Lucro estimado',brl(profit),profit>=0?0:2]].map(([a,v,f])=>`<div class="kpi"><div class="k">${a}</div><div class="v ${f===1?'acc':''}" ${f===2?'style="color:var(--bad)"':''}>${v}</div></div>`).join('');
+}
+['#s-budget','#s-pct','#s-camps','#s-cpa','#s-net'].forEach(s=>$(s).addEventListener('input',sim));sim();
+
+/* ---------- Copy buttons ---------- */
+$$('button.copy').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const box=btn.parentElement.nextElementSibling;const text=box.innerText;
+    const done=()=>{btn.textContent='Copiado';setTimeout(()=>btn.textContent='Copiar',1600)};
+    const fallback=()=>{const r=document.createRange();r.selectNodeContents(box);const s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent='Selecionado: Ctrl+C'};
+    try{navigator.clipboard.writeText(text).then(done,fallback)}catch(e){fallback()}
+  });
+});
+
+/* ---------- Theme toggle ---------- */
+const root=document.documentElement;
+$('#theme-btn').addEventListener('click',()=>{
+  const cur=root.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+  root.setAttribute('data-theme',cur==='dark'?'light':'dark');
+});
+})();
+</script>
