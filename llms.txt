@@ -1,6 +1,6 @@
 # VK Hub
 
-> Biblioteca virtual de produtos digitais de Josias Viskoo: e-books, templates Elementor, textos de LGPD, ganchos virais para vídeos, e-books de receitas de pudim e de bolo de pote (com artigos e calculadoras de preço), livro sobre o Apocalipse, livro de colorir da família com IA, sorteador de bingo online, um jogo de roleta grátis (sem dinheiro real) e um livro infantil. Site em português (Brasil), com uma página de vendas em inglês e espanhol para o pacote Harley Davidson.
+> Biblioteca virtual de produtos digitais de Josias Viskoo: e-books, templates Elementor, textos de LGPD, ganchos virais para vídeos, e-books de receitas de pudim e de bolo de pote (com artigos e calculadoras de preço), livro sobre o Apocalipse, livro de colorir da família com IA, sorteador de bingo online, um jogo de roleta grátis (sem dinheiro real) e um livro infantil. Site em português (Brasil), com páginas de vendas em inglês e espanhol para o pacote Harley Davidson e para o e-book sobre ganhar dinheiro com e-books (este escrito em português).
 
 Cada página abaixo é uma página de vendas independente. A compra é feita no checkout indicado em cada página (Kiwify, Hotmart, Stripe ou Amazon). O jogo Diabinho da Sorte é gratuito e não envolve apostas reais. Os artigos sobre bolo de pote são conteúdo gratuito, com calculadoras, e não páginas de vendas.
 
@@ -16,6 +16,14 @@ Cada página abaixo é uma página de vendas independente. A compra é feita no 
 - [+1000 Templates de Sites e Páginas Elementor](https://vkhub.com.br/1000-layouts-de-paginas-e-sites-elementor/): Baixe +1000 templates Elementor prontos e otimizados para conversão: sites, páginas de vendas e captura fáceis de editar. Economize tempo e fature mais.
 - [Como Faturar Milhões Vendendo E-Book Na Internet - Versão 2](https://vkhub.com.br/como-faturar-milhoes-vendendo-e-book-na-internet/): E-book para transformar suas ideias em renda: aprenda a criar e vender eBooks que vendem de forma consistente na internet. Versão 2.
 - [Como Ganhar Dinheiro Na Internet Com Ebooks](https://vkhub.com.br/como-ganhar-dinheiro-na-internet-com-e-book/): Transforme seu conhecimento em renda passiva: guia passo a passo para criar eBooks lucrativos, do zero à publicação, e alcançar a liberdade financeira.
+- [Como Criar e Vender um E-book: Passo a Passo](https://vkhub.com.br/como-criar-e-vender-ebook-passo-a-passo/): Aprenda a criar e vender e-book do zero: escolha do nicho, escrita, capa, plataformas de venda e divulgação. Guia para iniciantes por R$ 27.
+- [Renda Extra na Internet Vendendo E-books](https://vkhub.com.br/renda-extra-na-internet-vendendo-e-book/): Quer uma renda extra pela internet? Veja como vender e-books com funil automático e lista de e-mails para gerar renda passiva. Guia digital por R$ 27.
+- [How to Make Money Online with Ebooks](https://vkhub.com.br/how-to-make-money-online-with-ebooks/): Turn what you know into passive income: a step-by-step guide to creating profitable ebooks, from choosing a niche to publishing and selling online.
+- [How to Create and Sell an Ebook, Step by Step](https://vkhub.com.br/how-to-create-and-sell-an-ebook/): Learn how to write, design, publish and sell your first ebook: niche research, content, cover, sales platforms and marketing. A guide for beginners.
+- [Passive Income Selling Ebooks Online](https://vkhub.com.br/passive-income-selling-ebooks-online/): Build a side income online by selling ebooks: automated sales funnels, an email list and data-driven tweaks that keep sales coming while you sleep.
+- [Cómo Ganar Dinero por Internet con Ebooks](https://vkhub.com.br/como-ganar-dinero-por-internet-con-ebooks/): Convierte lo que sabes en ingresos pasivos: guía paso a paso para crear ebooks rentables, desde elegir el nicho hasta publicarlos y venderlos por internet.
+- [Cómo Crear y Vender un Ebook Paso a Paso](https://vkhub.com.br/como-crear-y-vender-un-ebook-paso-a-paso/): Aprende a escribir, diseñar, publicar y vender tu primer ebook: nicho, contenido, portada, plataformas de venta y marketing. Guía para principiantes.
+- [Ingresos Pasivos Vendiendo Ebooks por Internet](https://vkhub.com.br/ingresos-pasivos-vendiendo-ebooks-por-internet/): Gana un ingreso extra por internet vendiendo ebooks: embudos de venta automáticos, lista de correos y ajustes con datos para vender mientras duermes.
 - [Página Matadora Club](https://vkhub.com.br/inscricoes-abertas-pagina-matadora-club/): Inscrições abertas no Página Matadora Club: torne-se um web designer estrategista e conquiste uma carreira sólida e lucrativa, com +10 mil templates.
 - [Texto LGPD para Site e 15 Modelos de Política de Privacidade em DOCX](https://vkhub.com.br/lei-lgpd-lei-de-protecao-de-dados/): Textos de LGPD grátis para copiar (formulário, Google Forms, e-mail, aviso de cookies e termo de consentimento), guia sobre o que a política de privacidade precisa ter, bases legais, direitos do titular e multas, e 15 modelos de política de privacidade em DOCX por nicho por R$ 27.
 - [Relacionamento Tóxico: Transforme Sua Vida - E-book Hora do Fim](https://vkhub.com.br/transformando-a-dor-em-crescimento-um-guia-para-superar-relacionamentos-toxicos-e-construir-relacoes-saudaveis-como-terminar-um-relacionamento/): Guia gratuito com 12 sinais de relacionamento tóxico, teste rápido, diferença entre relação tóxica e abusiva, como sair mesmo gostando da pessoa, como terminar e como superar, com contatos de ajuda (Ligue 180, 190, CVV 188). E-book Hora do Fim em PDF por R$ 37.
@@ -48,6 +56,6 @@ Cada página abaixo é uma página de vendas independente. A compra é feita no 
 
 ## Idiomas
 
-- Português (pt-BR): todas as páginas, exceto as duas abaixo
-- English: https://vkhub.com.br/harley-davidson-rock-babes/
-- Español: https://vkhub.com.br/harley-davidson-chicas-del-rock/
+- Português (pt-BR): todas as páginas, exceto as listadas abaixo
+- English: https://vkhub.com.br/harley-davidson-rock-babes/, https://vkhub.com.br/how-to-make-money-online-with-ebooks/, https://vkhub.com.br/how-to-create-and-sell-an-ebook/, https://vkhub.com.br/passive-income-selling-ebooks-online/
+- Español: https://vkhub.com.br/harley-davidson-chicas-del-rock/, https://vkhub.com.br/como-ganar-dinero-por-internet-con-ebooks/, https://vkhub.com.br/como-crear-y-vender-un-ebook-paso-a-paso/, https://vkhub.com.br/ingresos-pasivos-vendiendo-ebooks-por-internet/

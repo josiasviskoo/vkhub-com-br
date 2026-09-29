@@ -3,7 +3,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://vkhub.com.br/</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-09-29</lastmod>
     <image:image>
       <image:loc>https://vkhub.com.br/images/banner-pagina-matadora-club.png</image:loc>
       <image:caption>Banner do Página Matadora Club</image:caption>
@@ -95,7 +95,11 @@
   </url>
   <url>
     <loc>https://vkhub.com.br/como-ganhar-dinheiro-na-internet-com-e-book/</loc>
-    <lastmod>2026-09-19</lastmod>
+    <lastmod>2026-09-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vkhub.com.br/como-ganhar-dinheiro-na-internet-com-e-book/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vkhub.com.br/how-to-make-money-online-with-ebooks/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vkhub.com.br/como-ganar-dinero-por-internet-con-ebooks/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vkhub.com.br/como-ganhar-dinheiro-na-internet-com-e-book/"/>
     <image:image>
       <image:loc>https://vkhub.com.br/como-ganhar-dinheiro-na-internet-com-e-book/images/como-ganhar-dinheiro-na-internet-com-ebook.jpeg</image:loc>
       <image:caption>Como Ganhar Dinheiro Na Internet Com Ebooks</image:caption>
@@ -255,6 +259,102 @@
     <image:image>
       <image:loc>https://vkhub.com.br/bolo-de-pote-para-vender/imagens/og-bolo-de-pote.jpg</image:loc>
       <image:caption>Como vender bolo de pote na rua e na escola</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vkhub.com.br/como-criar-e-vender-ebook-passo-a-passo/</loc>
+    <lastmod>2026-09-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vkhub.com.br/como-criar-e-vender-ebook-passo-a-passo/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vkhub.com.br/how-to-create-and-sell-an-ebook/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vkhub.com.br/como-crear-y-vender-un-ebook-paso-a-paso/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vkhub.com.br/como-criar-e-vender-ebook-passo-a-passo/"/>
+    <image:image>
+      <image:loc>https://vkhub.com.br/como-criar-e-vender-ebook-passo-a-passo/images/como-criar-e-vender-ebook-passo-a-passo.jpeg</image:loc>
+      <image:caption>E-book Como Criar e Vender um E-book passo a passo</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vkhub.com.br/renda-extra-na-internet-vendendo-e-book/</loc>
+    <lastmod>2026-09-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vkhub.com.br/renda-extra-na-internet-vendendo-e-book/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vkhub.com.br/passive-income-selling-ebooks-online/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vkhub.com.br/ingresos-pasivos-vendiendo-ebooks-por-internet/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vkhub.com.br/renda-extra-na-internet-vendendo-e-book/"/>
+    <image:image>
+      <image:loc>https://vkhub.com.br/renda-extra-na-internet-vendendo-e-book/images/renda-extra-na-internet-vendendo-e-book.jpeg</image:loc>
+      <image:caption>E-book sobre renda extra na internet vendendo e-books</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vkhub.com.br/how-to-make-money-online-with-ebooks/</loc>
+    <lastmod>2026-09-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vkhub.com.br/como-ganhar-dinheiro-na-internet-com-e-book/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vkhub.com.br/how-to-make-money-online-with-ebooks/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vkhub.com.br/como-ganar-dinero-por-internet-con-ebooks/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vkhub.com.br/como-ganhar-dinheiro-na-internet-com-e-book/"/>
+    <image:image>
+      <image:loc>https://vkhub.com.br/how-to-make-money-online-with-ebooks/images/how-to-make-money-online-with-ebooks.jpeg</image:loc>
+      <image:caption>How to Make Money Online with Ebooks guide</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vkhub.com.br/how-to-create-and-sell-an-ebook/</loc>
+    <lastmod>2026-09-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vkhub.com.br/como-criar-e-vender-ebook-passo-a-passo/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vkhub.com.br/how-to-create-and-sell-an-ebook/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vkhub.com.br/como-crear-y-vender-un-ebook-paso-a-paso/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vkhub.com.br/como-criar-e-vender-ebook-passo-a-passo/"/>
+    <image:image>
+      <image:loc>https://vkhub.com.br/how-to-create-and-sell-an-ebook/images/how-to-create-and-sell-an-ebook.jpeg</image:loc>
+      <image:caption>Step-by-step guide on how to create and sell an ebook</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vkhub.com.br/passive-income-selling-ebooks-online/</loc>
+    <lastmod>2026-09-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vkhub.com.br/renda-extra-na-internet-vendendo-e-book/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vkhub.com.br/passive-income-selling-ebooks-online/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vkhub.com.br/ingresos-pasivos-vendiendo-ebooks-por-internet/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vkhub.com.br/renda-extra-na-internet-vendendo-e-book/"/>
+    <image:image>
+      <image:loc>https://vkhub.com.br/passive-income-selling-ebooks-online/images/passive-income-selling-ebooks-online.jpeg</image:loc>
+      <image:caption>Guide to earning passive income by selling ebooks online</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vkhub.com.br/como-ganar-dinero-por-internet-con-ebooks/</loc>
+    <lastmod>2026-09-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vkhub.com.br/como-ganhar-dinheiro-na-internet-com-e-book/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vkhub.com.br/how-to-make-money-online-with-ebooks/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vkhub.com.br/como-ganar-dinero-por-internet-con-ebooks/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vkhub.com.br/como-ganhar-dinheiro-na-internet-com-e-book/"/>
+    <image:image>
+      <image:loc>https://vkhub.com.br/como-ganar-dinero-por-internet-con-ebooks/images/como-ganar-dinero-por-internet-con-ebooks.jpeg</image:loc>
+      <image:caption>Guía Cómo Ganar Dinero por Internet con Ebooks</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vkhub.com.br/como-crear-y-vender-un-ebook-paso-a-paso/</loc>
+    <lastmod>2026-09-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vkhub.com.br/como-criar-e-vender-ebook-passo-a-passo/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vkhub.com.br/how-to-create-and-sell-an-ebook/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vkhub.com.br/como-crear-y-vender-un-ebook-paso-a-paso/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vkhub.com.br/como-criar-e-vender-ebook-passo-a-passo/"/>
+    <image:image>
+      <image:loc>https://vkhub.com.br/como-crear-y-vender-un-ebook-paso-a-paso/images/como-crear-y-vender-un-ebook-paso-a-paso.jpeg</image:loc>
+      <image:caption>Guía paso a paso para crear y vender un ebook</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vkhub.com.br/ingresos-pasivos-vendiendo-ebooks-por-internet/</loc>
+    <lastmod>2026-09-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://vkhub.com.br/renda-extra-na-internet-vendendo-e-book/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vkhub.com.br/passive-income-selling-ebooks-online/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://vkhub.com.br/ingresos-pasivos-vendiendo-ebooks-por-internet/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vkhub.com.br/renda-extra-na-internet-vendendo-e-book/"/>
+    <image:image>
+      <image:loc>https://vkhub.com.br/ingresos-pasivos-vendiendo-ebooks-por-internet/images/ingresos-pasivos-vendiendo-ebooks-por-internet.jpeg</image:loc>
+      <image:caption>Guía para generar ingresos pasivos vendiendo ebooks por internet</image:caption>
     </image:image>
   </url>
 </urlset>
