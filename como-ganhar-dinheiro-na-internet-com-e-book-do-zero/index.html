@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Como Ganhar Dinheiro na Internet com E-book do Zero | Josias Viskoo</title>
+<meta name="description" content="Aprenda como ganhar dinheiro na internet com e-book do zero: crie e venda seu primeiro ebook sem seguidores e sem aparecer.">
+<meta property="og:title" content="Como Ganhar Dinheiro na Internet com E-book do Zero">
+<meta property="og:description" content="Aprenda como ganhar dinheiro na internet com e-book do zero: crie e venda seu primeiro ebook sem seguidores e sem aparecer.">
+<meta property="og:image" content="images/capa-ebook.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&display=swap">
+
+<!-- PIXEL DA META: cole aqui o script do seu pixel (Gerenciador de Eventos → Instalar código manualmente) -->
+
+<style>
+:root{
+  --black:#000; --ink:#15171C; --muted:#5A606C; --line:#E3E5EA;
+  --bg:#FFFFFF; --bg-2:#F5F5F3; --orange:#F58220; --orange-dark:#C45F07; --orange-ink:#1A0E00; --orange-soft:#FDEBDB;
+  --f-display:"Bricolage Grotesque",system-ui,"Segoe UI",Arial,sans-serif;
+  --f-body:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+h1,h2,h3{font-family:var(--f-display);line-height:1.08;letter-spacing:-.02em;margin:0;text-wrap:balance}
+p{margin:0 0 1em}
+strong{font-weight:700}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+.narrow{max-width:760px;margin:0 auto;padding:0 16px}
+section{padding:72px 0}
+.alt{background:var(--bg-2)}
+.dark{background:var(--black);color:#fff}
+.hl{color:var(--orange)}
+.eyebrow{font-family:var(--f-display);font-weight:600;font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--orange-dark);margin-bottom:12px}
+.dark .eyebrow{color:var(--orange)}
+.sec-title{font-size:clamp(28px,4.4vw,44px);margin-bottom:28px;text-align:center}
+.sec-title.left{text-align:left}
+
+/* CTA */
+.cta-row{text-align:center;padding:40px 16px}
+.cta{display:inline-block;background:var(--orange);color:var(--orange-ink);font-family:var(--f-display);font-weight:800;font-size:clamp(18px,2.6vw,22px);letter-spacing:.04em;text-transform:uppercase;text-decoration:none;padding:20px 40px;border-radius:14px;box-shadow:0 10px 30px rgba(245,130,32,.35);transition:transform .15s,box-shadow .15s;max-width:100%}
+.cta:hover{transform:translateY(-2px);box-shadow:0 14px 36px rgba(245,130,32,.45)}
+.cta:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.dark .cta:focus-visible{outline-color:#fff}
+.cta.big{font-size:clamp(20px,3.2vw,28px);padding:24px 52px}
+.cta-note{display:block;margin-top:12px;font-size:14px;color:var(--muted)}
+.dark .cta-note{color:#B9BCC4}
+
+/* HERO (bloco 1) */
+.hero{background:var(--black);color:#fff;padding:56px 0 64px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1fr;gap:36px;align-items:center}
+.hero h1{font-size:clamp(34px,6vw,64px)}
+.hero .sub{font-size:clamp(18px,2.2vw,21px);color:#D6D8DD;margin:20px 0 28px}
+.hero .cta-row{text-align:left;padding:0}
+.hero .cta-note{color:#B9BCC4}
+@media (min-width:860px){.hero-grid{grid-template-columns:1.15fr .85fr}}
+
+/* Mockup do livro */
+.book{position:relative;width:min(300px,72vw);margin:0 auto;perspective:1400px}
+.book .page{position:relative;transform:rotateY(-18deg) rotateX(4deg);transform-style:preserve-3d;border-radius:4px 10px 10px 4px;box-shadow:24px 30px 60px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.06)}
+.book .page img{border-radius:4px 10px 10px 4px}
+.book .page::before{content:"";position:absolute;inset:0 auto 0 0;width:14px;background:linear-gradient(90deg,rgba(255,255,255,.18),rgba(0,0,0,.35));border-radius:4px 0 0 4px}
+.book .glow{position:absolute;inset:10% -10% -8% -10%;background:radial-gradient(closest-side,rgba(245,130,32,.35),transparent);filter:blur(10px);z-index:-1}
+.light-book .page{box-shadow:24px 30px 60px rgba(20,22,28,.28)}
+
+/* Bloco 2: consciência */
+.aware-grid{display:grid;grid-template-columns:1fr;gap:40px;align-items:start}
+@media (min-width:860px){.aware-grid{grid-template-columns:.7fr 1.3fr}}
+.aware h2{font-size:clamp(26px,3.8vw,38px);margin-bottom:24px}
+.aware p{font-size:19px}
+
+/* Cards genéricos */
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px}
+.alt .card{background:#fff}
+.square{aspect-ratio:1/1;display:flex;flex-direction:column;justify-content:space-between}
+.square .ico{width:44px;height:44px;border-radius:12px;background:var(--orange-soft);color:var(--orange-dark);display:grid;place-items:center;font-family:var(--f-display);font-weight:800;font-size:20px}
+.square h3{font-size:21px;margin-top:14px}
+.square p{font-size:16px;color:var(--muted);margin:8px 0 0}
+.stars{color:var(--orange);letter-spacing:2px;font-size:18px}
+
+/* Bloco 5: o que você terá */
+.tera{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.tera li{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;padding:18px 20px;border-radius:14px}
+.tera li.c{background:#fff;border:1px solid var(--line)}
+.tera li.c .tag{background:var(--ink);color:#fff}
+.tera li.p{background:var(--black);color:#fff}
+.tera li.p .tag{background:var(--orange);color:var(--orange-ink)}
+.tera .tag{font-family:var(--f-display);font-weight:800;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:6px 10px;border-radius:8px;white-space:nowrap;margin-top:2px}
+.tera b{font-family:var(--f-display);font-size:19px;display:block;line-height:1.25}
+.tera span.d{font-size:16px;color:var(--muted)}
+.tera li.p b{font-size:21px}
+
+/* Bloco 7: para quem é */
+.pq{list-style:none;padding:0;margin:0;display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.pq li{position:relative;padding:14px 16px 14px 48px;background:#fff;border:1px solid var(--line);border-radius:12px;font-size:17px}
+.pq li::before{content:"✓";position:absolute;left:14px;top:12px;width:24px;height:24px;border-radius:50%;background:var(--orange);color:var(--orange-ink);font-weight:800;font-size:14px;display:grid;place-items:center}
+
+/* Bloco 9: benefícios */
+.ben{list-style:none;padding:0;margin:0 auto;display:grid;gap:10px;max-width:760px}
+.ben li{display:flex;gap:14px;align-items:center;padding:14px 18px;background:#fff;border:1px solid var(--line);border-radius:12px;font-size:17px}
+.ben li::before{content:"✓";flex:none;width:26px;height:26px;border-radius:50%;background:var(--orange);color:var(--orange-ink);font-weight:800;display:grid;place-items:center;font-size:14px}
+
+/* Bloco 11: fórmula */
+.formula-grid{display:grid;grid-template-columns:1fr;gap:36px;align-items:center}
+@media (min-width:860px){.formula-grid{grid-template-columns:.8fr 1.2fr}}
+.author{border-radius:20px;overflow:hidden;position:relative;max-width:420px;margin:0 auto}
+.author .name{position:absolute;left:18px;bottom:16px;font-family:var(--f-display);font-weight:800;font-size:22px;border-left:4px solid var(--orange);padding-left:10px;line-height:1.1}
+.author .name small{display:block;font-weight:600;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#B9BCC4;margin-bottom:4px}
+.formula h2{font-size:clamp(28px,4vw,42px);margin-bottom:20px}
+.formula p{font-size:19px;color:#D6D8DD}
+.formula p strong{color:#fff}
+
+/* Bloco 12: ancoragem */
+.offer{max-width:720px;margin:0 auto;background:#fff;border:2px solid var(--orange);border-radius:24px;padding:36px 24px;text-align:center;box-shadow:0 20px 60px rgba(20,22,28,.08)}
+.offer h2{font-size:clamp(24px,3.4vw,32px);margin-bottom:6px}
+.offer .secure{font-size:15px;color:var(--muted);margin-bottom:24px}
+.offer .from{font-size:20px;color:var(--muted)}
+.offer .from s{color:var(--muted)}
+.offer .price{font-family:var(--f-display);font-weight:800;font-size:clamp(56px,10vw,88px);line-height:1;letter-spacing:-.03em;margin:8px 0}
+.offer .price small{font-size:.4em;vertical-align:top;margin-right:4px}
+.offer .inst{font-size:16px;color:var(--muted)}
+.offer .limited{display:inline-block;margin-top:16px;background:var(--orange-soft);color:var(--orange-dark);font-family:var(--f-display);font-weight:800;font-size:14px;letter-spacing:.06em;text-transform:uppercase;padding:8px 14px;border-radius:999px}
+.offer .book{width:180px;margin:4px auto 24px}
+.seals{display:flex;flex-wrap:wrap;gap:10px 20px;justify-content:center;margin-top:22px;font-size:14px;color:var(--muted)}
+.seals span::before{content:"● ";color:var(--orange)}
+
+footer{background:var(--black);color:#9A9EA7;font-size:14px;text-align:center;padding:36px 16px}
+footer a{color:#D6D8DD}
+@media (max-width:620px){.g4{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.square{aspect-ratio:auto;padding:16px}.square h3{font-size:17px;margin-top:10px}.square p{font-size:14px}.pq{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     Estrutura de 13 blocos (planejamento: 00 - Planejamento/04 - Página de Venda.md)
+     Todos os botões apontam para LINK_DO_CHECKOUT.
+     Troque LINK_DO_CHECKOUT pelo link real do checkout (substituir tudo).
+     ============================================================ -->
+
+<!-- BLOCO 1 · Mockup + copy principal + CTA -->
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Ebook · Josias Viskoo</div>
+      <h1>Crie e venda seu primeiro ebook na internet, <span class="hl">mesmo começando do zero</span></h1>
+      <p class="sub">Sem seguidores, sem aparecer e sem precisar saber escrever bem. O passo a passo completo, da ideia à primeira venda.</p>
+      <div class="cta-row">
+        <a class="cta" href="LINK_DO_CHECKOUT">Desejo adquirir</a>
+        <span class="cta-note">Acesso imediato · Garantia de 7 dias</span>
+      </div>
+    </div>
+    <div class="book"><div class="glow"></div><div class="page"><img src="images/capa-ebook.jpg" width="640" height="905" alt="Capa do ebook Como Ganhar Dinheiro na Internet com Ebook"></div></div>
+  </div>
+</header>
+
+<!-- BLOCO 2 · Mockup + texto que eleva a consciência (substitui a VSL) -->
+<section class="aware">
+  <div class="wrap aware-grid">
+    <div class="book light-book"><div class="page"><img src="images/capa-ebook.jpg" width="640" height="905" alt="" loading="lazy"></div></div>
+    <div>
+      <h2><span class="hl">Você não precisa de seguidores, nem aparecer, nem ser especialista</span> para vender seu primeiro ebook</h2>
+      <p>Talvez você já tenha tentado de tudo: vídeos, cursos caros, promessas de "renda fácil". E continua no mesmo lugar, <strong>com a sensação de que a internet só funciona para os outros</strong>.</p>
+      <p>A maioria das pessoas começa pelo caminho mais difícil. Tenta vender algo que depende de estoque, de seguidores ou de aparecer todo dia. <strong>O ebook é o oposto disso</strong>: você cria uma vez, coloca numa plataforma que entrega sozinha e pode vender todos os dias.</p>
+      <p>Só que criar o ebook é metade do caminho. A outra metade é saber <strong>se o tema vende, montar uma página que convence, subir o anúncio certo e ler os números</strong> sem apostar dinheiro no escuro. É aí que quase todo mundo trava.</p>
+      <p>Este guia junta as duas metades num passo a passo em ordem de execução: <strong>primeiro você decide se o produto aguenta escala, depois monta a operação e só então liga o tráfego</strong>, começando com pouco e aumentando só quando os números mandam.</p>
+      <p>Você não precisa ser especialista nem ter muito dinheiro para investir. Precisa de um método simples e da decisão de começar.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BLOCO 3 · CTA -->
+<div class="cta-row"><a class="cta" href="LINK_DO_CHECKOUT">Fazer download</a></div>
+
+<!-- BLOCO 4 · Depoimentos
+     Enquanto não houver depoimentos reais, este bloco mostra "O que você vai conseguir fazer".
+     Quando chegarem os primeiros relatos (com autorização), troque os cards por prints quadrados
+     e o título por "Veja o depoimento de quem adquiriu". Não publique depoimentos inventados. -->
+<section class="alt">
+  <div class="wrap">
+    <div class="eyebrow" style="text-align:center">Depois da leitura</div>
+    <h2 class="sec-title">O que você vai conseguir fazer</h2>
+    <div class="grid g4">
+      <div class="card square"><div class="ico">1</div><div><h3>Saber se o tema vende</h3><p>Antes de gastar um real, passe o produto pelo checklist das 7 leis.</p></div></div>
+      <div class="card square"><div class="ico">2</div><div><h3>Montar a página de vendas</h3><p>Os 13 blocos em ordem, sem precisar gravar vídeo.</p></div></div>
+      <div class="card square"><div class="ico">3</div><div><h3>Publicar na plataforma</h3><p>Kiwify ou Hotmart recebendo o pagamento e entregando por você.</p></div></div>
+      <div class="card square"><div class="ico">4</div><div><h3>Criar 50 anúncios</h3><p>Um design, 50 headlines, feitos no Canva gratuito.</p></div></div>
+      <div class="card square"><div class="ico">5</div><div><h3>Configurar o Meta Ads</h3><p>Perfil, BM, conta de anúncios, página e pixel, botão por botão.</p></div></div>
+      <div class="card square"><div class="ico">6</div><div><h3>Subir o primeiro teste</h3><p>A estrutura 1-2-50 com orçamento calculado pelo preço do produto.</p></div></div>
+      <div class="card square"><div class="ico">7</div><div><h3>Ler os números</h3><p>CPA, CTR e connect rate dizem o que desligar e o que manter.</p></div></div>
+      <div class="card square"><div class="ico">8</div><div><h3>Escalar com controle</h3><p>Aumentar o investimento sem deixar o custo por venda subir.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOCO 5 · O que você terá (intercalando conteúdo e copy) -->
+<section>
+  <div class="narrow">
+    <div class="eyebrow" style="text-align:center">4 partes · 22 capítulos</div>
+    <h2 class="sec-title">O que você terá com o <span class="hl">Como Ganhar Dinheiro na Internet com Ebook</span></h2>
+    <ul class="tera">
+      <li class="c"><span class="tag">Parte I</span><div><b>Mentalidade de escala</b><span class="d">O que é escalar de verdade e o check-up da sua operação, antes de mexer em orçamento.</span></div></li>
+      <li class="p"><span class="tag">✦</span><div><b>Você não precisa aparecer para vender ebooks</b></div></li>
+      <li class="c"><span class="tag">Parte II</span><div><b>O checklist das 7 leis</b><span class="d">Demanda, frequência, simplicidade, preço, nicho, promessa e entrega: o teste que diz se o produto escala.</span></div></li>
+      <li class="p"><span class="tag">✦</span><div><b>Transforme o que você sabe em um ebook que vende todos os dias</b></div></li>
+      <li class="c"><span class="tag">Cap. 05</span><div><b>O checklist de lançamento</b><span class="d">Os 12 passos, da ideia à venda, para você marcar um por um.</span></div></li>
+      <li class="p"><span class="tag">✦</span><div><b>Sem estoque, sem entrega e sem mostrar o rosto</b></div></li>
+      <li class="c"><span class="tag">Cap. 06–07</span><div><b>A página de vendas em 13 blocos</b><span class="d">A estrutura que dispensa VSL e como subir a página no WordPress.</span></div></li>
+      <li class="p"><span class="tag">✦</span><div><b>Como criar um ebook mesmo sem saber escrever bem</b></div></li>
+      <li class="c"><span class="tag">Cap. 08–10</span><div><b>Plataforma, checkout e entrega automática</b><span class="d">Produto publicado, checkout de alta conversão e todos os botões ligados.</span></div></li>
+      <li class="p"><span class="tag">✦</span><div><b>Um ebook criado uma vez pode vender por anos</b></div></li>
+      <li class="c"><span class="tag">Cap. 11</span><div><b>Criativos: como fazer 50</b><span class="d">O anúncio não vende, ele leva para a página. Veja como fazer os seus no Canva.</span></div></li>
+      <li class="p"><span class="tag">✦</span><div><b>Como vender ebooks sem ter seguidores</b></div></li>
+      <li class="c"><span class="tag">Cap. 12–15</span><div><b>Orgânico ou pago, Meta Ads e pixel</b><span class="d">Os dois caminhos para vender, a estrutura de contas, o pixel e as colunas que importam.</span></div></li>
+      <li class="p"><span class="tag">✦</span><div><b>Você pode começar hoje, só com o celular</b></div></li>
+      <li class="c"><span class="tag">Cap. 16–17</span><div><b>A estrutura 1-2-50</b><span class="d">1 campanha, 2 conjuntos, 50 anúncios, montada botão por botão.</span></div></li>
+      <li class="p"><span class="tag">✦</span><div><b>Faça sua primeira venda na internet com um ebook</b></div></li>
+      <li class="c"><span class="tag">Cap. 18–21</span><div><b>Otimização e escala</b><span class="d">O que desligar, quando aumentar 30% por dia e como variar criativos sem saturar.</span></div></li>
+      <li class="p"><span class="tag">✦</span><div><b>Um negócio digital que cabe no seu horário livre</b></div></li>
+      <li class="c"><span class="tag">Cap. 22</span><div><b>Folha de consulta rápida</b><span class="d">Todas as regras de bolso numa página só, para imprimir e deixar do lado.</span></div></li>
+      <li class="p"><span class="tag">✦</span><div><b>Seu primeiro ebook pode ser o começo da sua liberdade</b></div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- BLOCO 6 · CTA -->
+<div class="cta-row"><a class="cta" href="LINK_DO_CHECKOUT">Desejo adquirir</a></div>
+
+<!-- BLOCO 7 · Para quem é (mata objeções) -->
+<section class="alt">
+  <div class="wrap">
+    <h2 class="sec-title">Para quem é este ebook</h2>
+    <ul class="pq">
+      <li><strong>Para quem</strong> nunca vendeu nada na internet e quer começar pelo caminho mais simples.</li>
+      <li><strong>Para quem</strong> não quer mostrar o rosto nem virar influenciador.</li>
+      <li><strong>Para quem</strong> tem zero seguidores e acha que isso impede de vender.</li>
+      <li><strong>Para quem</strong> acha que não sabe escrever: a estrutura e a IA fazem o trabalho pesado.</li>
+      <li><strong>Para quem</strong> trabalha CLT e quer uma segunda fonte de renda no tempo livre.</li>
+      <li><strong>Para mães</strong> que querem uma renda trabalhando de casa.</li>
+      <li><strong>Para quem</strong> tem pouco dinheiro para começar e não quer apostar às cegas.</li>
+      <li><strong>Para quem</strong> já comprou cursos caros e se perdeu em tanta informação.</li>
+      <li><strong>Para quem</strong> tem um conhecimento ou hobby e nunca pensou em transformá-lo em produto.</li>
+      <li><strong>Para quem</strong> quer um negócio que funcione pelo celular.</li>
+      <li><strong>Para quem</strong> já tem um ebook parado e não sabe como divulgar.</li>
+      <li><strong>Para quem</strong> já anunciou, perdeu dinheiro e não entendeu por quê.</li>
+      <li><strong>Para quem</strong> fica perdido no Gerenciador de Anúncios e quer um passo a passo por botão.</li>
+      <li><strong>Para quem</strong> quer saber quando desligar um anúncio antes de perder dinheiro.</li>
+      <li><strong>Para quem</strong> já vende um pouco e quer escalar sem quebrar.</li>
+      <li><strong>Para quem</strong> prefere regras claras e números a promessas vazias.</li>
+      <li><strong>Para quem</strong> quer um produto que vende todo dia, e não só num lançamento.</li>
+      <li><strong>Para quem</strong> quer aprender uma habilidade que serve para qualquer produto digital.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- BLOCO 8 · Mais depoimentos (mesma regra do bloco 4)
+     Troque pelos depoimentos reais quando tiver ("Veja o depoimento de quem já testou"). -->
+<section>
+  <div class="wrap">
+    <h2 class="sec-title">O que vem junto com o ebook</h2>
+    <div class="grid g2">
+      <div class="card"><div class="stars">★★★★★</div><h3 style="font-size:21px;margin:10px 0 6px">Checklists para marcar</h3><p style="color:var(--muted);margin:0;font-size:16px">Check-up da operação, as 7 leis e os 12 passos do lançamento.</p></div>
+      <div class="card"><div class="stars">★★★★★</div><h3 style="font-size:21px;margin:10px 0 6px">Calculadoras</h3><p style="color:var(--muted);margin:0;font-size:16px">Orçamento da 1-2-50, diagnóstico do funil e simulação de escala com os seus números.</p></div>
+      <div class="card"><div class="stars">★★★★★</div><h3 style="font-size:21px;margin:10px 0 6px">Prompts prontos de IA</h3><p style="color:var(--muted);margin:0;font-size:16px">Para escrever a página de vendas e a legenda dos anúncios.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOCO 9 · Benefícios fixos -->
+<section class="alt">
+  <div class="wrap">
+    <h2 class="sec-title">Se liga nos benefícios que você terá hoje</h2>
+    <ul class="ben">
+      <li>Acesso por tempo ilimitado</li>
+      <li>Leia quando quiser, em qualquer lugar do mundo</li>
+      <li>Imprima e tenha a versão física</li>
+      <li>Baixe o ebook e leia no modo offline, sem precisar de internet</li>
+      <li>Garantia de recebimento do produto</li>
+      <li>Linguagem objetiva e de fácil entendimento</li>
+      <li>Satisfação garantida: garantia incondicional de 7 dias</li>
+      <li>Acesso ao ebook logo após a compra</li>
+      <li>Informações 100% revisadas e testadas</li>
+    </ul>
+  </div>
+</section>
+
+<!-- BLOCO 10 · CTA -->
+<div class="cta-row alt" style="background:var(--bg-2);padding-top:0"><a class="cta" href="LINK_DO_CHECKOUT">Desejo adquirir</a></div>
+
+<!-- BLOCO 11 · Uma fórmula comprovada + foto -->
+<section class="dark">
+  <div class="wrap formula-grid">
+    <div class="author"><img src="images/josias-viskoo.jpg" width="720" height="720" alt="Josias Viskoo" loading="lazy"><div class="name"><small>por</small>Josias Viskoo</div></div>
+    <div class="formula">
+      <div class="eyebrow">Uma fórmula comprovada</div>
+      <h2>Por que este método é <span class="hl">diferente</span></h2>
+      <p>A maioria dos conteúdos sobre ganhar dinheiro na internet te manda "testar de tudo" e aumentar o orçamento quando vende. <strong>Aqui é o contrário: você só investe mais quando os números mostram que dá para investir.</strong> O produto passa por um checklist antes de ir para o ar, a página segue uma estrutura fixa, o teste começa com o orçamento de dois produtos por dia e cada decisão (desligar, manter ou escalar) tem uma regra clara. <strong>Isso é escalar com controle, sem apostar.</strong></p>
+      <p>E o tempo conta. Cada mês adiado é mais um mês com a mesma renda, vendo outras pessoas lançarem produtos sobre temas que você também domina, enquanto a sua ideia continua só na cabeça. <strong>O melhor momento para ter o seu primeiro ebook vendendo foi há um ano. O segundo melhor é agora.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- BLOCO 12 · Ancoragem -->
+<section class="alt" id="oferta">
+  <div class="wrap">
+    <div class="offer">
+      <div class="book light-book"><div class="page"><img src="images/capa-ebook.jpg" width="640" height="905" alt="" loading="lazy"></div></div>
+      <h2>Adquira agora mesmo o <span class="hl">Como Ganhar Dinheiro na Internet com Ebook</span></h2>
+      <p class="secure">🔒 Suas informações estão seguras</p>
+      <div class="from">De <s>R$ 97,00</s> por apenas</div>
+      <div class="price"><small>R$</small>29,90</div>
+      <div class="inst">ou em até 5× no cartão</div>
+      <span class="limited">Promoção por tempo limitado</span>
+      <!-- BLOCO 13 · CTA final -->
+      <div style="margin-top:28px"><a class="cta big" href="LINK_DO_CHECKOUT">Desejo adquirir</a></div>
+      <div class="seals"><span>Acesso imediato</span><span>Garantia de 7 dias</span><span>Compra segura</span><span>Entrega por e-mail</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p style="margin:0 0 6px"><b style="color:#fff">Como Ganhar Dinheiro na Internet com Ebook</b> · Josias Viskoo</p>
+  <p style="margin:0">Os resultados dependem da aplicação de cada pessoa. Este produto não garante ganhos financeiros.</p>
+</footer>
+
+</body>
+</html>
