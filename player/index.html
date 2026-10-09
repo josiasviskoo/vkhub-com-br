@@ -73,6 +73,16 @@
   .folder:active .icon { transform: scale(.92); }
   .folder:focus-visible { outline: none; }
   .folder:focus-visible .icon { outline: 2px solid var(--accent); outline-offset: 3px; }
+  /* Desktop: ícones grandes */
+  @media (min-width: 900px) {
+    body { padding: 64px 32px; }
+    #status, #grid { max-width: 1400px; }
+    #grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 48px 24px; }
+    .folder { width: 180px; gap: 14px; }
+    .folder .icon { width: 150px; height: 150px; border-radius: 36px; }
+    .folder svg { width: 104px; height: 104px; }
+    .folder .name { font-size: 1.05rem; }
+  }
   .folder .name {
     width: 100%;
     font-size: .82rem;
@@ -136,9 +146,50 @@
     transition: opacity .3s;
   }
   #stage.show-hud #now { opacity: 1; }
+
+  #lock {
+    position: fixed;
+    inset: 0;
+    display: none;
+    place-items: center;
+    z-index: 20;
+  }
+  body.locked #lock { display: grid; }
+  body.locked #status, body.locked #grid { display: none; }
+  #pin { display: flex; gap: 12px; }
+  #pin.erro { animation: tremer .35s; }
+  #pin input {
+    width: 56px;
+    height: 64px;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,.25);
+    background: rgba(255,255,255,.1);
+    color: var(--text);
+    font: 600 1.6rem system-ui, sans-serif;
+    text-align: center;
+    -webkit-text-security: disc;
+    caret-color: transparent;
+    outline: none;
+  }
+  #pin input:focus { border-color: var(--accent); }
+  @keyframes tremer {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    50% { transform: translateX(10px); }
+    75% { transform: translateX(-6px); }
+  }
 </style>
 </head>
-<body>
+<body class="locked">
+
+<div id="lock">
+  <div id="pin">
+    <input type="text" inputmode="numeric" autocomplete="off" aria-label="Dígito 1">
+    <input type="text" inputmode="numeric" autocomplete="off" aria-label="Dígito 2">
+    <input type="text" inputmode="numeric" autocomplete="off" aria-label="Dígito 3">
+    <input type="text" inputmode="numeric" autocomplete="off" aria-label="Dígito 4">
+  </div>
+</div>
 
 <div id="status">Carregando…</div>
 
@@ -313,7 +364,10 @@
     flashHud();
   });
 
-  // ---------- Lista de pastas (lista.js, gerado na hora pelo servidor.py) ----------
+  // ---------- Lista de pastas (lista.js) ----------
+  // No servidor.py local ele é gerado na hora; no GitHub Pages é o lista.js publicado
+  // (rode "python3 servidor.py --lista" antes de publicar para atualizá-lo)
+  var local = location.protocol === 'file:' || /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
   function carregarLista(done) {
     var s = document.createElement('script');
     s.src = 'lista.js?t=' + Date.now();
@@ -328,12 +382,75 @@
       if (done) done();
     };
     s.onerror = function () {
-      statusEl.textContent = 'Lista de vídeos não encontrada. Rode "./iniciar.sh" dentro da pasta player.';
+      statusEl.textContent = local
+        ? 'Lista de vídeos não encontrada. Rode "./iniciar.sh" dentro da pasta player.'
+        : 'Não foi possível carregar a lista de vídeos.';
       s.remove();
       if (done) done();
     };
     document.head.appendChild(s);
   }
+
+  // ---------- Senha de 4 dígitos ----------
+  var SENHA = '0000';
+  var pinEl = document.getElementById('pin');
+  var digitos = Array.prototype.slice.call(pinEl.querySelectorAll('input'));
+
+  function conferirSenha() {
+    var valor = digitos.map(function (d) { return d.value; }).join('');
+    if (valor.length < digitos.length) return;
+    if (valor === SENHA) {
+      document.body.classList.remove('locked');
+      digitos.forEach(function (d) { d.blur(); });
+      return;
+    }
+    pinEl.classList.remove('erro');
+    void pinEl.offsetWidth; // reinicia a animação
+    pinEl.classList.add('erro');
+    digitos.forEach(function (d) { d.value = ''; });
+    digitos[0].focus();
+  }
+
+  digitos.forEach(function (d, i) {
+    d.addEventListener('input', function () {
+      var nums = d.value.replace(/\D/g, '');
+      // Aceita colar os 4 números de uma vez
+      for (var k = 0; k < nums.length && i + k < digitos.length; k++) digitos[i + k].value = nums[k];
+      if (!nums) { d.value = ''; return; }
+      var prox = Math.min(i + nums.length, digitos.length - 1);
+      digitos[prox].focus();
+      conferirSenha();
+    });
+    d.addEventListener('keydown', function (e) {
+      if (e.key === 'Backspace' && !d.value && i > 0) {
+        digitos[i - 1].value = '';
+        digitos[i - 1].focus();
+        e.preventDefault();
+      }
+    });
+    d.addEventListener('focus', function () { d.select(); });
+  });
+  digitos[0].focus();
+  document.getElementById('lock').addEventListener('click', function () {
+    var vazio = digitos.filter(function (d) { return !d.value; })[0];
+    (vazio || digitos[digitos.length - 1]).focus();
+  });
+
+  // ---------- Tela sempre ativa (não deixa o computador entrar em descanso) ----------
+  // O navegador solta o bloqueio quando a aba fica oculta, então ele é pedido de novo ao voltar
+  var wakeLock = null;
+  function manterTelaAtiva() {
+    if (!('wakeLock' in navigator) || wakeLock || document.hidden) return;
+    navigator.wakeLock.request('screen').then(function (lock) {
+      wakeLock = lock;
+      lock.addEventListener('release', function () { wakeLock = null; });
+    }).catch(function () {});
+  }
+  manterTelaAtiva();
+  document.addEventListener('visibilitychange', manterTelaAtiva);
+  document.addEventListener('fullscreenchange', manterTelaAtiva);
+  document.addEventListener('click', manterTelaAtiva);
+  setInterval(manterTelaAtiva, 30000);
 
   if (location.protocol === 'file:') {
     statusEl.textContent = 'Aberto direto pelo arquivo: a lista pode estar desatualizada. Rode ./iniciar.sh e use http://localhost:8000';

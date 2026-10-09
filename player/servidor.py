@@ -6,6 +6,7 @@ subpastas e vídeos que existirem nela, a cada vez que a página é aberta.
 
 Uso:  python3 servidor.py        (abre http://localhost:8000 no navegador)
       python3 servidor.py 9000   (outra porta)
+      python3 servidor.py --lista  (só atualiza o lista.js, antes de publicar no GitHub Pages)
 """
 import json
 import os
@@ -123,6 +124,10 @@ class Handler(SimpleHTTPRequestHandler):
 
 
 def main():
+    if "--lista" in sys.argv:
+        gerar_lista()
+        print("lista.js atualizado.")
+        return
     porta = int(sys.argv[1]) if len(sys.argv) > 1 else 8000
     servidor = ThreadingHTTPServer(("127.0.0.1", porta), Handler)
     url = "http://localhost:%d/" % porta
