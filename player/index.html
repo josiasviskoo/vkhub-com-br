@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Player de Vídeos</title>
+<style>
+  :root {
+    --text: #ffffff;
+    --muted: rgba(255,255,255,.75);
+    --accent: #f5b301;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    background:
+      radial-gradient(circle at 20% 15%, #3a2a6b 0%, transparent 45%),
+      radial-gradient(circle at 85% 80%, #0f4c5c 0%, transparent 50%),
+      linear-gradient(160deg, #141428 0%, #0b0d17 100%);
+    background-attachment: fixed;
+    color: var(--text);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    min-height: 100vh;
+    padding: 48px 16px;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+  }
+  #status {
+    max-width: 960px;
+    margin: 0 auto 24px;
+    color: var(--muted);
+    font-size: .9rem;
+    text-align: center;
+  }
+  #status:empty { display: none; }
+  #grid {
+    max-width: 960px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+    gap: 28px 12px;
+    justify-items: center;
+  }
+  .folder {
+    width: 96px;
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    color: inherit;
+    font: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .folder .icon {
+    width: 76px;
+    height: 76px;
+    border-radius: 20px;
+    background: linear-gradient(160deg, rgba(255,255,255,.22), rgba(255,255,255,.08));
+    border: 1px solid rgba(255,255,255,.18);
+    box-shadow: 0 8px 20px rgba(0,0,0,.35);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: grid;
+    place-items: center;
+    transition: transform .15s ease;
+  }
+  .folder svg { width: 52px; height: 52px; display: block; }
+  .folder:hover .icon { transform: scale(1.06); }
+  .folder:active .icon { transform: scale(.92); }
+  .folder:focus-visible { outline: none; }
+  .folder:focus-visible .icon { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .folder .name {
+    width: 100%;
+    font-size: .82rem;
+    font-weight: 500;
+    line-height: 1.25;
+    text-align: center;
+    text-shadow: 0 1px 3px rgba(0,0,0,.6);
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-break: break-word;
+  }
+
+  #stage {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    display: none;
+    z-index: 10;
+  }
+  #stage.on { display: block; }
+  #video { width: 100%; height: 100%; object-fit: contain; background: #000; }
+  #hud {
+    position: absolute;
+    top: 16px; left: 16px; right: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    pointer-events: none;
+  }
+  .hud-btn {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    background: rgba(0,0,0,.35);
+    color: #fff;
+    border: 0;
+    border-radius: 50%;
+    cursor: pointer;
+    opacity: .3;
+    transition: opacity .3s, background .2s;
+    pointer-events: auto;
+  }
+  .hud-btn svg { width: 20px; height: 20px; display: block; }
+  #stage.show-hud .hud-btn { opacity: .75; }
+  .hud-btn:hover, .hud-btn:focus-visible { opacity: 1 !important; background: rgba(0,0,0,.6); outline: none; }
+  #now {
+    min-width: 0;
+    background: rgba(0,0,0,.45);
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: .85rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity .3s;
+  }
+  #stage.show-hud #now { opacity: 1; }
+</style>
+</head>
+<body>
+
+<div id="status">Carregando…</div>
+
+<div id="grid"></div>
+
+
+<div id="stage">
+  <video id="video" playsinline></video>
+  <div id="hud">
+    <button id="home" class="hud-btn" type="button" title="Voltar às pastas (Esc)" aria-label="Voltar às pastas">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h5v-6h4v6h5V10"/></svg>
+    </button>
+    <div id="now"></div>
+    <button id="next" class="hud-btn" type="button" title="Próximo vídeo (→)" aria-label="Próximo vídeo">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 5.5v13l9.5-6.5z"/><rect x="16.5" y="5" width="2.5" height="14" rx="1"/></svg>
+    </button>
+  </div>
+</div>
+
+<script>
+(function () {
+  var grid = document.getElementById('grid');
+  var statusEl = document.getElementById('status');
+  var stage = document.getElementById('stage');
+  var video = document.getElementById('video');
+  var nowEl = document.getElementById('now');
+  var homeBtn = document.getElementById('home');
+  var nextBtn = document.getElementById('next');
+
+  var pastas = {};   // nome da pasta -> [arquivos de vídeo], vindo do lista.js
+  var pastaAtual = null;
+  var playlist = [];
+  var current = 0;
+  var hudTimer = null;
+  var ultimaLista = null;
+
+  // ---------- Pastas ----------
+  var FOLDER_SVG =
+    '<svg viewBox="0 0 64 64" aria-hidden="true">' +
+    '<path d="M6 14a4 4 0 0 1 4-4h14l6 6h24a4 4 0 0 1 4 4v30a4 4 0 0 1-4 4H10a4 4 0 0 1-4-4z" fill="#f5b301"/>' +
+    '<path d="M6 22h52v28a4 4 0 0 1-4 4H10a4 4 0 0 1-4-4z" fill="#ffc933"/>' +
+    '<path d="M27 30v16l13-8z" fill="#111"/>' +
+    '</svg>';
+
+  function renderFolders() {
+    var names = Object.keys(pastas);
+    grid.innerHTML = '';
+    names.forEach(function (name) {
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'folder';
+      btn.title = name + ' (' + pastas[name].length + (pastas[name].length === 1 ? ' vídeo)' : ' vídeos)');
+      btn.innerHTML = '<span class="icon">' + FOLDER_SVG + '</span><span class="name"></span>';
+      btn.querySelector('.name').textContent = name;
+      btn.addEventListener('click', function () { openFolder(name); });
+      grid.appendChild(btn);
+    });
+    if (location.protocol === 'file:') return; // mantém o aviso de lista desatualizada
+    statusEl.textContent = names.length ? '' : 'Nenhuma pasta encontrada.';
+  }
+
+  function montarPlaylist(name) {
+    return (pastas[name] || []).map(function (f) {
+      return { name: f, url: encodeURIComponent(name) + '/' + encodeURIComponent(f) };
+    });
+  }
+
+  function openFolder(name) {
+    // A tela cheia precisa ser pedida dentro do clique do usuário, antes de qualquer espera
+    stage.classList.add('on');
+    var fs = stage.requestFullscreen || stage.webkitRequestFullscreen;
+    if (fs) { try { var p = fs.call(stage); if (p && p.catch) p.catch(function () {}); } catch (e) {} }
+
+    // Relê a pasta na hora do clique, para pegar vídeos recém-adicionados
+    carregarLista(function () {
+      playlist = montarPlaylist(name);
+      if (!playlist.length) {
+        closePlayer();
+        statusEl.textContent = 'A pasta "' + name + '" não tem vídeos.';
+        return;
+      }
+      statusEl.textContent = '';
+      pastaAtual = name;
+      current = 0;
+      playCurrent();
+    });
+  }
+
+  // ---------- Player ----------
+  function playCurrent() {
+    var item = playlist[current];
+    nowEl.textContent = (current + 1) + '/' + playlist.length + ' — ' + item.name;
+    flashHud();
+    if (video.getAttribute('src') === item.url) video.currentTime = 0;
+    else video.src = item.url;
+    var p = video.play();
+    if (p && p.catch) {
+      p.catch(function () {
+        // Sem permissão de autoplay com som: tenta mudo
+        video.muted = true;
+        video.play().catch(function () {});
+      });
+    }
+  }
+
+  // A cada troca de vídeo a pasta é relida: vídeos novos entram na fila e removidos saem
+  function step(delta) {
+    if (!pastaAtual) return;
+    var atual = playlist[current] && playlist[current].name;
+    carregarLista(function () {
+      if (!stage.classList.contains('on')) return;
+      var nova = montarPlaylist(pastaAtual);
+      if (!nova.length) { closePlayer(); return; }
+      var idx = -1;
+      nova.forEach(function (v, k) { if (v.name === atual) idx = k; });
+      if (idx === -1) {
+        // O vídeo atual sumiu: segue a partir da mesma posição
+        idx = Math.min(current, nova.length) - (delta > 0 ? 1 : 0);
+      }
+      playlist = nova;
+      current = ((idx + delta) % nova.length + nova.length) % nova.length;
+      playCurrent();
+    });
+  }
+
+  video.addEventListener('ended', function () { step(1); });
+  video.addEventListener('error', function () {
+    if (!stage.classList.contains('on') || !playlist.length) return;
+    // Pula vídeos que não puderam ser reproduzidos (se ainda houver outros)
+    if (playlist.length > 1) setTimeout(function () { step(1); }, 500);
+  });
+
+  function closePlayer() {
+    video.pause();
+    video.removeAttribute('src');
+    video.load();
+    playlist = [];
+    pastaAtual = null;
+    stage.classList.remove('on', 'show-hud');
+    var fsEl = document.fullscreenElement || document.webkitFullscreenElement;
+    if (fsEl) {
+      var exit = document.exitFullscreen || document.webkitExitFullscreen;
+      if (exit) { try { var p = exit.call(document); if (p && p.catch) p.catch(function () {}); } catch (e) {} }
+    }
+  }
+
+  function onFsChange() {
+    var fsEl = document.fullscreenElement || document.webkitFullscreenElement;
+    if (!fsEl && stage.classList.contains('on')) closePlayer();
+  }
+  document.addEventListener('fullscreenchange', onFsChange);
+  document.addEventListener('webkitfullscreenchange', onFsChange);
+
+  function flashHud() {
+    stage.classList.add('show-hud');
+    clearTimeout(hudTimer);
+    hudTimer = setTimeout(function () { stage.classList.remove('show-hud'); }, 2500);
+  }
+  stage.addEventListener('mousemove', flashHud);
+  homeBtn.addEventListener('click', closePlayer);
+  nextBtn.addEventListener('click', function () { step(1); });
+
+  document.addEventListener('keydown', function (e) {
+    if (!stage.classList.contains('on')) return;
+    if (e.key === 'Escape') closePlayer();
+    else if (e.key === 'ArrowRight') step(1);
+    else if (e.key === 'ArrowLeft') step(-1);
+    else if (e.key === ' ') {
+      e.preventDefault();
+      if (video.paused) video.play(); else video.pause();
+    } else return;
+    flashHud();
+  });
+
+  // ---------- Lista de pastas (lista.js, gerado na hora pelo servidor.py) ----------
+  function carregarLista(done) {
+    var s = document.createElement('script');
+    s.src = 'lista.js?t=' + Date.now();
+    s.onload = function () {
+      pastas = window.PLAYER_PASTAS || {};
+      var json = JSON.stringify(pastas);
+      if (json !== ultimaLista && !stage.classList.contains('on')) {
+        ultimaLista = json;
+        renderFolders();
+      }
+      s.remove();
+      if (done) done();
+    };
+    s.onerror = function () {
+      statusEl.textContent = 'Lista de vídeos não encontrada. Rode "./iniciar.sh" dentro da pasta player.';
+      s.remove();
+      if (done) done();
+    };
+    document.head.appendChild(s);
+  }
+
+  if (location.protocol === 'file:') {
+    statusEl.textContent = 'Aberto direto pelo arquivo: a lista pode estar desatualizada. Rode ./iniciar.sh e use http://localhost:8000';
+  }
+  carregarLista();
+  // Na tela das pastas, atualiza sozinho a cada 5 segundos (pastas novas aparecem)
+  setInterval(function () {
+    if (!document.hidden && !stage.classList.contains('on')) carregarLista();
+  }, 5000);
+  document.addEventListener('visibilitychange', function () {
+    if (!document.hidden && !stage.classList.contains('on')) carregarLista();
+  });
+})();
+</script>
+</body>
+</html>
