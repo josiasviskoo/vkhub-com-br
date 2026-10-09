@@ -53,6 +53,10 @@ window.PLAYER_PASTAS = {
     "50 - Baby, Estoy En Llamas - Marcus Nimbler - with Kara Del Toro.mp4"
   ],
   "rock (teste de formato)": [
-    "jinjler_1000x400_blur.mp4"
+    "jinjler_1000x400.mp4",
+    "jinjler_1000x400_blur.mp4",
+    "jinjler_1200x400.mp4",
+    "jinjler_1300x400.mp4",
+    "jinjler_1400x400.mp4"
   ]
 };
