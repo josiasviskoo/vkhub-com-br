@@ -6,12 +6,18 @@
 //   player e o outro para o cache. Pedidos de outros trechos (avançar o vídeo) vão
 //   direto para a rede enquanto o download não termina.
 // - O botão "limpar" da página apaga o cache inteiro (caches.delete).
-var CACHE = 'player-videos';
+var CACHE = 'player-videos-v2';
 var VIDEO = /\.(mp4|webm|ogv|ogg|mov|m4v|mkv)$/i;
 var baixando = {}; // urls sendo guardadas agora, para não baixar a mesma duas vezes
 
 self.addEventListener('install', function () { self.skipWaiting(); });
-self.addEventListener('activate', function (e) { e.waitUntil(self.clients.claim()); });
+// Ao trocar o nome do CACHE (ex.: vídeos reconvertidos), apaga os caches antigos.
+self.addEventListener('activate', function (e) {
+  e.waitUntil(caches.keys().then(function (nomes) {
+    return Promise.all(nomes.filter(function (n) { return n !== CACHE; })
+      .map(function (n) { return caches.delete(n); }));
+  }).then(function () { return self.clients.claim(); }));
+});
 
 self.addEventListener('fetch', function (e) {
   var req = e.request;

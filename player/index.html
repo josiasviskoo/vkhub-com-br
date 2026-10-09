@@ -488,7 +488,7 @@
   // ---------- Cache dos vídeos (sw.js) ----------
   // O service worker guarda cada vídeo assistido; o botão da lixeira apaga tudo.
   // Só funciona em http(s) — abrindo o index.html direto pelo arquivo, o botão fica escondido.
-  var CACHE = 'player-videos';
+  var CACHE = 'player-videos-v2';
   var limparBtn = document.getElementById('limpar');
   if ('serviceWorker' in navigator && window.caches && location.protocol !== 'file:') {
     navigator.serviceWorker.register('sw.js').catch(function () {});
