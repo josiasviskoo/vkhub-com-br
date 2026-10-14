@@ -50,7 +50,9 @@
 }
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--fundo);color:var(--tinta);font-family:var(--sans);font-size:14px;line-height:1.5;font-variant-numeric:lining-nums;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{margin:0;background:var(--fundo);color:var(--tinta);font-family:var(--sans);font-size:14px;line-height:1.5;font-variant-numeric:lining-nums;-webkit-font-smoothing:antialiased}
+html,body{overflow-x:clip}
+html{background:var(--topo)}
 h1,h2,h3,p{margin:0}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%;height:auto}
@@ -115,7 +117,8 @@ button{font:inherit}
 .q-cta:hover{text-decoration:underline}
 
 /* Prateleiras */
-.prateleiras{display:grid;gap:20px;margin-top:20px}
+.prateleiras{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;margin-top:20px}
+.prateleira,.trilho,.quadro{min-width:0}
 .prateleira{background:var(--painel);border-radius:4px;padding:22px 24px 24px;box-shadow:0 1px 2px rgba(40,25,10,.08);scroll-margin-top:120px}
 .prat-cab{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;margin-bottom:18px}
 .prat-cab h2{font-family:var(--serif);font-size:27px;font-weight:600;line-height:1.1}
