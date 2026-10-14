@@ -66,8 +66,25 @@
     -webkit-backdrop-filter: blur(8px);
     display: grid;
     place-items: center;
+    position: relative;
     transition: transform .15s ease;
   }
+  /* Selo de "já guardado no navegador" no canto da pasta */
+  .folder .salvo {
+    position: absolute;
+    right: -6px; bottom: -6px;
+    width: 28px; height: 28px;
+    display: none;
+    place-items: center;
+    background: rgba(20,20,40,.85);
+    color: var(--muted);
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 50%;
+    box-shadow: 0 2px 6px rgba(0,0,0,.4);
+  }
+  .folder .salvo svg { width: 16px; height: 16px; }
+  .folder.cache-parcial .salvo, .folder.cache-total .salvo { display: grid; }
+  .folder.cache-total .salvo { background: #1f9d55; color: #fff; border-color: rgba(255,255,255,.4); }
   .folder svg { width: 52px; height: 52px; display: block; }
   .folder:hover .icon { transform: scale(1.06); }
   .folder:active .icon { transform: scale(.92); }
@@ -82,6 +99,8 @@
     .folder .icon { width: 150px; height: 150px; border-radius: 36px; }
     .folder svg { width: 104px; height: 104px; }
     .folder .name { font-size: 1.05rem; }
+    .folder .salvo { width: 44px; height: 44px; right: -10px; bottom: -10px; }
+    .folder .salvo svg { width: 24px; height: 24px; }
   }
   .folder .name {
     width: 100%;
@@ -157,6 +176,16 @@
     transition: opacity .3s;
   }
   #stage.show-hud #now { opacity: 1; }
+  #now .salvo {
+    display: inline-grid;
+    place-items: center;
+    width: 20px; height: 20px;
+    margin-right: 6px;
+    vertical-align: -5px;
+    background: #1f9d55;
+    border-radius: 50%;
+  }
+  #now .salvo svg { width: 13px; height: 13px; display: block; }
 
   #limpar {
     position: fixed;
@@ -266,6 +295,10 @@
     '<path d="M6 22h52v28a4 4 0 0 1-4 4H10a4 4 0 0 1-4-4z" fill="#ffc933"/>' +
     '<path d="M27 30v16l13-8z" fill="#111"/>' +
     '</svg>';
+  // Ícone de "já baixado": roda sem precisar baixar de novo
+  var SALVO_SVG =
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+    '<path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
 
   function renderFolders() {
     var names = Object.keys(pastas);
@@ -275,11 +308,13 @@
       btn.type = 'button';
       btn.className = 'folder';
       btn.title = name + ' (' + pastas[name].length + (pastas[name].length === 1 ? ' vídeo)' : ' vídeos)');
-      btn.innerHTML = '<span class="icon">' + FOLDER_SVG + '</span><span class="name"></span>';
+      btn.innerHTML = '<span class="icon">' + FOLDER_SVG + '<span class="salvo">' + SALVO_SVG + '</span></span><span class="name"></span>';
       btn.querySelector('.name').textContent = name;
+      btn.dataset.pasta = name;
       btn.addEventListener('click', function () { openFolder(name); });
       grid.appendChild(btn);
     });
+    atualizarCache();
     if (location.protocol === 'file:') return; // mantém o aviso de lista desatualizada
     statusEl.textContent = names.length ? '' : 'Nenhuma pasta encontrada.';
   }
@@ -314,10 +349,11 @@
   // ---------- Player ----------
   function playCurrent() {
     var item = playlist[current];
-    nowEl.textContent = (current + 1) + '/' + playlist.length + ' — ' + item.name;
+    mostrarNow();
     flashHud();
     if (video.getAttribute('src') === item.url) video.currentTime = 0;
     else video.src = item.url;
+    video.volume = 1;
     var p = video.play();
     if (p && p.catch) {
       p.catch(function () {
@@ -326,6 +362,14 @@
         video.play().catch(function () {});
       });
     }
+  }
+
+  function mostrarNow() {
+    var item = playlist[current];
+    if (!item) return;
+    var salvo = videoSalvo(item.url);
+    nowEl.innerHTML = salvo ? '<span class="salvo" title="Já baixado: roda sem baixar de novo">' + SALVO_SVG + '</span>' : '';
+    nowEl.appendChild(document.createTextNode((current + 1) + '/' + playlist.length + ' — ' + item.name));
   }
 
   // A cada troca de vídeo a pasta é relida: vídeos novos entram na fila e removidos saem
@@ -347,6 +391,16 @@
       playCurrent();
     });
   }
+
+  // Volume sempre em 100%: se algo baixar o volume, volta na hora
+  video.volume = 1;
+  video.addEventListener('volumechange', function () {
+    if (video.volume !== 1) video.volume = 1;
+  });
+  // Se o navegador obrigou a começar mudo (autoplay), libera o som no primeiro toque/tecla
+  function liberarSom() { if (video.muted) { video.muted = false; video.volume = 1; } }
+  document.addEventListener('click', liberarSom, true);
+  document.addEventListener('keydown', liberarSom, true);
 
   video.addEventListener('ended', function () { step(1); });
   video.addEventListener('error', function () {
@@ -490,12 +544,38 @@
   // Só funciona em http(s) — abrindo o index.html direto pelo arquivo, o botão fica escondido.
   var CACHE = 'player-videos-v2';
   var limparBtn = document.getElementById('limpar');
-  if ('serviceWorker' in navigator && window.caches && location.protocol !== 'file:') {
+  var cacheOk = 'serviceWorker' in navigator && window.caches && location.protocol !== 'file:';
+  var guardados = {}; // caminho do vídeo (como o sw.js guarda) -> true
+
+  function caminho(url) { return new URL(url, location.href).pathname; }
+  function videoSalvo(url) { return !!guardados[caminho(url)]; }
+
+  // Lê o cache e marca as pastas (todos ou alguns vídeos guardados) e o vídeo tocando agora
+  function atualizarCache() {
+    if (!cacheOk) return;
+    caches.open(CACHE).then(function (cache) { return cache.keys(); }).then(function (reqs) {
+      guardados = {};
+      reqs.forEach(function (r) { guardados[caminho(r.url)] = true; });
+      Array.prototype.forEach.call(grid.querySelectorAll('.folder'), function (btn) {
+        var lista = montarPlaylist(btn.dataset.pasta);
+        var n = lista.filter(function (v) { return videoSalvo(v.url); }).length;
+        btn.classList.toggle('cache-total', n > 0 && n === lista.length);
+        btn.classList.toggle('cache-parcial', n > 0 && n < lista.length);
+        btn.querySelector('.salvo').title = n === lista.length
+          ? 'Todos os vídeos já baixados'
+          : n + ' de ' + lista.length + ' vídeos já baixados';
+      });
+      if (stage.classList.contains('on')) mostrarNow();
+    }).catch(function () {});
+  }
+
+  if (cacheOk) {
     navigator.serviceWorker.register('sw.js').catch(function () {});
     limparBtn.hidden = false;
     limparBtn.addEventListener('click', function () {
       limparBtn.disabled = true;
       caches.delete(CACHE).then(function () {
+        atualizarCache();
         statusEl.textContent = 'Cache de vídeos limpo.';
         setTimeout(function () {
           if (statusEl.textContent === 'Cache de vídeos limpo.') statusEl.textContent = '';
@@ -512,7 +592,9 @@
   carregarLista();
   // Na tela das pastas, atualiza sozinho a cada 5 segundos (pastas novas aparecem)
   setInterval(function () {
-    if (!document.hidden && !stage.classList.contains('on')) carregarLista();
+    if (document.hidden) return;
+    if (!stage.classList.contains('on')) carregarLista();
+    atualizarCache(); // vídeos que terminaram de baixar ganham o ícone
   }, 5000);
   document.addEventListener('visibilitychange', function () {
     if (!document.hidden && !stage.classList.contains('on')) carregarLista();

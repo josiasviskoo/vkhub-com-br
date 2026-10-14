@@ -52,18 +52,52 @@ window.PLAYER_PASTAS = {
     "49-show-me-your-love-tonight.mp4",
     "50-baby-estoy-en-llamas-with-kara-del-toro.mp4"
   ],
-  "rock (teste de formato)": [
-    "jinjler_400x400.mp4",
-    "jinjler_500x400.mp4",
-    "jinjler_600x400.mp4",
-    "jinjler_700x400.mp4",
-    "jinjler_800x400.mp4",
-    "jinjler_900x400.mp4",
-    "jinjler_1000x400.mp4",
-    "jinjler_1000x400_blur.mp4",
-    "jinjler_1200x400.mp4",
-    "jinjler_1300x400.mp4",
-    "jinjler_1400x400.mp4",
-    "jinjler_1500x400.mp4"
+  "pretty-reckless": [
+    "01-make-me-wanna-die.mp4",
+    "02-heaven-knows.mp4",
+    "03-for-i-am-death.mp4",
+    "04-death-by-rock-and-roll.mp4",
+    "05-just-tonight.mp4",
+    "06-going-to-hell.mp4",
+    "07-my-medicine.mp4",
+    "08-take-me-down.mp4",
+    "09-dear-god.mp4"
+  ],
+  "rock": [
+    "01-acdc-back-in-black-sershen-zaritskaya.mp4",
+    "02-arch-enemy-to-the-last-breath.mp4",
+    "03-cage-fight-eating-me-alive-live.mp4",
+    "04-cage-fight-pig-live.mp4",
+    "05-decessus-dying-hope-blossoms.mp4",
+    "06-infected-rain-freaky-carnival-live.mp4",
+    "07-nita-strauss-the-wolf-you-feed-ft-alissa-white-gluz.mp4",
+    "08-once-human-eye-of-chaos.mp4",
+    "09-pitchblack-graves.mp4",
+    "10-torture-squad-horror-and-torture-live.mp4",
+    "11-the-pretty-reckless-when-i-wake-up-live.mp4"
+  ],
+  "rolling-stones": [
+    "01-angry.mp4",
+    "02-anybody-seen-my-baby.mp4",
+    "03-love-is-strong.mp4",
+    "04-ride-em-on-down.mp4"
+  ],
+  "zz-top": [
+    "01-zz-top-gimme-all-your-lovin.mp4",
+    "02-zz-top-sharp-dressed-man.mp4",
+    "03-zz-top-tv-dinners.mp4",
+    "04-zz-top-legs.mp4",
+    "05-zz-top-stages.mp4",
+    "06-zz-top-rough-boy.mp4",
+    "07-zz-top-velcro-fly.mp4",
+    "08-zz-top-my-heads-in-mississippi.mp4",
+    "09-zz-top-give-it-up.mp4",
+    "10-zz-top-burger-man.mp4",
+    "11-zz-top-viva-las-vegas.mp4",
+    "12-zz-top-got-me-under-pressure-live.mp4",
+    "13-zz-top-sharp-dressed-man-live-in-texas.mp4",
+    "14-zz-top-i-gotsta-get-paid.mp4",
+    "15-zz-top-gimme-all-your-lovin-live.mp4",
+    "16-zz-top-sixteen-tons-ft-jeff-beck.mp4"
   ]
 };
