@@ -84,7 +84,10 @@
   }
   .folder .salvo svg { width: 16px; height: 16px; }
   .folder.cache-parcial .salvo, .folder.cache-total .salvo { display: grid; }
-  .folder.cache-total .salvo { background: #1f9d55; color: #fff; border-color: rgba(255,255,255,.4); }
+  .folder.cache-total .salvo { color: #4ade80; border-color: rgba(74,222,128,.45); }
+  /* Pasta com vídeo sendo baixado agora pelo "baixar tudo" */
+  .folder.baixando .salvo { display: grid; animation: pulsar 1.2s ease-in-out infinite; }
+  @keyframes pulsar { 50% { opacity: .35; } }
   .folder svg { width: 52px; height: 52px; display: block; }
   .folder:hover .icon { transform: scale(1.06); }
   .folder:active .icon { transform: scale(.92); }
@@ -176,20 +179,29 @@
     transition: opacity .3s;
   }
   #stage.show-hud #now { opacity: 1; }
-  #now .salvo {
-    display: inline-grid;
-    place-items: center;
-    width: 20px; height: 20px;
-    margin-right: 6px;
-    vertical-align: -5px;
-    background: #1f9d55;
-    border-radius: 50%;
+  /* "Disponível off-line": ícone pequeno e apagado no canto enquanto o vídeo toca */
+  #offline {
+    position: absolute;
+    top: 16px; right: 16px;
+    width: 18px; height: 18px;
+    color: #4ade80;
+    opacity: .4;
+    transition: opacity .3s;
+    pointer-events: none;
   }
-  #now .salvo svg { width: 13px; height: 13px; display: block; }
+  #offline svg { width: 100%; height: 100%; display: block; }
+  #offline[hidden] { display: none; }
+  #stage.show-hud #offline { opacity: .85; }
 
-  #limpar {
+  #acoes {
     position: fixed;
     top: 14px; right: 14px;
+    display: flex;
+    gap: 8px;
+  }
+  body.locked #acoes { display: none; }
+  .acao {
+    position: relative;
     width: 40px; height: 40px;
     display: grid;
     place-items: center;
@@ -200,10 +212,25 @@
     cursor: pointer;
     transition: background .2s, color .2s, transform .15s;
   }
-  #limpar svg { width: 18px; height: 18px; display: block; }
-  #limpar:hover, #limpar:focus-visible { background: rgba(255,255,255,.18); color: var(--text); outline: none; }
-  #limpar:active { transform: scale(.9); }
-  #limpar[hidden], body.locked #limpar { display: none; }
+  .acao svg { width: 18px; height: 18px; display: block; }
+  .acao:hover, .acao:focus-visible { background: rgba(255,255,255,.18); color: var(--text); outline: none; }
+  .acao:active { transform: scale(.9); }
+  .acao[hidden] { display: none; }
+  /* Botão "baixar tudo": seta; parado com anel de progresso enquanto baixa; verde quando tudo off-line */
+  #baixar .anel {
+    position: absolute;
+    inset: -1px;
+    width: 40px; height: 40px;
+    transform: rotate(-90deg);
+    display: none;
+  }
+  #baixar .anel circle { fill: none; stroke: #4ade80; stroke-width: 2.5; stroke-dasharray: var(--p, 0) 100; transition: stroke-dasharray .3s; }
+  #baixar .parar { display: none; }
+  #baixar.ativo .anel, #baixar.ativo .parar { display: block; }
+  #baixar.ativo .seta, #baixar.completo .seta { display: none; }
+  #baixar .ok { display: none; }
+  #baixar.completo:not(.ativo) .ok { display: block; }
+  #baixar.completo { color: #4ade80; }
 
   #lock {
     position: fixed;
@@ -249,9 +276,17 @@
   </div>
 </div>
 
-<button id="limpar" type="button" title="Limpar vídeos guardados no navegador" aria-label="Limpar vídeos guardados no navegador" hidden>
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16"/><path d="M10 11v6M14 11v6"/><path d="M6 7l1 13h10l1-13"/><path d="M9 7V4h6v3"/></svg>
-</button>
+<div id="acoes">
+  <button id="baixar" class="acao" type="button" title="Baixar todos os vídeos para assistir off-line" aria-label="Baixar todos os vídeos para assistir off-line" hidden>
+    <svg class="seta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10.5l5 5 5-5M5 20h14"/></svg>
+    <svg class="parar" viewBox="0 0 24 24" fill="currentColor"><rect x="7.5" y="7.5" width="9" height="9" rx="1.5"/></svg>
+    <svg class="ok" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v7M9 11.5l3 3 3-3"/></svg>
+    <svg class="anel" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18.5" pathLength="100"/></svg>
+  </button>
+  <button id="limpar" class="acao" type="button" title="Limpar vídeos guardados no navegador" aria-label="Limpar vídeos guardados no navegador" hidden>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16"/><path d="M10 11v6M14 11v6"/><path d="M6 7l1 13h10l1-13"/><path d="M9 7V4h6v3"/></svg>
+  </button>
+</div>
 
 <div id="status">Carregando…</div>
 
@@ -265,6 +300,7 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h5v-6h4v6h5V10"/></svg>
     </button>
     <div id="now"></div>
+    <span id="offline" title="Disponível off-line" hidden></span>
     <button id="next" class="hud-btn" type="button" title="Próximo vídeo (→)" aria-label="Próximo vídeo">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 5.5v13l9.5-6.5z"/><rect x="16.5" y="5" width="2.5" height="14" rx="1"/></svg>
     </button>
@@ -280,6 +316,7 @@
   var nowEl = document.getElementById('now');
   var homeBtn = document.getElementById('home');
   var nextBtn = document.getElementById('next');
+  var offlineEl = document.getElementById('offline');
 
   var pastas = {};   // nome da pasta -> [arquivos de vídeo], vindo do lista.js
   var pastaAtual = null;
@@ -295,10 +332,10 @@
     '<path d="M6 22h52v28a4 4 0 0 1-4 4H10a4 4 0 0 1-4-4z" fill="#ffc933"/>' +
     '<path d="M27 30v16l13-8z" fill="#111"/>' +
     '</svg>';
-  // Ícone de "já baixado": roda sem precisar baixar de novo
+  // Ícone de "disponível off-line": já baixado, roda sem internet
   var SALVO_SVG =
-    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
-    '<path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+    '<circle cx="12" cy="12" r="9"/><path d="M12 7.5v7M9 11.5l3 3 3-3"/></svg>';
 
   function renderFolders() {
     var names = Object.keys(pastas);
@@ -325,6 +362,12 @@
     });
   }
 
+  // Sem internet, a fila fica só com os vídeos disponíveis off-line
+  function tocaveis(lista) {
+    if (navigator.onLine || !cacheOk) return lista;
+    return lista.filter(function (v) { return videoSalvo(v.url); });
+  }
+
   function openFolder(name) {
     // A tela cheia precisa ser pedida dentro do clique do usuário, antes de qualquer espera
     stage.classList.add('on');
@@ -333,10 +376,12 @@
 
     // Relê a pasta na hora do clique, para pegar vídeos recém-adicionados
     carregarLista(function () {
-      playlist = montarPlaylist(name);
+      playlist = tocaveis(montarPlaylist(name));
       if (!playlist.length) {
         closePlayer();
-        statusEl.textContent = 'A pasta "' + name + '" não tem vídeos.';
+        statusEl.textContent = montarPlaylist(name).length
+          ? 'Sem internet, e nenhum vídeo da pasta "' + name + '" está disponível off-line.'
+          : 'A pasta "' + name + '" não tem vídeos.';
         return;
       }
       statusEl.textContent = '';
@@ -367,9 +412,9 @@
   function mostrarNow() {
     var item = playlist[current];
     if (!item) return;
-    var salvo = videoSalvo(item.url);
-    nowEl.innerHTML = salvo ? '<span class="salvo" title="Já baixado: roda sem baixar de novo">' + SALVO_SVG + '</span>' : '';
-    nowEl.appendChild(document.createTextNode((current + 1) + '/' + playlist.length + ' — ' + item.name));
+    offlineEl.innerHTML = SALVO_SVG;
+    offlineEl.hidden = !videoSalvo(item.url);
+    nowEl.textContent = (current + 1) + '/' + playlist.length + ' — ' + item.name;
   }
 
   // A cada troca de vídeo a pasta é relida: vídeos novos entram na fila e removidos saem
@@ -378,7 +423,7 @@
     var atual = playlist[current] && playlist[current].name;
     carregarLista(function () {
       if (!stage.classList.contains('on')) return;
-      var nova = montarPlaylist(pastaAtual);
+      var nova = tocaveis(montarPlaylist(pastaAtual));
       if (!nova.length) { closePlayer(); return; }
       var idx = -1;
       nova.forEach(function (v, k) { if (v.name === atual) idx = k; });
@@ -540,48 +585,198 @@
   setInterval(manterTelaAtiva, 30000);
 
   // ---------- Cache dos vídeos (sw.js) ----------
-  // O service worker guarda cada vídeo assistido; o botão da lixeira apaga tudo.
-  // Só funciona em http(s) — abrindo o index.html direto pelo arquivo, o botão fica escondido.
+  // O service worker guarda cada vídeo assistido; a seta baixa todos de uma vez para
+  // assistir off-line; a lixeira apaga tudo com um clique.
+  // Só funciona em http(s) — abrindo o index.html direto pelo arquivo, os botões ficam escondidos.
   var CACHE = 'player-videos-v2';
   var limparBtn = document.getElementById('limpar');
+  var baixarBtn = document.getElementById('baixar');
   var cacheOk = 'serviceWorker' in navigator && window.caches && location.protocol !== 'file:';
   var guardados = {}; // caminho do vídeo (como o sw.js guarda) -> true
+  var download = null; // { controle, total, feitos, falhas, pasta } enquanto o "baixar tudo" roda
+  var retomar = false; // a internet caiu no meio do "baixar tudo": continua quando ela voltar
 
   function caminho(url) { return new URL(url, location.href).pathname; }
+  function chave(url) { var u = new URL(url, location.href); return u.origin + u.pathname; }
   function videoSalvo(url) { return !!guardados[caminho(url)]; }
 
-  // Lê o cache e marca as pastas (todos ou alguns vídeos guardados) e o vídeo tocando agora
+  function todosVideos() {
+    var todos = [];
+    Object.keys(pastas).forEach(function (nome) {
+      montarPlaylist(nome).forEach(function (v) { v.pasta = nome; todos.push(v); });
+    });
+    return todos;
+  }
+
+  function tamanho(bytes) {
+    if (bytes < 1e9) return Math.round(bytes / 1e6) + ' MB';
+    return (bytes / 1e9).toFixed(1).replace('.', ',') + ' GB';
+  }
+
+  function aviso(msg, segundos) {
+    statusEl.textContent = msg;
+    if (segundos) setTimeout(function () { if (statusEl.textContent === msg) statusEl.textContent = ''; }, segundos * 1000);
+  }
+
+  // Lê o cache e marca as pastas (todos ou alguns vídeos guardados), o vídeo tocando agora e os botões
   function atualizarCache() {
     if (!cacheOk) return;
     caches.open(CACHE).then(function (cache) { return cache.keys(); }).then(function (reqs) {
       guardados = {};
       reqs.forEach(function (r) { guardados[caminho(r.url)] = true; });
+      limparVelhos(reqs);
       Array.prototype.forEach.call(grid.querySelectorAll('.folder'), function (btn) {
         var lista = montarPlaylist(btn.dataset.pasta);
         var n = lista.filter(function (v) { return videoSalvo(v.url); }).length;
         btn.classList.toggle('cache-total', n > 0 && n === lista.length);
         btn.classList.toggle('cache-parcial', n > 0 && n < lista.length);
+        btn.classList.toggle('baixando', !!download && download.pasta === btn.dataset.pasta);
         btn.querySelector('.salvo').title = n === lista.length
-          ? 'Todos os vídeos já baixados'
-          : n + ' de ' + lista.length + ' vídeos já baixados';
+          ? 'Todos os vídeos disponíveis off-line'
+          : n + ' de ' + lista.length + ' vídeos disponíveis off-line';
       });
       if (stage.classList.contains('on')) mostrarNow();
+      var todos = todosVideos();
+      var faltam = todos.filter(function (v) { return !videoSalvo(v.url); }).length;
+      baixarBtn.classList.toggle('completo', todos.length > 0 && faltam === 0);
+      if (!download) {
+        baixarBtn.title = faltam
+          ? 'Baixar ' + faltam + (faltam === 1 ? ' vídeo' : ' vídeos') + ' para assistir off-line'
+          : 'Todos os vídeos disponíveis off-line';
+      }
+      if (navigator.storage && navigator.storage.estimate) {
+        navigator.storage.estimate().then(function (est) {
+          limparBtn.title = 'Limpar vídeos guardados no navegador (' + tamanho(est.usage || 0) + ')';
+        }).catch(function () {});
+      }
     }).catch(function () {});
+  }
+
+  // Vídeos que saíram das pastas não ocupam mais espaço no navegador
+  function limparVelhos(reqs) {
+    if (!Object.keys(pastas).length || download) return;
+    var atuais = {};
+    todosVideos().forEach(function (v) { atuais[caminho(v.url)] = true; });
+    var velhos = reqs.filter(function (r) { return !atuais[caminho(r.url)]; });
+    if (!velhos.length) return;
+    caches.open(CACHE).then(function (cache) {
+      return Promise.all(velhos.map(function (r) { return cache.delete(r); }));
+    }).catch(function () {});
+  }
+
+  // Baixa um vídeo inteiro direto para o cache, avisando o progresso (0 a 1) enquanto chega
+  function baixarVideo(v, sinal, progresso) {
+    return fetch(v.url, { headers: { 'X-Player-Baixar': '1' }, cache: 'no-store', signal: sinal }).then(function (resp) {
+      if (resp.status !== 200 || !resp.body) throw new Error('HTTP ' + resp.status);
+      var total = Number(resp.headers.get('Content-Length')) || 0;
+      var lidos = 0;
+      var corpo = resp.body;
+      if (total && window.TransformStream) {
+        corpo = corpo.pipeThrough(new TransformStream({
+          transform: function (bloco, c) { lidos += bloco.byteLength; progresso(lidos / total); c.enqueue(bloco); }
+        }));
+      }
+      var headers = { 'Content-Type': resp.headers.get('Content-Type') || 'video/mp4' };
+      if (total) headers['Content-Length'] = String(total);
+      return caches.open(CACHE).then(function (cache) {
+        return cache.put(chave(v.url), new Response(corpo, { headers: headers }));
+      });
+    });
+  }
+
+  function mostrarProgresso(fracao) {
+    var p = (download.feitos + fracao) / download.total;
+    baixarBtn.style.setProperty('--p', (p * 100).toFixed(1));
+    var texto = 'Baixando para assistir off-line: ' + (download.feitos + 1) + ' de ' + download.total + ' — ' + Math.floor(p * 100) + '%';
+    if (statusEl.textContent !== texto) statusEl.textContent = texto;
+  }
+
+  function baixarTudo() {
+    var fila = todosVideos().filter(function (v) { return !videoSalvo(v.url); });
+    if (!fila.length) { aviso('Todos os vídeos já estão disponíveis off-line.', 3); return; }
+    if (!navigator.onLine) { aviso('Sem internet agora. Tente de novo quando a conexão voltar.', 4); return; }
+    // Pede ao navegador para não apagar os vídeos sozinho quando faltar espaço
+    if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(function () {});
+    retomar = false;
+    download = { controle: new AbortController(), total: fila.length, feitos: 0, falhas: 0, pasta: null };
+    baixarBtn.classList.add('ativo');
+    baixarBtn.title = 'Parar o download';
+    baixarBtn.setAttribute('aria-label', 'Parar o download');
+
+    function proximo() {
+      if (!download) return;
+      var v = fila.shift();
+      if (!v) { terminar(); return; }
+      if (videoSalvo(v.url)) { download.feitos++; proximo(); return; } // o player guardou enquanto isso
+      download.pasta = v.pasta;
+      mostrarProgresso(0);
+      atualizarCache();
+      var meu = download;
+      baixarVideo(v, meu.controle.signal, function (f) { if (download === meu) mostrarProgresso(f); }).then(function () {
+        if (download !== meu) return;
+        guardados[caminho(v.url)] = true;
+        download.feitos++;
+        proximo();
+      }, function (err) {
+        if (download !== meu) return;
+        if (err && err.name === 'AbortError') return;
+        if (err && err.name === 'QuotaExceededError') {
+          terminar('Acabou o espaço do navegador para guardar vídeos. ' + download.feitos + ' baixados nesta vez.');
+          return;
+        }
+        if (!navigator.onLine) {
+          retomar = true;
+          terminar('A internet caiu. O download continua sozinho quando a conexão voltar.');
+          return;
+        }
+        download.falhas++;
+        download.feitos++;
+        proximo();
+      });
+    }
+
+    function terminar(msg) {
+      var d = download;
+      download = null;
+      baixarBtn.classList.remove('ativo');
+      baixarBtn.style.removeProperty('--p');
+      baixarBtn.setAttribute('aria-label', 'Baixar todos os vídeos para assistir off-line');
+      atualizarCache();
+      if (typeof msg === 'string') { if (msg) aviso(msg); }
+      else if (d.falhas) aviso(d.falhas + (d.falhas === 1 ? ' vídeo não pôde' : ' vídeos não puderam') + ' ser baixados. Toque na seta para tentar de novo.');
+      else aviso('Pronto: todos os vídeos estão disponíveis off-line.', 5);
+    }
+    download.terminar = terminar;
+    proximo();
+  }
+
+  function pararDownload(msg) {
+    if (!download) return;
+    download.controle.abort();
+    download.terminar(msg);
   }
 
   if (cacheOk) {
     navigator.serviceWorker.register('sw.js').catch(function () {});
+    baixarBtn.hidden = false;
     limparBtn.hidden = false;
+    baixarBtn.addEventListener('click', function () {
+      if (download) pararDownload('Download pausado. Toque na seta para continuar de onde parou.');
+      else baixarTudo();
+    });
+    window.addEventListener('online', function () {
+      if (retomar && !download) baixarTudo();
+    });
     limparBtn.addEventListener('click', function () {
+      retomar = false;
+      pararDownload('');
       limparBtn.disabled = true;
       caches.delete(CACHE).then(function () {
+        guardados = {};
         atualizarCache();
-        statusEl.textContent = 'Cache de vídeos limpo.';
-        setTimeout(function () {
-          if (statusEl.textContent === 'Cache de vídeos limpo.') statusEl.textContent = '';
-        }, 3000);
+        aviso('Cache de vídeos limpo.', 3);
       }).catch(function () {
-        statusEl.textContent = 'Não foi possível limpar o cache.';
+        aviso('Não foi possível limpar o cache.');
       }).then(function () { limparBtn.disabled = false; });
     });
   }

@@ -5,8 +5,13 @@
 //   baixa uma única vez o arquivo inteiro e divide o download em dois: um vai para o
 //   player e o outro para o cache. Pedidos de outros trechos (avançar o vídeo) vão
 //   direto para a rede enquanto o download não termina.
+// - O botão "baixar tudo" da página baixa e guarda os vídeos ela mesma: esses pedidos vêm
+//   com o cabeçalho X-Player-Baixar e passam direto por aqui.
 // - O botão "limpar" da página apaga o cache inteiro (caches.delete).
+// - A página (index.html) e o lista.js ficam num cache à parte, buscados primeiro na rede
+//   e, sem internet, servidos dali — assim o player abre off-line.
 var CACHE = 'player-videos-v2';
+var APP = 'player-app-v1';
 var VIDEO = /\.(mp4|webm|ogv|ogg|mov|m4v|mkv)$/i;
 var baixando = {}; // urls sendo guardadas agora, para não baixar a mesma duas vezes
 
@@ -14,7 +19,7 @@ self.addEventListener('install', function () { self.skipWaiting(); });
 // Ao trocar o nome do CACHE (ex.: vídeos reconvertidos), apaga os caches antigos.
 self.addEventListener('activate', function (e) {
   e.waitUntil(caches.keys().then(function (nomes) {
-    return Promise.all(nomes.filter(function (n) { return n !== CACHE; })
+    return Promise.all(nomes.filter(function (n) { return n !== CACHE && n !== APP; })
       .map(function (n) { return caches.delete(n); }));
   }).then(function () { return self.clients.claim(); }));
 });
@@ -23,10 +28,30 @@ self.addEventListener('fetch', function (e) {
   var req = e.request;
   if (req.method !== 'GET') return;
   var url = new URL(req.url);
-  if (url.origin !== location.origin || !VIDEO.test(url.pathname)) return;
+  if (url.origin !== location.origin) return;
   var chave = url.origin + url.pathname;
-  e.respondWith(responder(e, req, chave));
+  if (VIDEO.test(url.pathname)) {
+    if (req.headers.get('X-Player-Baixar')) return;
+    e.respondWith(responder(e, req, chave));
+  } else if (req.mode === 'navigate' || /\/lista\.js$/.test(url.pathname)) {
+    e.respondWith(redePrimeiro(e, req, chave));
+  }
 });
+
+function redePrimeiro(e, req, chave) {
+  return fetch(req).then(function (resp) {
+    if (resp.ok) {
+      var copia = resp.clone();
+      e.waitUntil(caches.open(APP).then(function (cache) { return cache.put(chave, copia); }).catch(function () {}));
+    }
+    return resp;
+  }, function (err) {
+    return caches.open(APP).then(function (cache) { return cache.match(chave); }).then(function (salvo) {
+      if (salvo) return salvo;
+      throw err;
+    });
+  });
+}
 
 function responder(e, req, chave) {
   var range = req.headers.get('Range');
