@@ -38,8 +38,13 @@ self.addEventListener('fetch', function (e) {
   }
 });
 
+// cache: 'no-cache' pergunta ao servidor se a página mudou (sem mudança, a resposta vem vazia),
+// para uma versão nova aparecer na hora em vez de esperar o cache HTTP do GitHub Pages (10 min).
+// Se o endereço redirecionar (ex.: /player -> /player/), refaz o pedido original, como antes.
 function redePrimeiro(e, req, chave) {
-  return fetch(req).then(function (resp) {
+  return fetch(req.url, { cache: 'no-cache', credentials: 'same-origin' }).then(function (resp) {
+    return resp.redirected ? fetch(req) : resp;
+  }).then(function (resp) {
     if (resp.ok) {
       var copia = resp.clone();
       e.waitUntil(caches.open(APP).then(function (cache) { return cache.put(chave, copia); }).catch(function () {}));
