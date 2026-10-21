@@ -1,6 +1,6 @@
 # VK Hub
 
-> Biblioteca virtual de produtos digitais de Josias Viskoo: e-books, templates Elementor, textos de LGPD, ganchos virais para vídeos, e-books de receitas de pudim e de bolo de pote (com artigos e calculadoras de preço), livro sobre o Apocalipse, livro de colorir da família com IA, sorteador de bingo online, um jogo de roleta grátis (sem dinheiro real) e um livro infantil. Site em português (Brasil), com páginas de vendas em inglês e espanhol para o pacote Harley Davidson e para o e-book sobre ganhar dinheiro com e-books (este escrito em português).
+> Biblioteca virtual de produtos digitais de Josias Viskoo: e-books, templates Elementor, textos de LGPD, ganchos virais para vídeos, e-book de vendas no WhatsApp para times comerciais, e-books de receitas de pudim e de bolo de pote (com artigos e calculadoras de preço), livro sobre o Apocalipse, livro de colorir da família com IA, sorteador de bingo online, um jogo de roleta grátis (sem dinheiro real) e um livro infantil. Site em português (Brasil), com páginas de vendas em inglês e espanhol para o pacote Harley Davidson e para o e-book sobre ganhar dinheiro com e-books (este escrito em português).
 
 Cada página abaixo é uma página de vendas independente. A compra é feita no checkout indicado em cada página (Kiwify, Hotmart, Stripe ou Amazon). O jogo Diabinho da Sorte é gratuito e não envolve apostas reais. Os artigos sobre bolo de pote são conteúdo gratuito, com calculadoras, e não páginas de vendas.
 
@@ -34,6 +34,7 @@ Cada página abaixo é uma página de vendas independente. A compra é feita no 
 - [Apocalipse Sem Censura](https://vkhub.com.br/apocalipse-sem-censura/): Apocalipse Sem Censura: 34 capítulos ilustrados que explicam o livro mais temido da Bíblia do início ao fim, com os versículos originais. Digital, por R$ 37.
 - [Diabinho da Sorte - Jogo de Roleta Grátis](https://vkhub.com.br/diabinho-da-sorte/): Jogo de roleta estilo tigrinho grátis no navegador: gire, acumule DiaboCoins e use o curinga em linha, coluna e diagonal. Sem apostas e sem dinheiro real.
 - [Bolo de Pote: Receita, Custo e Preço](https://vkhub.com.br/bolo-de-pote-para-vender/): Receitas base, montagem e a conta completa do bolo de pote: quantos potes a receita rende, quanto custa cada um e por quanto vender. E-book em PDF por R$ 29,90.
+- [Método X1: Vendas no 1 a 1 - Como Vender no WhatsApp](https://vkhub.com.br/vendas-no-x1/): E-book para o atendimento comercial vender no WhatsApp aos leads do tráfego pago: primeira mensagem, descoberta, a hora certa do preço, as 10 objeções mais comuns, fechamento, follow-up e playbook, com o método próprio de 8 etapas (CONVERSA). B2B e B2C, 147 páginas em PDF por R$ 47.
 
 ## Artigos: bolo de pote para vender
 
