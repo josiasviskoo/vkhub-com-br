@@ -1,0 +1,6 @@
+Mode: built-in image_gen
+Use case: product-mockup.
+Create a vertical photorealistic product/lifestyle photograph, aspect ratio 4:5, target 900 x 1125 pixels.
+A natural anatomically correct human hand holding one modern large-screen smartphone upright, centered, in a dark environment lit by a warm candle that is entirely OUTSIDE the frame. The screen faces the camera with only slight natural perspective so the document is readable.
+Input image role: exact PDF page artwork to display on the smartphone screen. Use the entire provided cover image as the displayed PDF page, preserving all original text, typography, illustrations, colors and layout. Do not redesign or reword it. Fit the complete page on the screen as an open PDF, with minimal unobtrusive viewer chrome and no added text. The screen content must be the supplied image.
+Background: softly blurred dark brown and deep dark red tones, simple, atmospheric, no visible candle or distracting props. Realistic warm light on the hand and phone edges, subtle screen glow, photographic skin texture and realistic glass reflections that do not obscure the page. Premium photorealism. No text anywhere outside the smartphone screen, no watermark.
