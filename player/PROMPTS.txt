@@ -1,4 +1,4 @@
-Formato 1000 x 400 de teste:
+
 
 Nessa pasta tem VÁRIOS VÍDEOS, eu quero que vc coloque esse vídeo no tamanho de 1000 x 400, isso mesmo ultra wide, porém eu quero que não distorça, ou seja vai sobrar espaços nas laterais, se vc centralizar o vídeo. Pensando nisso duplique o mesmo vídeo ao fundo amplicando proporcionalmente completando os 1000px, porém por trás do vídeo principal centralizado. Os limites retos do vídeo 1 (principal) faça uma leve transparência para com o vídeo do fundo e o vídeo do fundo coloque em blur.
  
