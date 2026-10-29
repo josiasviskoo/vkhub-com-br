@@ -347,30 +347,39 @@
   }
   body.locked #lock { display: grid; }
   body.locked #status, body.locked #grid { display: none; }
-  #pin { display: flex; flex-direction: column; align-items: center; gap: 32px; }
-  #pontos { display: flex; gap: 18px; }
+  /* O tamanho das teclas acompanha a tela (vw/vh), então o teclado ocupa a tela toda
+     mesmo quando o celular mostra a versão de computador da página */
+  #pin {
+    --tecla: min(25vw, 17vh, 180px);
+    --tecla: min(25vw, 17dvh, 180px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: calc(var(--tecla) * .4);
+  }
+  #pontos { display: flex; gap: calc(var(--tecla) * .25); }
   #pontos.erro { animation: tremer .35s; }
   #pontos span {
-    width: 18px;
-    height: 18px;
+    width: calc(var(--tecla) * .22);
+    height: calc(var(--tecla) * .22);
     border-radius: 50%;
-    border: 2px solid rgba(255,255,255,.5);
+    border: max(2px, calc(var(--tecla) * .03)) solid rgba(255,255,255,.5);
     transition: background .12s, border-color .12s;
   }
   #pontos span.cheio { background: var(--text); border-color: var(--text); }
   #teclado {
     display: grid;
-    grid-template-columns: repeat(3, 76px);
-    gap: 16px;
+    grid-template-columns: repeat(3, var(--tecla));
+    gap: calc(var(--tecla) * .22);
   }
   #teclado button {
-    width: 76px;
-    height: 76px;
+    width: var(--tecla);
+    height: var(--tecla);
     border-radius: 50%;
     border: 1px solid rgba(255,255,255,.25);
     background: rgba(255,255,255,.1);
     color: var(--text);
-    font: 600 1.8rem system-ui, sans-serif;
+    font: 600 calc(var(--tecla) * .4) system-ui, sans-serif;
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
@@ -379,7 +388,7 @@
   #teclado button:active { background: rgba(255,255,255,.3); transform: scale(.94); }
   #teclado .zero { grid-column: 2; }
   #teclado .apagar { background: transparent; border-color: transparent; display: grid; place-items: center; }
-  #teclado .apagar svg { width: 30px; height: 30px; }
+  #teclado .apagar svg { width: 45%; height: 45%; }
   @keyframes tremer {
     0%, 100% { transform: translateX(0); }
     25% { transform: translateX(-10px); }
