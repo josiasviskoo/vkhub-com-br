@@ -3,7 +3,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://vkhub.com.br/</loc>
-    <lastmod>2026-10-21</lastmod>
+    <lastmod>2026-10-29</lastmod>
     <image:image>
       <image:loc>https://vkhub.com.br/images/banner-pagina-matadora-club.png</image:loc>
       <image:caption>Banner do Página Matadora Club</image:caption>
@@ -371,6 +371,14 @@
     <image:image>
       <image:loc>https://vkhub.com.br/vendas-no-x1/images/capa-metodo-x1.png</image:loc>
       <image:caption>Capa do e-book Método X1: Vendas no 1 a 1, de Josias Viskoo</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vkhub.com.br/o-esqueleto-da-oferta/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <image:image>
+      <image:loc>https://vkhub.com.br/o-esqueleto-da-oferta/images/capa-o-esqueleto-da-oferta.jpg</image:loc>
+      <image:caption>Capa do e-book O Esqueleto da Oferta: para vender qualquer produto todo dia, de Josias Viskoo</image:caption>
     </image:image>
   </url>
 </urlset>
