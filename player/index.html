@@ -347,22 +347,39 @@
   }
   body.locked #lock { display: grid; }
   body.locked #status, body.locked #grid { display: none; }
-  #pin { display: flex; gap: 12px; }
-  #pin.erro { animation: tremer .35s; }
-  #pin input {
-    width: 56px;
-    height: 64px;
-    border-radius: 14px;
+  #pin { display: flex; flex-direction: column; align-items: center; gap: 32px; }
+  #pontos { display: flex; gap: 18px; }
+  #pontos.erro { animation: tremer .35s; }
+  #pontos span {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,.5);
+    transition: background .12s, border-color .12s;
+  }
+  #pontos span.cheio { background: var(--text); border-color: var(--text); }
+  #teclado {
+    display: grid;
+    grid-template-columns: repeat(3, 76px);
+    gap: 16px;
+  }
+  #teclado button {
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
     border: 1px solid rgba(255,255,255,.25);
     background: rgba(255,255,255,.1);
     color: var(--text);
-    font: 600 1.6rem system-ui, sans-serif;
-    text-align: center;
-    -webkit-text-security: disc;
-    caret-color: transparent;
-    outline: none;
+    font: 600 1.8rem system-ui, sans-serif;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    user-select: none;
   }
-  #pin input:focus { border-color: var(--accent); }
+  #teclado button:active { background: rgba(255,255,255,.3); transform: scale(.94); }
+  #teclado .zero { grid-column: 2; }
+  #teclado .apagar { background: transparent; border-color: transparent; display: grid; place-items: center; }
+  #teclado .apagar svg { width: 30px; height: 30px; }
   @keyframes tremer {
     0%, 100% { transform: translateX(0); }
     25% { transform: translateX(-10px); }
@@ -375,11 +392,24 @@
 
 <div id="lock">
   <div id="pin">
-    <input type="text" inputmode="numeric" autocomplete="off" aria-label="Dígito 1">
-    <input type="text" inputmode="numeric" autocomplete="off" aria-label="Dígito 2">
-    <input type="text" inputmode="numeric" autocomplete="off" aria-label="Dígito 3">
-    <input type="text" inputmode="numeric" autocomplete="off" aria-label="Dígito 4">
+    <div id="pontos" aria-live="polite"><span></span><span></span><span></span><span></span></div>
+    <div id="teclado">
+      <button type="button" data-n="1">1</button>
+      <button type="button" data-n="2">2</button>
+      <button type="button" data-n="3">3</button>
+      <button type="button" data-n="4">4</button>
+      <button type="button" data-n="5">5</button>
+      <button type="button" data-n="6">6</button>
+      <button type="button" data-n="7">7</button>
+      <button type="button" data-n="8">8</button>
+      <button type="button" data-n="9">9</button>
+      <button type="button" data-n="0" class="zero">0</button>
+      <button type="button" class="apagar" aria-label="Apagar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5h11v14H9l-6-7z"/><path d="M12.5 9.5l5 5M17.5 9.5l-5 5"/></svg>
+      </button>
+    </div>
   </div>
+
 </div>
 
 <div id="acoes">
@@ -707,47 +737,47 @@
 
   // ---------- Senha de 4 dígitos ----------
   var SENHA = '0000';
-  var pinEl = document.getElementById('pin');
-  var digitos = Array.prototype.slice.call(pinEl.querySelectorAll('input'));
+  var pontosEl = document.getElementById('pontos');
+  var pontos = Array.prototype.slice.call(pontosEl.children);
+  var digitado = '';
 
-  function conferirSenha() {
-    var valor = digitos.map(function (d) { return d.value; }).join('');
-    if (valor.length < digitos.length) return;
-    if (valor === SENHA) {
-      document.body.classList.remove('locked');
-      digitos.forEach(function (d) { d.blur(); });
-      return;
-    }
-    pinEl.classList.remove('erro');
-    void pinEl.offsetWidth; // reinicia a animação
-    pinEl.classList.add('erro');
-    digitos.forEach(function (d) { d.value = ''; });
-    digitos[0].focus();
+  function desenharPontos() {
+    pontos.forEach(function (p, i) { p.classList.toggle('cheio', i < digitado.length); });
   }
 
-  digitos.forEach(function (d, i) {
-    d.addEventListener('input', function () {
-      var nums = d.value.replace(/\D/g, '');
-      // Aceita colar os 4 números de uma vez
-      for (var k = 0; k < nums.length && i + k < digitos.length; k++) digitos[i + k].value = nums[k];
-      if (!nums) { d.value = ''; return; }
-      var prox = Math.min(i + nums.length, digitos.length - 1);
-      digitos[prox].focus();
-      conferirSenha();
-    });
-    d.addEventListener('keydown', function (e) {
-      if (e.key === 'Backspace' && !d.value && i > 0) {
-        digitos[i - 1].value = '';
-        digitos[i - 1].focus();
-        e.preventDefault();
-      }
-    });
-    d.addEventListener('focus', function () { d.select(); });
+  function digitar(n) {
+    if (!document.body.classList.contains('locked') || digitado.length >= SENHA.length) return;
+    digitado += n;
+    desenharPontos();
+    if (digitado.length < SENHA.length) return;
+    if (digitado === SENHA) {
+      document.body.classList.remove('locked');
+      digitado = '';
+      desenharPontos();
+      return;
+    }
+    pontosEl.classList.remove('erro');
+    void pontosEl.offsetWidth; // reinicia a animação
+    pontosEl.classList.add('erro');
+    setTimeout(function () { digitado = ''; desenharPontos(); }, 350);
+  }
+
+  function apagar() {
+    digitado = digitado.slice(0, -1);
+    desenharPontos();
+  }
+
+  document.getElementById('teclado').addEventListener('click', function (e) {
+    var b = e.target.closest('button');
+    if (!b) return;
+    if (b.classList.contains('apagar')) apagar();
+    else digitar(b.dataset.n);
   });
-  digitos[0].focus();
-  document.getElementById('lock').addEventListener('click', function () {
-    var vazio = digitos.filter(function (d) { return !d.value; })[0];
-    (vazio || digitos[digitos.length - 1]).focus();
+  // O teclado físico continua funcionando
+  document.addEventListener('keydown', function (e) {
+    if (!document.body.classList.contains('locked')) return;
+    if (/^[0-9]$/.test(e.key)) digitar(e.key);
+    else if (e.key === 'Backspace') apagar();
   });
 
   // ---------- Tela sempre ativa (não deixa o computador entrar em descanso) ----------
